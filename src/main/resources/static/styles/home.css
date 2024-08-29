@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=SUSE:wght@100..800&display=swap");
+h1 {
+  font-family: "SUSE", sans;
+  font-weight: 700;
+  margin: 0;
+  font-size: 2.75em;
+}
+
+h2 {
+  font-family: "SUSE", sans;
+  font-weight: 700;
+  margin: 0;
+  font-size: 2.5em;
+}
+
+h3 {
+  font-family: "SUSE", sans;
+  font-weight: 600;
+  margin: 0;
+  font-size: 2.25em;
+}
+
+h4 {
+  font-family: "SUSE", sans;
+  font-weight: 600;
+  margin: 0;
+  font-size: 2em;
+}
+
+h5 {
+  font-family: "SUSE", sans;
+  font-weight: 500;
+  margin: 0;
+  font-size: 1.75em;
+}
+
+h6 {
+  font-family: "SUSE", sans;
+  font-weight: 500;
+  margin: 0;
+  font-size: 1.65em;
+}
+
+p {
+  font-family: "Open Sans", sans;
+  margin: 0;
+}
+
+a {
+  position: relative;
+  font-family: "Open Sans", sans;
+  text-decoration: none;
+  margin: 0;
+}
+
+button {
+  width: fit-content;
+  text-align: center;
+  font-family: "SUSE", sans;
+  font-weight: 600;
+  font-size: 1.25em;
+  padding: 0.5em 0.75em;
+  background: #16DE69;
+  border: 2px solid rgba(22, 222, 105, 0);
+  border-radius: 1em;
+  transition: background 0.5s, border 0.5s;
+}
+
+button:hover {
+  background: #C6FFDE;
+  border: 2px solid #16DE69;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  height: 100%;
+}
+
+.light {
+  background-color: #C6FFDE;
+  color: #041C0E;
+}
+
+.dark {
+  background-color: #041C0E;
+  color: #C6FFDE;
+}
+
+::-moz-selection {
+  color: #C6FFDE;
+  background: #041C0E;
+}
+
+::selection {
+  color: #C6FFDE;
+  background: #041C0E;
+}
+
+.dark::-moz-selection {
+  background: #C6FFDE;
+  color: #041C0E;
+}
+
+.dark::selection {
+  background: #C6FFDE;
+  color: #041C0E;
+}
+
+#header-container {
+  height: 100vh;
+  width: 20vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#header-container #header-content {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#header-container #header-image-container {
+  position: absolute;
+  right: -5vw;
+  top: 0;
+  height: 100%;
+  width: 5vw;
+}
+#header-container #header-image-container img {
+  width: 100%;
+  height: 100%;
+}
+
+/*# sourceMappingURL=home.css.map */

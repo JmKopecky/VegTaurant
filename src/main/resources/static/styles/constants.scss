@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=SUSE:wght@100..800&display=swap');
+
+$paragraphFamily: "Open Sans", sans;
+$headingFamily: "SUSE", sans;
+
+$light: #C6FFDE;
+$accent: #16DE69;
+$dark: #041C0E;
+
+
+h1 {
+  font-family: $headingFamily;
+  font-weight: 700;
+  margin: 0;
+  font-size: 2.75em;
+}
+h2 {
+  font-family: $headingFamily;
+  font-weight: 700;
+  margin: 0;
+  font-size: 2.5em;
+}
+h3 {
+  font-family: $headingFamily;
+  font-weight: 600;
+  margin: 0;
+  font-size: 2.25em;
+}
+h4 {
+  font-family: $headingFamily;
+  font-weight: 600;
+  margin: 0;
+  font-size: 2em;
+}
+h5 {
+  font-family: $headingFamily;
+  font-weight: 500;
+  margin: 0;
+  font-size: 1.75em;
+}
+h6 {
+  font-family: $headingFamily;
+  font-weight: 500;
+  margin: 0;
+  font-size: 1.65em;
+}
+p {
+  font-family: $paragraphFamily;
+  margin: 0;
+}
+a {
+  position:relative;
+  font-family: $paragraphFamily;
+  text-decoration: none;
+  margin: 0;
+}
+button {
+  width: fit-content;
+  text-align: center;
+  font-family: $headingFamily;
+  font-weight: 600;
+  font-size: 1.25em;
+  padding: 0.5em 0.75em;
+  background: $accent;
+  border: 2px solid transparentize($accent, 1);
+  border-radius: 1em;
+  transition: background 0.5s, border 0.5s;
+}
+button:hover {
+  background: $light;
+  border: 2px solid $accent;
+}
+
+
+body {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+}
+.container {
+  height: 100%;
+}
+
+
+.light {
+  background-color: $light;
+  color: $dark;
+}
+.dark {
+  background-color: $dark;
+  color: $light;
+}
+::-moz-selection {
+  color: $light;
+  background: $dark;
+}
+::selection {
+  color: $light;
+  background: $dark;
+}
+.dark::-moz-selection {
+  background: $light;
+  color: $dark;
+}
+.dark::selection {
+  background: $light;
+  color: $dark;
+}
