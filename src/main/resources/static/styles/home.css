@@ -152,16 +152,23 @@ body {
   justify-content: space-evenly;
 }
 #header-container #header-content a {
-  padding-left: 4vw;
-  padding-right: 4vw;
+  padding: 1vw 4vw;
+  border-bottom-right-radius: 1em;
+  border-top-right-radius: 1em;
+  transition: border 0.5s;
+  border: 1px solid transparent;
+}
+#header-container #header-content a:hover {
+  border: 1px solid #16DE69;
 }
 #header-container #header-content .emphasize {
   background: #16DE69;
   color: #041C0E;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
-  border-bottom-right-radius: 1em;
-  border-top-right-radius: 1em;
+  transition: transform 0.5s;
+  z-index: 6;
+}
+#header-container #header-content .emphasize:hover {
+  transform: translateX(1vw);
 }
 #header-container #header-content #header-home-container {
   padding-left: 1vw;
@@ -170,7 +177,11 @@ body {
   padding-left: unset;
   padding-right: unset;
   font-weight: 700;
-  font-size: 2.25em;
+  font-size: 1.25em;
+  border: unset;
+}
+#header-container #header-content #header-home-container a:hover {
+  border: unset;
 }
 #header-container #header-image-container {
   position: absolute;
@@ -178,6 +189,7 @@ body {
   top: 0;
   height: 100%;
   width: 7vw;
+  z-index: 5;
 }
 #header-container #header-image-container svg {
   width: 100%;
@@ -192,7 +204,7 @@ body {
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  padding-left: 22vw;
+  padding-left: 27vw;
   z-index: 1;
 }
 #site-content #hero-content {
@@ -208,6 +220,10 @@ body {
   padding-top: 40vh;
   width: 100%;
   text-align: center;
+  position: relative;
+}
+#site-content #hero-content #hero-proceed-container i {
+  padding-left: 1em;
 }
 #site-content #approaches-container {
   width: 70vw;
