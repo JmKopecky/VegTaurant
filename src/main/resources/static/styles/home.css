@@ -112,10 +112,36 @@ body {
   color: #041C0E;
 }
 
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #16DE69;
+  border-radius: 0.25em;
+}
+
+::-webkit-resizer {
+  display: none;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
 #header-container {
   height: 100vh;
   width: 15vw;
   position: fixed;
+  z-index: 5;
   top: 0;
   left: 0;
 }
@@ -157,6 +183,37 @@ body {
   width: 100%;
   height: 100%;
   fill: #041C0E;
+}
+
+#site-content {
+  height: 100vh;
+  width: fit-content;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 22vw;
+  z-index: 1;
+}
+#site-content #hero-content {
+  width: 68vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+#site-content #hero-content h1 {
+  font-size: 3.5em;
+  padding-top: 5vh;
+}
+#site-content #hero-content #hero-proceed-container {
+  padding-top: 40vh;
+  width: 100%;
+  text-align: center;
+}
+#site-content #approaches-container {
+  width: 70vw;
+}
+#site-content #sample-container {
+  width: 70vw;
 }
 
 /*# sourceMappingURL=home.css.map */

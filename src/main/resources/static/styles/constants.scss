@@ -107,3 +107,25 @@ body {
   background: $light;
   color: $dark;
 }
+
+
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: $accent;
+  border-radius: 0.25em;
+}
+::-webkit-resizer {
+  display: none;
+}
+::-webkit-scrollbar-button {
+  display: none;
+}

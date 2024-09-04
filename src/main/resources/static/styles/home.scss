@@ -4,6 +4,7 @@
   height: 100vh;
   width: 15vw;
   position: fixed;
+  z-index: 5;
   top: 0;
   left: 0;
   #header-content {
@@ -45,5 +46,42 @@
       height: 100%;
       fill: $dark;
     }
+  }
+}
+
+
+#site-content {
+  height: 100vh;
+  width: fit-content;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 22vw;
+  z-index: 1;
+
+  #hero-content {
+    width: 100vw - 22vw - 10vw;
+    padding-left: 5vw; //22 for spacing from the header, 3 for readability
+    padding-right: 5vw;
+
+    h1 {
+      font-size: 3.5em;
+      padding-top: 5vh;
+    }
+
+    #hero-proceed-container {
+      padding-top: 40vh;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  #approaches-container {
+    width: 70vw;
+  }
+
+  #sample-container {
+    width: 70vw;
   }
 }
