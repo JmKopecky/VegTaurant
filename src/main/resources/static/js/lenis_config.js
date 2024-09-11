@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         ease: "none",
         scrollTrigger: {
             trigger: "#site-content",
-            start: "top " + window.innerHeight/10,
+            start: "top " + 0,
             end: "+=" + totalScrollAmount,
             pin: true,
             scrub: true
