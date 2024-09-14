@@ -17,7 +17,7 @@
 <body class="light">
 
 <div id="header-container" class="dark">
-    <div id="header-content">
+    <div id="header-content" class="header-dark">
         <div id="header-home-container" class="dark">
             <a href="/" class="dark">ConDelu Meals</a>
         </div>
@@ -30,7 +30,7 @@
         <a class="dark emphasize" href="/">Account</a>
     </div>
     <div id="header-image-container">
-        <svg viewBox="0 0 132.29166 132.29166" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 132.29166 132.29166" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" id="header-svg">
             <path
                     id="path20"
                     style="fill-opacity:1;stroke:none;stroke-width:2.64636;stroke-linecap:round;stroke-opacity:1"
@@ -114,31 +114,31 @@
         <!-- Future: add a system to retrieve recent 5-star reviews and display them. -->
         <h2 id="ratings-title" class="dark">Ratings</h2>
         <div class="ratings-container">
-            <div class="rating-tile dark">
+            <div class="rating-tile-high dark">
                 <h3 class="dark">Lorem Ipsum</h3>
                 <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
-            <div class="rating-tile dark">
-                <h3 class="dark">Lorem Ipsum</h3>
-                <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-        </div>
-        <div class="ratings-container">
-            <div class="rating-tile dark">
-                <h3 class="dark">Lorem Ipsum</h3>
-                <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="rating-tile dark">
+            <div class="rating-tile-low dark">
                 <h3 class="dark">Lorem Ipsum</h3>
                 <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
         </div>
         <div class="ratings-container">
-            <div class="rating-tile dark">
+            <div class="rating-tile-high dark">
                 <h3 class="dark">Lorem Ipsum</h3>
                 <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
-            <div class="rating-tile dark">
+            <div class="rating-tile-low dark">
+                <h3 class="dark">Lorem Ipsum</h3>
+                <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+        <div class="ratings-container">
+            <div class="rating-tile-high dark">
+                <h3 class="dark">Lorem Ipsum</h3>
+                <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="rating-tile-low dark">
                 <h3 class="dark">Lorem Ipsum</h3>
                 <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
@@ -153,7 +153,9 @@
     </div>
 
     <div id="menu-start" class="dark">
-        <h1 class="dark" id="menu-title">Menu</h1>
+        <div id="menu-title-container">
+            <h1 class="dark" id="menu-title">Menu</h1>
+        </div>
     </div>
 </div>
 
@@ -162,7 +164,7 @@
 </div>
 
 <div id="footer-transition" class="dark">
-    <svg viewbox="0 0 100 100" preserveAspectRatio="none">
+    <svg viewbox="0 0 100 100" preserveAspectRatio="none" id="footer-transition-svg">
         <path style="stroke:none;fill-opacity:1;" d="M 0,100 L 100,100 L 50,0 L 0,100"/>
     </svg>
 </div>

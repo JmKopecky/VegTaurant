@@ -150,12 +150,13 @@ body {
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
+  transition: background 2s linear;
 }
 #header-container #header-content a {
   padding: 1vw 4vw;
   border-bottom-right-radius: 1em;
   border-top-right-radius: 1em;
-  transition: border 0.5s;
+  transition: border 0.5s, background 2s linear, color 2s linear;
   border: 1px solid transparent;
 }
 #header-container #header-content a:hover {
@@ -172,6 +173,7 @@ body {
 }
 #header-container #header-content #header-home-container {
   padding-left: 1vw;
+  background: none !important;
 }
 #header-container #header-content #header-home-container a {
   padding-left: unset;
@@ -179,9 +181,29 @@ body {
   font-weight: 700;
   font-size: 1.25em;
   border: unset;
+  background: none !important;
 }
 #header-container #header-content #header-home-container a:hover {
   border: unset;
+}
+#header-container #header-content.header-dark {
+  background: #041C0E;
+}
+#header-container #header-content.header-dark a {
+  background: none;
+}
+#header-container #header-content.header-dark a.emphasize {
+  background: #16DE69;
+}
+#header-container #header-content.header-light {
+  background: #C6FFDE;
+}
+#header-container #header-content.header-light a {
+  background: none;
+  color: #041C0E;
+}
+#header-container #header-content.header-light a.emphasize {
+  background: #16DE69;
 }
 #header-container #header-image-container {
   position: absolute;
@@ -195,6 +217,13 @@ body {
   width: 100%;
   height: 100%;
   fill: #041C0E;
+  transition: fill 2s linear;
+}
+#header-container #header-image-container svg.header-dark {
+  fill: #041C0E;
+}
+#header-container #header-image-container svg.header-light {
+  fill: #C6FFDE;
 }
 
 #parallax-image {
@@ -384,7 +413,7 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-#site-content #top-ratings-display .ratings-container .rating-tile {
+#site-content #top-ratings-display .ratings-container .rating-tile-low, #site-content #top-ratings-display .ratings-container .rating-tile-high {
   height: 25vh;
   width: 15vw;
   border: 1px solid #16DE69;
@@ -416,8 +445,14 @@ body {
   width: 100vw;
   height: 100vh;
 }
+#site-content #menu-start #menu-title-container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+}
 #site-content #menu-start h1 {
-  width: 100%;
   text-align: center;
   padding-top: 10vh;
   background: none;

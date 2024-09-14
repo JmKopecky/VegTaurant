@@ -12,12 +12,12 @@
     display: flex;
     flex-flow: column;
     justify-content: space-evenly;
-
+    transition: background 2s linear;
     a {
       padding: 1vw 4vw;
       border-bottom-right-radius: 1em;
       border-top-right-radius: 1em;
-      transition: border 0.5s;
+      transition: border 0.5s, background 2s linear, color 2s linear;
       border: 1px solid transparent;
     }
     a:hover {
@@ -35,16 +35,38 @@
     }
     #header-home-container {
       padding-left: 1vw;
+      background: none !important;
       a {
         padding-left: unset;
         padding-right: unset;
         font-weight: 700;
         font-size: 1.25em;
         border: unset;
+        background: none !important;
       }
       a:hover {
         border: unset;
       }
+    }
+  }
+  #header-content.header-dark {
+    background: $dark;
+    a {
+      background: none;
+    }
+    a.emphasize {
+      background: $accent;
+    }
+
+  }
+  #header-content.header-light {
+    background: $light;
+    a {
+      background: none;
+      color: $dark;
+    }
+    a.emphasize {
+      background: $accent;
     }
   }
   #header-image-container {
@@ -58,6 +80,13 @@
       width: 100%;
       height: 100%;
       fill: $dark;
+      transition: fill 2s linear;
+    }
+    svg.header-dark {
+      fill: $dark;
+    }
+    svg.header-light {
+      fill: $light;
     }
   }
 }
@@ -265,7 +294,7 @@
       flex-flow: column;
       justify-content: space-between;
       align-items: center;
-      .rating-tile {
+      .rating-tile-low, .rating-tile-high {
         height: 25vh;
         width: 15vw;
         border: 1px solid $accent;
@@ -302,8 +331,14 @@
   #menu-start {
     width: 100vw;
     height: 100vh;
+    #menu-title-container {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: fit-content;
+    }
     h1 {
-      width: 100%;
       text-align: center;
       padding-top: 10vh;
       background: none;
