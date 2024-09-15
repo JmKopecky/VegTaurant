@@ -5,3 +5,6 @@ Used libraries:
 * SCSS
 * GSAP
 * GSAP ScrollTrigger
+
+IDEA: 
+* Barba.js - animated transitions between pages

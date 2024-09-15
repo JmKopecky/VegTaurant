@@ -60,15 +60,16 @@ button {
   font-family: $headingFamily;
   font-weight: 600;
   font-size: 1.25em;
+  background: none;
+  color: darken($accent, 10%);
+  border: 2px solid $accent;
   padding: 0.5em 0.75em;
-  background: $accent;
-  border: 2px solid transparentize($accent, 1);
   border-radius: 1em;
-  transition: background 0.5s, border 0.5s;
+  transition: background 0.5s, color 0.5s;
 }
 button:hover {
-  background: $light;
-  border: 2px solid $accent;
+  background: $accent;
+  color: $dark;
 }
 
 
@@ -87,15 +88,18 @@ body {
   background-color: $light;
   color: $dark;
 }
+.light-nobg {
+  color: $dark;
+}
 .dark {
   background-color: $dark;
   color: $light;
 }
-::-moz-selection {
+::-moz-selection, .light-nobg::-moz-selection {
   color: $light;
   background: $dark;
 }
-::selection {
+::selection, .light-nobg::selection {
   color: $light;
   background: $dark;
 }

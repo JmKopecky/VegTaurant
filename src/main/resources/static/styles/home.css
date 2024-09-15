@@ -59,16 +59,17 @@ button {
   font-family: "SUSE", sans;
   font-weight: 600;
   font-size: 1.25em;
+  background: none;
+  color: #11b053;
+  border: 2px solid #16DE69;
   padding: 0.5em 0.75em;
-  background: #16DE69;
-  border: 2px solid rgba(22, 222, 105, 0);
   border-radius: 1em;
-  transition: background 0.5s, border 0.5s;
+  transition: background 0.5s, color 0.5s;
 }
 
 button:hover {
-  background: #C6FFDE;
-  border: 2px solid #16DE69;
+  background: #16DE69;
+  color: #041C0E;
 }
 
 body {
@@ -87,17 +88,21 @@ body {
   color: #041C0E;
 }
 
+.light-nobg {
+  color: #041C0E;
+}
+
 .dark {
   background-color: #041C0E;
   color: #C6FFDE;
 }
 
-::-moz-selection {
+::-moz-selection, .light-nobg::-moz-selection {
   color: #C6FFDE;
   background: #041C0E;
 }
 
-::selection {
+::selection, .light-nobg::selection {
   color: #C6FFDE;
   background: #041C0E;
 }
@@ -144,6 +149,7 @@ body {
   z-index: 5;
   top: 0;
   left: 0;
+  will-change: transform;
 }
 #header-container #header-content {
   height: 100vh;
@@ -151,6 +157,7 @@ body {
   flex-flow: column;
   justify-content: space-evenly;
   transition: background 2s linear;
+  will-change: background;
 }
 #header-container #header-content a {
   padding: 1vw 4vw;
@@ -212,12 +219,14 @@ body {
   height: 100%;
   width: 7vw;
   z-index: 5;
+  transform: scaleX(1.01) translateX(-0.01);
 }
 #header-container #header-image-container svg {
   width: 100%;
   height: 100%;
   fill: #041C0E;
   transition: fill 2s linear;
+  will-change: transform, fill;
 }
 #header-container #header-image-container svg.header-dark {
   fill: #041C0E;
@@ -251,6 +260,7 @@ body {
   z-index: 1;
   background: none;
   transform: scaleY(1.01);
+  will-change: transform;
 }
 #site-content #hero-content {
   width: 68vw;
@@ -265,13 +275,20 @@ body {
 }
 #site-content #hero-content #hero-proceed-container {
   padding-top: 40vh;
-  width: 100%;
+  width: fit-content;
   text-align: center;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+#site-content #hero-content #hero-proceed-container button {
+  font-size: 1.5em;
 }
 #site-content #hero-content #hero-proceed-container i {
-  padding-left: 1em;
   color: #16DE69;
+  font-size: 2em;
 }
 #site-content #approaches-container {
   width: 70vw;
@@ -292,15 +309,17 @@ body {
   z-index: 4;
 }
 #site-content #approaches-container .approaches-tile .approaches-tile-title {
-  background: rgba(198, 255, 222, 0.8);
+  background: rgba(198, 255, 222, 0.9);
   border-radius: 1em;
   padding: 1em;
   margin-bottom: 1em;
+  will-change: transform;
 }
 #site-content #approaches-container .approaches-tile .approaches-tile-content {
-  background: rgba(198, 255, 222, 0.8);
+  background: rgba(198, 255, 222, 0.9);
   border-radius: 1em;
   padding: 1em;
+  will-change: transform;
 }
 #site-content #approaches-container::before {
   content: "";
@@ -347,6 +366,7 @@ body {
   border-top-right-radius: 1em;
   padding: 1em;
   text-align: center;
+  will-change: transform;
 }
 #site-content #sample-container #sample-bar-container .sample-bar .sample-bar-image-container {
   width: 80%;
@@ -421,25 +441,7 @@ body {
   padding: 1em;
   text-align: center;
   overflow: clip;
-}
-#site-content #interaction-suggestion-menu {
-  width: 35vw;
-  height: 80vh;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
-  align-items: center;
-  background-color: rgba(4, 28, 14, 0.8);
-  padding-top: 20vh;
-}
-#site-content #interaction-suggestion-menu h1 {
-  background: none;
-}
-#site-content #interaction-suggestion-menu a {
-  background: #16DE69;
-  border-radius: 1em;
-  padding: 1em;
-  color: #041C0E;
+  will-change: transform;
 }
 #site-content #menu-start {
   width: 100vw;
@@ -456,9 +458,10 @@ body {
   text-align: center;
   padding-top: 10vh;
   background: none;
+  will-change: transform;
 }
 
-#continued-menu {
+#redirect-section {
   width: 100vw;
   min-height: 100vh;
 }

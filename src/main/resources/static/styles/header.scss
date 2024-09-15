@@ -1,0 +1,95 @@
+#header-container {
+  height: 100vh;
+  width: 15vw;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  #header-content {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    transition: background 2s linear;
+    will-change: background;
+    a {
+      padding: 1vw 4vw;
+      border-bottom-right-radius: 1em;
+      border-top-right-radius: 1em;
+      transition: border 0.5s, background 2s linear, color 2s linear;
+      border: 1px solid transparent;
+    }
+    a:hover {
+      border: 1px solid $accent;
+    }
+    .emphasize {
+      background: $accent;
+      color: $dark;
+
+      transition: transform 0.5s;
+      z-index: 6;
+    }
+    .emphasize:hover {
+      transform: translateX(1vw);
+    }
+    #header-home-container {
+      padding-left: 1vw;
+      background: none !important;
+      a {
+        padding-left: unset;
+        padding-right: unset;
+        font-weight: 700;
+        font-size: 1.25em;
+        border: unset;
+        background: none !important;
+      }
+      a:hover {
+        border: unset;
+      }
+    }
+  }
+  #header-content.header-dark {
+    background: $dark;
+    a {
+      background: none;
+    }
+    a.emphasize {
+      background: $accent;
+    }
+
+  }
+  #header-content.header-light {
+    background: $light;
+    a {
+      background: none;
+      color: $dark;
+    }
+    a.emphasize {
+      background: $accent;
+    }
+  }
+  #header-image-container {
+    position: absolute;
+    right: -7vw;
+    top: 0;
+    height: 100%;
+    width: 7vw;
+    z-index: 5;
+    transform: scaleX(1.01) translateX(-0.01);
+
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: $dark;
+      transition: fill 2s linear;
+      will-change: transform, fill;
+    }
+    svg.header-dark {
+      fill: $dark;
+    }
+    svg.header-light {
+      fill: $light;
+    }
+  }
+}

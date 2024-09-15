@@ -1,0 +1,33 @@
+#top-ratings-display {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-left: 5vw;
+  padding-right: 10vw;
+  #ratings-title {
+    writing-mode: vertical-lr;
+    -ms-writing-mode: tb-rl;
+    transform-origin: center;
+    transform: rotate(180deg);
+  }
+  .ratings-container {
+    width: 20vw;
+    height: 80vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    .rating-tile-low, .rating-tile-high {
+      height: 25vh;
+      width: 15vw;
+      border: 1px solid $accent;
+      border-radius: 1em;
+      padding: 1em;
+      text-align: center;
+      overflow: clip;
+      will-change: transform;
+    }
+  }
+}
