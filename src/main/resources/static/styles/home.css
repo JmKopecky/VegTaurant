@@ -126,6 +126,10 @@ body {
   overflow-x: hidden;
 }
 
+span {
+  will-change: transform, opacity;
+}
+
 ::-webkit-scrollbar {
   width: 0.5em;
 }
@@ -387,6 +391,9 @@ body {
   top: 25%;
   background: #041C0E;
 }
+#site-content .story-anim {
+  will-change: transform, opacity;
+}
 #site-content #work-with-us-container {
   width: 45vw;
   height: 100vh;
@@ -431,6 +438,9 @@ body {
   position: absolute;
   right: -1px;
   top: 20%;
+}
+#site-content .collaborate-tile-anim, #site-content .collaborate-tile-anim-left, #site-content .collaborate-tile-anim-right {
+  will-change: transform, opacity;
 }
 #site-content #transition-lighttodark {
   width: 20vw;
@@ -509,6 +519,9 @@ body {
   top: 0;
   left: 0;
   z-index: 3;
+}
+#site-content .account-tile-animate {
+  will-change: transform, opacity;
 }
 #site-content #sample-container {
   width: 70vw;

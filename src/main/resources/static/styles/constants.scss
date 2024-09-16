@@ -120,6 +120,9 @@ body {
 body {
   overflow-x: hidden;
 }
+span {
+  will-change: transform, opacity;
+}
 
 ::-webkit-scrollbar {
   width: 0.5em;

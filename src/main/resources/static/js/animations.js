@@ -146,7 +146,7 @@ function registerAnimations() {
         }
     });
 
-    //collaborate section
+    //story section
     gsap.from(".story-anim", {
         duration: 2,
         y: 200,

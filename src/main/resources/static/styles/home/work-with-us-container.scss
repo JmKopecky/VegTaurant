@@ -43,3 +43,7 @@
   right: -1px;
   top: 20%;
 }
+
+.collaborate-tile-anim, .collaborate-tile-anim-left, .collaborate-tile-anim-right {
+  will-change: transform, opacity;
+}

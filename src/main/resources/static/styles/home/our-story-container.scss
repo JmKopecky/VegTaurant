@@ -49,3 +49,7 @@
     background: $dark;
   }
 }
+
+.story-anim {
+  will-change: transform, opacity;
+}
