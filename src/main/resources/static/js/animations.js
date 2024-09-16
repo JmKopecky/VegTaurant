@@ -72,6 +72,10 @@ function registerAnimations() {
     registerTextAnimation("hero-scrolltext-anim", true, "shine");
     registerTextAnimation("approaches-title-anim", false, "shine");
     registerTextAnimation("sample-title-anim", false, "shine");
+    registerTextAnimation("text-account-anim", false, "shine");
+    registerTextAnimation("text-story-anim", false, "shine");
+    registerTextAnimation("collaborate-text-anim", false, "shine");
+    registerTextAnimation("ratings-text-anim", false, "shine");
 
     //approaches-tiles
     gsap.from(".approaches-tile-title", {
@@ -97,6 +101,62 @@ function registerAnimations() {
             trigger: "#approaches-container",
             containerAnimation: horizontalScroll,
             start: "left right",
+            toggleActions: "play none none reverse"
+        }
+    });
+
+    //collaborate section
+    gsap.from(".collaborate-tile-anim", {
+        duration: 2,
+        y: 200,
+        opacity: 0,
+        ease: "power1.inout",
+        stagger: 0.25,
+        scrollTrigger: {
+            trigger: "#work-with-us-container",
+            containerAnimation: horizontalScroll,
+            start: "center right",
+            toggleActions: "play none none reverse"
+        }
+    });
+    gsap.from(".collaborate-tile-anim-left", {
+        duration: 2,
+        x: -200,
+        opacity: 0,
+        ease: "power1.inout",
+        delay: 0.25,
+        scrollTrigger: {
+            trigger: "#work-with-us-container",
+            containerAnimation: horizontalScroll,
+            start: "center right",
+            toggleActions: "play none none reverse"
+        }
+    });
+    gsap.from(".collaborate-tile-anim-right", {
+        duration: 2,
+        x: 200,
+        opacity: 0,
+        ease: "power1.inout",
+        stagger: 0.50,
+        scrollTrigger: {
+            trigger: "#work-with-us-container",
+            containerAnimation: horizontalScroll,
+            start: "center right",
+            toggleActions: "play none none reverse"
+        }
+    });
+
+    //collaborate section
+    gsap.from(".story-anim", {
+        duration: 2,
+        y: 200,
+        opacity: 0,
+        ease: "power1.inout",
+        stagger: 0.25,
+        scrollTrigger: {
+            trigger: ".story-anim",
+            containerAnimation: horizontalScroll,
+            start: "right right",
             toggleActions: "play none none reverse"
         }
     });
@@ -131,6 +191,21 @@ function registerAnimations() {
             }
         });
     }
+
+    //account suggestion
+    gsap.from(".account-tile-animate", {
+        duration: 2,
+        y: -200,
+        opacity: 0,
+        ease: "power1.inout",
+        stagger: 0.25,
+        scrollTrigger: {
+            trigger: ".account-tile-animate",
+            containerAnimation: horizontalScroll,
+            start: "right right",
+            toggleActions: "play none none reverse"
+        }
+    });
 
     //top three
     gsap.from(".sample-bar", {

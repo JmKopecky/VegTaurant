@@ -67,6 +67,10 @@ button {
   border-radius: 1em;
   transition: background 0.5s, color 0.5s;
 }
+button.dark {
+  color: $accent;
+  background: none;
+}
 button:hover {
   background: $accent;
   color: $dark;
