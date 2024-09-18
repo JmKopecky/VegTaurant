@@ -172,6 +172,19 @@ a.link-hover:hover::after {
   width: 100%;
 }
 
+#site-content {
+  height: 100vh;
+  width: fit-content;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  background: none;
+  transform: scaleY(1.01);
+  will-change: transform;
+}
+
 #header-container {
   height: 100vh;
   width: 15vw;
@@ -280,18 +293,6 @@ a.link-hover:hover::after {
   height: 100%;
 }
 
-#site-content {
-  height: 100vh;
-  width: fit-content;
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-  background: none;
-  transform: scaleY(1.01);
-  will-change: transform;
-}
 #site-content #hero-content {
   width: 68vw;
   height: 100vh;

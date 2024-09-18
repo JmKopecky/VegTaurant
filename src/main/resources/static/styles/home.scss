@@ -1,6 +1,4 @@
 @import 'constants';
-
-
 @import 'header';
 
 
@@ -21,17 +19,6 @@
 
 
 #site-content {
-  height: 100vh;
-  width: fit-content;
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  align-items: center;
-  //padding-left: 27vw;
-  z-index: 1;
-  background: none;
-  transform: scaleY(1.01);
-  will-change: transform;
 
   @import 'home/hero-content';
 
