@@ -41,7 +41,7 @@ h6 {
   font-size: 1.65em;
 }
 
-p {
+p, input {
   font-family: "Open Sans", sans;
   margin: 0;
 }
