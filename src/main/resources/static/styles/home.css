@@ -51,6 +51,7 @@ a {
   font-family: "Open Sans", sans;
   text-decoration: none;
   margin: 0;
+  color: #12ae52;
 }
 
 button {
@@ -149,6 +150,26 @@ span {
 
 ::-webkit-scrollbar-button {
   display: none;
+}
+
+a.link-hover {
+  position: relative;
+}
+
+a.link-hover::after {
+  width: 0%;
+  height: 3px;
+  background: #12ae52;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: width 1s;
+}
+
+a.link-hover:hover::after {
+  width: 100%;
 }
 
 #header-container {
@@ -328,7 +349,12 @@ span {
   background: rgba(198, 255, 222, 0.9);
   border-radius: 1em;
   padding: 1em;
+  min-height: 40vh;
   will-change: transform;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 #site-content #approaches-container::before {
   content: "";
@@ -499,12 +525,15 @@ span {
   padding-right: 5vw;
   z-index: 2;
 }
-#site-content #account-promo-container h2, #site-content #account-promo-container p {
+#site-content #account-promo-container h1, #site-content #account-promo-container p {
   background: rgba(4, 28, 14, 0.9);
   padding: 1em;
   border-radius: 1em;
   z-index: 4;
   text-align: center;
+}
+#site-content #account-promo-container h1 {
+  padding: 0.75em;
 }
 #site-content #account-promo-container button {
   z-index: 4;

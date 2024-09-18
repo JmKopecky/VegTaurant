@@ -27,7 +27,12 @@
       background: transparentize($light, 0.1);
       border-radius: 1em;
       padding: 1em;
+      min-height: 40vh;
       will-change: transform;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

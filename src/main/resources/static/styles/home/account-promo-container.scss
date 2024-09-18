@@ -11,12 +11,15 @@
   padding-right: 5vw;
   z-index: 2;
 
-  h2, p {
+  h1, p {
     background: transparentize($dark, 0.1);
     padding: 1em;
     border-radius: 1em;
     z-index: 4;
     text-align: center;
+  }
+  h1 {
+    padding: 0.75em;
   }
   button {
     z-index: 4;

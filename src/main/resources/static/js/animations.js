@@ -225,7 +225,7 @@ function registerAnimations() {
     //menutitle animations
     const menuTitle = document.getElementById("menu-title");
     gsap.from(menuTitle, {
-        x: -0.45 * document.getElementById("menu-title-container").getBoundingClientRect().width,
+        x: -0.5 * document.getElementById("menu-title-container").getBoundingClientRect().width + menuTitle.getBoundingClientRect().width/2,
         duration: 5,
         ease: "power1.out",
         scrollTrigger: {
@@ -246,6 +246,7 @@ function registerAnimations() {
             scrub: 2
         }
     })
+
 }
 
 

@@ -53,6 +53,7 @@ a {
   font-family: $paragraphFamily;
   text-decoration: none;
   margin: 0;
+  color: mix($dark, $accent, 25%);
 }
 button {
   width: fit-content;
@@ -139,4 +140,25 @@ span {
 }
 ::-webkit-scrollbar-button {
   display: none;
+}
+
+
+
+a.link-hover {
+  position: relative;
+}
+
+a.link-hover::after {
+  width: 0%;
+  height: 3px;
+  background: mix($dark, $accent, 25%);
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: width 1s;
+}
+a.link-hover:hover::after {
+  width: 100%;
 }
