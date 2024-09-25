@@ -1,0 +1,33 @@
+@import 'constants';
+@import 'header';
+
+#site-content {
+  height: unset;
+  width: fit-content;
+  display: block;
+  transform: unset;
+  will-change: unset;
+  #menu-categories-container {
+    width: fit-content;
+    display: flex;
+    padding-left: 27vw;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    background: none;
+    transform: scaleY(1.01);
+    will-change: transform;
+    .menu-topic-tile {
+      width: 20vw;
+      height: 50vh;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      border-left: solid 0.5px $dark;
+      border-bottom: solid 1px $dark;
+      border-right: solid 0.5px $dark;
+    }
+  }
+}

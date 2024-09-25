@@ -10,4 +10,5 @@ public class VegtaurantApplication {
 		SpringApplication.run(VegtaurantApplication.class, args);
 	}
 
+
 }

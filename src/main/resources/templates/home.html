@@ -23,7 +23,7 @@
         </div>
         <a class="dark emphasize" href="/">Order</a>
         <a class="dark" href="/">View Orders</a>
-        <a class="dark" href="/">Menu</a>
+        <a class="dark" href="/menu">Menu</a>
         <a class="dark" href="/">Meal Plans</a>
         <a class="dark" href="/">TSA 1</a>
         <a class="dark" href="/">TSA 2</a>
@@ -48,7 +48,12 @@
     <div id="hero-content">
         <h1 class="hero-text-anim">Where premium healthy meals never preempt convenience.</h1>
         <div id="hero-proceed-container">
-            <button>View Our Menu</button>
+            <script>
+                document.getElementById("hero-menu-button").addEventListener("click", () => {
+                    window.location.replace(window.location.origin + "/menu")
+                })
+            </script>
+            <button id="hero-menu-button">View Our Menu</button>
             <h3 class="hero-scrolltext-anim light-nobg">Or learn more about us</h3>
             <i class="fas fa-arrow-right"></i>
         </div>
