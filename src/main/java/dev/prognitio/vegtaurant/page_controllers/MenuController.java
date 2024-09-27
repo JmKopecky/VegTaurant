@@ -1,9 +1,6 @@
 package dev.prognitio.vegtaurant.page_controllers;
 
-import dev.prognitio.vegtaurant.data_storage.MenuCategory;
-import dev.prognitio.vegtaurant.data_storage.MenuCategoryRepository;
-import dev.prognitio.vegtaurant.data_storage.MenuItem;
-import dev.prognitio.vegtaurant.data_storage.MenuItemRepository;
+import dev.prognitio.vegtaurant.data_storage.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +10,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MenuController {
     private final MenuItemRepository menuItemRepository;
     private final MenuCategoryRepository menuCategoryRepository;
+    private final AccountRepository accountRepository;
 
-    public MenuController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository) {
+    public MenuController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository) {
         //if encountering errors, make sure to drop both tables first.
         this.menuItemRepository = menuItemRepository;
         this.menuCategoryRepository = menuCategoryRepository;
+        this.accountRepository = accountRepository;
+        doDatabaseSetup();
+    }
 
+
+    @GetMapping("/menu")
+    public String home(Model model) {
+        model.addAttribute("menuCategories", menuCategoryRepository.findAll());
+        return "menu";
+    }
+
+
+    public void doDatabaseSetup() {
         MenuCategory drinks = new MenuCategory();
         drinks.setTitle("Drinks");
         menuCategoryRepository.save(drinks);
@@ -43,12 +53,5 @@ public class MenuController {
         water.setPrice(1.00);
         water.setCategory(drinks);
         menuItemRepository.save(water);
-
-    }
-
-    @GetMapping("/menu")
-    public String home(Model model) {
-        model.addAttribute("menuCategories", menuCategoryRepository.findAll());
-        return "menu";
     }
 }
