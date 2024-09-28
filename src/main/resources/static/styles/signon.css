@@ -58,7 +58,7 @@ a {
   font-family: "Open Sans", sans;
   text-decoration: none;
   margin: 0;
-  color: #787878;
+  color: #00B837;
 }
 
 a.link-hover {
@@ -68,7 +68,7 @@ a.link-hover {
 a.link-hover::after {
   width: 0%;
   height: 3px;
-  background: #787878;
+  background: #00B837;
   content: "";
   display: block;
   position: absolute;
@@ -88,21 +88,16 @@ button {
   font-weight: 600;
   font-size: 1.25em;
   background: none;
-  color: #787878;
-  border: 2px solid #787878;
+  color: #00B837;
+  border: 2px solid #00B837;
   padding: 0.5em 0.75em;
-  border-radius: 1em;
+  border-radius: 0.5em;
   transition: background 0.5s, color 0.5s;
 }
 
-button.dark {
-  color: #787878;
-  background: none;
-}
-
 button:hover {
-  background: #787878;
-  color: #EEEEEE;
+  background: #00B837;
+  color: #111111;
 }
 
 body {
@@ -111,6 +106,7 @@ body {
   width: 100%;
   min-height: 100vh;
   background: #111111;
+  overflow-x: hidden;
 }
 
 #site-content {
@@ -138,7 +134,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #787878;
+  background: #00B837;
   border-radius: 0.15em;
 }
 

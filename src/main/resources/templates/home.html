@@ -38,16 +38,43 @@ Requisite content:
 
 
     <div id="hero-content">
-        <h1 style="font-size: 5em;">Bringing Premium to Fast Food</h1>
-        <h3>So bring home a guilt-free delectable experience.</h3>
-        <button>Menu</button>
-        <button>Order</button>
+        <div id="hero-interactable">
+            <h1 style="font-size: 5em;">Bringing Premium to Fast Food</h1>
+            <h6>So bring home a guilt-free delectable experience.</h6>
+            <div id="hero-button-container">
+                <button>Menu</button>
+                <button>Order</button>
+            </div>
+        </div>
+        <div id="hero-bgimg">
+            <div id="hero-bgimg-overlay"></div>
+            <img id="hero-bgimg-image" src="/images/stockphotoforfood.jpg" alt="Image depicting an example of food.">
+        </div>
     </div>
 
 
     <div id="item-promo">
         <!-- Scroll through a set of popular menu items -->
-        <h1>What We've Got</h1>
+        <h1>Your Favorite Items</h1>
+        <div id="item-scroll-area">
+            <button class="scroll-arrow-button" onclick="shiftItemPromoCarousel(false)"><i class="fa-solid fa-arrow-left"></i></button>
+            <div id="item-scroll-overflow">
+                <div id="item-scroll-container">
+                    <div class="top-rated-item-tile" th:each="itemTile:${tophalfmenuitems}">
+                        <div class="top-rated-item-tile-content">
+                            <h5 th:text="${itemTile.getLabel()}"></h5>
+                            <div class="top-rated-item-tile-body">
+                                <p class="top-rated-item-tile-desc" th:text="${itemTile.description}"></p>
+                                <p class="top-rated-item-tile-rating" th:text="|Rating: ${itemTile.getAveragerating()}/5 (${itemTile.getTotalratings()})|"></p>
+                            </div>
+                            <button>Add to Cart</button>
+                        </div>
+                        <img th:src="${itemTile.getIconUrl()}" alt="image of food item">
+                    </div>
+                </div>
+            </div>
+            <button class="scroll-arrow-button" onclick="shiftItemPromoCarousel(true)"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
     </div>
 
 

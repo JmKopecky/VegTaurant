@@ -4,7 +4,7 @@ $paragraphFamily: "Open Sans", sans;
 $headingFamily: "SUSE", sans;
 
 $secondary: #111111;
-$accent: #787878;
+$accent: #00B837;//787878
 $primary: #EEEEEE;
 
 
@@ -91,16 +91,12 @@ button {
   color: $accent;
   border: 2px solid $accent;
   padding: 0.5em 0.75em;
-  border-radius: 1em;
+  border-radius: 0.5em;
   transition: background 0.5s, color 0.5s;
-}
-button.dark {
-  color: $accent;
-  background: none;
 }
 button:hover {
   background: $accent;
-  color: $primary;
+  color: $secondary;
 }
 
 
@@ -110,6 +106,7 @@ body {
   width: 100%;
   min-height: 100vh;
   background: $secondary;
+  overflow-x: hidden;
 }
 
 
