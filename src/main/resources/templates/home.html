@@ -55,7 +55,26 @@ Requisite content:
 
     <div id="item-promo">
         <!-- Scroll through a set of popular menu items -->
-        <h1>What We've Got</h1>
+        <h1>Your Favorite Items</h1>
+        <div id="item-scroll-area">
+            <button class="scroll-arrow-button" onclick="shiftItemPromoCarousel(false)"><i class="fa-solid fa-arrow-left"></i></button>
+            <div id="item-scroll-overflow">
+                <div id="item-scroll-container">
+                    <div class="top-rated-item-tile" th:each="itemTile:${tophalfmenuitems}">
+                        <div class="top-rated-item-tile-content">
+                            <h5 th:text="${itemTile.getLabel()}"></h5>
+                            <div class="top-rated-item-tile-body">
+                                <p class="top-rated-item-tile-desc" th:text="${itemTile.description}"></p>
+                                <p class="top-rated-item-tile-rating" th:text="|Rating: ${itemTile.getAveragerating()}/5 (${itemTile.getTotalratings()})|"></p>
+                            </div>
+                            <button>Add to Cart</button>
+                        </div>
+                        <img th:src="${itemTile.getIconUrl()}" alt="image of food item">
+                    </div>
+                </div>
+            </div>
+            <button class="scroll-arrow-button" onclick="shiftItemPromoCarousel(true)"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
     </div>
 
 
