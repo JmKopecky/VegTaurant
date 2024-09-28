@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Condelu Meals</title>
-    <link rel="icon" type="image/x-icon" href="/images/condelulogo.ico">
+    <!--<link rel="icon" type="image/x-icon" href="/images/condelulogo.ico">-->
     <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/styles/home.css">
@@ -14,194 +14,88 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
-<body class="light">
+<body>
 
-<div id="header-container" class="dark">
-    <div id="header-content" class="header-dark">
-        <div id="header-home-container" class="dark">
-            <a href="/" class="dark">ConDelu Meals</a>
-        </div>
-        <a class="dark emphasize" href="/">Order</a>
-        <a class="dark" href="/">View Orders</a>
-        <a class="dark" href="/menu">Menu</a>
-        <a class="dark" href="/">Meal Plans</a>
-        <a class="dark" href="/">TSA 1</a>
-        <a class="dark" href="/">TSA 2</a>
-        <a class="dark emphasize" href="/signon">Account</a>
-    </div>
-    <div id="header-image-container">
-        <svg viewBox="0 0 132.29166 132.29166" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" id="header-svg">
-            <path
-                    id="path20"
-                    style="fill-opacity:1;stroke:none;stroke-width:2.64636;stroke-linecap:round;stroke-opacity:1"
-                    d="M 0,0 V 132.29166 H 132.29166 C 110.24309,110.24309 88.194836,88.194997 88.194616,77.170482 88.194386,66.145967 110.24266,66.145993 110.24288,55.121699 110.2431,44.097405 88.19442,22.048589 66.145832,0 Z" />
-        </svg>
-    </div>
+<!--
+Requisite content:
+* Hero
+* Approaches
+* Story
+* Collab
+* Ratings
+* account-promo
+* sample/top rated items
+* redirect to menu
+* footer
+-->
+
+<div id="header-container">
+
 </div>
 
-<div id="parallax-image">
-    <img src="https://media.istockphoto.com/id/975055456/photo/the-container-restaurant-bar-3d-rendering.jpg?s=612x612&w=0&k=20&c=riWw1c-6guQVYIOSEkBytInNWt6WOlDltbwxfWX0JS8=" alt="Candelu resturaunt rendering">
-</div>
 
 <div id="site-content">
 
+
     <div id="hero-content">
-        <h1 class="hero-text-anim">Where premium healthy meals never preempt convenience.</h1>
-        <div id="hero-proceed-container">
-            <button id="hero-menu-button">View Our Menu</button>
-            <script>
-                document.getElementById("hero-menu-button").addEventListener("click", () => {
-                    window.location.replace(window.location.origin + "/menu")
-                })
-            </script>
-            <h3 class="hero-scrolltext-anim light-nobg">Or learn more about us</h3>
-            <i class="fas fa-arrow-right"></i>
-        </div>
+        <h1 style="font-size: 5em;">Bringing Premium to Fast Food</h1>
+        <h3>So bring home a guilt-free delectable experience.</h3>
+        <button>Menu</button>
+        <button>Order</button>
     </div>
+
+
+    <div id="item-promo">
+        <!-- Scroll through a set of popular menu items -->
+        <h1>What We've Got</h1>
+    </div>
+
+
+    <div id="current-featured">
+        <!-- Designate the most unique menu item as the 'featured' item and show it off here. -->
+        <h1>Featured Deal</h1>
+    </div>
+
+
+    <div id="discount-promo">
+        <!-- Start your week off with a site-wide discount. -->
+        <h1>Have a Discount</h1>
+    </div>
+
+
+    <div id="top-ratings-display">
+        <!-- Future: add a system to retrieve recent 5-star reviews and display them. -->
+        <h1>Top Ratings</h1>
+    </div>
+
+
+    <div id="location-container">
+        <!-- Show a map of all 'locations' set up -->
+        <h1>Locations</h1>
+    </div>
+
+
+    <div id="member-benefit-promo">
+        <!-- Promote creating an account and explain the benefits -->
+        <h1>Become a Member</h1>
+    </div>
+
 
     <div id="approaches-container">
-        <div class="approaches-tile">
-            <div class="approaches-tile-title">
-                <h3 class="approaches-title-anim">Always Healthy</h3>
-            </div>
-            <div class="approaches-tile-content">
-                <p>All of our food is delivered in healthy, well-balanced portions. In fact, our entire menu is vegetarian; no meats, processed or otherwise, to be found. We know the stigma of vegetarian food tasting poorly, but don't be concerned; each bite has been designed specifically to maximize both taste and nutrition.</p>
-            </div>
-        </div>
-        <div class="approaches-tile">
-            <div class="approaches-tile-title">
-                <h3 class="approaches-title-anim">Ethics Never Cast Aside</h3>
-            </div>
-            <div class="approaches-tile-content">
-                <p>All of this might sound too good to be true - surely we must have made compromises somewhere. But no! Through <a href="/collaborations" class="link-hover">collaborations</a> with our community to source produce, as well as fostering skilled employees with reasonable pays, we have successfully built a team that can produce fresh meals for customers in an ethical manner. We even work with <a href="/sustainability" class="link-hover">environmental organizations</a> to capture all carbon released to the atmosphere - in equal measures!</p>
-            </div>
-        </div>
-        <div class="approaches-tile">
-            <div class="approaches-tile-title">
-                <h3 class="approaches-title-anim">Yet Still Delivered Fast</h3>
-            </div>
-            <div class="approaches-tile-content">
-                <p>This focus on quality healthy food hasn't come at the cost of convenience, however. We understand you have busy lives, with no way to cook on the road, or no energy to prepare your own meal at home. That's why we've modeled ourselves off fast food restaurants, yet with no compromise to quality.</p>
-            </div>
-        </div>
+        <!-- Describe what extra facts a customer might not know that separates the company from anyone else -->
+        <h1>How Are We Different?</h1>
     </div>
 
-    <div id="our-story-container">
-        <h1 class="text-story-anim story-anim">Here's Our Story</h1>
-        <div id="story-text-container">
-            <p class="story-anim">We started small, with one minor location in Houston. But through collaboration with our community, we were able to succeed.
-                We were able to develop a vision for the industry. You see, fast food is renowned for being unhealthy at best and lethal at worst.
-                But we don't believe that it has to be this way.</p>
-            <p class="story-anim">So we set out to develop a fast food chain with a central, guiding goal: to bridge the gap between convenience and health.
-                Our idea was well received, and we were granted the opportunity to expand into more communities, yet we never lost these core principles.</p>
-        </div>
-    </div>
 
-    <div class="seperator-container">
-        <div class="seperator"></div>
-    </div>
-
-    <div id="work-with-us-container">
-        <h1 class="collaborate-text-anim collaborate-tile-anim">We Can Help Each Other</h1>
-        <div id="collaborate-text-container">
-            <p class="collaborate-left collaborate-tile-anim-left">As an important part of building a community with every location, we source our food from local farmers. But to get that food to our restaurants on time, we need a team to transport the goods — not to mention staffing each location for our customers.</p>
-            <p class="collaborate-right collaborate-tile-anim-right">That's where you come in! We hire locally, providing a multitude of flexible jobs with reasonable pay and hours to our communities. Students and adults alike are encouraged to apply and develop entry-level job experience — there's plenty of work to go around.</p>
-        </div>
-        <button class="collaborate-tile-anim">Apply</button>
-    </div>
-
-    <div id="transition-lighttodark">
-        <svg viewbox="0 0 100 100" preserveAspectRatio="none"><path style="stroke:none;fill-opacity:1;" d="M 0,0 L 0,100 L 100,50 L 0,0"/></svg>
-    </div>
-
-    <div id="top-ratings-display" class="dark">
-        <!-- Future: add a system to retrieve recent 5-star reviews and display them. -->
-        <h1 id="ratings-title" class="dark ratings-text-anim">Ratings</h1>
-        <div class="ratings-container">
-            <div class="rating-tile-high dark">
-                <h3 class="dark">Lorem Ipsum</h3>
-                <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="rating-tile-low dark">
-                <h3 class="dark">Lorem Ipsum</h3>
-                <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-        </div>
-        <div class="ratings-container">
-            <div class="rating-tile-high dark">
-                <h3 class="dark">Lorem Ipsum</h3>
-                <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="rating-tile-low dark">
-                <h3 class="dark">Lorem Ipsum</h3>
-                <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-        </div>
-        <div class="ratings-container">
-            <div class="rating-tile-high dark">
-                <h3 class="dark">Lorem Ipsum</h3>
-                <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="rating-tile-low dark">
-                <h3 class="dark">Lorem Ipsum</h3>
-                <p class="dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="account-promo-container">
-        <h1 class="dark text-account-anim account-tile-animate">Make An Account</h1>
-        <p class="dark account-tile-animate">An account allows you to create personalized meal plans, save your favorites, leave reviews, and even earn rewards! It's free. It's easy. You'll thank yourself later.</p>
-        <p class="dark account-tile-animate">We understand you might be weary of corporations selling your data. You don't need to worry about that with us: we don't collect statistics on your usage, and we don't let anyone else see the personal data of <strong class="dark">any</strong> of our customers.</p>
-        <button class="dark account-tile-animate">Create Account</button>
-    </div>
-
-    <div id="sample-container">
-        <h1 class="sample-title-anim dark">How'd You Like A Sample?</h1>
-        <div id="sample-bar-container">
-            <div class="sample-bar bar-left">
-                <div class="sample-bar-image-container">
-                    <img src="https://cdn.ttgtmedia.com/rms/onlineimages/404_error-h.png" alt="sample option image.">
-                </div>
-                <h2>Lorem Ipsum</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="sample-bar bar-center">
-                <div class="sample-bar-image-container">
-                    <img src="https://cdn.ttgtmedia.com/rms/onlineimages/404_error-h.png" alt="sample option image.">
-                </div>
-                <h2>Lorem Ipsum</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="sample-bar bar-right">
-                <div class="sample-bar-image-container">
-                    <img src="https://cdn.ttgtmedia.com/rms/onlineimages/404_error-h.png" alt="sample option image.">
-                </div>
-                <h2>Lorem Ipsum</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="menu-start" class="dark">
-        <div id="menu-title-container">
-            <h2 class="dark" id="menu-title">What We've Got</h2>
-        </div>
+    <div id="collaborate-container">
+        <!-- promote for people to join the team, either as a driver or otherwise -->
+        <h1>Join the Team</h1>
     </div>
 </div>
 
-<div id="redirect-section" class="dark">
 
-</div>
-
-<div id="footer-transition" class="dark">
-    <svg viewbox="0 0 100 100" preserveAspectRatio="none" id="footer-transition-svg">
-        <path style="stroke:none;fill-opacity:1;" d="M 0,100 L 100,100 L 50,0 L 0,100"/>
-    </svg>
-</div>
-
-<div id="footer" class="light">
-
+<div id="footer">
+    <!-- TODO: Add footer -->
 </div>
 
 </body>

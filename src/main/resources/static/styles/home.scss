@@ -2,74 +2,15 @@
 @import 'header';
 
 
-#parallax-image {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-
 #site-content {
 
-  @import 'home/hero-content';
-
+  @import 'home/hero';
+  @import 'home/item-promo';
+  @import 'home/current-featured';
+  @import 'home/discount-promo';
+  @import 'home/top-ratings-display';
+  @import 'home/location-container';
+  @import 'home/member-benefit-promo';
   @import 'home/approaches-container';
-
-
-  @import 'home/our-story-container';
-
-
-  @import 'home/work-with-us-container';
-
-
-  #transition-lighttodark {
-    width: 20vw;
-    height: 100vh;
-    background: $dark;
-    transform: scalex(1.01);
-    svg {
-      width: 100%;
-      height: 100%;
-      fill: $light;
-    }
-  }
-
-
-  @import 'home/ratings';
-
-
-  @import 'home/account-promo-container';
-
-
-  @import 'home/sample-container';
-
-
-  @import 'home/menu-start';
-}
-
-@import 'home/redirect-section';
-
-
-#footer-transition {
-  width: 100vw;
-  height: 30vw;
-  svg {
-    fill: $light;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-#footer {
-  width: 100vw;
-  height: 20vw;
+  @import 'home/collaborate-container';
 }

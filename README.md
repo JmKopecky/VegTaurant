@@ -16,6 +16,7 @@ Sitemap:
   * select item
   * edit item
   * add to cart
+  * EACH ITEM SHOULD HAVE A PROMINENT OPTION TO SEE NUTRITION FACTS
 * Order page
   * view cart (and navigate back to the menu page to make an order)
   * view previous orders

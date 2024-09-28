@@ -1,54 +1,7 @@
 @import 'constants';
 @import 'header';
 
-body {
-  overflow: hidden;
-}
 
-#signon-content {
-  width: 80vw;
-  height: 100vh;
-  padding-left: 20vw;
-  padding-top: 5vh;
-  z-index: 1;
-  background: $light;
-  display: flex;
-  justify-content: flex-start;
-  gap: 10vh;
-  align-items: center;
-  flex-flow: column;
-  transition: background 1s ease-in-out;
+#site-content {
 
-  @import 'account/toggle-signon';
-
-  @import 'account/signon-container';
-
-  @import 'account/signon-extra-container';
-}
-
-#signon-content.darkmode {
-  background: $dark;
-  #toggle-signon-mode {
-    background: lighten($dark, 10%);
-    h3 {
-      color: $light;
-    }
-  }
-  #signon-container {
-    background: lighten($dark, 10%);
-  }
-}
-
-
-
-#header-content {
-  transition: background 1s ease-in-out !important;
-  a {
-    transition: border 0.5s, background 1s ease-in-out, color 1s ease-in-out !important;
-  }
-}
-#header-image-container {
-  svg {
-    transition: fill 1s ease-in-out !important;
-  }
 }
