@@ -22,6 +22,9 @@ public class MenuItem {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private MenuCategory category;
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private FeaturedItem deal;
 
 
 
@@ -93,5 +96,11 @@ public class MenuItem {
     }
     public void setTotalratings(int totalRatings) {
         this.totalratings = totalRatings;
+    }
+    public FeaturedItem getDeal() {
+        return deal;
+    }
+    public void setDeal(FeaturedItem deal) {
+        this.deal = deal;
     }
 }
