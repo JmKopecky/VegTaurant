@@ -92,10 +92,11 @@ button {
   border: 2px solid #00B837;
   padding: 0.5em 0.75em;
   border-radius: 0.5em;
+  will-change: background, color;
   transition: background 0.5s, color 0.5s;
 }
 
-button:hover {
+button:hover, button:focus {
   background: #00B837;
   color: #111111;
 }
@@ -313,28 +314,122 @@ body {
   border-radius: 1em;
 }
 #site-content #current-featured {
-  width: 100%;
+  width: 80%;
   height: 100vh;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10vh;
+  border-radius: 1em;
+  position: relative;
+}
+#site-content #current-featured #featured-overlay {
+  width: 100%;
+  height: 90vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background: rgba(17, 17, 17, 0.8);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+#site-content #current-featured #featured-overlay div {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+}
+#site-content #current-featured img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  border-radius: 1em;
 }
 #site-content #discount-promo {
-  width: 100%;
-  height: 100vh;
+  width: 90%;
+  height: 50vh;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  gap: 3vh;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 #site-content #top-ratings-display {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+}
+#site-content #top-ratings-display h1 {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+#site-content #top-ratings-display .rating-tile {
+  width: 80%;
+  height: fit-content;
+  margin-left: 9%;
+  margin-right: 9%;
+  padding: 2vh 1%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  position: relative;
+}
+#site-content #top-ratings-display .rating-tile h6 {
+  width: 40%;
+}
+#site-content #top-ratings-display .rating-tile p {
+  width: 30%;
+}
+#site-content #top-ratings-display .rating-tile.rating-left {
+  text-align: left;
+  align-items: start;
+}
+#site-content #top-ratings-display .rating-tile.rating-left::after {
+  width: 2px;
+  height: 100%;
+  background: #EEEEEE;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#site-content #top-ratings-display .rating-tile.rating-right {
+  text-align: right;
+  align-items: end;
+}
+#site-content #top-ratings-display .rating-tile.rating-right::after {
+  width: 2px;
+  height: 100%;
+  background: #EEEEEE;
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 #site-content #location-container {
   width: 100%;

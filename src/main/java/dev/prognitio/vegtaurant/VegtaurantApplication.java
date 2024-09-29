@@ -1,9 +1,6 @@
 package dev.prognitio.vegtaurant;
 
-import dev.prognitio.vegtaurant.data_storage.MenuCategory;
-import dev.prognitio.vegtaurant.data_storage.MenuCategoryRepository;
-import dev.prognitio.vegtaurant.data_storage.MenuItem;
-import dev.prognitio.vegtaurant.data_storage.MenuItemRepository;
+import dev.prognitio.vegtaurant.data_storage.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,7 +12,7 @@ public class VegtaurantApplication {
 	}
 
 
-	public static void doDatabaseTestCase(MenuCategoryRepository menuCategoryRepository, MenuItemRepository menuItemRepository) { //TODO delete before completion
+	public static void doDatabaseTestCase(MenuCategoryRepository menuCategoryRepository, MenuItemRepository menuItemRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, AccountRepository accountRepository) { //TODO delete before completion
 		MenuCategory testCat1 = new MenuCategory();
 		testCat1.setTitle("Option 1");
 		menuCategoryRepository.save(testCat1);
@@ -39,8 +36,6 @@ public class VegtaurantApplication {
 		MenuCategory testCat6 = new MenuCategory();
 		testCat6.setTitle("Option 6");
 		menuCategoryRepository.save(testCat6);
-
-
 
 
 		MenuItem menuOption1 = new MenuItem();
@@ -121,7 +116,50 @@ public class VegtaurantApplication {
 		menuOption8.setCategory(testCat1);
 		menuOption8.setAveragerating(3);
 		menuOption8.setTotalratings(50);
+
+		FeaturedItem waterDeal = new FeaturedItem();
+		waterDeal.setFeaturedPrecedence(100);
+		waterDeal.setIsPercentageBased(true);
+		waterDeal.setDiscount(50);
+		waterDeal.setMessage("Treat yourself with a half-off cup o-water!");
+		featuredItemRepository.save(waterDeal);
+
+		menuOption8.setDeal(waterDeal);
 		menuItemRepository.save(menuOption8);
+
+
+		Account acc = new Account();
+		acc.setFirstName("John");
+		acc.setLastName("Doe");
+		accountRepository.save(acc);
+
+		ProductRating rating = new ProductRating();
+		rating.setRating(5);
+		rating.setMessage("Best product I've ever seen! I want this at my birthday next year, and I will not hear otherwise.");
+		rating.setReviewer(acc);
+		rating.setProduct(menuOption8);
+		productRatingRepository.save(rating);
+
+		ProductRating rating2 = new ProductRating();
+		rating2.setRating(1);
+		rating2.setMessage("Literal trash. Take this product and toss it into a volcano. No, that's too good for it.");
+		rating2.setReviewer(acc);
+		rating2.setProduct(menuOption6);
+		productRatingRepository.save(rating2);
+
+		ProductRating rating3 = new ProductRating();
+		rating3.setRating(3);
+		rating3.setMessage("Meh. It's tolerable at best. This place was the only one in delivery range, so I guess their delivery service is good.");
+		rating3.setReviewer(acc);
+		rating3.setProduct(menuOption7);
+		productRatingRepository.save(rating3);
+
+		ProductRating rating4 = new ProductRating();
+		rating4.setRating(4);
+		rating4.setMessage("I normally like this, but once I found a tooth in my meal. Gross. Never happened again though!");
+		rating4.setReviewer(acc);
+		rating4.setProduct(menuOption7);
+		productRatingRepository.save(rating4);
 	}
 
 

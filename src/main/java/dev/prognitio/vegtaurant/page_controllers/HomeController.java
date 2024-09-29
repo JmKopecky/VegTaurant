@@ -1,17 +1,15 @@
 package dev.prognitio.vegtaurant.page_controllers;
 
 import dev.prognitio.vegtaurant.VegtaurantApplication;
-import dev.prognitio.vegtaurant.data_storage.AccountRepository;
-import dev.prognitio.vegtaurant.data_storage.MenuCategoryRepository;
-import dev.prognitio.vegtaurant.data_storage.MenuItem;
-import dev.prognitio.vegtaurant.data_storage.MenuItemRepository;
+import dev.prognitio.vegtaurant.data_storage.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.*;
 
 @Controller
 public class HomeController {
@@ -20,18 +18,24 @@ public class HomeController {
     private final MenuItemRepository menuItemRepository;
     private final MenuCategoryRepository menuCategoryRepository;
     private final AccountRepository accountRepository;
+    private final FeaturedItemRepository featuredItemRepository;
+    private final ProductRatingRepository productRatingRepository;
 
-    public HomeController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository) {
+    public HomeController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository) {
         //if encountering errors, make sure to drop both tables first.
         this.menuItemRepository = menuItemRepository;
         this.menuCategoryRepository = menuCategoryRepository;
         this.accountRepository = accountRepository;
-        VegtaurantApplication.doDatabaseTestCase(menuCategoryRepository, menuItemRepository);
+        this.featuredItemRepository = featuredItemRepository;
+        this.productRatingRepository = productRatingRepository;
+        VegtaurantApplication.doDatabaseTestCase(menuCategoryRepository, menuItemRepository, featuredItemRepository, productRatingRepository, accountRepository);
     }
 
 
     @GetMapping("/")
     public String home(Model model) {
+
+        //top half rated items
         ArrayList<MenuItem> topHalfMenuItems = new ArrayList<>();
         menuItemRepository.findAll().forEach(topHalfMenuItems::add);
         MenuItem.sort(topHalfMenuItems, "rating");
@@ -40,6 +44,33 @@ public class HomeController {
         } else {
             model.addAttribute("tophalfmenuitems", topHalfMenuItems);
         }
+
+        //featured item deal
+        FeaturedItem targetDeal = FeaturedItem.sort((ArrayList<FeaturedItem>) featuredItemRepository.findAll()).getFirst();
+        MenuItem targetItem = null;
+        for (MenuItem item : menuItemRepository.findAll()) {
+            if (item.getDeal() != null && item.getDeal().equals(targetDeal)) {
+                targetItem = item;
+                break;
+            }
+        }
+        model.addAttribute("featureditem", targetItem);
+
+        //if day is monday, have a site-wide discount
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(Date.from(Instant.now()));
+        boolean isMonday = cal.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
+        model.addAttribute("sitewidedaydiscount", isMonday);
+
+        //top n ratings
+        int numRatings = 4;
+        ArrayList<ProductRating> ratings = (ArrayList<ProductRating>) productRatingRepository.findAll();
+        Collections.shuffle(ratings);
+        ratings.sort(Comparator.comparing(ProductRating::getRating));
+        Collections.reverse(ratings);
+        model.addAttribute("topratings", ratings.subList(0, Math.min(ratings.size(), numRatings)));
+
+
         return "home";
     }
 }

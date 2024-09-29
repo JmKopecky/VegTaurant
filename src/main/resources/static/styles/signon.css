@@ -92,10 +92,11 @@ button {
   border: 2px solid #00B837;
   padding: 0.5em 0.75em;
   border-radius: 0.5em;
+  will-change: background, color;
   transition: background 0.5s, color 0.5s;
 }
 
-button:hover {
+button:hover, button:focus {
   background: #00B837;
   color: #111111;
 }

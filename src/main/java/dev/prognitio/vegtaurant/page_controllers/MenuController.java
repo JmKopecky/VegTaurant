@@ -14,13 +14,14 @@ public class MenuController {
     private final MenuItemRepository menuItemRepository;
     private final MenuCategoryRepository menuCategoryRepository;
     private final AccountRepository accountRepository;
+    private final FeaturedItemRepository featuredItemRepository;
 
-    public MenuController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository) {
+    public MenuController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository, FeaturedItemRepository featuredItemRepository) {
         //if encountering errors, make sure to drop both tables first.
         this.menuItemRepository = menuItemRepository;
         this.menuCategoryRepository = menuCategoryRepository;
         this.accountRepository = accountRepository;
-        VegtaurantApplication.doDatabaseTestCase(menuCategoryRepository, menuItemRepository);
+        this.featuredItemRepository = featuredItemRepository;
     }
 
 
