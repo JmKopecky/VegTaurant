@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/styles/signon.css">
-    <script src="/js/signon_animations.js"></script>
+    <script src="/js/signon_script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 </head>
 <body>
@@ -18,6 +18,45 @@
 
 
 <div id="signon-content">
+
+    <div id="toggle-signon-mode">
+        <h3>Sign Up</h3>
+        <label id="signon-switch-label">
+            <input type="checkbox" id="signon-switch-input">
+            <span id="signon-switch"></span>
+        </label>
+        <h3>Sign In</h3>
+    </div>
+
+
+    <form id="signon-container">
+        <h2 id="signon-header">Sign Up With Us!</h2>
+        <p id="signon-text">Creating an account with us allows you to earn rewards, create meal plans, and streamline future orders!</p>
+        <div id="signon-name-container" class="signon-container">
+            <label id="signon-name-label" class="label-signon">
+                Full Name
+            </label>
+            <input type="text" id="signon-name-input" autocomplete="username">
+        </div>
+        <div id="signon-email-container" class="signon-container">
+            <label id="signon-email-label" class="label-signon">
+                Email
+            </label>
+            <input type="email" id="signon-email-input" autocomplete="email">
+        </div>
+        <div id="signon-password-container" class="signon-container">
+            <label id="signon-password-label" class="label-signon">
+                Password
+            </label>
+            <input type="password" id="signon-password-input" autocomplete="new-password">
+        </div>
+        <button id="signon-button">Sign Up</button>
+    </form>
+
+
+    <div id="extra-info-container">
+        <!-- Collect info on user: payment info-->
+    </div>
 
 </div>
 

@@ -14,6 +14,7 @@ public class MenuCategory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String title;
+    private String url;
 
     public String getTitle() {
         return title;
@@ -26,5 +27,11 @@ public class MenuCategory {
     }
     public void setId(Integer id) {
         this.id = id;
+    }
+    public String getUrl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

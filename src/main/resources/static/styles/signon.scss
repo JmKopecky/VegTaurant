@@ -2,6 +2,35 @@
 @import 'header';
 
 
-#site-content {
+#signon-content {
+  width: 100%;
+  height: 100vh;
+  padding-top: 5vh;
+  z-index: 1;
+  background: $secondary;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10vh;
+  align-items: center;
+  flex-flow: column;
+  transition: background 1s ease-in-out;
 
+  @import 'account/toggle-signon';
+
+  @import 'account/signon-container';
+
+  @import 'account/signon-extra-container';
+}
+
+#signon-content.darkmode {
+  background: $secondary;
+  #toggle-signon-mode {
+    background: lighten($secondary, 10%);
+    h3 {
+      color: $secondary;
+    }
+  }
+  #signon-container {
+    background: lighten($secondary, 10%);
+  }
 }

@@ -28,6 +28,9 @@ public class MenuController {
     @GetMapping("/menu")
     public String home(Model model) {
         model.addAttribute("menuCategories", menuCategoryRepository.findAll());
+
+        //I like the look of the texas roadhouse navigation for the menu, that and the dennys
+
         return "menu";
     }
 

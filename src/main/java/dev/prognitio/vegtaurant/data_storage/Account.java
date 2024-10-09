@@ -28,6 +28,29 @@ public class Account {
     private String securityCode; //TODO safe storage
     private String cardUserName; //TODO safe storage
 
+
+    public static Account authenticate(AccountRepository repository, String email, String password) throws Exception {
+        Account output = null;
+
+        for (Account acc : repository.findAll()) {
+            if (acc.getEmail().equals(email)) {
+                if (acc.getPassword().equals(password)) { //TODO safe storage
+                    output = acc;
+                    break;
+                } else {
+                    throw new Exception("invalid_password");
+                }
+            }
+        }
+
+        if (output == null) {
+            throw new Exception("invalid_email");
+        }
+
+        return output;
+    }
+
+
     public Integer getId() {
         return id;
     }
@@ -131,5 +154,15 @@ public class Account {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String toString() {
+        String output = "";
+
+        output += "id:" + id + "\n";
+        output += "email:" + email + "\n";
+        output += "pw:" + password + "\n";
+
+        return output;
     }
 }

@@ -34,3 +34,8 @@ Broad Technical Ideas:
 * System for users to create meal plans, letting them order rapidly when on that plan. 
 * Full workflow to order, just don't actually fulfil. 
 * Basically we pretend we are a real resturaunt site. 
+
+
+# WORKLOG
+
+* 10/9/24: 3 hrs
