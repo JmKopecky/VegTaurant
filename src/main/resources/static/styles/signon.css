@@ -248,7 +248,7 @@ body {
   background: #2b2b2b;
   width: fit-content;
   position: absolute;
-  top: -0.2em;
+  top: -0.3em;
   padding-left: 0.5em;
   padding-right: 0.5em;
   font-family: "SUSE", sans;
@@ -259,15 +259,67 @@ body {
 #signon-content #signon-container .signon-container input, #signon-content #signon-container .signon-container input:focus, #signon-content #signon-container .signon-container input:hover, #signon-content #signon-container .signon-container input:-webkit-autofill, #signon-content #signon-container .signon-container input:focus-visible {
   border: 1px solid #00B837 !important;
   border-radius: 1em;
-  padding: 0.25em;
+  padding: 0.5em;
   background: none !important;
   font-family: "Open Sans", sans;
   outline: none !important;
-  color: #111111;
+  color: #EEEEEE;
   transition: color 1s ease-in-out;
 }
 #signon-content #extra-info-container {
   display: none;
+  width: 50%;
+  height: 60%;
+  justify-content: space-evenly;
+  flex-flow: column;
+  align-items: center;
+  padding: 1em;
+  background: #2b2b2b;
+  border-radius: 1em;
+  overflow: scroll;
+}
+#signon-content #extra-info-container p {
+  text-align: center;
+  width: 60%;
+}
+#signon-content #extra-info-container h2 {
+  text-align: center;
+  width: 80%;
+}
+#signon-content #extra-info-container .info-align-horizontal {
+  display: flex;
+  flex-flow: row;
+}
+#signon-content #extra-info-container .signon-container {
+  border-radius: 1em;
+  padding: 0.5em;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+#signon-content #extra-info-container .signon-container .label-signon {
+  background: #2b2b2b;
+  width: fit-content;
+  position: absolute;
+  top: -0.3em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-family: "SUSE", sans;
+  font-weight: 500;
+  font-size: 1.1em;
+  color: #EEEEEE;
+}
+#signon-content #extra-info-container .signon-container input, #signon-content #extra-info-container .signon-container input:focus, #signon-content #extra-info-container .signon-container input:hover, #signon-content #extra-info-container .signon-container input:-webkit-autofill, #signon-content #extra-info-container .signon-container input:focus-visible {
+  border: 1px solid #00B837 !important;
+  border-radius: 1em;
+  padding: 0.5em;
+  background: none !important;
+  font-family: "Open Sans", sans;
+  outline: none !important;
+  color: #EEEEEE;
+  transition: color 1s ease-in-out;
 }
 
 #signon-content.darkmode {

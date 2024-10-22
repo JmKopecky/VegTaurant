@@ -28,7 +28,7 @@
       background: lighten($secondary, 10%);
       width: fit-content;
       position: absolute;
-      top: -0.2em;
+      top: -0.3em;
       padding-left: 0.5em;
       padding-right: 0.5em;
       font-family: $headingFamily;
@@ -39,11 +39,11 @@
     input, input:focus, input:hover, input:-webkit-autofill, input:focus-visible {
       border: 1px solid $accent !important;
       border-radius: 1em;
-      padding: 0.25em;
+      padding: 0.5em;
       background: none !important;
       font-family: $paragraphFamily;
       outline: none !important;
-      color: $secondary;
+      color: $primary;
       transition: color 1s ease-in-out;
     }
   }

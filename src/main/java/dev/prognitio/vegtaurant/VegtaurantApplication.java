@@ -129,8 +129,7 @@ public class VegtaurantApplication {
 
 
 		Account acc = new Account();
-		acc.setFirstName("John");
-		acc.setLastName("Doe");
+		acc.setName("John Doe");
 		accountRepository.save(acc);
 
 		ProductRating rating = new ProductRating();

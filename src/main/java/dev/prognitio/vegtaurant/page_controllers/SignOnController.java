@@ -59,10 +59,8 @@ public class SignOnController {
                 account.setPhone(node.get("phone").asText());
                 account.setPassword(node.get("password").asText()); //TODO hash passwords
                 account.setRewardPoints(0);
-                account.setFirstName(node.get("firstname").asText());
-                account.setLastName(node.get("lastname").asText());
-                account.setAddressLine1(node.get("addressline1").asText());
-                account.setAddressLine2(node.get("addressline2").asText());
+                account.setName(node.get("name").asText());
+                account.setAddress(node.get("address").asText());
                 account.setCity(node.get("city").asText());
                 account.setState(node.get("state").asText());
                 account.setZip(node.get("zip").asText());
@@ -71,7 +69,6 @@ public class SignOnController {
                 account.setExpirationDate(node.get("cardexpirationdate").asText());
                 account.setSecurityCode(node.get("cardsecuritycode").asText());
                 account.setCardUserName(node.get("cardusername").asText());
-                System.out.println(account);
             }
             //ipAddress = node.get("ipaddress").asText(); //TODO: set ip address check
         } catch (Exception e) {
@@ -80,7 +77,6 @@ public class SignOnController {
         }
 
         if (shouldSave) {
-            System.out.println("SHOULD SAVE");
             accountRepository.save(account);
         }
 
@@ -92,6 +88,11 @@ public class SignOnController {
             throw new TimeLimitExceededException();
         }
         sessionToken.setAccount(account);
+        for (AuthTokens token : authTokensRepository.findAll()) {
+            if (token.getAccount().equals(account)) {
+                authTokensRepository.delete(token);
+            }
+        }
         sessionToken.setIpAddress(ipAddress);
         authTokensRepository.save(sessionToken);
 

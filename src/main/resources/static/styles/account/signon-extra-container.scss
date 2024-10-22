@@ -1,3 +1,56 @@
 #extra-info-container {
   display: none;
+  //display: flex;
+  width: 50%;
+  height: 60%;
+  justify-content: space-evenly;
+  flex-flow: column;
+  align-items: center;
+  padding: 1em;
+  background: lighten($secondary, 10%);;
+  border-radius: 1em;
+  overflow: scroll;
+  p {
+    text-align: center;
+    width: 60%;
+  }
+  h2 {
+    text-align: center;
+    width: 80%;
+  }
+  .info-align-horizontal {
+    display: flex;
+    flex-flow: row;
+  }
+  .signon-container {
+    border-radius: 1em;
+    padding: 0.5em;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .label-signon {
+      background: lighten($secondary, 10%);
+      width: fit-content;
+      position: absolute;
+      top: -0.3em;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+      font-family: $headingFamily;
+      font-weight: 500;
+      font-size: 1.1em;
+      color: $primary;
+    }
+    input, input:focus, input:hover, input:-webkit-autofill, input:focus-visible {
+      border: 1px solid $accent !important;
+      border-radius: 1em;
+      padding: 0.5em;
+      background: none !important;
+      font-family: $paragraphFamily;
+      outline: none !important;
+      color: $primary;
+      transition: color 1s ease-in-out;
+    }
+  }
 }

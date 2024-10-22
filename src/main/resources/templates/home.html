@@ -104,7 +104,7 @@ Requisite content:
         <!-- Future: add a system to retrieve recent 5-star reviews and display them. -->
         <h1>Top Ratings</h1>
         <div class="rating-tile" th:each="ratingTile,iterStat:${topratings}" th:classappend="${iterStat.even} ? 'rating-right' : 'rating-left'">
-            <h6 th:text="|${ratingTile.getReviewer().getFirstName()} ${ratingTile.getReviewer().getLastName().charAt(0)}. rated ${ratingTile.getProduct().getLabel()} ${ratingTile.getRating()}/5, saying:|"></h6>
+            <h6 th:text="|${ratingTile.getReviewer().getName()} rated ${ratingTile.getProduct().getLabel()} ${ratingTile.getRating()}/5, saying:|"></h6>
             <p th:text="${ratingTile.getMessage()}"></p>
         </div>
     </div>
