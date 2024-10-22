@@ -14,10 +14,8 @@ public class Account {
     private String email;
     private String password; //TODO safe storage
     private Integer rewardPoints;
-    private String firstName;
-    private String lastName;
-    private String addressLine1;
-    private String addressLine2;
+    private String name;
+    private String address;
     private String city;
     private String state;
     private String country;
@@ -27,6 +25,31 @@ public class Account {
     private String expirationDate; //TODO safe storage
     private String securityCode; //TODO safe storage
     private String cardUserName; //TODO safe storage
+
+
+    public static Account authenticate(AccountRepository repository, String email, String password) throws Exception {
+        Account output = null;
+
+        for (Account acc : repository.findAll()) {
+            try {
+                if (acc.getEmail().equals(email)) {
+                    if (acc.getPassword().equals(password)) { //TODO safe storage
+                        output = acc;
+                        break;
+                    } else {
+                        throw new Exception("invalid_password");
+                    }
+                }
+            } catch (NullPointerException _) {}
+        }
+
+        if (output == null) {
+            throw new Exception("invalid_email");
+        }
+
+        return output;
+    }
+
 
     public Integer getId() {
         return id;
@@ -45,30 +68,6 @@ public class Account {
     }
     public void setPassword(String password) {
         this.password = password;
-    }
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    public String getAddressLine1() {
-        return addressLine1;
-    }
-    public void setAddressLine1(String addressLine1) {
-        this.addressLine1 = addressLine1;
-    }
-    public String getAddressLine2() {
-        return addressLine2;
-    }
-    public void setAddressLine2(String addressLine2) {
-        this.addressLine2 = addressLine2;
     }
     public String getCity() {
         return city;
@@ -131,5 +130,31 @@ public class Account {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String toString() {
+        String output = "";
+
+        output += "id:" + id + "\n";
+        output += "email:" + email + "\n";
+        output += "pw:" + password + "\n";
+
+        return output;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

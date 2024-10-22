@@ -5,17 +5,30 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.prognitio.vegtaurant.data_storage.Account;
 import dev.prognitio.vegtaurant.data_storage.AccountRepository;
+import dev.prognitio.vegtaurant.data_storage.AuthTokens;
+import dev.prognitio.vegtaurant.data_storage.AuthTokensRepository;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.naming.TimeLimitExceededException;
+import java.util.Timer;
+import java.util.TimerTask;
+
 @Controller
 public class SignOnController {
     private final AccountRepository accountRepository;
-    public SignOnController(AccountRepository accountRepository) {
+    private final AuthTokensRepository authTokensRepository;
+    public SignOnController(AccountRepository accountRepository, AuthTokensRepository authTokensRepository) {
         this.accountRepository = accountRepository;
+        this.authTokensRepository = authTokensRepository;
     }
 
     @GetMapping("/signon")
@@ -25,39 +38,88 @@ public class SignOnController {
 
 
     @PostMapping("/signon")
-    public String accountSignOn(Model model, @RequestBody String data) {
+    public String accountSignOn(Model model, @RequestBody String data, HttpServletResponse response, HttpServletRequest request) throws TimeLimitExceededException {
         System.out.println(data);
 
-        Account account = new Account();
-        boolean shouldSave = true;
+        Account account;
+        boolean shouldSave;
+        String ipAddress = request.getRemoteAddr();
 
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode node = mapper.readTree(data);
-            account.setEmail(node.get("email").asText());
-            account.setPhone(node.get("phone").asText());
-            account.setPassword(node.get("password").asText()); //TODO hash passwords
-            account.setRewardPoints(0);
-            account.setFirstName(node.get("firstname").asText());
-            account.setLastName(node.get("lastname").asText());
-            account.setAddressLine1(node.get("addressline1").asText());
-            account.setAddressLine2(node.get("addressline2").asText());
-            account.setCity(node.get("city").asText());
-            account.setState(node.get("state").asText());
-            account.setZip(node.get("zip").asText());
-            account.setCountry(node.get("country").asText());
-            account.setCardNumber(node.get("cardnumber").asText());
-            account.setExpirationDate(node.get("cardexpirationdate").asText());
-            account.setSecurityCode(node.get("cardsecuritycode").asText());
-            account.setCardUserName(node.get("cardusername").asText());
-        } catch (JsonProcessingException e) {
-            shouldSave = false;
-            throw new RuntimeException(e);
+            shouldSave = node.get("newaccount").asBoolean();
+            System.out.println(shouldSave);
+            if (!shouldSave) {
+                //authenticate sign on.
+                account = Account.authenticate(accountRepository, node.get("email").asText(), node.get("password").asText());
+            } else {
+                account = new Account();
+                account.setEmail(node.get("email").asText());
+                account.setPhone(node.get("phone").asText());
+                account.setPassword(node.get("password").asText()); //TODO hash passwords
+                account.setRewardPoints(0);
+                account.setName(node.get("name").asText());
+                account.setAddress(node.get("address").asText());
+                account.setCity(node.get("city").asText());
+                account.setState(node.get("state").asText());
+                account.setZip(node.get("zip").asText());
+                account.setCountry(node.get("country").asText());
+                account.setCardNumber(node.get("cardnumber").asText());
+                account.setExpirationDate(node.get("cardexpirationdate").asText());
+                account.setSecurityCode(node.get("cardsecuritycode").asText());
+                account.setCardUserName(node.get("cardusername").asText());
+            }
+            //ipAddress = node.get("ipaddress").asText(); //TODO: set ip address check
+        } catch (Exception e) {
+            System.out.println(e);
+            return "redirect:/error";
         }
+
         if (shouldSave) {
             accountRepository.save(account);
         }
 
-        return "signon";
+        //create session token.
+        AuthTokens sessionToken = new AuthTokens();
+        try {
+            sessionToken.setToken(AuthTokens.generateUniqueToken(authTokensRepository));
+        } catch (TimeLimitExceededException e) {
+            throw new TimeLimitExceededException();
+        }
+        sessionToken.setAccount(account);
+        for (AuthTokens token : authTokensRepository.findAll()) {
+            if (token.getAccount().equals(account)) {
+                authTokensRepository.delete(token);
+            }
+        }
+        sessionToken.setIpAddress(ipAddress);
+        authTokensRepository.save(sessionToken);
+
+
+        Timer timer = new Timer();
+        timer.schedule(new ScheduleAuthTokenRemoval(sessionToken.getToken(), authTokensRepository), 60 * 60 * 1000);
+
+        Cookie cookie = new Cookie("sessiontoken", sessionToken.getToken());
+        cookie.setMaxAge(60*60);
+        response.addCookie(cookie);
+
+        return "account";
+    }
+
+
+    private class ScheduleAuthTokenRemoval extends TimerTask {
+        private final String target;
+        private final AuthTokensRepository rep;
+
+        ScheduleAuthTokenRemoval(String target, AuthTokensRepository rep) {
+            this.target = target;
+            this.rep = rep;
+        }
+
+        @Override
+        public void run() {
+            AuthTokens.deleteSessionToken(rep, target);
+        }
     }
 }

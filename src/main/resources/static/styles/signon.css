@@ -147,4 +147,192 @@ body {
   display: none;
 }
 
+#signon-content {
+  width: 100%;
+  height: 100vh;
+  padding-top: 5vh;
+  z-index: 1;
+  background: #111111;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10vh;
+  align-items: center;
+  flex-flow: column;
+  transition: background 1s ease-in-out;
+}
+#signon-content #toggle-signon-mode {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  gap: 5vw;
+  align-items: center;
+  padding: 1em;
+  background: #2b2b2b;
+  border-radius: 1em;
+}
+#signon-content #toggle-signon-mode #signon-switch-label {
+  position: relative;
+  display: inline-block;
+  width: 4em;
+  height: 2em;
+}
+#signon-content #toggle-signon-mode #signon-switch-label input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+#signon-content #toggle-signon-mode #signon-switch {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #008528;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 2em;
+}
+#signon-content #toggle-signon-mode #signon-switch:before {
+  position: absolute;
+  content: "";
+  height: 1.6em;
+  width: 1.6em;
+  left: 0.25em;
+  bottom: 0.2em;
+  background-color: #00B837;
+  -webkit-transition: 1s;
+  transition: 1s;
+  border-radius: 50%;
+}
+#signon-content #toggle-signon-mode input:checked + #signon-switch {
+  background-color: #00eb46;
+}
+#signon-content #toggle-signon-mode input:focus + #signon-switch {
+  box-shadow: 0 0 0.01em #EEEEEE;
+}
+#signon-content #toggle-signon-mode input:checked + #signon-switch:before {
+  -webkit-transform: translateX(1.9em);
+  -ms-transform: translateX(1.9em);
+  transform: translateX(1.9em);
+}
+#signon-content #signon-container {
+  display: flex;
+  width: 50%;
+  height: 60%;
+  justify-content: space-evenly;
+  flex-flow: column;
+  align-items: center;
+  padding: 1em;
+  background: #2b2b2b;
+  border-radius: 1em;
+}
+#signon-content #signon-container p {
+  text-align: center;
+  width: 60%;
+}
+#signon-content #signon-container h2 {
+  text-align: center;
+  width: 80%;
+}
+#signon-content #signon-container .signon-container {
+  border-radius: 1em;
+  padding: 0.5em;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+#signon-content #signon-container .signon-container .label-signon {
+  background: #2b2b2b;
+  width: fit-content;
+  position: absolute;
+  top: -0.3em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-family: "SUSE", sans;
+  font-weight: 500;
+  font-size: 1.1em;
+  color: #EEEEEE;
+}
+#signon-content #signon-container .signon-container input, #signon-content #signon-container .signon-container input:focus, #signon-content #signon-container .signon-container input:hover, #signon-content #signon-container .signon-container input:-webkit-autofill, #signon-content #signon-container .signon-container input:focus-visible {
+  border: 1px solid #00B837 !important;
+  border-radius: 1em;
+  padding: 0.5em;
+  background: none !important;
+  font-family: "Open Sans", sans;
+  outline: none !important;
+  color: #EEEEEE;
+  transition: color 1s ease-in-out;
+}
+#signon-content #extra-info-container {
+  display: none;
+  width: 50%;
+  height: 60%;
+  justify-content: space-evenly;
+  flex-flow: column;
+  align-items: center;
+  padding: 1em;
+  background: #2b2b2b;
+  border-radius: 1em;
+  overflow: scroll;
+}
+#signon-content #extra-info-container p {
+  text-align: center;
+  width: 60%;
+}
+#signon-content #extra-info-container h2 {
+  text-align: center;
+  width: 80%;
+}
+#signon-content #extra-info-container .info-align-horizontal {
+  display: flex;
+  flex-flow: row;
+}
+#signon-content #extra-info-container .signon-container {
+  border-radius: 1em;
+  padding: 0.5em;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+#signon-content #extra-info-container .signon-container .label-signon {
+  background: #2b2b2b;
+  width: fit-content;
+  position: absolute;
+  top: -0.3em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-family: "SUSE", sans;
+  font-weight: 500;
+  font-size: 1.1em;
+  color: #EEEEEE;
+}
+#signon-content #extra-info-container .signon-container input, #signon-content #extra-info-container .signon-container input:focus, #signon-content #extra-info-container .signon-container input:hover, #signon-content #extra-info-container .signon-container input:-webkit-autofill, #signon-content #extra-info-container .signon-container input:focus-visible {
+  border: 1px solid #00B837 !important;
+  border-radius: 1em;
+  padding: 0.5em;
+  background: none !important;
+  font-family: "Open Sans", sans;
+  outline: none !important;
+  color: #EEEEEE;
+  transition: color 1s ease-in-out;
+}
+
+#signon-content.darkmode {
+  background: #111111;
+}
+#signon-content.darkmode #toggle-signon-mode {
+  background: #2b2b2b;
+}
+#signon-content.darkmode #toggle-signon-mode h3 {
+  color: #111111;
+}
+#signon-content.darkmode #signon-container {
+  background: #2b2b2b;
+}
+
 /*# sourceMappingURL=signon.css.map */

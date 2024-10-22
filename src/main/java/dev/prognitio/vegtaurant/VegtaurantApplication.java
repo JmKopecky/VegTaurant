@@ -41,7 +41,7 @@ public class VegtaurantApplication {
 		MenuItem menuOption1 = new MenuItem();
 		menuOption1.setLabel("MenuOption1");
 		menuOption1.setDescription("Your default drink!");
-		menuOption1.setIconUrl("images/stockphotoforfood.jpg");
+		menuOption1.setIconUrl("images/applenobackground.png");
 		menuOption1.setPrice(1.00);
 		menuOption1.setCategory(testCat1);
 		menuOption1.setAveragerating(5);
@@ -51,7 +51,7 @@ public class VegtaurantApplication {
 		MenuItem menuOption2 = new MenuItem();
 		menuOption2.setLabel("MenuOption2");
 		menuOption2.setDescription("Your default drink!");
-		menuOption2.setIconUrl("images/stockphotoforfood.jpg");
+		menuOption2.setIconUrl("images/applenobackground.png");
 		menuOption2.setPrice(1.00);
 		menuOption2.setCategory(testCat1);
 		menuOption2.setAveragerating(4);
@@ -61,7 +61,7 @@ public class VegtaurantApplication {
 		MenuItem menuOption3 = new MenuItem();
 		menuOption3.setLabel("MenuOption3");
 		menuOption3.setDescription("Your default drink!");
-		menuOption3.setIconUrl("images/stockphotoforfood.jpg");
+		menuOption3.setIconUrl("images/applenobackground.png");
 		menuOption3.setPrice(1.00);
 		menuOption3.setCategory(testCat1);
 		menuOption3.setAveragerating(5);
@@ -71,7 +71,7 @@ public class VegtaurantApplication {
 		MenuItem menuOption4 = new MenuItem();
 		menuOption4.setLabel("MenuOption4");
 		menuOption4.setDescription("Your default drink!");
-		menuOption4.setIconUrl("images/stockphotoforfood.jpg");
+		menuOption4.setIconUrl("images/applenobackground.png");
 		menuOption4.setPrice(1.00);
 		menuOption4.setCategory(testCat1);
 		menuOption4.setAveragerating(3);
@@ -81,7 +81,7 @@ public class VegtaurantApplication {
 		MenuItem menuOption5 = new MenuItem();
 		menuOption5.setLabel("MenuOption5");
 		menuOption5.setDescription("Your default drink!");
-		menuOption5.setIconUrl("images/stockphotoforfood.jpg");
+		menuOption5.setIconUrl("images/applenobackground.png");
 		menuOption5.setPrice(1.00);
 		menuOption5.setCategory(testCat1);
 		menuOption5.setAveragerating(3);
@@ -91,7 +91,7 @@ public class VegtaurantApplication {
 		MenuItem menuOption6 = new MenuItem();
 		menuOption6.setLabel("MenuOption6");
 		menuOption6.setDescription("Your default drink!");
-		menuOption6.setIconUrl("images/stockphotoforfood.jpg");
+		menuOption6.setIconUrl("images/applenobackground.png");
 		menuOption6.setPrice(1.00);
 		menuOption6.setCategory(testCat1);
 		menuOption6.setAveragerating(3);
@@ -101,7 +101,7 @@ public class VegtaurantApplication {
 		MenuItem menuOption7 = new MenuItem();
 		menuOption7.setLabel("MenuOption7");
 		menuOption7.setDescription("Your default drink!");
-		menuOption7.setIconUrl("images/stockphotoforfood.jpg");
+		menuOption7.setIconUrl("images/applenobackground.png");
 		menuOption7.setPrice(1.00);
 		menuOption7.setCategory(testCat1);
 		menuOption7.setAveragerating(3);
@@ -111,7 +111,7 @@ public class VegtaurantApplication {
 		MenuItem menuOption8 = new MenuItem();
 		menuOption8.setLabel("MenuOption8");
 		menuOption8.setDescription("Your default drink!");
-		menuOption8.setIconUrl("images/stockphotoforfood.jpg");
+		menuOption8.setIconUrl("images/applenobackground.png");
 		menuOption8.setPrice(1.00);
 		menuOption8.setCategory(testCat1);
 		menuOption8.setAveragerating(3);
@@ -129,8 +129,7 @@ public class VegtaurantApplication {
 
 
 		Account acc = new Account();
-		acc.setFirstName("John");
-		acc.setLastName("Doe");
+		acc.setName("John Doe");
 		accountRepository.save(acc);
 
 		ProductRating rating = new ProductRating();
