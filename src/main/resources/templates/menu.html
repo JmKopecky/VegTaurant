@@ -25,9 +25,30 @@
     <div id="menu-banner">
         <h1>Menu</h1>
     </div>
+
     <div id="menu-categories-container">
-        <div class="menu-topic-tile" th:each="topicTile:${menuCategories}">
-            <h1 th:text="${topicTile.getTitle()}"></h1>
+        <!-- Categories of all, breakfast, dinner, sides, drinks, desserts-->
+        <div class="menu-topic-tile" th:each="topicTile:${itemsByMenuTags.entrySet()}" th:category="${topicTile.getKey()}" onclick="setMenuCategory(this.getAttribute('category'));" th:id="|cattile_${topicTile.getKey()}|">
+            <h1 th:text="${topicTile.getKey()}"></h1>
+        </div>
+    </div>
+
+    <div id="menu-items-container">
+        <div class="menu-items" style="display: none;" th:each="category:${itemsByMenuTags.entrySet()}" th:id="|menucontainer_${category.getKey()}|">
+            <div class="menu-item-tag" th:each="tag:${itemsByMenuTags.get(category.getKey())}">
+                <h2 class="menu-tag-name" th:text="${tag.getTagName()}"></h2>
+                <div class="tag-items">
+                    <div class="menu-item" th:each="item:${tag.getMenuItems()}">
+                        <div class="item-image-container">
+                            <img th:src="${item.getIconUrl()}" th:alt="${item.getLabel()}">
+                        </div>
+                        <div class="item-content-container">
+                            <h3 class="item-title" th:text="${item.getLabel()}"></h3>
+                            <button>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

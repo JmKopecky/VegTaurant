@@ -22,6 +22,7 @@ public class MenuItem {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private MenuCategory category;
+    private String tag; //used as a sublevel menu, but optional
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private FeaturedItem deal;
@@ -102,5 +103,13 @@ public class MenuItem {
     }
     public void setDeal(FeaturedItem deal) {
         this.deal = deal;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 }

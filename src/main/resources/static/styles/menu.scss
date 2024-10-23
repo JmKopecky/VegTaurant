@@ -5,7 +5,15 @@
 #site-content {
   #menu-banner {
     width: 100%;
-    height: 50vh;
-    
+    padding-bottom: 5vh;
+    padding-top: 2vh;
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
   }
+
+  @import 'menu/menu_category_selected';
+
+  @import 'menu/menu_item_display';
 }
