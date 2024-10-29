@@ -1,0 +1,30 @@
+#menu-categories-container {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  height: fit-content;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .menu-topic-tile {
+    flex-basis: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 10vh;
+    background: lighten($secondary, 3%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: $accent 1px solid;
+    transition: background 1s ease-in-out;
+    h1 {
+      transition: color 1s ease-in-out;
+    }
+  }
+  .menu-topic-tile.category-selected {
+    background: $accent;
+    h1 {
+      color: $secondary;
+    }
+  }
+}

@@ -21,13 +21,51 @@
 </div>
 
 
+<div id="menu-item-overlay" onclick="hideOverlay(event, this);">
+    <div id="menu-item-details-container">
+        <div id="menu-item-top">
+            <div id="menu-item-main-info">
+                <div id="menu-item-label"><h2 id="menu-item-overlay-name">Test1</h2></div>
+                <div id="menu-item-price"><h4 id="menu-item-overlay-price">Test2</h4></div>
+                <div id="menu-item-rating"><h5 id="menu-item-overlay-rating"></h5></div>
+            </div>
+            <div id="menu-item-image">
+                <img id="menu-item-overlay-image" src="" alt="menu item overlay extra info image." style="width: 100%;height: 30vh;object-fit: contain;">
+            </div>
+        </div>
+        <div id="menu-item-desc-container"><p id="menu-item-overlay-desc"></p></div>
+    </div>
+</div>
+
+
 <div id="site-content">
     <div id="menu-banner">
         <h1>Menu</h1>
     </div>
+
     <div id="menu-categories-container">
-        <div class="menu-topic-tile" th:each="topicTile:${menuCategories}">
-            <h1 th:text="${topicTile.getTitle()}"></h1>
+        <!-- Categories of all, breakfast, dinner, sides, drinks, desserts-->
+        <div class="menu-topic-tile" th:each="topicTile:${itemsByMenuTags.entrySet()}" th:category="${topicTile.getKey()}" onclick="setMenuCategory(this.getAttribute('category'));" th:id="|cattile_${topicTile.getKey()}|">
+            <h1 th:text="${topicTile.getKey()}"></h1>
+        </div>
+    </div>
+
+    <div id="menu-items-container">
+        <div class="menu-items" style="display: none;" th:each="category:${itemsByMenuTags.entrySet()}" th:id="|menucontainer_${category.getKey()}|">
+            <div class="menu-item-tag" th:each="tag:${itemsByMenuTags.get(category.getKey())}">
+                <h2 class="menu-tag-name" th:text="${tag.getTagName()}"></h2>
+                <div class="tag-items">
+                    <div class="menu-item" th:each="item:${tag.getMenuItems()}">
+                        <div class="item-image-container">
+                            <img th:src="${item.getIconUrl()}" th:alt="${item.getLabel()}">
+                        </div>
+                        <div class="item-content-container">
+                            <h3 class="item-title" th:text="${item.getLabel()}"></h3>
+                            <button th:item="${item.getLabel()}" onclick="retrieveItemData(this.getAttribute('item'));">More Info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

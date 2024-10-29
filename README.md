@@ -39,3 +39,5 @@ Broad Technical Ideas:
 # WORKLOG
 
 * Joseph Kopecky - 10/9/24: 3 hrs
+* Joseph Kopecky - 10/22/24: 2 hrs
+* Joseph Kopecky - 10/23/24: 1 + meeting
