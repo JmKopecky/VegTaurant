@@ -1,11 +1,19 @@
 package dev.prognitio.vegtaurant.page_controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.prognitio.vegtaurant.VegtaurantApplication;
 import dev.prognitio.vegtaurant.data_storage.*;
+import dev.prognitio.vegtaurant.data_storage.MenuItem;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -81,6 +89,46 @@ public class MenuController {
             targetTag = new MenuItemTagContainer(new ArrayList<>(), menuItem.getTag(), menuCategory);
         }
         return targetTag;
+    }
+
+
+
+    @PostMapping("/menu")
+    public ResponseEntity<HashMap<String, Object>> getInfo(Model model, @RequestBody String data) {
+        boolean isRequestForItemData = false;
+        String targetItem = "";
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode node = mapper.readTree(data);
+            isRequestForItemData = node.get("isdatarequest").asBoolean();
+            targetItem = node.get("targetitem").asText();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        MenuItem target = null;
+        HashMap<String, Object> toReturn = new HashMap<>();
+
+        if (isRequestForItemData) {
+            for (MenuItem item : menuItemRepository.findAll()) {
+                if (item.getLabel().equals(targetItem)) {
+                    target = item;
+                    break;
+                }
+            }
+
+            if (target != null) {
+                toReturn.put("label", target.getLabel());
+                toReturn.put("desc", target.getDescription());
+                toReturn.put("price", target.getPrice());
+                toReturn.put("rating", target.getAveragerating());
+                toReturn.put("totalratings", target.getTotalratings());
+                toReturn.put("image", target.getIconUrl());
+            }
+        }
+
+        return new ResponseEntity<>(toReturn, HttpStatus.OK);
     }
 
 

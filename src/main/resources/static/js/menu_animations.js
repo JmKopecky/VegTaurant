@@ -43,3 +43,36 @@ function setMenuCategory(targetCategory) {
         }
     }
 }
+
+
+function hideOverlay(event, element) {
+    if (event.target !== element) {
+        event.stopPropagation();
+        return;
+    }
+    document.getElementById("menu-item-overlay").setAttribute("style", "display: none;");
+}
+
+
+function retrieveItemData(itemLabel) {
+    fetch("/menu", {
+        "method": "POST",
+        "body": JSON.stringify({
+            "isdatarequest": true,
+            "targetitem": itemLabel
+        }),
+        "headers": {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then((r) => {
+        r.json().then(data => {
+            let overlay = document.getElementById("menu-item-overlay");
+            overlay.setAttribute("style", "display: flex;");
+            document.getElementById("menu-item-overlay-name").textContent = data["label"];
+            document.getElementById("menu-item-overlay-price").textContent = "$" + data["price"];
+            document.getElementById("menu-item-overlay-rating").textContent = data["rating"] + "/5 (" + data["totalratings"] + ")";
+            document.getElementById("menu-item-overlay-image").setAttribute("src", data["image"]);
+            document.getElementById("menu-item-overlay-desc").textContent = data["desc"];
+        });
+    });
+}
