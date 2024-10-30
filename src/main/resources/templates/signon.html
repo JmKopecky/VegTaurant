@@ -6,8 +6,9 @@
     <link rel="icon" type="image/x-icon" href="/images/condelulogo.ico">
     <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://kit.fontawesome.com/2b6129ab2e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/styles/signon.css">
-    <script src="/js/signon_script.js"></script>
+    <script src="/js/signon.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 </head>
 <body>
@@ -16,12 +17,13 @@
 <div id="header-container">
     <div id="header-link-container">
         <a href="/menu" style="display: none;">Menu</a>
-        <a href="/cart" style="display: none;">Cart</a>
-        <a href="/order" style="display: none;">Order</a>
         <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
+        <a class="header-no-remove" href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
     </div>
     <div id="header-account-icon">
-        <img id="header-account-icon-image" src="/images/default-avatar-icon.jpg" alt="account icon">
+        <a href="/account">
+            <img id="header-account-icon-image" src="/images/default-avatar-icon.jpg" alt="account icon">
+        </a>
     </div>
 </div>
 

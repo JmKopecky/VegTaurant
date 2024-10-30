@@ -4,12 +4,16 @@ function headerButtonClick() {
     if (headerButton.getAttribute("data-headeropen") === "true") {
         headerButton.setAttribute("data-headeropen", "false");
         for (const link of document.getElementById("header-link-container").getElementsByTagName("a")) {
-            link.setAttribute("style", "display: none;");
+            if (!link.classList.contains("header-no-remove")) {
+                link.setAttribute("style", "display: none;");
+            }
         }
     } else {
         headerButton.setAttribute("data-headeropen", "true");
         for (const link of document.getElementById("header-link-container").getElementsByTagName("a")) {
-            link.setAttribute("style", "display: block;");
+            if (!link.classList.contains("header-no-remove")) {
+                link.setAttribute("style", "display: block;");
+            }
         }
     }
 }

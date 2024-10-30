@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Cart</title>
+    <!--<link rel="icon" type="image/x-icon" href="/images/condelulogo.ico">-->
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/viewcart.css">
+    <script src="https://kit.fontawesome.com/2b6129ab2e.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <script src="/js/view_cart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<div id="header-container">
+    <div id="header-link-container">
+        <a href="/menu" style="display: none;">Menu</a>
+        <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
+        <a class="header-no-remove"><i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+    <div id="header-account-icon">
+        <a href="/account">
+            <img id="header-account-icon-image" src="/images/default-avatar-icon.jpg" alt="account icon">
+        </a>
+    </div>
+</div>
+
+<div id="branding-container">
+    <a href="/"><h1>Condelu Meals</h1></a>
+</div>
+
+
+<div id="site-content">
+
+    <!--
+    if no cart is specified in local storage and user is not signed in, redirect to menu.
+    If user is signed in but no cart in local storage, check if they have a favorite or past order they would like to do again.
+    Otherwise, there is an order, so display that order. Have the option prominent to go and see the menu to add something else.
+    -->
+
+    <div id="cart-display">
+        <div id="cart-items-container">
+
+        </div>
+        <div id="cart-totals">
+            <p id="cart-total-count">Items: 0</p>
+            <div id="cart-price">
+                <div id="cart-price-labels">
+                    <p id="cart-total-price-subtotal-label">Subtotal:</p>
+                    <p id="cart-total-tax-label">Tax:</p>
+                    <p id="cart-total-price-label">Total:</p>
+                </div>
+                <div id="cart-price-values">
+                    <p id="cart-total-price-subtotal">0</p>
+                    <p id="cart-total-tax">0</p>
+                    <p id="cart-total-price">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="footer">
+    <!-- TODO: Add footer -->
+</div>
+
+</body>
+</html>

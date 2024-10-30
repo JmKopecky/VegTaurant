@@ -180,6 +180,16 @@ body {
   flex-flow: row;
   gap: 1vw;
   align-items: center;
+  z-index: 9999;
+}
+#header-container #header-link-container i {
+  color: #00B837;
+  fill: #00B837;
+  font-size: 1.75em;
+  z-index: 9999;
+}
+#header-container #header-link-container a {
+  z-index: 9999;
 }
 #header-container #header-link-container #header-show-button {
   border: unset !important;
@@ -188,11 +198,13 @@ body {
   flex-flow: column;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
 }
 #header-container #header-link-container #header-show-button i {
   color: #00B837;
   fill: #00B837;
   font-size: 1.5em;
+  z-index: 9999;
 }
 #header-container #header-link-container #header-show-button:hover, #header-container #header-link-container #header-show-button:focus {
   background: unset !important;
@@ -202,12 +214,20 @@ body {
   aspect-ratio: 1/1;
   height: 100%;
   border-radius: 1em;
+  z-index: 9999;
+}
+#header-container #header-account-icon a {
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+  z-index: 9999;
 }
 #header-container #header-account-icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 1em;
+  z-index: 9999;
 }
 
 #site-content #hero-content {
