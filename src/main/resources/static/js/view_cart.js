@@ -44,26 +44,72 @@ function populateCartData() {
         //load present cart for viewing.
         //cart is an array of objects, with each object being
         let cart = JSON.parse(localStorage.getItem("cart"));
-        let itemCount = 0;
-        let subtotal = 0;
-        for (const item of cart) {
-            let label = item["label"];
-            let price = item["price"];
-            itemCount++;
-            subtotal += parseInt(price);
-
-            //todo: create tile for item in cart display.
-            let container = document.getElementById("cart-items-container");
-
-            let tile = document.createElement("div");
-            tile.classList.add("cart-item-tile");
-            let labelContainer = document.createElement("h3");
-            labelContainer.textContent = label;
-            let priceContainer = document.createElement("h4");
-            priceContainer.textContent = "$" + price;
-            container.appendChild(tile);
-        }
+        calculateCosts(cart);
     }
+}
+
+
+function placeOrder() {
+    //todo: add logic to place order and proceed to checkout.
+
+}
+
+
+function removeItem(tile) {
+    if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        let newCart = [];
+        for (const item of cart) {
+            if (item["label"] !== tile.getElementsByTagName("h3")[0].textContent) {
+                newCart.push(item);
+            }
+        }
+
+        if (newCart.length <= 0) {
+            localStorage.setItem("cart", "unset");
+        } else {
+            localStorage.setItem("cart", JSON.stringify(newCart));
+        }
+        calculateCosts(newCart);
+    }
+}
+
+
+function calculateCosts(cart) {
+    let subtotal = 0;
+    let itemCount = 0;
+
+    let container = document.getElementById("cart-items-container");
+    container.innerHTML = "";
+
+    for (const item of cart) {
+        let label = item["label"];
+        let price = item["price"];
+        subtotal += parseInt(price);
+        itemCount++;
+
+        //todo: create tile for item in cart display.
+
+
+        let tile = document.createElement("div");
+        tile.classList.add("cart-item-tile");
+        tile.addEventListener("click", () => {
+            removeItem(tile);
+        });
+        let labelContainer = document.createElement("h3");
+        labelContainer.textContent = label;
+        tile.appendChild(labelContainer);
+        let priceContainer = document.createElement("h4");
+        priceContainer.textContent = "$" + price;
+        tile.appendChild(priceContainer);
+        container.appendChild(tile);
+    }
+    document.getElementById("cart-total-price-subtotal").textContent = "$" + subtotal.toFixed(2);
+    let tax = subtotal * 0.0825;
+    document.getElementById("cart-total-tax").textContent = "$" + tax.toFixed(2);
+    let total = parseFloat(subtotal.toFixed(2)) + parseFloat(tax.toFixed(2));
+    document.getElementById("cart-total-price").textContent = "$" + total.toFixed(2);
+    document.getElementById("cart-total-count").textContent = "Items: " + itemCount;
 }
 
 
