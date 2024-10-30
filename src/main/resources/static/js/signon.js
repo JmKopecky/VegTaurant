@@ -4,12 +4,16 @@ function headerButtonClick() {
     if (headerButton.getAttribute("data-headeropen") === "true") {
         headerButton.setAttribute("data-headeropen", "false");
         for (const link of document.getElementById("header-link-container").getElementsByTagName("a")) {
-            link.setAttribute("style", "display: none;");
+            if (!link.classList.contains("header-no-remove")) {
+                link.setAttribute("style", "display: none;");
+            }
         }
     } else {
         headerButton.setAttribute("data-headeropen", "true");
         for (const link of document.getElementById("header-link-container").getElementsByTagName("a")) {
-            link.setAttribute("style", "display: block;");
+            if (!link.classList.contains("header-no-remove")) {
+                link.setAttribute("style", "display: block;");
+            }
         }
     }
 }
@@ -17,6 +21,13 @@ function headerButtonClick() {
 
 document.addEventListener("DOMContentLoaded", (event) => {
     registerAnimations();
+
+    let cartHeaderNumber = document.getElementById("cart-item-count");
+    if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
+        cartHeaderNumber.textContent = JSON.parse(localStorage.getItem("cart")).length;
+    } else {
+        cartHeaderNumber.textContent = "0";
+    }
 
     document.getElementById("signon-switch-label").addEventListener("change", () => {
         let state = document.getElementById("signon-switch-label").children[0].checked;
