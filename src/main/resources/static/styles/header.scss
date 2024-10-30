@@ -1,0 +1,62 @@
+#branding-container {
+  position: fixed;
+  top: 1vh;
+  left: 1vh;
+  z-index: 9999;
+  background: transparentize($secondary, 0.2);
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  h1 {
+    color: $accent;
+    font-size: 1.75em;
+  }
+}
+
+#header-container {
+  position: fixed;
+  top: 1vh;
+  right: 1vh;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 1vw;
+  z-index: 9999;
+  height: 5vh;
+  background: transparentize($secondary, 0.2);
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  #header-link-container {
+    display: flex;
+    flex-flow: row;
+    gap: 1vw;
+    align-items: center;
+    #header-show-button {
+      border: unset !important;
+      padding: unset !important;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      i {
+        color: $accent;
+        fill: $accent;
+        font-size: 1.5em;
+      }
+    }
+    #header-show-button:hover, #header-show-button:focus {
+      background: unset !important;
+      color: unset !important;
+    }
+  }
+  #header-account-icon {
+    aspect-ratio: 1/1;
+    height: 100%;
+    border-radius: 1em;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 1em;
+    }
+  }
+}
