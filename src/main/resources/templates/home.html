@@ -30,7 +30,19 @@ Requisite content:
 -->
 
 <div id="header-container">
+    <div id="header-link-container">
+        <a href="/menu" style="display: none;">Menu</a>
+        <a href="/cart" style="display: none;">Cart</a>
+        <a href="/order" style="display: none;">Order</a>
+        <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
+    </div>
+    <div id="header-account-icon">
+        <img id="header-account-icon-image" src="/images/default-avatar-icon.jpg" alt="account icon">
+    </div>
+</div>
 
+<div id="branding-container">
+    <a href="/"><h1>Condelu Meals</h1></a>
 </div>
 
 

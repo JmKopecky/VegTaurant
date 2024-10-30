@@ -1,3 +1,20 @@
+
+function headerButtonClick() {
+    let headerButton = document.getElementById("header-show-button");
+    if (headerButton.getAttribute("data-headeropen") === "true") {
+        headerButton.setAttribute("data-headeropen", "false");
+        for (const link of document.getElementById("header-link-container").getElementsByTagName("a")) {
+            link.setAttribute("style", "display: none;");
+        }
+    } else {
+        headerButton.setAttribute("data-headeropen", "true");
+        for (const link of document.getElementById("header-link-container").getElementsByTagName("a")) {
+            link.setAttribute("style", "display: block;");
+        }
+    }
+}
+
+
 document.addEventListener("DOMContentLoaded", (event) => {
     registerAnimations();
 
