@@ -81,6 +81,13 @@ function shiftItemPromoCarousel(right) {
 
 document.addEventListener("DOMContentLoaded", (event) => {
     registerAnimations()
+
+    let cartHeaderNumber = document.getElementById("cart-item-count");
+    if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
+        cartHeaderNumber.textContent = JSON.parse(localStorage.getItem("cart")).length;
+    } else {
+        cartHeaderNumber.textContent = "0";
+    }
 });
 
 

@@ -22,6 +22,13 @@ function headerButtonClick() {
 document.addEventListener("DOMContentLoaded", (event) => {
     registerAnimations();
 
+    let cartHeaderNumber = document.getElementById("cart-item-count");
+    if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
+        cartHeaderNumber.textContent = JSON.parse(localStorage.getItem("cart")).length;
+    } else {
+        cartHeaderNumber.textContent = "0";
+    }
+
     document.getElementById("signon-switch-label").addEventListener("change", () => {
         let state = document.getElementById("signon-switch-label").children[0].checked;
         if (state) { //sign in mode

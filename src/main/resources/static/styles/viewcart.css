@@ -188,6 +188,15 @@ body {
   font-size: 1.75em;
   z-index: 9999;
 }
+#header-container #header-link-container .header-no-remove {
+  position: relative;
+}
+#header-container #header-link-container .header-no-remove #cart-item-count {
+  position: absolute;
+  bottom: -35%;
+  right: -25%;
+  color: #00B837;
+}
 #header-container #header-link-container a {
   z-index: 9999;
 }

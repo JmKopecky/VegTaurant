@@ -37,6 +37,15 @@
       font-size: 1.75em;
       z-index: 9999;
     }
+    .header-no-remove {
+      position: relative;
+      #cart-item-count {
+        position: absolute;
+        bottom: -35%;
+        right: -25%;
+        color: $accent;
+      }
+    }
     a {
       z-index: 9999;
     }

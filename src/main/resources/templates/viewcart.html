@@ -20,7 +20,10 @@
     <div id="header-link-container">
         <a href="/menu" style="display: none;">Menu</a>
         <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
-        <a class="header-no-remove"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a class="header-no-remove" href="/cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p id="cart-item-count">0</p>
+        </a>
     </div>
     <div id="header-account-icon">
         <a href="/account">

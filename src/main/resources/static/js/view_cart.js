@@ -33,6 +33,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
     populateCartData();
 
     registerAnimations()
+
+    let cartHeaderNumber = document.getElementById("cart-item-count");
+    if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
+        cartHeaderNumber.textContent = JSON.parse(localStorage.getItem("cart")).length;
+    } else {
+        cartHeaderNumber.textContent = "0";
+    }
 });
 
 
@@ -71,6 +78,13 @@ function removeItem(tile) {
             localStorage.setItem("cart", JSON.stringify(newCart));
         }
         calculateCosts(newCart);
+
+        let cartHeaderNumber = document.getElementById("cart-item-count");
+        if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
+            cartHeaderNumber.textContent = JSON.parse(localStorage.getItem("cart")).length;
+        } else {
+            cartHeaderNumber.textContent = "0";
+        }
     }
 }
 
