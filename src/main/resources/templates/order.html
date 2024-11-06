@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Place Order</title>
+    <!--<link rel="icon" type="image/x-icon" href="/images/condelulogo.ico">-->
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/order.css">
+    <script src="https://kit.fontawesome.com/2b6129ab2e.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <script src="/js/order.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<div id="header-container">
+    <div id="header-link-container">
+        <a href="/menu" style="display: none;">Menu</a>
+        <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
+        <a class="header-no-remove" href="/cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p id="cart-item-count">0</p>
+        </a>
+    </div>
+    <div id="header-account-icon">
+        <a href="/account">
+            <img id="header-account-icon-image" src="/images/default-avatar-icon.jpg" alt="account icon">
+        </a>
+    </div>
+</div>
+
+<div id="branding-container">
+    <a href="/"><h1>Condelu Meals</h1></a>
+</div>
+
+
+<div id="site-content">
+    <!--
+    Start with the input of a location for the order, delivery or pick up or dine in.
+    Then have the billing info. If they have an account, fill it automatically. Else, mention that an account can speed up orders.
+    After that, finalize the order.
+    -->
+    <div id="location-container">
+        <div id="location-float-align">
+            <div id="location-type-selection">
+                <h2>How do you want to order?</h2>
+                <div id="location-options">
+                    <h5 class="loc-type-selectable picked" onclick="onSelectLocationType('Delivery')">Delivery</h5>
+                    <h5 class="loc-type-selectable" onclick="onSelectLocationType('Pickup')">Pickup</h5>
+                    <h5 class="loc-type-selectable" onclick="onSelectLocationType('Dine-In')">Dine-In</h5>
+                </div>
+            </div>
+            <div id="location-address-selection">
+                <!-- Delivery should have user directly enter their address. Otherwise, user can see a list of addresses.
+                TODO: Option to input zip code and sort by distance.
+                -->
+                <div id="enter-address" style="display: flex;">
+                    <label for="target-address-text-input">Enter Delivery Address: </label>
+                    <input type="text" id="target-address-text-input">
+                </div>
+                <div id="select-address-from-list" style="display: none;">
+                    <h2>Select Location</h2>
+                    <div class="location-tile" th:each="location:${locations}" onclick="selectLocation(this)">
+                        <p class="location-address" th:text="${location.getAddressLine()}"></p>
+                        <p class="location-city" th:text="${location.getCity()}"></p>
+                        <p class="location-state" th:text="${location.getState()}"></p>
+                        <p class="location-zip" th:text="${location.getZipCode()}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="location-proceed-button">
+            <button>
+                Continue
+            </button>
+        </div>
+    </div>
+
+
+    <div id="billing-info-container" style="display: none;">
+
+    </div>
+
+
+    <div id="finalize-order-container" style="display: none;">
+
+    </div>
+</div>
+
+
+<div id="footer">
+    <!-- TODO: Add footer -->
+</div>
+
+</body>
+</html>

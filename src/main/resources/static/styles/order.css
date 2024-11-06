@@ -1,0 +1,18 @@
+/* Error: expected "{".
+ *    ,
+ * 40 |           background-color: $accent;
+ *    |                                    ^
+ *    '
+ *   order\location.scss 40:36  @import
+ *   order.scss 5:11            root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: expected "{".\a    \2577 \a 40 \2502            background-color: $accent;\d\a    \2502                                     ^\a    \2575 \a   order\\location.scss 40:36  @import\a   order.scss 5:11            root stylesheet';
+}

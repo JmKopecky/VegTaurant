@@ -57,8 +57,11 @@ function populateCartData() {
 
 
 function placeOrder() {
-    //todo: add logic to place order and proceed to checkout.
-
+    if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
+        window.location.replace(window.location.origin + "/order");
+    } else {
+        window.location.replace(window.location.origin + "/menu");
+    }
 }
 
 
