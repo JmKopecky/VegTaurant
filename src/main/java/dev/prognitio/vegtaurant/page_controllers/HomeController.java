@@ -21,8 +21,9 @@ public class HomeController {
     private final FeaturedItemRepository featuredItemRepository;
     private final ProductRatingRepository productRatingRepository;
     private final RestaurantLocationRepository restaurantLocationRepository;
+    private final OrderRepository orderRepository;
 
-    public HomeController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, RestaurantLocationRepository restaurantLocationRepository ) {
+    public HomeController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, RestaurantLocationRepository restaurantLocationRepository, OrderRepository orderRepository) {
         //if encountering errors, make sure to drop both tables first.
         this.menuItemRepository = menuItemRepository;
         this.menuCategoryRepository = menuCategoryRepository;
@@ -30,7 +31,8 @@ public class HomeController {
         this.featuredItemRepository = featuredItemRepository;
         this.productRatingRepository = productRatingRepository;
         this.restaurantLocationRepository = restaurantLocationRepository;
-        VegtaurantApplication.doDatabaseTestCase(menuCategoryRepository, menuItemRepository, featuredItemRepository, productRatingRepository, accountRepository, restaurantLocationRepository);
+        this.orderRepository = orderRepository;
+        VegtaurantApplication.doDatabaseTestCase(menuCategoryRepository, menuItemRepository, featuredItemRepository, productRatingRepository, accountRepository, restaurantLocationRepository, orderRepository);
     }
 
 

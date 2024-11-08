@@ -1,0 +1,15 @@
+#finalize-order-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  gap: 5vh;
+  align-items: center;
+  height: 100vh;
+  div {
+    display: flex;
+    flex-flow: row;
+    gap: 5vw;
+    justify-content: center;
+    align-items: center;
+  }
+}

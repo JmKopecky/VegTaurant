@@ -12,7 +12,8 @@ public class VegtaurantApplication {
 	}
 
 
-	public static void doDatabaseTestCase(MenuCategoryRepository menuCategoryRepository, MenuItemRepository menuItemRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, AccountRepository accountRepository, RestaurantLocationRepository restaurantLocationRepository) { //TODO delete before completion
+	public static void doDatabaseTestCase(MenuCategoryRepository menuCategoryRepository, MenuItemRepository menuItemRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, AccountRepository accountRepository, RestaurantLocationRepository restaurantLocationRepository, OrderRepository orderRepository) { //TODO delete before completion
+
 		MenuCategory breakfast = new MenuCategory();
 		breakfast.setTitle("Breakfast");
 		menuCategoryRepository.save(breakfast);
@@ -131,7 +132,6 @@ public class VegtaurantApplication {
 		menuOption8.setDeal(waterDeal);
 		menuItemRepository.save(menuOption8);
 
-
 		Account acc = new Account();
 		acc.setName("John Doe");
 		accountRepository.save(acc);
@@ -177,6 +177,8 @@ public class VegtaurantApplication {
 		location2.setState("Texas");
 		location2.setZipCode("77522");
 		restaurantLocationRepository.save(location2);
+
+
 	}
 
 

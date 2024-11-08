@@ -414,5 +414,20 @@ body {
   transition: color 1s ease-in-out;
   text-align: center;
 }
+#site-content #finalize-order-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  gap: 5vh;
+  align-items: center;
+  height: 100vh;
+}
+#site-content #finalize-order-container div {
+  display: flex;
+  flex-flow: row;
+  gap: 5vw;
+  justify-content: center;
+  align-items: center;
+}
 
 /*# sourceMappingURL=order.css.map */
