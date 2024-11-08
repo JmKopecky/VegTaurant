@@ -12,7 +12,8 @@ public class VegtaurantApplication {
 	}
 
 
-	public static void doDatabaseTestCase(MenuCategoryRepository menuCategoryRepository, MenuItemRepository menuItemRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, AccountRepository accountRepository) { //TODO delete before completion
+	public static void doDatabaseTestCase(MenuCategoryRepository menuCategoryRepository, MenuItemRepository menuItemRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, AccountRepository accountRepository, RestaurantLocationRepository restaurantLocationRepository, OrderRepository orderRepository) { //TODO delete before completion
+
 		MenuCategory breakfast = new MenuCategory();
 		breakfast.setTitle("Breakfast");
 		menuCategoryRepository.save(breakfast);
@@ -131,7 +132,6 @@ public class VegtaurantApplication {
 		menuOption8.setDeal(waterDeal);
 		menuItemRepository.save(menuOption8);
 
-
 		Account acc = new Account();
 		acc.setName("John Doe");
 		accountRepository.save(acc);
@@ -163,6 +163,22 @@ public class VegtaurantApplication {
 		rating4.setReviewer(acc);
 		rating4.setProduct(menuOption7);
 		productRatingRepository.save(rating4);
+
+		RestaurantLocation location1 = new RestaurantLocation();
+		location1.setAddressLine("1234 Lorem Ipsum Lane");
+		location1.setCity("Baytown");
+		location1.setState("Texas");
+		location1.setZipCode("77521");
+		restaurantLocationRepository.save(location1);
+
+		RestaurantLocation location2 = new RestaurantLocation();
+		location2.setAddressLine("4321 Goose Creek Memorial");
+		location2.setCity("Baytown");
+		location2.setState("Texas");
+		location2.setZipCode("77522");
+		restaurantLocationRepository.save(location2);
+
+
 	}
 
 
