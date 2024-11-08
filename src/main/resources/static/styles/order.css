@@ -352,5 +352,67 @@ body {
   justify-content: center;
   padding-bottom: 5vh;
 }
+#site-content #billing-info-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+#site-content #billing-info-container h2 {
+  padding-top: 10vh;
+  padding-bottom: 5vh;
+}
+#site-content #billing-info-container button {
+  margin-bottom: 5vh;
+}
+#site-content #billing-info-container #billing-input {
+  flex-grow: 1;
+  width: 50%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#site-content #billing-info-container #billing-input .side-by-side {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+#site-content #billing-info-container #billing-input .billing-data {
+  border-radius: 1em;
+  padding: 0.5em;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+#site-content #billing-info-container #billing-input .billing-data .label-billing {
+  background: #111111;
+  width: fit-content;
+  position: absolute;
+  top: -0.3em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-family: "SUSE", sans;
+  font-weight: 500;
+  font-size: 1.1em;
+  color: #EEEEEE;
+}
+#site-content #billing-info-container #billing-input .billing-data input, #site-content #billing-info-container #billing-input .billing-data input:focus, #site-content #billing-info-container #billing-input .billing-data input:hover, #site-content #billing-info-container #billing-input .billing-data input:-webkit-autofill, #site-content #billing-info-container #billing-input .billing-data input:focus-visible {
+  border: 1px solid #00B837 !important;
+  border-radius: 1em;
+  padding: 0.5em;
+  background: none !important;
+  font-family: "Open Sans", sans;
+  outline: none !important;
+  color: #EEEEEE;
+  transition: color 1s ease-in-out;
+  text-align: center;
+}
 
 /*# sourceMappingURL=order.css.map */

@@ -1,3 +1,7 @@
+let address = "unset";
+let delivery = false;
+
+
 
 function headerButtonClick() {
     let headerButton = document.getElementById("header-show-button");
@@ -61,6 +65,66 @@ function selectLocation(target) {
         elem.classList.remove("selected");
     }
     target.classList.add("selected");
+}
+
+
+function submitLocation() {
+    let mode = "unset";
+    for (const elem of document.getElementsByClassName("loc-type-selectable")) {
+        if (elem.classList.contains("picked")) {
+            mode = elem.textContent;
+        }
+    }
+    if (mode === "unset") {
+        document.getElementById("location-type-header").style.color = "red";
+        return;
+    }
+
+    if (mode === "Delivery") {
+        if (document.getElementById("target-address-text-input").value !== "") {
+            address = document.getElementById("target-address-text-input").value;
+            delivery = true;
+        }
+    } else {
+        for (const elem of document.getElementsByClassName("location-tile")) {
+            if (elem.classList.contains("selected")) {
+                address = elem.getElementsByClassName("location-address")[0].textContent;
+                delivery = false;
+                break;
+            }
+        }
+    }
+    if (address !== "unset") {
+        console.log(address + " " + delivery);
+        initBillingInfo();
+    } else {
+        if (mode === "Delivery") {
+            document.getElementById("address-enter-label").style.color = "red";
+        } else {
+            document.getElementById("location-selection-header").style.color = "red";
+        }
+
+    }
+
+}
+
+
+function initBillingInfo() {
+    document.getElementById("location-container").style.display = "none";
+    document.getElementById("billing-info-container").style.display = "flex";
+
+    if (account !== "noaccount") {
+        document.getElementById("billing-name-input").value = account["cardUserName"];
+        document.getElementById("billing-address-input").value = account["address"];
+        document.getElementById("billing-city-input").value = account["city"];
+        document.getElementById("billing-state-input").value = account["state"];
+        document.getElementById("billing-country-input").value = account["country"];
+        document.getElementById("billing-zip-input").value = account["zip"];
+        document.getElementById("billing-phone-input").value = account["phone"];
+        document.getElementById("billing-cardnum-input").value = account["cardNumber"];
+        document.getElementById("billing-expdate-input").value = account["expirationDate"];
+        document.getElementById("billing-seccode-input").value = account["securityCode"];
+    }
 }
 
 

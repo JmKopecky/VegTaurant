@@ -13,6 +13,11 @@
     <script src="/js/order.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let account = /*[[${account}]]*/ 'noaccount';
+        /*]]>*/
+    </script>
 </head>
 <body>
 
@@ -46,7 +51,7 @@
     <div id="location-container">
         <div id="location-float-align">
             <div id="location-type-selection">
-                <h2>How do you want to order?</h2>
+                <h2 id="location-type-header">How do you want to order?</h2>
                 <div id="location-options">
                     <h5 class="loc-type-selectable picked" onclick="onSelectLocationType('Delivery')">Delivery</h5>
                     <h5 class="loc-type-selectable" onclick="onSelectLocationType('Pickup')">Pickup</h5>
@@ -58,11 +63,11 @@
                 TODO: Option to input zip code and sort by distance.
                 -->
                 <div id="enter-address" style="display: flex;">
-                    <label for="target-address-text-input">Enter Delivery Address: </label>
+                    <label for="target-address-text-input" id="address-enter-label">Enter Delivery Address: </label>
                     <input type="text" id="target-address-text-input">
                 </div>
                 <div id="select-address-from-list" style="display: none;">
-                    <h2>Select Location</h2>
+                    <h2 id="location-selection-header">Select Location</h2>
                     <div class="location-tile" th:each="location:${locations}" onclick="selectLocation(this)">
                         <p class="location-address" th:text="${location.getAddressLine()}"></p>
                         <p class="location-city" th:text="${location.getCity()}"></p>
@@ -73,7 +78,7 @@
             </div>
         </div>
         <div id="location-proceed-button">
-            <button>
+            <button onclick="submitLocation()">
                 Continue
             </button>
         </div>
@@ -81,7 +86,76 @@
 
 
     <div id="billing-info-container" style="display: none;">
-
+        <h2>Billing Info</h2>
+        <div id="billing-input">
+            <div id="billing-name-container" class="billing-data">
+                <label id="billing-name-label" class="label-billing">
+                    Name on Card
+                </label>
+                <input type="text" id="billing-name-input" autocomplete="cc-name">
+            </div>
+            <div id="billing-address-container" class="billing-data">
+                <label id="billing-address-label" class="label-billing">
+                    Address
+                </label>
+                <input type="text" id="billing-address-input" autocomplete="street-address">
+            </div>
+            <div class="side-by-side">
+                <div id="billing-city-container" class="billing-data">
+                    <label id="billing-city-label" class="label-billing">
+                        City
+                    </label>
+                    <input type="text" id="billing-city-input" autocomplete="address-level2">
+                </div>
+                <div id="billing-state-container" class="billing-data">
+                    <label id="billing-state-label" class="label-billing">
+                        State
+                    </label>
+                    <input type="text" id="billing-state-input" autocomplete="address-level1">
+                </div>
+            </div>
+            <div class="side-by-side">
+                <div id="billing-country-container" class="billing-data">
+                    <label id="billing-country-label" class="label-billing">
+                        Country
+                    </label>
+                    <input type="text" id="billing-country-input" autocomplete="country-name">
+                </div>
+                <div id="billing-zip-container" class="billing-data">
+                    <label id="billing-zip-label" class="label-billing">
+                        Zip
+                    </label>
+                    <input type="text" id="billing-zip-input" autocomplete="postal-code">
+                </div>
+            </div>
+            <div id="billing-phone-container" class="billing-data">
+                <label id="billing-phone-label" class="label-billing">
+                    Phone
+                </label>
+                <input type="text" id="billing-phone-input" autocomplete="tel">
+            </div>
+            <div id="billing-cardnum-container" class="billing-data">
+                <label id="billing-cardnum-label" class="label-billing">
+                    Card #
+                </label>
+                <input type="text" id="billing-cardnum-input" autocomplete="cc-number">
+            </div>
+            <div class="side-by-side">
+                <div id="billing-expdate-container" class="billing-data">
+                    <label id="billing-expdate-label" class="label-billing">
+                        Expiration Date
+                    </label>
+                    <input type="text" id="billing-expdate-input" autocomplete="cc-exp">
+                </div>
+                <div id="billing-seccode-container" class="billing-data">
+                    <label id="billing-seccode-label" class="label-billing">
+                        Security Code
+                    </label>
+                    <input type="text" id="billing-seccode-input" autocomplete="cc-csc">
+                </div>
+            </div>
+        </div>
+        <button>Continue</button>
     </div>
 
 
