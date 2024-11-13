@@ -3,8 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <title>Account</title>
+    <!--<link rel="icon" type="image/x-icon" href="/images/condelulogo.ico">-->
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/account.css">
+    <script src="https://kit.fontawesome.com/2b6129ab2e.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <script src="/js/account.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
+
+
+<div id="header-container">
+    <div id="header-link-container">
+        <a href="/menu" style="display: none;">Menu</a>
+        <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
+        <a class="header-no-remove" href="/cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p id="cart-item-count">0</p>
+        </a>
+    </div>
+    <div id="header-account-icon">
+        <a href="/account">
+            <img id="header-account-icon-image" src="/images/default-avatar-icon.jpg" alt="account icon">
+        </a>
+    </div>
+</div>
+
+<div id="branding-container">
+    <a href="/"><h1>Condelu Meals</h1></a>
+</div>
+
+
+<div id="site-content">
+    <div id="account-menu-nav">
+        <div class="account-nav-listing selected" onclick="setAccountPage('Account');">
+            <i class="fa-solid fa-person"></i>
+            <p>Account</p>
+        </div>
+        <div class="account-nav-listing" onclick="setAccountPage('Billing');">
+            <i class="fa-solid fa-money-bill"></i>
+            <p>Billing</p>
+        </div>
+        <div class="account-nav-listing" onclick="setAccountPage('Rewards');">
+            <i class="fa-solid fa-star"></i>
+            <p>Rewards</p>
+        </div>
+        <div class="account-nav-listing" onclick="setAccountPage('Reviews');">
+            <i class="fa-solid fa-comment"></i>
+            <p>Reviews</p>
+        </div>
+        <div class="account-nav-listing" onclick="setAccountPage('New Password');">
+            <i class="fa-solid fa-lock"></i>
+            <p>New Password</p>
+        </div>
+        <div class="account-nav-listing" onclick="setAccountPage('Delete Account');">
+            <i class="fa-solid fa-trash-can"></i>
+            <p>Delete Account</p>
+        </div>
+    </div>
+    <div id="account-setting-panels">
+        <div class="setting-panel" style="display: flex;" id="panel-account">
+            <!-- -->
+        </div>
+        <div class="setting-panel" style="display: none;" id="panel-billing">
+
+        </div>
+        <div class="setting-panel" style="display: none;" id="panel-rewards">
+
+        </div>
+        <div class="setting-panel" style="display: none;" id="panel-reviews">
+
+        </div>
+        <div class="setting-panel" style="display: none;" id="panel-new">
+
+        </div>
+        <div class="setting-panel" style="display: none;" id="panel-delete">
+
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

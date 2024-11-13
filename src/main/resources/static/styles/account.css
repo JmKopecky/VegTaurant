@@ -1,0 +1,313 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=SUSE:wght@100..800&display=swap");
+h1 {
+  font-family: "SUSE", sans;
+  font-weight: 700;
+  margin: 0;
+  font-size: 2.75em;
+  color: #EEEEEE;
+}
+
+h2 {
+  font-family: "SUSE", sans;
+  font-weight: 700;
+  margin: 0;
+  font-size: 2.5em;
+  color: #EEEEEE;
+}
+
+h3 {
+  font-family: "SUSE", sans;
+  font-weight: 600;
+  margin: 0;
+  font-size: 2.25em;
+  color: #EEEEEE;
+}
+
+h4 {
+  font-family: "SUSE", sans;
+  font-weight: 600;
+  margin: 0;
+  font-size: 2em;
+  color: #EEEEEE;
+}
+
+h5 {
+  font-family: "SUSE", sans;
+  font-weight: 500;
+  margin: 0;
+  font-size: 1.75em;
+  color: #EEEEEE;
+}
+
+h6 {
+  font-family: "SUSE", sans;
+  font-weight: 500;
+  margin: 0;
+  font-size: 1.65em;
+  color: #EEEEEE;
+}
+
+p, input, label {
+  font-family: "Open Sans", sans;
+  margin: 0;
+  color: #EEEEEE;
+}
+
+a {
+  position: relative;
+  font-family: "Open Sans", sans;
+  text-decoration: none;
+  margin: 0;
+  color: #00B837;
+}
+
+a.link-hover {
+  position: relative;
+}
+
+a.link-hover::after {
+  width: 0%;
+  height: 3px;
+  background: #00B837;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: width 1s;
+}
+
+a.link-hover:hover::after {
+  width: 100%;
+}
+
+button {
+  width: fit-content;
+  text-align: center;
+  font-family: "SUSE", sans;
+  font-weight: 600;
+  font-size: 1.25em;
+  background: none;
+  color: #00B837;
+  border: 2px solid #00B837;
+  padding: 0.5em 0.75em;
+  border-radius: 0.5em;
+  will-change: background, color;
+  transition: background 0.5s, color 0.5s;
+}
+
+button:hover, button:focus {
+  background: #00B837;
+  color: #111111;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: #111111;
+  overflow-x: hidden;
+}
+
+#site-content {
+  background: #111111;
+  width: 100%;
+  min-height: 100vh;
+}
+
+::-moz-selection {
+  color: #111111;
+  background: #EEEEEE;
+}
+
+::selection {
+  color: #111111;
+  background: #EEEEEE;
+}
+
+::-webkit-scrollbar {
+  width: 0.3em;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00B837;
+  border-radius: 0.15em;
+}
+
+::-webkit-resizer {
+  display: none;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+#branding-container {
+  position: fixed;
+  top: 1vh;
+  left: 1vh;
+  z-index: 9999;
+  background: rgba(17, 17, 17, 0.8);
+  padding: 0.5em 1em;
+  border-radius: 1em;
+}
+#branding-container h1 {
+  color: #00B837;
+  font-size: 1.75em;
+}
+
+#header-container {
+  position: fixed;
+  top: 1vh;
+  right: 1vh;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 1vw;
+  z-index: 9999;
+  height: 5vh;
+  background: rgba(17, 17, 17, 0.8);
+  padding: 0.5em 1em;
+  border-radius: 1em;
+}
+#header-container #header-link-container {
+  display: flex;
+  flex-flow: row;
+  gap: 1vw;
+  align-items: center;
+  z-index: 9999;
+}
+#header-container #header-link-container i {
+  color: #00B837;
+  fill: #00B837;
+  font-size: 1.75em;
+  z-index: 9999;
+}
+#header-container #header-link-container .header-no-remove {
+  position: relative;
+}
+#header-container #header-link-container .header-no-remove #cart-item-count {
+  position: absolute;
+  bottom: -35%;
+  right: -25%;
+  color: #00B837;
+}
+#header-container #header-link-container a {
+  z-index: 9999;
+}
+#header-container #header-link-container #header-show-button {
+  border: unset !important;
+  padding: unset !important;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+#header-container #header-link-container #header-show-button i {
+  color: #00B837;
+  fill: #00B837;
+  font-size: 1.5em;
+  z-index: 9999;
+}
+#header-container #header-link-container #header-show-button:hover, #header-container #header-link-container #header-show-button:focus {
+  background: unset !important;
+  color: unset !important;
+}
+#header-container #header-account-icon {
+  aspect-ratio: 1/1;
+  height: 100%;
+  border-radius: 1em;
+  z-index: 9999;
+}
+#header-container #header-account-icon a {
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+  z-index: 9999;
+}
+#header-container #header-account-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1em;
+  z-index: 9999;
+}
+
+#site-content {
+  display: flex;
+  height: 80vh;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+  padding: 12vh 5vh 5vw;
+  min-height: unset !important;
+}
+#site-content #account-menu-nav {
+  flex-grow: 1;
+  height: 100%;
+  background: #1e1e1e;
+  border-radius: 1em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: start;
+  gap: 2vh;
+  padding-top: 1vh;
+}
+#site-content #account-menu-nav .account-nav-listing {
+  width: 90%;
+  display: flex;
+  flex-flow: row;
+  justify-content: start;
+  align-items: center;
+  border-radius: 1em;
+  margin-left: 5%;
+  margin-right: 5%;
+  transition: background 0.5s;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+#site-content #account-menu-nav .account-nav-listing i {
+  width: 20%;
+  text-align: center;
+  font-size: 1.5em;
+  color: #00B837;
+  transition: color 0.5s;
+}
+#site-content #account-menu-nav .account-nav-listing p {
+  font-size: 1.5em;
+  padding-left: 10%;
+}
+#site-content #account-menu-nav .account-nav-listing:hover {
+  background: rgba(0, 184, 55, 0.5);
+}
+#site-content #account-menu-nav .account-nav-listing.selected {
+  background: #00B837;
+}
+#site-content #account-menu-nav .account-nav-listing.selected i {
+  color: #111111;
+}
+#site-content #account-setting-panels {
+  flex-grow: 6;
+  height: 100%;
+  background: #1e1e1e;
+  border-radius: 1em;
+  margin-right: 6vw;
+  position: relative;
+}
+#site-content #account-setting-panels .setting-panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  flex-flow: column;
+  align-items: center;
+}
+
+/*# sourceMappingURL=account.css.map */

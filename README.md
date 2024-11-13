@@ -41,4 +41,5 @@ Broad Technical Ideas:
 * Joseph Kopecky - 10/9/24: 3 hrs
 * Joseph Kopecky - 10/22/24: 2 hrs
 * Joseph Kopecky - 10/23/24: 4 hrs
-* Joseph Kopecky - 11/6/24: 3 hrs + home
+* Joseph Kopecky - 11/6/24: 3 hrs
+* Joseph Kopecky - 11/7/24: 2 hrs
