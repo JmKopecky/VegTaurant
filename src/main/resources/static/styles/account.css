@@ -239,6 +239,28 @@ body {
   z-index: 9999;
 }
 
+#indicator-overlay {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  min-height: 5%;
+  z-index: 9999;
+  background: #111111;
+  border-top: 1px solid #00B837;
+}
+#indicator-overlay #indicator-duration {
+  width: 0;
+  height: 5px;
+  background: #00B837;
+}
+#indicator-overlay h1 {
+  padding-left: 10vh;
+}
+
 #site-content {
   display: flex;
   height: 80vh;
@@ -302,12 +324,61 @@ body {
   margin-right: 6vw;
   position: relative;
 }
+#site-content #account-setting-panels p {
+  text-align: center;
+  width: 60%;
+}
+#site-content #account-setting-panels h2 {
+  text-align: center;
+  width: 80%;
+}
+#site-content #account-setting-panels .info-align-horizontal {
+  display: flex;
+  flex-flow: row;
+  gap: 5vw;
+}
+#site-content #account-setting-panels .info-align-horizontal input, #site-content #account-setting-panels .info-align-horizontal input:focus, #site-content #account-setting-panels .info-align-horizontal input:hover, #site-content #account-setting-panels .info-align-horizontal input:-webkit-autofill, #site-content #account-setting-panels .info-align-horizontal input:focus-visible {
+  width: 100% !important;
+}
+#site-content #account-setting-panels .setting-container {
+  border-radius: 1em;
+  padding: 0.5em;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+#site-content #account-setting-panels .setting-container .label-setting {
+  background: #1e1e1e;
+  width: fit-content;
+  position: absolute;
+  top: -0.3em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-family: "SUSE", sans;
+  font-weight: 500;
+  font-size: 1.1em;
+  color: #EEEEEE;
+}
+#site-content #account-setting-panels .setting-container input, #site-content #account-setting-panels .setting-container input:focus, #site-content #account-setting-panels .setting-container input:hover, #site-content #account-setting-panels .setting-container input:-webkit-autofill, #site-content #account-setting-panels .setting-container input:focus-visible {
+  border: 1px solid #00B837 !important;
+  border-radius: 1em;
+  padding: 0.5em;
+  background: none !important;
+  font-family: "Open Sans", sans;
+  outline: none !important;
+  color: #EEEEEE;
+  transition: color 1s ease-in-out;
+  width: 150%;
+}
 #site-content #account-setting-panels .setting-panel {
   position: absolute;
   width: 100%;
   height: 100%;
   flex-flow: column;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 /*# sourceMappingURL=account.css.map */

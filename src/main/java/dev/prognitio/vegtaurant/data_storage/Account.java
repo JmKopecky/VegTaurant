@@ -18,6 +18,7 @@ public class Account {
     private String country;
     private String zip;
     private String phone;
+    private String imageUrl;
     private String cardNumber; //TODO safe storage
     private String expirationDate; //TODO safe storage
     private String securityCode; //TODO safe storage
@@ -177,5 +178,13 @@ public class Account {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

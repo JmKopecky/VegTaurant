@@ -2,7 +2,31 @@
 @import 'header';
 
 
+#indicator-overlay {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  min-height: 5%;
+  z-index: 9999;
+  background: $secondary;
+  border-top: 1px solid $accent;
+  #indicator-duration {
+    width: 0;
+    height: 5px;
+    background: $accent;
+  }
+  h1 {
+    padding-left: 10vh;
+  }
+}
+
+
 #site-content {
+
   display: flex;
   height: 80vh;
   flex-flow: row;
@@ -58,6 +82,9 @@
     }
   }
   #account-setting-panels {
+
+    @import 'account/accountfields';
+
     flex-grow: 6;
     height: 100%;
     background: lighten($secondary, 5%);
@@ -70,6 +97,7 @@
       height: 100%;
       flex-flow: column;
       align-items: center;
+      justify-content: space-evenly;
     }
   }
 }

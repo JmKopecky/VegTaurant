@@ -69,8 +69,8 @@ public class SignOnController {
                 account.setExpirationDate(node.get("cardexpirationdate").asText());
                 account.setSecurityCode(node.get("cardsecuritycode").asText());
                 account.setCardUserName(node.get("cardusername").asText());
+                account.setImageUrl("/images/default-avatar-icon.jpg");
             }
-            //ipAddress = node.get("ipaddress").asText(); //TODO: set ip address check
         } catch (Exception e) {
             System.out.println(e);
             return "redirect:/error";

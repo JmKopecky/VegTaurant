@@ -38,6 +38,14 @@
 </div>
 
 
+<div id="indicator-overlay" style="display:none;">
+    <div id="indicator-duration">
+
+    </div>
+    <h1>Success!</h1>
+</div>
+
+
 <div id="site-content">
     <div id="account-menu-nav">
         <div class="account-nav-listing selected" onclick="setAccountPage('Account');">
@@ -66,21 +74,128 @@
         </div>
     </div>
     <div id="account-setting-panels">
-        <div class="setting-panel" style="display: flex;" id="panel-account">
-            <!-- -->
-        </div>
-        <div class="setting-panel" style="display: none;" id="panel-billing">
 
+        <div class="setting-panel" style="display: flex;" id="panel-account">
+            <div id="setting-name-container" class="setting-container">
+                <label id="setting-name-label" class="label-setting">
+                    Full Name
+                </label>
+                <input type="text" id="setting-name-input" autocomplete="name" th:value="${account.getName()}">
+            </div>
+            <div id="setting-email-container" class="setting-container">
+                <label id="setting-email-label" class="label-setting">
+                    Email
+                </label>
+                <input type="email" id="setting-email-input" autocomplete="email" th:value="${account.getEmail()}">
+            </div>
+            <div id="setting-picture-container" class="setting-container">
+                <label id="setting-picture-label" class="label-setting">
+                    Picture URL
+                </label>
+                <input type="url" id="setting-picture-input" th:value="${account.getImageUrl()}">
+            </div>
+            <button onclick="updateAccountSettings()">Edit</button>
         </div>
+
+        <div class="setting-panel" style="display: none;" id="panel-billing">
+            <div id="setting-address-container" class="setting-container">
+                <label id="setting-address-label" class="label-setting">
+                    Address
+                </label>
+                <input type="text" id="setting-address-input" autocomplete="street-address" th:value="${account.getAddress()}">
+            </div>
+
+            <div class="info-align-horizontal">
+                <div id="setting-city-container" class="setting-container">
+                    <label id="setting-city-label" class="label-setting">
+                        City
+                    </label>
+                    <input type="text" id="setting-city-input" autocomplete="address-level2" th:value="${account.getCity()}">
+                </div>
+                <div id="setting-zip-container" class="setting-container">
+                    <label id="setting-zip-label" class="label-setting">
+                        Zip
+                    </label>
+                    <input type="text" id="setting-zip-input" autocomplete="postal-code" th:value="${account.getZip()}">
+                </div>
+            </div>
+
+            <div class="info-align-horizontal">
+                <div id="setting-state-container" class="setting-container">
+                    <label id="setting-state-label" class="label-setting">
+                        State
+                    </label>
+                    <input type="text" id="setting-state-input" autocomplete="address-level1" th:value="${account.getState()}">
+                </div>
+                <div id="setting-country-container" class="setting-container">
+                    <label id="setting-country-label" class="label-setting">
+                        Country
+                    </label>
+                    <input type="text" id="setting-country-input" autocomplete="country-name" th:value="${account.getCountry()}">
+                </div>
+            </div>
+
+            <div id="setting-phone-container" class="setting-container">
+                <label id="setting-phone-label" class="label-setting">
+                    Phone
+                </label>
+                <input type="text" id="setting-phone-input" autocomplete="tel" th:value="${account.getPhone()}">
+            </div>
+
+            <div id="setting-cardnum-container" class="setting-container">
+                <label id="setting-cardnum-label" class="label-setting">
+                    Card #
+                </label>
+                <input type="text" id="setting-cardnum-input" autocomplete="cc-number" th:value="${account.getCardNumber()}">
+            </div>
+
+            <div id="setting-cardusername-container" class="setting-container">
+                <label id="setting-cardusername-label" class="label-setting">
+                    Card Username
+                </label>
+                <input type="text" id="setting-cardusername-input" autocomplete="cc-name" th:value="${account.getCardUserName()}">
+            </div>
+
+            <div class="info-align-horizontal">
+
+                <div id="setting-cardexpdate-container" class="setting-container">
+                    <label id="setting-cardexpdate-label" class="label-setting">
+                        Expiration Date
+                    </label>
+                    <input type="text" id="setting-cardexpdate-input" autocomplete="cc-exp" th:value="${account.getExpirationDate()}">
+                </div>
+
+                <div id="setting-cardsecuritycode-container" class="setting-container">
+                    <label id="setting-cardsecuritycode-label" class="label-setting">
+                        Security Code
+                    </label>
+                    <input type="text" id="setting-cardsecuritycode-input" autocomplete="cc-csc" th:value="${account.getSecurityCode()}">
+                </div>
+
+            </div>
+            <button onclick="updateBillingSettings()">Edit</button>
+        </div>
+
         <div class="setting-panel" style="display: none;" id="panel-rewards">
 
         </div>
-        <div class="setting-panel" style="display: none;" id="panel-reviews">
 
+        <div class="setting-panel" style="display: none;" id="panel-reviews">
+            <div id="rating-scrollable">
+                <div class="rating-tile" th:each="rating:${ratings}">
+                    <div class="rating-info-left">
+                        <h3 class="rating-item-title" th:text="${rating.getProduct().getLabel()}"></h3>
+                        <p class="rating-score" th:text="${rating.getRating()}/5"></p>
+                    </div>C
+                    <p class="rating-message" th:text="${rating.getMessage()}"></p>
+                </div>
+            </div>
         </div>
+
         <div class="setting-panel" style="display: none;" id="panel-new">
 
         </div>
+
         <div class="setting-panel" style="display: none;" id="panel-delete">
 
         </div>
