@@ -14,10 +14,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.naming.AuthenticationException;
 import javax.naming.TimeLimitExceededException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -32,7 +34,18 @@ public class SignOnController {
     }
 
     @GetMapping("/signon")
-    public String signOn(Model model) {
+    public String signOn(Model model, HttpServletRequest request, @CookieValue(value = "sessiontoken", defaultValue = "null") String sessionToken) {
+
+        Account acc;
+
+        try {
+            acc = AccountController.retrieveAccountFromToken(sessionToken, request.getRemoteAddr(), authTokensRepository);
+            model.addAttribute("headerpicturelink", acc.getImageUrl());
+        } catch (AuthenticationException e) {
+            model.addAttribute("headerpicturelink", "/images/default-avatar-icon.jpg");
+        }
+
+
         return "signon";
     }
 

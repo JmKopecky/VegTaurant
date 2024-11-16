@@ -126,24 +126,24 @@ body {
   background: #EEEEEE;
 }
 
-::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 0.3em;
 }
 
-::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background: #00B837;
   border-radius: 0.15em;
 }
 
-::-webkit-resizer {
+*::-webkit-resizer {
   display: none;
 }
 
-::-webkit-scrollbar-button {
+*::-webkit-scrollbar-button {
   display: none;
 }
 

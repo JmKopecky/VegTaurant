@@ -2,11 +2,14 @@ package dev.prognitio.vegtaurant.page_controllers;
 
 import dev.prognitio.vegtaurant.VegtaurantApplication;
 import dev.prognitio.vegtaurant.data_storage.*;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.naming.AuthenticationException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.*;
@@ -22,8 +25,9 @@ public class HomeController {
     private final ProductRatingRepository productRatingRepository;
     private final RestaurantLocationRepository restaurantLocationRepository;
     private final OrderRepository orderRepository;
+    private final AuthTokensRepository authTokensRepository;
 
-    public HomeController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, RestaurantLocationRepository restaurantLocationRepository, OrderRepository orderRepository) {
+    public HomeController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, RestaurantLocationRepository restaurantLocationRepository, OrderRepository orderRepository, AuthTokensRepository authTokensRepository) {
         //if encountering errors, make sure to drop both tables first.
         this.menuItemRepository = menuItemRepository;
         this.menuCategoryRepository = menuCategoryRepository;
@@ -32,12 +36,24 @@ public class HomeController {
         this.productRatingRepository = productRatingRepository;
         this.restaurantLocationRepository = restaurantLocationRepository;
         this.orderRepository = orderRepository;
+        this.authTokensRepository = authTokensRepository;
         VegtaurantApplication.doDatabaseTestCase(menuCategoryRepository, menuItemRepository, featuredItemRepository, productRatingRepository, accountRepository, restaurantLocationRepository, orderRepository);
     }
 
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(Model model, HttpServletRequest request, @CookieValue(value = "sessiontoken", defaultValue = "null") String sessionToken) {
+
+        Account acc;
+
+        try {
+            acc = AccountController.retrieveAccountFromToken(sessionToken, request.getRemoteAddr(), authTokensRepository);
+            model.addAttribute("headerpicturelink", acc.getImageUrl());
+        } catch (AuthenticationException e) {
+            model.addAttribute("headerpicturelink", "/images/default-avatar-icon.jpg");
+        }
+
+
 
         //top half rated items
         ArrayList<MenuItem> topHalfMenuItems = new ArrayList<>();
@@ -73,6 +89,8 @@ public class HomeController {
         ratings.sort(Comparator.comparing(ProductRating::getRating));
         Collections.reverse(ratings);
         model.addAttribute("topratings", ratings.subList(0, Math.min(ratings.size(), numRatings)));
+
+
 
 
         return "home";

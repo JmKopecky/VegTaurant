@@ -28,7 +28,7 @@
     </div>
     <div id="header-account-icon">
         <a href="/account">
-            <img id="header-account-icon-image" src="/images/default-avatar-icon.jpg" alt="account icon">
+            <img id="header-account-icon-image" th:src="${headerpicturelink}" alt="account icon" onerror="this.src='/images/default-avatar-icon.jpg';">
         </a>
     </div>
 </div>
@@ -186,7 +186,7 @@
                     <div class="rating-info-left">
                         <h3 class="rating-item-title" th:text="${rating.getProduct().getLabel()}"></h3>
                         <p class="rating-score" th:text="${rating.getRating()}/5"></p>
-                    </div>C
+                    </div>
                     <p class="rating-message" th:text="${rating.getMessage()}"></p>
                 </div>
             </div>

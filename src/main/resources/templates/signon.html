@@ -25,7 +25,7 @@
     </div>
     <div id="header-account-icon">
         <a href="/account">
-            <img id="header-account-icon-image" src="/images/default-avatar-icon.jpg" alt="account icon">
+            <img id="header-account-icon-image" th:src="${headerpicturelink}" alt="account icon" onerror="this.src='/images/default-avatar-icon.jpg';">
         </a>
     </div>
 </div>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.util.WebUtils;
 
+import javax.naming.AuthenticationException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -28,31 +29,16 @@ public class AccountController {
     }
 
     @GetMapping("/account")
-    public String auth(Model model, HttpServletRequest request, @CookieValue(value = "sessiontoken", defaultValue = "null") String sessionToken) throws Exception {
+    public String auth(Model model, HttpServletRequest request, @CookieValue(value = "sessiontoken", defaultValue = "null") String sessionToken) {
         Account acc;
-        String ip = request.getRemoteAddr();
-
-
-        if (sessionToken.equals("null")) {
-            return "redirect:/signon";
-        }
 
         try {
-            AuthTokens token = AuthTokens.getBySessionToken(authTokensRepository, sessionToken);
-            if (ip.equals(token.getIpAddress())) {
-                acc = AuthTokens.retrieveWithSessionToken(authTokensRepository, sessionToken);
-            } else { //connected with different ip address, force to sign in again
-                AuthTokens.deleteSessionToken(authTokensRepository, token.getToken()); //remove token
-                return "redirect:/signon";
-            }
+            acc = retrieveAccountFromToken(sessionToken, request.getRemoteAddr(), authTokensRepository);
+        } catch (AuthenticationException e) {
+            return "redirect:/signon";
+        }
+        model.addAttribute("headerpicturelink", acc.getImageUrl());
 
-        } catch (Exception e) {
-            return "redirect:/signon";
-        }
-        if (acc == null) {
-            System.out.println(AuthTokens.retrieveWithSessionToken(authTokensRepository, sessionToken));
-            return "redirect:/signon";
-        }
         model.addAttribute("account", acc);
 
 
@@ -71,32 +57,15 @@ public class AccountController {
 
     @PostMapping("/account")
     public String changeAccountSettings(Model model, HttpServletRequest request, @CookieValue(value = "sessiontoken", defaultValue = "null") String sessionToken, @RequestBody String data) throws Exception {
+
         Account acc;
-        String ip = request.getRemoteAddr();
-
-
-        if (sessionToken.equals("null")) {
-            return "redirect:/signon";
-        }
 
         try {
-            AuthTokens token = AuthTokens.getBySessionToken(authTokensRepository, sessionToken);
-            if (ip.equals(token.getIpAddress())) {
-                acc = AuthTokens.retrieveWithSessionToken(authTokensRepository, sessionToken);
-            } else { //connected with different ip address, force to sign in again
-                AuthTokens.deleteSessionToken(authTokensRepository, token.getToken()); //remove token
-                return "redirect:/signon";
-            }
-
-        } catch (Exception e) {
+            acc = retrieveAccountFromToken(sessionToken, request.getRemoteAddr(), authTokensRepository);
+        } catch (AuthenticationException e) {
             return "redirect:/signon";
         }
-
-
-        if (acc == null) {
-            System.out.println(AuthTokens.retrieveWithSessionToken(authTokensRepository, sessionToken));
-            return "redirect:/signon";
-        }
+        model.addAttribute("headerpicturelink", acc.getImageUrl());
 
 
         try {
@@ -151,5 +120,37 @@ public class AccountController {
         model.addAttribute("account", acc);
 
         return "account";
+    }
+
+
+
+
+    public static Account retrieveAccountFromToken(String sessionToken, String ipAddress, AuthTokensRepository authTokensRepository) throws AuthenticationException {
+
+        Account acc;
+
+
+        if (sessionToken.equals("null")) {
+            throw new AuthenticationException("Session token is null");
+        }
+
+        try {
+            AuthTokens token = AuthTokens.getBySessionToken(authTokensRepository, sessionToken);
+            if (ipAddress.equals(token.getIpAddress())) {
+                acc = AuthTokens.retrieveWithSessionToken(authTokensRepository, sessionToken);
+            } else { //connected with different ip address, force to sign in again
+                AuthTokens.deleteSessionToken(authTokensRepository, token.getToken()); //remove token
+                throw new AuthenticationException("Session token invalid");
+            }
+
+        } catch (Exception e) {
+            throw new AuthenticationException("Error retrieving account from token");
+        }
+
+        if (acc != null) {
+            return acc;
+        }
+
+        throw new AuthenticationException("Account was null when authenticating");
     }
 }

@@ -84,6 +84,7 @@
   #account-setting-panels {
 
     @import 'account/accountfields';
+    @import 'account/ratingtiles';
 
     flex-grow: 6;
     height: 100%;
