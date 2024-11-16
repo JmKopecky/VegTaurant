@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.prognitio.vegtaurant.data_storage.*;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -35,11 +37,13 @@ public class AccountController {
         try {
             acc = retrieveAccountFromToken(sessionToken, request.getRemoteAddr(), authTokensRepository);
         } catch (AuthenticationException e) {
+            System.out.println("redirect Get");
             return "redirect:/signon";
         }
         model.addAttribute("headerpicturelink", acc.getImageUrl());
 
         model.addAttribute("account", acc);
+
 
 
         ArrayList<ProductRating> ratings = new ArrayList<>();
@@ -50,20 +54,23 @@ public class AccountController {
         }
         model.addAttribute("ratings", ratings);
 
+        System.out.println(acc);
 
         return "account";
     }
 
 
     @PostMapping("/account")
-    public String changeAccountSettings(Model model, HttpServletRequest request, @CookieValue(value = "sessiontoken", defaultValue = "null") String sessionToken, @RequestBody String data) throws Exception {
+    public ResponseEntity<String> changeAccountSettings(Model model, HttpServletRequest request, @CookieValue(value = "sessiontoken", defaultValue = "null") String sessionToken, @RequestBody String data) throws Exception {
 
         Account acc;
 
         try {
             acc = retrieveAccountFromToken(sessionToken, request.getRemoteAddr(), authTokensRepository);
         } catch (AuthenticationException e) {
-            return "redirect:/signon";
+            System.out.println(e);
+            System.out.println("If this runs...");
+            return new ResponseEntity<>("redirect_signon", HttpStatus.OK);
         }
         model.addAttribute("headerpicturelink", acc.getImageUrl());
 
@@ -71,46 +78,59 @@ public class AccountController {
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode node = mapper.readTree(data);
-            if (node.has("name")) {
-                acc.setName(node.get("name").asText());
+            if (node.has("delete") && node.get("delete").asBoolean()) {
+                String password = node.get("password").asText();
+                if (acc.getPassword().equals(password)) {
+                    AuthTokens.deleteByAccount(authTokensRepository, acc);
+                    accountRepository.delete(acc);
+                    return new ResponseEntity<>("redirect_signon", HttpStatus.OK);
+                } else {
+                    model.addAttribute("pw_error", "Password does not match");
+                    accountRepository.save(acc);
+                    model.addAttribute("account", acc);
+                    return new ResponseEntity<>("password", HttpStatus.OK);
+                }
+            } else {
+                if (node.has("name")) {
+                    acc.setName(node.get("name").asText());
+                }
+                if (node.has("email")) {
+                    acc.setEmail(node.get("email").asText());
+                }
+                if (node.has("imageurl")) {
+                    acc.setImageUrl(node.get("imageurl").asText());
+                }
+                if (node.has("phone")) {
+                    acc.setPhone(node.get("phone").asText());
+                }
+                if (node.has("address")) {
+                    acc.setAddress(node.get("address").asText());
+                }
+                if (node.has("city")) {
+                    acc.setCity(node.get("city").asText());
+                }
+                if (node.has("state")) {
+                    acc.setState(node.get("state").asText());
+                }
+                if (node.has("zip")) {
+                    acc.setZip(node.get("zip").asText());
+                }
+                if (node.has("country")) {
+                    acc.setCountry(node.get("country").asText());
+                }
+                if (node.has("cardnumber")) {
+                    acc.setCardNumber(node.get("cardnumber").asText());
+                }
+                if (node.has("cardexpirationdate")) {
+                    acc.setExpirationDate(node.get("cardexpirationdate").asText());
+                }
+                if (node.has("cardsecuritycode")) {
+                    acc.setSecurityCode(node.get("cardsecuritycode").asText());
+                }
+                if (node.has("cardusername")) {
+                    acc.setCardUserName(node.get("cardusername").asText());
+                }
             }
-            if (node.has("email")) {
-                acc.setEmail(node.get("email").asText());
-            }
-            if (node.has("imageurl")) {
-                acc.setImageUrl(node.get("imageurl").asText());
-            }
-            if (node.has("phone")) {
-                acc.setPhone(node.get("phone").asText());
-            }
-            if (node.has("address")) {
-                acc.setAddress(node.get("address").asText());
-            }
-            if (node.has("city")) {
-                acc.setCity(node.get("city").asText());
-            }
-            if (node.has("state")) {
-                acc.setState(node.get("state").asText());
-            }
-            if (node.has("zip")) {
-                acc.setZip(node.get("zip").asText());
-            }
-            if (node.has("country")) {
-                acc.setCountry(node.get("country").asText());
-            }
-            if (node.has("cardnumber")) {
-                acc.setCardNumber(node.get("cardnumber").asText());
-            }
-            if (node.has("cardexpirationdate")) {
-                acc.setExpirationDate(node.get("cardexpirationdate").asText());
-            }
-            if (node.has("cardsecuritycode")) {
-                acc.setSecurityCode(node.get("cardsecuritycode").asText());
-            }
-            if (node.has("cardusername")) {
-                acc.setCardUserName(node.get("cardusername").asText());
-            }
-
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -119,7 +139,7 @@ public class AccountController {
         accountRepository.save(acc);
         model.addAttribute("account", acc);
 
-        return "account";
+        return new ResponseEntity<>("success", HttpStatus.OK);
     }
 
 
@@ -139,11 +159,13 @@ public class AccountController {
             if (ipAddress.equals(token.getIpAddress())) {
                 acc = AuthTokens.retrieveWithSessionToken(authTokensRepository, sessionToken);
             } else { //connected with different ip address, force to sign in again
+                System.out.println(ipAddress + " " + token.getIpAddress());
                 AuthTokens.deleteSessionToken(authTokensRepository, token.getToken()); //remove token
                 throw new AuthenticationException("Session token invalid");
             }
 
         } catch (Exception e) {
+            System.out.println(sessionToken);
             throw new AuthenticationException("Error retrieving account from token");
         }
 

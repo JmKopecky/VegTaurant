@@ -45,13 +45,14 @@ public class SignOnController {
             model.addAttribute("headerpicturelink", "/images/default-avatar-icon.jpg");
         }
 
-
+        System.out.println("returning signon");
         return "signon";
     }
 
 
     @PostMapping("/signon")
     public String accountSignOn(Model model, @RequestBody String data, HttpServletResponse response, HttpServletRequest request) throws TimeLimitExceededException {
+        System.out.println("SIGNONPOST");
         System.out.println(data);
 
         Account account;
@@ -117,6 +118,7 @@ public class SignOnController {
         cookie.setMaxAge(60*60);
         response.addCookie(cookie);
 
+        model.addAttribute("account", account);
         return "account";
     }
 

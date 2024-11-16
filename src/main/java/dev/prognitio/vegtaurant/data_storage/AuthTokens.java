@@ -62,6 +62,18 @@ public class AuthTokens {
     }
 
 
+    public static int deleteByAccount(AuthTokensRepository repository, Account acc) {
+        int removed = 0;
+        for (AuthTokens pToken : repository.findAll()) {
+            if (pToken.getAccount().equals(acc)) {
+                repository.delete(pToken);
+                removed++;
+            }
+        }
+        return removed;
+    }
+
+
     public static AuthTokens getBySessionToken(AuthTokensRepository repository, String sessionToken) {
         for (AuthTokens pToken : repository.findAll()) {
             if (pToken.getToken().equals(sessionToken)) {

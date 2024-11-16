@@ -197,7 +197,14 @@
         </div>
 
         <div class="setting-panel" style="display: none;" id="panel-delete">
-
+            <div id="setting-password-delete-container" class="setting-container">
+                <label id="setting-password-delete-label" class="label-setting">
+                    Password
+                </label>
+                <input type="text" id="setting-password-delete-input" autocomplete="password">
+            </div>
+            <h3 style="color: red;font-style:oblique;" id="password-delete-header">THIS ACTION CANNOT BE REVERSED</h3>
+            <button onclick="deleteAccount();">Delete Account</button>
         </div>
     </div>
 </div>

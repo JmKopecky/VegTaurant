@@ -245,3 +245,39 @@ function updateBillingSettings() {
         });
     }
 }
+
+
+function deleteAccount() {
+    let password = document.getElementById("setting-password-delete-input");
+
+    let shouldSignUp = true;
+    if (password.value === "") {
+        shouldSignUp = false;
+        password.style.color = "#ff0000";
+    } else {
+        password.style.color = "#EEEEEE";
+    }
+
+    if (shouldSignUp) {
+        fetch("/account", {
+            method: "POST",
+            body: JSON.stringify({
+                "delete": true,
+                "password": password.value
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then((r) => {
+            r.text().then(data => {
+                if (data === "password") {
+                    document.getElementById("setting-password-delete-input").value = "Incorrect Password";
+                } else if (data.includes("redirect")) {
+                    window.location.href = window.location.origin + "/" + data.split("_")[1];
+                }
+
+            })
+
+        });
+    }
+}
