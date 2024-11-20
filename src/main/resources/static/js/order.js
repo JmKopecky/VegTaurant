@@ -147,3 +147,26 @@ function finalizeOrder() {
 function registerAnimations() {
 
 }
+
+
+function generalRating(caller) {
+    let rating = genericRatingProcessor(caller);
+    caller.parentElement.setAttribute("data-chosenrating", "" + rating);
+}
+
+
+function genericRatingProcessor(caller) {
+    let rating = parseInt(caller.getAttribute("data-rating"));
+
+    for (const star of caller.parentElement.children) {
+        if (parseInt(star.getAttribute("data-rating")) <= rating) {
+            //select
+            star.classList.add("rate-selected");
+        } else {
+            //deselect
+            star.classList.remove("rate-selected");
+        }
+    }
+
+    return rating;
+}

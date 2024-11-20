@@ -15,11 +15,11 @@
   flex-flow: column;
   transition: background 1s ease-in-out;
 
-  @import 'account/toggle-signon';
+  @import 'signon/toggle-signon';
 
-  @import 'account/signon-container';
+  @import 'signon/signon-container';
 
-  @import 'account/signon-extra-container';
+  @import 'signon/signon-extra-container';
 }
 
 #signon-content.darkmode {

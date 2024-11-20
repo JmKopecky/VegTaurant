@@ -5,14 +5,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.prognitio.vegtaurant.VegtaurantApplication;
 import dev.prognitio.vegtaurant.data_storage.*;
 import dev.prognitio.vegtaurant.data_storage.MenuItem;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.naming.AuthenticationException;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,18 +27,31 @@ public class MenuController {
     private final MenuCategoryRepository menuCategoryRepository;
     private final AccountRepository accountRepository;
     private final FeaturedItemRepository featuredItemRepository;
+    private final AuthTokensRepository authTokensRepository;
 
-    public MenuController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository, FeaturedItemRepository featuredItemRepository) {
+    public MenuController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository, FeaturedItemRepository featuredItemRepository, AuthTokensRepository authTokensRepository) {
         //if encountering errors, make sure to drop both tables first.
         this.menuItemRepository = menuItemRepository;
         this.menuCategoryRepository = menuCategoryRepository;
         this.accountRepository = accountRepository;
         this.featuredItemRepository = featuredItemRepository;
+        this.authTokensRepository = authTokensRepository;
     }
 
 
     @GetMapping("/menu")
-    public String home(Model model) {
+    public String home(Model model, HttpServletRequest request, @CookieValue(value = "sessiontoken", defaultValue = "null") String sessionToken) {
+
+
+        Account acc;
+
+        try {
+            acc = AccountController.retrieveAccountFromToken(sessionToken, request.getRemoteAddr(), authTokensRepository);
+            model.addAttribute("headerpicturelink", acc.getImageUrl());
+        } catch (AuthenticationException e) {
+            model.addAttribute("headerpicturelink", "/images/default-avatar-icon.jpg");
+        }
+
         
         ArrayList<MenuCategory> menuCategories = (ArrayList<MenuCategory>) menuCategoryRepository.findAll();
         model.addAttribute("menuCategories", menuCategories);

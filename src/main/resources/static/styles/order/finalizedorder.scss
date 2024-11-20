@@ -1,10 +1,19 @@
 #finalize-order-container {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: start;
+  gap: 5vh;
+}
+
+#final-order-info-display {
   display: flex;
   flex-flow: column;
   justify-content: center;
   gap: 5vh;
   align-items: center;
-  height: 100vh;
+  height: 60vh;
   div {
     display: flex;
     flex-flow: row;
@@ -13,3 +22,44 @@
     align-items: center;
   }
 }
+
+
+.rating-container {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  .rate-star-icon {
+    font-size: 1em;
+    color: darken($accent, 15%);
+    transition: color 0.5s;
+  }
+  .rate-star-icon.rate-selected {
+    color: $accent;
+  }
+}
+
+
+#general-rating-panel {
+  min-height: 20vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+}
+
+
+#order-review-panel {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 2vh;B
+  .fa-arrow-down {
+    color: $accent;
+    font-size: 2em;
+  }
+}
+
