@@ -415,19 +415,61 @@ body {
   text-align: center;
 }
 #site-content #finalize-order-container {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: start;
+  gap: 5vh;
+}
+#site-content #final-order-info-display {
   display: flex;
   flex-flow: column;
   justify-content: center;
   gap: 5vh;
   align-items: center;
-  height: 100vh;
+  height: 60vh;
 }
-#site-content #finalize-order-container div {
+#site-content #final-order-info-display div {
   display: flex;
   flex-flow: row;
   gap: 5vw;
   justify-content: center;
   align-items: center;
+}
+#site-content .rating-container {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+#site-content .rating-container .rate-star-icon {
+  font-size: 1em;
+  color: #006c20;
+  transition: color 0.5s;
+}
+#site-content .rating-container .rate-star-icon.rate-selected {
+  color: #00B837;
+}
+#site-content #general-rating-panel {
+  min-height: 20vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+}
+#site-content #order-review-panel {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 2vh;
+}
+#site-content #order-review-panel B .fa-arrow-down {
+  color: #00B837;
+  font-size: 2em;
 }
 
 /*# sourceMappingURL=order.css.map */

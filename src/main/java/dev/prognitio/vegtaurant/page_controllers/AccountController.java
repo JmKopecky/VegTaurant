@@ -90,6 +90,13 @@ public class AccountController {
                     model.addAttribute("account", acc);
                     return new ResponseEntity<>("password", HttpStatus.OK);
                 }
+
+            } else if (node.has("changepw") && node.get("changepw").asBoolean()) {
+                String newPw = node.get("password").asText();
+                acc.setPassword(newPw);
+                accountRepository.save(acc);
+                return new ResponseEntity<>("pw_change_success", HttpStatus.OK);
+
             } else {
                 if (node.has("name")) {
                     acc.setName(node.get("name").asText());

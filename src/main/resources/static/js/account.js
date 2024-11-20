@@ -121,16 +121,7 @@ function updateAccountSettings() {
                 "Content-type": "application/json; charset=UTF-8"
             }
         }).then(() => {
-            document.getElementById("indicator-overlay").style.display = "flex";
-            document.getElementById("indicator-duration").style.width = "0%";
-            gsap.to(document.getElementById("indicator-duration"), {
-                width: "100%",
-                ease: "none",
-                duration: 1.5
-            });
-            setTimeout(() => {
-                document.getElementById("indicator-overlay").style.display = "none";
-            }, 1500);
+            showMessage('Success!');
         });
     }
 }
@@ -149,71 +140,71 @@ function updateBillingSettings() {
     let cardexpdate = document.getElementById("setting-cardexpdate-input");
     let cardsecuritycode = document.getElementById("setting-cardsecuritycode-input");
 
-    let shouldSignUp = true;
+    let shouldModify = true;
 
     if (address.value === "") {
-        shouldSignUp = false;
+        shouldModify = false;
         address.style.color = "#ff0000";
     } else {
         address.style.color = "#EEEEEE";
     }
     if (city.value === "") {
-        shouldSignUp = false;
+        shouldModify = false;
         city.style.color = "#ff0000";
     } else {
         city.style.color = "#EEEEEE";
     }
     if (zip.value === "") {
-        shouldSignUp = false;
+        shouldModify = false;
         zip.style.color = "#ff0000";
     } else {
         zip.style.color = "#EEEEEE";
     }
     if (state.value === "") {
-        shouldSignUp = false;
+        shouldModify = false;
         state.style.color = "#ff0000";
     } else {
         state.style.color = "#EEEEEE";
     }
     if (country.value === "") {
-        shouldSignUp = false;
+        shouldModify = false;
         country.style.color = "#ff0000";
     } else {
         country.style.color = "#EEEEEE";
     }
     if (phone.value === "") {
-        shouldSignUp = false;
+        shouldModify = false;
         phone.style.color = "#ff0000";
     } else {
         phone.style.color = "#EEEEEE";
     }
     if (cardnum.value === "") {
-        shouldSignUp = false;
+        shouldModify = false;
         cardnum.style.color = "#ff0000";
     } else {
         cardnum.style.color = "#EEEEEE";
     }
     if (cardusername.value === "") {
-        shouldSignUp = false;
+        shouldModify = false;
         cardusername.style.color = "#ff0000";
     } else {
         cardusername.style.color = "#EEEEEE";
     }
     if (cardexpdate.value === "") {
-        shouldSignUp = false;
+        shouldModify = false;
         cardexpdate.style.color = "#ff0000";
     } else {
         cardexpdate.style.color = "#EEEEEE";
     }
     if (cardsecuritycode.value === "") {
-        shouldSignUp = false;
+        shouldModify = false;
         cardsecuritycode.style.color = "#ff0000";
     } else {
         cardsecuritycode.style.color = "#EEEEEE";
     }
 
 
-    if (shouldSignUp) {
+    if (shouldModify) {
         fetch("/account", {
             method: "POST",
             body: JSON.stringify({
@@ -232,16 +223,7 @@ function updateBillingSettings() {
                 "Content-type": "application/json; charset=UTF-8"
             }
         }).then(() => {
-            document.getElementById("indicator-overlay").style.display = "flex";
-            document.getElementById("indicator-duration").style.width = "0%";
-            gsap.to(document.getElementById("indicator-duration"), {
-                width: "100%",
-                ease: "none",
-                duration: 1.5
-            });
-            setTimeout(() => {
-                document.getElementById("indicator-overlay").style.display = "none";
-            }, 1500);
+            showMessage("Success!");
         });
     }
 }
@@ -275,9 +257,53 @@ function deleteAccount() {
                 } else if (data.includes("redirect")) {
                     window.location.href = window.location.origin + "/" + data.split("_")[1];
                 }
-
             })
-
         });
     }
+}
+
+
+function newPassword() {
+    let pw1 = document.getElementById("setting-password-new-input");
+    let pw2 = document.getElementById("setting-password-confirm-input");
+
+    if (pw1.value === pw2.value) {
+        fetch("/account", {
+            method: "POST",
+            body: JSON.stringify({
+                "changepw": true,
+                "password": pw1.value
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then((r) => {
+            r.text().then(data => {
+                if (data === "pw_change_success") {
+                    showMessage("Success!");
+                } else {
+                    showMessage("Failed To Change Password.");
+                }
+                pw2.style.color = pw1.style.color;
+            })
+        });
+    } else {
+        pw2.style.color = 'red';
+        showMessage('Passwords Must Match!');
+    }
+}
+
+
+function showMessage(message) {
+    document.getElementById("indicator-content").textContent = message;
+    document.getElementById("indicator-overlay").style.display = "flex";
+    document.getElementById("indicator-duration").style.width = "0%";
+    gsap.to(document.getElementById("indicator-duration"), {
+        width: "100%",
+        ease: "none",
+        duration: 1.5
+    });
+    setTimeout(() => {
+        document.getElementById("indicator-overlay").style.display = "none";
+    }, 1500);
 }

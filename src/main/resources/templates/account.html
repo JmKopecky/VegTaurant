@@ -42,7 +42,7 @@
     <div id="indicator-duration">
 
     </div>
-    <h1>Success!</h1>
+    <h1 id="indicator-content">Success!</h1>
 </div>
 
 
@@ -176,9 +176,11 @@
             <button onclick="updateBillingSettings()">Edit</button>
         </div>
 
+        <!--
         <div class="setting-panel" style="display: none;" id="panel-rewards">
-
+            TODO: Rewards System
         </div>
+        -->
 
         <div class="setting-panel" style="display: none;" id="panel-reviews">
             <div id="rating-scrollable">
@@ -193,7 +195,20 @@
         </div>
 
         <div class="setting-panel" style="display: none;" id="panel-new">
-
+            <div id="setting-password-new-container" class="setting-container">
+                <label id="setting-password-new-label" class="label-setting">
+                    New Password
+                </label>
+                <input type="password" id="setting-password-new-input" autocomplete="password">
+            </div>
+            <div id="setting-password-confirm-container" class="setting-container">
+                <label id="setting-password-confirm-label" class="label-setting">
+                    Confirm Password
+                </label>
+                <input type="password" id="setting-password-confirm-input" autocomplete="password">
+            </div>
+            <!-- TODO 2FA Verification -->
+            <button onclick="newPassword();">Change Password</button>
         </div>
 
         <div class="setting-panel" style="display: none;" id="panel-delete">
@@ -201,7 +216,7 @@
                 <label id="setting-password-delete-label" class="label-setting">
                     Password
                 </label>
-                <input type="text" id="setting-password-delete-input" autocomplete="password">
+                <input type="password" id="setting-password-delete-input" autocomplete="password">
             </div>
             <h3 style="color: red;font-style:oblique;" id="password-delete-header">THIS ACTION CANNOT BE REVERSED</h3>
             <button onclick="deleteAccount();">Delete Account</button>
