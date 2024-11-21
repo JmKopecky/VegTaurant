@@ -71,6 +71,20 @@ public class RatingsController {
                     }
                     productRatingRepository.save(rating);
 
+                    int totalRatings = 0;
+                    double average = 0;
+                    for (ProductRating r : productRatingRepository.findAll()) {
+                        if (r.getProduct().equals(toAdd)) {
+                            totalRatings++;
+                            average += r.getRating();
+                        }
+                    }
+                    if (totalRatings != 0 && average != 0) {
+                        average /= totalRatings;
+                        toAdd.setAveragerating(average);
+                        toAdd.setTotalratings(totalRatings);
+                        menuItemRepository.save(toAdd);
+                    }
                 }
             }
 
