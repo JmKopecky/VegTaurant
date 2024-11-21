@@ -19,12 +19,12 @@ public class PlaceOrderController {
 
     private final RestaurantLocationRepository locationRepository;
     private final AuthTokensRepository authTokensRepository;
-    private final OrderRepository orderRepository;
+    private final PlacedOrderRepository placedOrderRepository;
 
-    public PlaceOrderController(RestaurantLocationRepository locationRepository, AuthTokensRepository authTokensRepository, OrderRepository orderRepository) {
+    public PlaceOrderController(RestaurantLocationRepository locationRepository, AuthTokensRepository authTokensRepository, PlacedOrderRepository placedOrderRepository) {
         this.locationRepository = locationRepository;
         this.authTokensRepository = authTokensRepository;
-        this.orderRepository = orderRepository;
+        this.placedOrderRepository = placedOrderRepository;
     }
 
 
@@ -67,7 +67,7 @@ public class PlaceOrderController {
         order.setCartString(data.substring(data.indexOf("_")));
         order.setOrderDate(LocalDateTime.now());
         order.setEstimatedDeliveryTime(Integer.parseInt(data.substring(0, data.indexOf("_"))));
-        orderRepository.save(order);
+        placedOrderRepository.save(order);
 
         System.out.println(data);
 

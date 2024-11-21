@@ -166,7 +166,7 @@
             <div><h5>Estimated Time To Completion:</h5><h5 id="time-completion-estimate">10 Minutes</h5></div>
         </div>
         <div id="general-rating-panel">
-            <h4>Rate Your Experience</h4>
+            <h4 id="rating-order-header">Rate Your Experience</h4>
             <div id="gen-rating-selection" class="rating-container" data-chosenrating="null">
                 <i class="fa-solid fa-star rate-star-icon" data-rating="1" onclick="generalRating(this);"></i>
                 <i class="fa-solid fa-star rate-star-icon" data-rating="2" onclick="generalRating(this);"></i>
@@ -177,7 +177,10 @@
         </div>
         <div id="order-review-panel" th:if="${!account.equals('noaccount')}">
             <i class="fa-solid fa-arrow-down fa-beat"></i>
-            <button>Send Feedback</button>
+            <div id="order-items-review-container">
+
+            </div>
+            <button onclick="submitFeedback()">Send Feedback</button>
         </div>
     </div>
 </div>

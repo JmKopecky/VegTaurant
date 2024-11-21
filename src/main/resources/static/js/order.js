@@ -26,6 +26,8 @@ function headerButtonClick() {
 document.addEventListener("DOMContentLoaded", (event) => {
     registerAnimations();
 
+    populateItemsForReview();
+
     if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") {
         window.location.replace(window.location.origin + "/menu");
     }
@@ -169,4 +171,108 @@ function genericRatingProcessor(caller) {
     }
 
     return rating;
+}
+
+
+function populateItemsForReview() {
+
+    console.log("HI");
+
+    if (document.getElementById("order-review-panel") === null) {
+        return;
+    }
+
+    if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") {
+        return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    const targetHolder = document.getElementById("order-items-review-container");
+    for (const item of cart) {
+        let label = item["label"];
+        const itemContainer = document.createElement("div");
+        itemContainer.classList.add("order-review-tile");
+
+        const labelContainer =  document.createElement("h3");
+        labelContainer.textContent = label;
+        labelContainer.classList.add("order-review-label");
+        itemContainer.appendChild(labelContainer);
+
+        //rating icons
+        const iconContainer = document.createElement("div");
+        iconContainer.classList.add("rating-container");
+        itemContainer.appendChild(iconContainer);
+        for (let i = 1; i <= 5; i++) {
+            const icon = document.createElement("i");
+            iconContainer.appendChild(icon);
+            icon.classList.add("fa-solid");icon.classList.add("fa-star");icon.classList.add("rate-star-icon");
+            icon.setAttribute("data-rating", "" + i);
+            icon.onclick = () => {
+                generalRating(icon);
+            };
+        }
+
+        //input area for the rating
+        const inputArea = document.createElement("input");
+        itemContainer.appendChild(inputArea);
+        inputArea.type = "text";
+        inputArea.classList.add("order-item-rating-input");
+        inputArea.placeholder = "Short review of the item";
+
+        targetHolder.appendChild(itemContainer);
+    }
+}
+
+
+function submitFeedback() {
+
+    let batchRatings = [];
+
+    for (const tile of document.getElementsByClassName("order-review-tile")) {
+        let itemName = tile.getElementsByTagName("h3")[0].textContent;
+        let ratingStr = tile.getElementsByClassName("rating-container")[0].getAttribute("data-chosenrating");
+        let message = tile.getElementsByClassName("order-item-rating-input")[0].value;
+        let rating;
+        try {
+            rating = parseInt(ratingStr);
+        } catch (e) {
+            continue;
+        }
+        if (rating > 5 || rating < 1) {
+            continue;
+        }
+        if (message === "") {
+            continue;
+        }
+        //valid rating, send to server.
+        let toAdd = {
+            "name": itemName,
+            "value": rating,
+            "message": message
+        }
+        batchRatings.push(toAdd);
+    }
+
+    console.log(batchRatings);
+
+
+    if (batchRatings.length !== 0) {
+        fetch("/addratings", {
+            method: "POST",
+            body: JSON.stringify({
+                "ratings": true,
+                "batchedratings": JSON.stringify(batchRatings)
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then((r) => {
+            r.text().then(data => {
+                console.log(data);
+                document.getElementById("rating-order-header").textContent = "Your Feedback is Appreciated!";
+            })
+        });
+    }
+
+
 }

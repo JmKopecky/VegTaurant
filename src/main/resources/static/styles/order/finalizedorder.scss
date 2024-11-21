@@ -56,10 +56,50 @@
   flex-flow: column;
   align-items: center;
   justify-content: space-evenly;
-  gap: 2vh;B
+  gap: 2vh;
+  padding-bottom: 5vh;
+  width: 100%;
   .fa-arrow-down {
     color: $accent;
     font-size: 2em;
+    margin-bottom: 5vh;
+  }
+
+  #order-items-review-container {
+    width: 100%;
+    .order-review-tile {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 90%;
+      padding: 2vh 5%;
+      position: relative;
+
+      .order-review-label, .rating-container, .order-item-rating-input {
+        flex: 1 1 0px;
+        text-align: center;
+      }
+      .order-item-rating-input {
+        background: $secondary;
+        border: 1px solid $accent;
+        border-radius: 1em;
+        padding: 0.25em;
+      }
+      .order-item-rating-input::placeholder {
+        color: $primary;
+      }
+    }
+    .order-review-tile::after {
+      width: 70%;
+      height: 0.1px;
+      background: darken($primary, 20%);
+      content: "";
+      display: block;
+      position: absolute;
+      left: 15%;
+      bottom: 0;
+    }
   }
 }
 
