@@ -31,21 +31,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     document.getElementById("signon-switch-label").addEventListener("change", () => {
         let state = document.getElementById("signon-switch-label").children[0].checked;
-        if (state) { //sign in mode
-            setTimeout(() => {
-                document.getElementById("signon-header").textContent = "Sign In";
-                document.getElementById("signon-text").textContent = "Sign in to your account to dramatically improve your shopping experience with us!";
-                document.getElementById("signon-button").textContent = "Sign In";
-                document.getElementById("signon-password-input").setAttribute("autocomplete", "current-password");
-            }, 250);
-
-        } else { //sign up mode
+        if (state) { //sign up mode
 
             setTimeout(() => {
                 document.getElementById("signon-header").textContent = "Sign Up With Us!";
                 document.getElementById("signon-text").textContent = "Creating an account with us allows you to earn rewards, create meal plans, and streamline future orders!";
                 document.getElementById("signon-button").textContent = "Sign Up";
                 document.getElementById("signon-password-input").setAttribute("autocomplete", "new-password");
+            }, 250);
+
+        } else { //sign in mode
+
+            setTimeout(() => {
+                document.getElementById("signon-header").textContent = "Sign In";
+                document.getElementById("signon-text").textContent = "Sign in to your account to dramatically improve your shopping experience with us!";
+                document.getElementById("signon-button").textContent = "Sign In";
+                document.getElementById("signon-password-input").setAttribute("autocomplete", "current-password");
             }, 250);
         }
         /*
@@ -77,7 +78,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         let pwPresent = document.getElementById("signon-password-input").value !== "";
 
         if (namePresent && emailPresent && pwPresent) {
-            if (document.getElementById("signon-switch-label").children[0].checked) { //sign in
+            if (!document.getElementById("signon-switch-label").children[0].checked) { //sign in
                 fetch("/signon", {
                     method: "POST",
                     body: JSON.stringify({

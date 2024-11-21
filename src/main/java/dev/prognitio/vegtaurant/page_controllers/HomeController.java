@@ -4,14 +4,12 @@ import dev.prognitio.vegtaurant.VegtaurantApplication;
 import dev.prognitio.vegtaurant.data_storage.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.naming.AuthenticationException;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.*;
 
 @Controller
@@ -24,10 +22,10 @@ public class HomeController {
     private final FeaturedItemRepository featuredItemRepository;
     private final ProductRatingRepository productRatingRepository;
     private final RestaurantLocationRepository restaurantLocationRepository;
-    private final OrderRepository orderRepository;
+    private final PlacedOrderRepository placedOrderRepository;
     private final AuthTokensRepository authTokensRepository;
 
-    public HomeController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, RestaurantLocationRepository restaurantLocationRepository, OrderRepository orderRepository, AuthTokensRepository authTokensRepository) {
+    public HomeController(MenuItemRepository menuItemRepository, MenuCategoryRepository menuCategoryRepository, AccountRepository accountRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, RestaurantLocationRepository restaurantLocationRepository, PlacedOrderRepository placedOrderRepository, AuthTokensRepository authTokensRepository) {
         //if encountering errors, make sure to drop both tables first.
         this.menuItemRepository = menuItemRepository;
         this.menuCategoryRepository = menuCategoryRepository;
@@ -35,9 +33,9 @@ public class HomeController {
         this.featuredItemRepository = featuredItemRepository;
         this.productRatingRepository = productRatingRepository;
         this.restaurantLocationRepository = restaurantLocationRepository;
-        this.orderRepository = orderRepository;
+        this.placedOrderRepository = placedOrderRepository;
         this.authTokensRepository = authTokensRepository;
-        VegtaurantApplication.doDatabaseTestCase(menuCategoryRepository, menuItemRepository, featuredItemRepository, productRatingRepository, accountRepository, restaurantLocationRepository, orderRepository);
+        VegtaurantApplication.doDatabaseTestCase(menuCategoryRepository, menuItemRepository, featuredItemRepository, productRatingRepository, accountRepository, restaurantLocationRepository, placedOrderRepository);
     }
 
 

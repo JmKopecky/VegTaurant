@@ -466,10 +466,48 @@ body {
   align-items: center;
   justify-content: space-evenly;
   gap: 2vh;
+  padding-bottom: 5vh;
+  width: 100%;
 }
-#site-content #order-review-panel B .fa-arrow-down {
+#site-content #order-review-panel .fa-arrow-down {
   color: #00B837;
   font-size: 2em;
+  margin-bottom: 5vh;
+}
+#site-content #order-review-panel #order-items-review-container {
+  width: 100%;
+}
+#site-content #order-review-panel #order-items-review-container .order-review-tile {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90%;
+  padding: 2vh 5%;
+  position: relative;
+}
+#site-content #order-review-panel #order-items-review-container .order-review-tile .order-review-label, #site-content #order-review-panel #order-items-review-container .order-review-tile .rating-container, #site-content #order-review-panel #order-items-review-container .order-review-tile .order-item-rating-input {
+  flex: 1 1 0px;
+  text-align: center;
+}
+#site-content #order-review-panel #order-items-review-container .order-review-tile .order-item-rating-input {
+  background: #111111;
+  border: 1px solid #00B837;
+  border-radius: 1em;
+  padding: 0.25em;
+}
+#site-content #order-review-panel #order-items-review-container .order-review-tile .order-item-rating-input::placeholder {
+  color: #EEEEEE;
+}
+#site-content #order-review-panel #order-items-review-container .order-review-tile::after {
+  width: 70%;
+  height: 0.1px;
+  background: #bbbbbb;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 15%;
+  bottom: 0;
 }
 
 /*# sourceMappingURL=order.css.map */

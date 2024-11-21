@@ -12,7 +12,7 @@ public class VegtaurantApplication {
 	}
 
 
-	public static void doDatabaseTestCase(MenuCategoryRepository menuCategoryRepository, MenuItemRepository menuItemRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, AccountRepository accountRepository, RestaurantLocationRepository restaurantLocationRepository, OrderRepository orderRepository) { //TODO delete before completion
+	public static void doDatabaseTestCase(MenuCategoryRepository menuCategoryRepository, MenuItemRepository menuItemRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, AccountRepository accountRepository, RestaurantLocationRepository restaurantLocationRepository, PlacedOrderRepository placedOrderRepository) { //TODO delete before completion
 
 		MenuCategory breakfast = new MenuCategory();
 		breakfast.setTitle("Breakfast");

@@ -56,10 +56,10 @@
             <i class="fa-solid fa-money-bill"></i>
             <p>Billing</p>
         </div>
-        <div class="account-nav-listing" onclick="setAccountPage('Rewards');">
+        <!--<div class="account-nav-listing" onclick="setAccountPage('Rewards');">
             <i class="fa-solid fa-star"></i>
             <p>Rewards</p>
-        </div>
+        </div>TODO: Rewards-->
         <div class="account-nav-listing" onclick="setAccountPage('Reviews');">
             <i class="fa-solid fa-comment"></i>
             <p>Reviews</p>
@@ -187,7 +187,7 @@
                 <div class="rating-tile" th:each="rating:${ratings}">
                     <div class="rating-info-left">
                         <h3 class="rating-item-title" th:text="${rating.getProduct().getLabel()}"></h3>
-                        <p class="rating-score" th:text="${rating.getRating()}/5"></p>
+                        <h2 class="rating-score" th:text="${rating.getRating()} + '/5'"></h2>
                     </div>
                     <p class="rating-message" th:text="${rating.getMessage()}"></p>
                 </div>
