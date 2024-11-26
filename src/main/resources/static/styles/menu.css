@@ -81,6 +81,10 @@ a.link-hover:hover::after {
   width: 100%;
 }
 
+li::marker {
+  color: #EEEEEE;
+}
+
 button {
   width: fit-content;
   text-align: center;
@@ -257,7 +261,7 @@ body {
   width: 50vw;
   height: 70vh;
   position: relative;
-  background: #1e1e1e;
+  background: rgb(29.75, 29.75, 29.75);
   border-radius: 2em;
   z-index: 5;
   display: flex;
@@ -313,7 +317,7 @@ body {
   padding-left: 1em;
   padding-right: 1em;
   height: 10vh;
-  background: #191919;
+  background: rgb(24.65, 24.65, 24.65);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -364,7 +368,7 @@ body {
   aspect-ratio: 2/3;
   width: 18vw;
   border-radius: 1em;
-  background: #1b1b1b;
+  background: rgb(27.2, 27.2, 27.2);
   display: flex;
   flex-flow: column;
   justify-content: center;

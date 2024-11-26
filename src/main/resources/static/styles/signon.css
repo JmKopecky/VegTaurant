@@ -81,6 +81,10 @@ a.link-hover:hover::after {
   width: 100%;
 }
 
+li::marker {
+  color: #EEEEEE;
+}
+
 button {
   width: fit-content;
   text-align: center;
@@ -259,7 +263,7 @@ body {
   gap: 5vw;
   align-items: center;
   padding: 1em;
-  background: #2b2b2b;
+  background: rgb(42.5, 42.5, 42.5);
   border-radius: 1em;
 }
 #signon-content #toggle-signon-mode #signon-switch-label {
@@ -280,7 +284,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #008528;
+  background-color: rgb(0, 133, 39.7554347826);
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 2em;
@@ -298,7 +302,7 @@ body {
   border-radius: 50%;
 }
 #signon-content #toggle-signon-mode input:checked + #signon-switch {
-  background-color: #00eb46;
+  background-color: rgb(0, 235, 70.2445652174);
 }
 #signon-content #toggle-signon-mode input:focus + #signon-switch {
   box-shadow: 0 0 0.01em #EEEEEE;
@@ -316,7 +320,7 @@ body {
   flex-flow: column;
   align-items: center;
   padding: 1em;
-  background: #2b2b2b;
+  background: rgb(42.5, 42.5, 42.5);
   border-radius: 1em;
 }
 #signon-content #signon-container p {
@@ -337,7 +341,7 @@ body {
   position: relative;
 }
 #signon-content #signon-container .signon-container .label-signon {
-  background: #2b2b2b;
+  background: rgb(42.5, 42.5, 42.5);
   width: fit-content;
   position: absolute;
   top: -0.3em;
@@ -366,7 +370,7 @@ body {
   flex-flow: column;
   align-items: center;
   padding: 1em;
-  background: #2b2b2b;
+  background: rgb(42.5, 42.5, 42.5);
   border-radius: 1em;
   overflow: scroll;
 }
@@ -392,7 +396,7 @@ body {
   position: relative;
 }
 #signon-content #extra-info-container .signon-container .label-signon {
-  background: #2b2b2b;
+  background: rgb(42.5, 42.5, 42.5);
   width: fit-content;
   position: absolute;
   top: -0.3em;
@@ -418,13 +422,13 @@ body {
   background: #111111;
 }
 #signon-content.darkmode #toggle-signon-mode {
-  background: #2b2b2b;
+  background: rgb(42.5, 42.5, 42.5);
 }
 #signon-content.darkmode #toggle-signon-mode h3 {
   color: #111111;
 }
 #signon-content.darkmode #signon-container {
-  background: #2b2b2b;
+  background: rgb(42.5, 42.5, 42.5);
 }
 
 /*# sourceMappingURL=signon.css.map */

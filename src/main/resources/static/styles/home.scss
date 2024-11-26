@@ -3,13 +3,14 @@
 
 
 #site-content {
-
+  display: flex;
+  align-items: center;
+  flex-flow: column;
   @import 'home/hero';
   @import 'home/item-promo';
   @import 'home/current-featured';
   @import 'home/discount-promo';
   @import 'home/top-ratings-display';
-  @import 'home/location-container';
   @import 'home/member-benefit-promo';
   @import 'home/approaches-container';
   @import 'home/collaborate-container';

@@ -81,6 +81,10 @@ a.link-hover:hover::after {
   width: 100%;
 }
 
+li::marker {
+  color: #EEEEEE;
+}
+
 button {
   width: fit-content;
   text-align: center;
@@ -274,7 +278,7 @@ body {
 #site-content #account-menu-nav {
   flex-grow: 1;
   height: 100%;
-  background: #1e1e1e;
+  background: rgb(29.75, 29.75, 29.75);
   border-radius: 1em;
   display: flex;
   flex-flow: column;
@@ -319,7 +323,7 @@ body {
 #site-content #account-setting-panels {
   flex-grow: 6;
   height: 100%;
-  background: #1e1e1e;
+  background: rgb(29.75, 29.75, 29.75);
   border-radius: 1em;
   margin-right: 6vw;
   position: relative;
@@ -350,7 +354,7 @@ body {
   position: relative;
 }
 #site-content #account-setting-panels .setting-container .label-setting {
-  background: #1e1e1e;
+  background: rgb(29.75, 29.75, 29.75);
   width: fit-content;
   position: absolute;
   top: -0.3em;

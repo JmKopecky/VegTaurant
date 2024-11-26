@@ -1,7 +1,7 @@
 #item-promo {
   width: 100%;
   overflow: hidden;
-  height: 60vh;
+  min-height: 60vh;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -55,27 +55,33 @@
         .top-rated-item-tile {
           width: 20.25vw;
           height: 90%;
-          background: darken($secondary, 0.1);
+          background: darken($secondary, 2%);
           border-radius: 1em;
           position: relative;
           .top-rated-item-tile-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
             z-index: 2;
-            background: transparentize($secondary, 0.2);
             display: flex;
             flex-flow: column;
             align-items: center;
-            justify-content: center;
+            justify-content: space-evenly;
             gap: 2%;
             padding: 5%;
             h5 {
               width: 100%;
+              flex-grow: 1;
               overflow-wrap: anywhere;
               text-align: center;
+            }
+            .item-promo-image-container {
+              flex-grow: 2;
+              flex-shrink: 1;
+              aspect-ratio: 1/1;
+              max-width: 100%;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
             }
             .top-rated-item-tile-body {
               flex: 1;
@@ -89,18 +95,9 @@
                 text-align: center;
               }
             }
-          }
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-            border-radius: 1em;
+            .item-promo-button {
+              transform: scale(0.75);
+            }
           }
         }
       }

@@ -81,6 +81,10 @@ a.link-hover:hover::after {
   width: 100%;
 }
 
+li::marker {
+  color: #EEEEEE;
+}
+
 button {
   width: fit-content;
   text-align: center;

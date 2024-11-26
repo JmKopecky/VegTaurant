@@ -79,13 +79,15 @@ Requisite content:
                     <div class="top-rated-item-tile" th:each="itemTile:${tophalfmenuitems}">
                         <div class="top-rated-item-tile-content">
                             <h5 th:text="${itemTile.getLabel()}"></h5>
+                            <div class="item-promo-image-container">
+                                <img th:src="${itemTile.getIconUrl()}" alt="image of food item">
+                            </div>
                             <div class="top-rated-item-tile-body">
                                 <p class="top-rated-item-tile-desc" th:text="${itemTile.description}"></p>
                                 <p class="top-rated-item-tile-rating" th:text="|Rating: ${itemTile.getAveragerating()}/5 (${itemTile.getTotalratings()})|"></p>
                             </div>
-                            <button>Add to Cart</button>
+                            <button class="item-promo-button">Add to Cart</button>
                         </div>
-                        <img th:src="${itemTile.getIconUrl()}" alt="image of food item">
                     </div>
                 </div>
             </div>
@@ -97,14 +99,14 @@ Requisite content:
     <div id="current-featured">
         <!-- Designate the most unique menu item as the 'featured' item and show it off here. -->
         <div id="featured-overlay">
-            <h1 th:text="|Our Top Featured Item: ${featureditem.getLabel()}|"></h1>
+            <h2 th:text="|A Special Deal On ${featureditem.getLabel()}|"></h2>
+            <img id="featured-image" th:src="${featureditem.getIconUrl()}" alt="featured item background image.">
             <div>
                 <p th:text="${featureditem.getDeal().getMessage()}"></p>
                 <p th:text="|Get ${featureditem.getDeal().getDiscount()}${!featureditem.getDeal().isIsPercentageBased() ? '$' : ''}${featureditem.getDeal().isIsPercentageBased() ? '%' : ''} off on this ${'$'}${featureditem.getPrice()} item|"></p>
             </div>
             <button>Add to Cart</button>
         </div>
-        <img th:src="${featureditem.getIconUrl()}" alt="featured item background image.">
     </div>
 
 
@@ -126,27 +128,83 @@ Requisite content:
     </div>
 
 
-    <div id="location-container">
-        <!-- Show a map of all 'locations' set up -->
-        <h1>Locations</h1>
-    </div>
-
-
     <div id="member-benefit-promo">
         <!-- Promote creating an account and explain the benefits -->
-        <h1>Become a Member</h1>
+        <h1>Join Us</h1>
+        <p>An account allows you to save your billing information for convenience while ordering, leave reviews on items you liked or disliked, and even <strong>earn rewards!</strong></p>
+        <button>Create Account</button>
     </div>
 
 
     <div id="approaches-container">
-        <!-- Describe what extra facts a customer might not know that separates the company from anyone else -->
+        <!-- Describe what extra facts a customer might not know that separates the company from anyone else
+        Note: this is critical for the tsa rubric.
+        Design in a matrix of tiles, with an initial state only showing the title of that tile. On hover or click, shows the text description.
+        -->
         <h1>How Are We Different?</h1>
+
+        <div id="approaches-grid">
+
+            <div class="approaches-tile" data-approaches-tile-selected="false" onclick="">
+                <h3 class="approaches-tile-heading">Fast Food, Made Better</h3>
+                <p class="approaches-tile-content" style="display: none;">Lorem ipsum dolor sit amet.</p>
+            </div>
+
+            <div class="approaches-tile" data-approaches-tile-selected="false" onclick="">
+                <h3 class="approaches-tile-heading">Always Convenient</h3>
+                <p class="approaches-tile-content" style="display: none;">Lorem ipsum dolor sit amet.</p>
+            </div>
+
+            <div class="approaches-tile" data-approaches-tile-selected="false" onclick="">
+                <h3 class="approaches-tile-heading">Healthy First</h3>
+                <p class="approaches-tile-content" style="display: none;">Lorem ipsum dolor sit amet.</p>
+            </div>
+
+            <div class="approaches-tile" data-approaches-tile-selected="false" onclick="">
+                <h3 class="approaches-tile-heading">Farm Partnership</h3>
+                <p class="approaches-tile-content" style="display: none;">Lorem ipsum dolor sit amet.</p>
+            </div>
+
+            <div class="approaches-tile" data-approaches-tile-selected="false" onclick="">
+                <h3 class="approaches-tile-heading">Friendly Packaging</h3>
+                <p class="approaches-tile-content" style="display: none;">Lorem ipsum dolor sit amet.</p>
+            </div>
+
+            <div class="approaches-tile" data-approaches-tile-selected="false" onclick="">
+                <h3 class="approaches-tile-heading">Environmental Sustainability</h3>
+                <p class="approaches-tile-content" style="display: none;">Lorem ipsum dolor sit amet.</p>
+            </div>
+
+        </div>
     </div>
 
 
     <div id="collaborate-container">
         <!-- promote for people to join the team, either as a driver or otherwise -->
-        <h1>Join the Team</h1>
+        <h1>Work With Us</h1>
+        <div id="collaborate-info-container">
+            <div id="collaborate-info-text">
+                <p>
+                    Interested in joining a team of motivated and skilled colleagues, with competitive pay and no prior experience required? Join our team today and kickstart your career!
+                </p>
+                <div style="width:100%;">
+                    <p>
+                        We are hiring for a variety of roles:
+                    </p>
+                    <ul>
+                        <li><p>Cooking Staff</p></li>
+                        <li><p>Counter/Drive Attendants</p></li>
+                        <li><p>Delivery/Shipping Drivers</p></li>
+                    </ul>
+                </div>
+                <p style="text-align:center;font-size:1.1em;">
+                    Send your application to <strong>careers@condelu.jkopecky.dev</strong> today!
+                </p>
+            </div>
+            <div id="collaborate-info-image">
+                <img id="collaborate-image" src="/images/workersimage.jpg" alt="workers in a restaurant kitchen">
+            </div>
+        </div>
     </div>
 </div>
 

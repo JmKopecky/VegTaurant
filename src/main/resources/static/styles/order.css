@@ -81,6 +81,10 @@ a.link-hover:hover::after {
   width: 100%;
 }
 
+li::marker {
+  color: #EEEEEE;
+}
+
 button {
   width: fit-content;
   text-align: center;
@@ -446,7 +450,7 @@ body {
 }
 #site-content .rating-container .rate-star-icon {
   font-size: 1em;
-  color: #006c20;
+  color: rgb(0, 107.5, 32.1331521739);
   transition: color 0.5s;
 }
 #site-content .rating-container .rate-star-icon.rate-selected {
