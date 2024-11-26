@@ -9,8 +9,8 @@
 
   #approaches-grid {
     display: grid;
-    grid-template-columns: 30vw 30vw 30vw;
-    grid-template-rows: 30vw 30vw;
+    grid-template-columns: 20vw 20vw 20vw;
+    grid-template-rows: 20vw 20vw;
     grid-gap: 3vw;
     margin-top: 5vh;
   }
@@ -27,6 +27,11 @@
     align-items: center;
     width: 100%;
     text-align: center;
+    word-wrap: break-word;
+
+    .approaches-tile-heading {
+      font-size: 2em;
+    }
   }
 
 
