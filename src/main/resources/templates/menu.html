@@ -78,16 +78,25 @@
     </div>
 
     <div id="menu-categories-container">
-        <!-- Categories of all, breakfast, dinner, sides, drinks, desserts-->
-        <div class="menu-topic-tile" th:each="topicTile:${itemsByMenuTags.entrySet()}" th:category="${topicTile.getKey()}" onclick="setMenuCategory(this.getAttribute('category'));" th:id="|cattile_${topicTile.getKey()}|">
-            <h1 th:text="${topicTile.getKey()}"></h1>
+        <div id="menu-categories-accordion-header">
+            <h2 id="nav-accordion-header-label">All</h2>
+            <div id="nav-accordion-icon">
+                <i id="show-accordion-panel" class="fa-solid fa-plus" style="display:block" onclick="mobileNavAccordionClick('show');"></i>
+                <i id="hide-accordion-panel" class="fa-solid fa-minus" style="display:none" onclick="mobileNavAccordionClick('hide');"></i>
+            </div>
+        </div>
+        <div id="menu-accordion-panel">
+            <!-- Categories of all, breakfast, dinner, sides, drinks, desserts-->
+            <div class="menu-topic-tile" th:each="topicTile:${itemsByMenuTags.entrySet()}" th:category="${topicTile.getKey()}" onclick="setMenuCategory(this.getAttribute('category'));" th:id="|cattile_${topicTile.getKey()}|">
+                <h3 th:text="${topicTile.getKey()}"></h3>
+            </div>
         </div>
     </div>
 
     <div id="menu-items-container">
         <div class="menu-items" style="display: none;" th:each="category:${itemsByMenuTags.entrySet()}" th:id="|menucontainer_${category.getKey()}|">
             <div class="menu-item-tag" th:each="tag:${itemsByMenuTags.get(category.getKey())}">
-                <h2 class="menu-tag-name" th:text="${tag.getTagName()}"></h2>
+                <h4 class="menu-tag-name" th:text="${tag.getTagName()}"></h4>
                 <div class="tag-items">
                     <div class="menu-item" th:each="item:${tag.getMenuItems()}">
                         <div class="item-image-container">

@@ -1,12 +1,4 @@
-const lenis = new Lenis({
-    syncTouch: true,
-    duration: 1.5
-})
-function raf(time) {
-    lenis.raf(time)
-    requestAnimationFrame(raf)
-}
-requestAnimationFrame(raf)
+
 
 
 
@@ -23,8 +15,24 @@ function registerAnimations() {
 
 
 
+function mobileNavAccordionClick(mode) {
+    if (mode === 'show') {
+        document.getElementById("menu-accordion-panel").setAttribute("data-hide", "false");
+        document.getElementById("show-accordion-panel").style.display = "none";
+        document.getElementById("hide-accordion-panel").style.display = "block";
+    } else {
+        document.getElementById("menu-accordion-panel").setAttribute("data-hide", "true");
+        document.getElementById("show-accordion-panel").style.display = "block";
+        document.getElementById("hide-accordion-panel").style.display = "none";
+    }
+}
+
+
+
 
 function setMenuCategory(targetCategory) {
+    document.getElementById("nav-accordion-header-label").textContent = targetCategory;
+
     let targetContainer = document.getElementById("menucontainer_" + targetCategory);
     let clicked = document.getElementById("cattile_" + targetCategory);
 

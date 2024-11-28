@@ -22,18 +22,18 @@
         flex-flow: row;
         width: 100%;
         justify-content: space-evenly;
-        gap: 2vw;
-        row-gap: 2vw;
+        gap: 4vw;
         flex-wrap: wrap;
         .menu-item {
           aspect-ratio: 2/3;
-          width: 18vw;
           border-radius: 1em;
           background: lighten($secondary, 4%);
           display: flex;
           flex-flow: column;
           justify-content: center;
           align-items: center;
+          padding-left: 1em;
+          padding-right: 1em;
           .item-image-container {
             height: 45%;
             width: 90%;

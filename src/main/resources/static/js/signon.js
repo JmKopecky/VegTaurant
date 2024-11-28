@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener("DOMContentLoaded", (event) => {
     registerAnimations();
 

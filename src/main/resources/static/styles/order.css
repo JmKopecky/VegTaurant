@@ -503,7 +503,7 @@ body {
   gap: 5vh;
   padding-left: 5%;
   padding-right: 5%;
-  padding-top: 5vh;
+  padding-top: 10vh;
 }
 #site-content #final-order-info-display {
   display: flex;
