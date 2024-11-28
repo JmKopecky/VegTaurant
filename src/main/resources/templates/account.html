@@ -87,6 +87,43 @@
             <p>Delete Account</p>
         </div>
     </div>
+
+    <div id="account-menu-nav-accordion">
+        <div id="nav-accordion-header">
+            <h2 id="nav-accordion-header-label">Account</h2>
+            <div id="nav-accordion-icon">
+                <i id="show-accordion-panel" class="fa-solid fa-plus" style="display:block" onclick="mobileNavAccordionClick('show');"></i>
+                <i id="hide-accordion-panel" class="fa-solid fa-minus" style="display:none" onclick="mobileNavAccordionClick('hide');"></i>
+            </div>
+        </div>
+        <div id="nav-accordion-panel">
+            <div class="account-nav-listing selected" onclick="setAccountPage('Account');">
+                <i class="fa-solid fa-person"></i>
+                <p>Account</p>
+            </div>
+            <div class="account-nav-listing" onclick="setAccountPage('Billing');">
+                <i class="fa-solid fa-money-bill"></i>
+                <p>Billing</p>
+            </div>
+            <!--<div class="account-nav-listing" onclick="setAccountPage('Rewards');">
+                <i class="fa-solid fa-star"></i>
+                <p>Rewards</p>
+            </div>TODO: Rewards-->
+            <div class="account-nav-listing" onclick="setAccountPage('Reviews');">
+                <i class="fa-solid fa-comment"></i>
+                <p>Reviews</p>
+            </div>
+            <div class="account-nav-listing" onclick="setAccountPage('New Password');">
+                <i class="fa-solid fa-lock"></i>
+                <p>New Password</p>
+            </div>
+            <div class="account-nav-listing" onclick="setAccountPage('Delete Account');">
+                <i class="fa-solid fa-trash-can"></i>
+                <p>Delete Account</p>
+            </div>
+        </div>
+    </div>
+
     <div id="account-setting-panels">
 
         <div class="setting-panel" style="display: flex;" id="panel-account">

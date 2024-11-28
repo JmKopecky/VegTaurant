@@ -20,7 +20,22 @@ function registerAnimations() {
 }
 
 
+function mobileNavAccordionClick(mode) {
+    if (mode === 'show') {
+        document.getElementById("nav-accordion-panel").style.display = "flex";
+        document.getElementById("show-accordion-panel").style.display = "none";
+        document.getElementById("hide-accordion-panel").style.display = "block";
+    } else {
+        document.getElementById("nav-accordion-panel").style.display = "none";
+        document.getElementById("show-accordion-panel").style.display = "block";
+        document.getElementById("hide-accordion-panel").style.display = "none";
+    }
+}
+
+
 function setAccountPage(target) {
+
+    document.getElementById("nav-accordion-header-label").textContent = target;
     //animation for navigation
     for (const elem of document.getElementsByClassName("account-nav-listing")) {
         let type = elem.getElementsByTagName("p")[0].textContent;
