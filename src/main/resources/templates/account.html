@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/2b6129ab2e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+    <script src="/js/header.js"></script>
     <script src="/js/account.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -19,7 +20,11 @@
 
 <div id="header-container">
     <div id="header-link-container">
+        <a href="/" style="display: none;">Home</a>
         <a href="/menu" style="display: none;">Menu</a>
+        <a href="/cart" style="display: none;">Order</a>
+        <a href="/account" style="display: none;">Account</a>
+        <a href="/#collaborate-container" style="display: none;">Careers</a>
         <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
         <a class="header-no-remove" href="/cart">
             <i class="fa-solid fa-cart-shopping"></i>
@@ -34,7 +39,16 @@
 </div>
 
 <div id="branding-container">
-    <a href="/"><h1>Condelu Meals</h1></a>
+    <a href="/" id="branding-desktop"><h1>Condelu Meals</h1></a>
+    <a href="/" id="branding-mobile"><i class="fa-solid fa-house"></i></a>
+</div>
+
+<div id="mobile-header-popup">
+    <a href="/"><h1>Home</h1></a>
+    <a href="/menu"><h1>Menu</h1></a>
+    <a href="/cart"><h1>Order</h1></a>
+    <a href="/account"><h1>Account</h1></a>
+    <a href="/#collaborate-container"><h1>Careers</h1></a>
 </div>
 
 

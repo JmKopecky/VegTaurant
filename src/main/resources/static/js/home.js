@@ -9,26 +9,6 @@ function raf(time) {
 requestAnimationFrame(raf)
 
 
-function headerButtonClick() {
-    let headerButton = document.getElementById("header-show-button");
-    if (headerButton.getAttribute("data-headeropen") === "true") {
-        headerButton.setAttribute("data-headeropen", "false");
-        for (const link of document.getElementById("header-link-container").getElementsByTagName("a")) {
-            if (!link.classList.contains("header-no-remove")) {
-                link.setAttribute("style", "display: none;");
-            }
-        }
-    } else {
-        headerButton.setAttribute("data-headeropen", "true");
-        for (const link of document.getElementById("header-link-container").getElementsByTagName("a")) {
-            if (!link.classList.contains("header-no-remove")) {
-                link.setAttribute("style", "display: block;");
-            }
-        }
-    }
-}
-
-
 let shiftedItemSpamProtection = false;
 function shiftItemPromoCarousel(right) {
     if (shiftedItemSpamProtection) {
@@ -81,13 +61,6 @@ function shiftItemPromoCarousel(right) {
 
 document.addEventListener("DOMContentLoaded", (event) => {
     registerAnimations()
-
-    let cartHeaderNumber = document.getElementById("cart-item-count");
-    if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
-        cartHeaderNumber.textContent = JSON.parse(localStorage.getItem("cart")).length;
-    } else {
-        cartHeaderNumber.textContent = "0";
-    }
 });
 
 
