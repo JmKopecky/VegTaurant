@@ -5,6 +5,9 @@
   align-items: center;
   justify-content: start;
   gap: 5vh;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 5vh;
 }
 
 #final-order-info-display {
@@ -20,6 +23,14 @@
     gap: 5vw;
     justify-content: center;
     align-items: center;
+    @media (width <= 600px) {
+      flex-flow: column;
+      gap: 0;
+      text-align: center;
+    }
+  }
+  h1, h3 {
+    text-align: center;
   }
 }
 
@@ -48,6 +59,7 @@
   align-items: center;
   justify-content: center;
   gap: 2em;
+  text-align: center;
 }
 
 
@@ -67,6 +79,7 @@
 
   #order-items-review-container {
     width: 100%;
+    padding-bottom: 5vh;
     .order-review-tile {
       display: flex;
       flex-flow: row;
@@ -88,6 +101,10 @@
       }
       .order-item-rating-input::placeholder {
         color: $primary;
+      }
+      @media (width <= 800px) {
+        flex-flow: column !important;
+        gap: 2vh;
       }
     }
     .order-review-tile::after {

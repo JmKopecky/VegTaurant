@@ -10,6 +10,7 @@ public class PlacedOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @Column(columnDefinition = "LONGTEXT")
     private String cartString;
     private LocalDateTime orderDate;
     private Integer estimatedDeliveryTime;

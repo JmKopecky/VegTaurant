@@ -289,7 +289,9 @@ body {
 }
 
 #site-content #location-container {
-  width: 100%;
+  width: 96%;
+  padding-left: 2%;
+  padding-right: 2%;
   height: 100vh;
   display: flex;
   flex-flow: column;
@@ -314,6 +316,7 @@ body {
 }
 #site-content #location-container #location-float-align #location-type-selection h2 {
   padding-top: 20vh;
+  text-align: center;
 }
 #site-content #location-container #location-float-align #location-type-selection #location-options {
   flex-grow: 1;
@@ -374,6 +377,7 @@ body {
   flex-flow: row;
   justify-content: space-evenly;
   align-items: start;
+  gap: 1em;
 }
 #site-content #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile .location-address {
   width: 50%;
@@ -400,6 +404,22 @@ body {
   align-items: center;
   justify-content: center;
   padding-bottom: 5vh;
+}
+@media (width <= 625px) {
+  #site-content #location-container #location-float-align {
+    flex-flow: column;
+  }
+  #site-content #location-container #location-float-align #location-type-selection {
+    gap: 5vh;
+    padding-bottom: 5vh;
+  }
+  #site-content #location-container #location-float-align #location-type-selection #location-options {
+    gap: 2vh;
+  }
+  #site-content #location-container #location-address-selection {
+    width: 80% !important;
+    padding-bottom: 5vh;
+  }
 }
 #site-content #billing-info-container {
   width: 100%;
@@ -463,6 +483,17 @@ body {
   transition: color 1s ease-in-out;
   text-align: center;
 }
+@media (width <= 400px) {
+  #site-content #billing-info-container #billing-input {
+    gap: 2vh;
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+  }
+  #site-content #billing-info-container .side-by-side {
+    flex-flow: column !important;
+    gap: 2vh;
+  }
+}
 #site-content #finalize-order-container {
   min-height: 100vh;
   display: flex;
@@ -470,6 +501,9 @@ body {
   align-items: center;
   justify-content: start;
   gap: 5vh;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 5vh;
 }
 #site-content #final-order-info-display {
   display: flex;
@@ -485,6 +519,16 @@ body {
   gap: 5vw;
   justify-content: center;
   align-items: center;
+}
+@media (width <= 600px) {
+  #site-content #final-order-info-display div {
+    flex-flow: column;
+    gap: 0;
+    text-align: center;
+  }
+}
+#site-content #final-order-info-display h1, #site-content #final-order-info-display h3 {
+  text-align: center;
 }
 #site-content .rating-container {
   display: flex;
@@ -508,6 +552,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2em;
+  text-align: center;
 }
 #site-content #order-review-panel {
   display: flex;
@@ -525,6 +570,7 @@ body {
 }
 #site-content #order-review-panel #order-items-review-container {
   width: 100%;
+  padding-bottom: 5vh;
 }
 #site-content #order-review-panel #order-items-review-container .order-review-tile {
   display: flex;
@@ -547,6 +593,12 @@ body {
 }
 #site-content #order-review-panel #order-items-review-container .order-review-tile .order-item-rating-input::placeholder {
   color: #EEEEEE;
+}
+@media (width <= 800px) {
+  #site-content #order-review-panel #order-items-review-container .order-review-tile {
+    flex-flow: column !important;
+    gap: 2vh;
+  }
 }
 #site-content #order-review-panel #order-items-review-container .order-review-tile::after {
   width: 70%;
