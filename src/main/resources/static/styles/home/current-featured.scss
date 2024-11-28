@@ -1,50 +1,45 @@
 #current-featured {
-  width: 80%;
-  height: 100vh;
+  width: fit-content;
+  min-width: 40vw;
+  height: 60vh;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 10vh;
   border-radius: 1em;
   position: relative;
+  margin: 15vh 10% 10vh;
+
   #featured-overlay {
-    width: 100%;
-    height: 90vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    height: 100%;
     z-index: 2;
-    background: transparentize($secondary, 0.2);
+    background: darken($secondary, 2%);
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: space-evenly;
     padding-top: 5vh;
     padding-bottom: 5vh;
+    border-radius: 1em;
+    gap: 1vh;
+    text-align: center;
     div {
-      flex: 1;
+      flex-grow: 1;
+      flex-shrink: 1;
       display: flex;
       flex-flow: column;
       align-items: center;
       justify-content: center;
       gap: 5%;
     }
-  }
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    border-radius: 1em;
+    #featured-image {
+      flex-grow: 2;
+      flex-shrink: 1;
+      min-height: 0;
+      min-width: 0;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      z-index: 1;
+    }
   }
 }

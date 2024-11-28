@@ -5,4 +5,38 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  margin-top: 20vh;
+
+  #approaches-grid {
+    display: grid;
+    grid-template-columns: 20vw 20vw 20vw;
+    grid-template-rows: 20vw 20vw;
+    grid-gap: 3vw;
+    margin-top: 5vh;
+  }
+
+  .approaches-tile {
+    background: transparentize($accent, 1);
+    border: 1px solid $accent;
+    transition: background 0.5s;
+    border-radius: 1em;
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    word-wrap: break-word;
+
+    .approaches-tile-heading {
+      font-size: 2em;
+    }
+
+    .approaches-tile-content {
+      padding: 1em;
+    }
+  }
+
+
 }

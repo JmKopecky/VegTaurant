@@ -1,11 +1,12 @@
 #discount-promo {
   width: 90%;
-  height: 50vh;
+  min-height: 20vh;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
   gap: 3vh;
-  padding-left: 5%;
-  padding-right: 5%;
+  text-align: center;
+  padding: 5vh 5%;
+  margin-top: 5vh;
 }

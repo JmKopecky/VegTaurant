@@ -1,8 +1,14 @@
 #member-benefit-promo {
-  width: 100%;
-  height: 100vh;
+  width: 50vh;
+  height: fit-content;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  background: darken($secondary, 2%);
+  border-radius: 1em;
+  padding: 1em;
+  gap: 5vh;
+  margin-top: 15vh;
 }

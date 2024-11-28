@@ -81,6 +81,10 @@ a.link-hover:hover::after {
   width: 100%;
 }
 
+li::marker {
+  color: #EEEEEE;
+}
+
 button {
   width: fit-content;
   text-align: center;
@@ -239,6 +243,11 @@ body {
   z-index: 9999;
 }
 
+#site-content {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
 #site-content #hero-content {
   width: 95%;
   height: 100vh;
@@ -299,7 +308,7 @@ body {
 #site-content #item-promo {
   width: 100%;
   overflow: hidden;
-  height: 60vh;
+  min-height: 60vh;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -357,29 +366,35 @@ body {
 #site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile {
   width: 20.25vw;
   height: 90%;
-  background: #111111;
+  background: rgb(11.9, 11.9, 11.9);
   border-radius: 1em;
   position: relative;
 }
 #site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   z-index: 2;
-  background: rgba(17, 17, 17, 0.8);
   display: flex;
   flex-flow: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 2%;
   padding: 5%;
 }
 #site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content h5 {
   width: 100%;
+  flex-grow: 1;
   overflow-wrap: anywhere;
   text-align: center;
+}
+#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .item-promo-image-container {
+  flex-grow: 2;
+  flex-shrink: 1;
+  aspect-ratio: 1/1;
+  max-width: 100%;
+}
+#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .item-promo-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 #site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .top-rated-item-tile-body {
   flex: 1;
@@ -393,78 +408,64 @@ body {
   width: 100%;
   text-align: center;
 }
-#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  border-radius: 1em;
+#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .item-promo-button {
+  transform: scale(0.75);
 }
 #site-content #current-featured {
-  width: 80%;
-  height: 100vh;
+  width: fit-content;
+  min-width: 40vw;
+  height: 60vh;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 10vh;
   border-radius: 1em;
   position: relative;
+  margin: 15vh 10% 10vh;
 }
 #site-content #current-featured #featured-overlay {
-  width: 100%;
-  height: 90vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  height: 100%;
   z-index: 2;
-  background: rgba(17, 17, 17, 0.8);
+  background: rgb(11.9, 11.9, 11.9);
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: space-evenly;
   padding-top: 5vh;
   padding-bottom: 5vh;
+  border-radius: 1em;
+  gap: 1vh;
+  text-align: center;
 }
 #site-content #current-featured #featured-overlay div {
-  flex: 1;
+  flex-grow: 1;
+  flex-shrink: 1;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
   gap: 5%;
 }
-#site-content #current-featured img {
-  width: 100%;
-  height: 100%;
+#site-content #current-featured #featured-overlay #featured-image {
+  flex-grow: 2;
+  flex-shrink: 1;
+  min-height: 0;
+  min-width: 0;
+  aspect-ratio: 1/1;
   object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   z-index: 1;
-  border-radius: 1em;
 }
 #site-content #discount-promo {
   width: 90%;
-  height: 50vh;
+  min-height: 20vh;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
   gap: 3vh;
-  padding-left: 5%;
-  padding-right: 5%;
+  text-align: center;
+  padding: 5vh 5%;
+  margin-top: 5vh;
 }
 #site-content #top-ratings-display {
   width: 100%;
@@ -473,6 +474,7 @@ body {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  margin-top: 5vh;
 }
 #site-content #top-ratings-display h1 {
   padding-top: 5vh;
@@ -523,21 +525,19 @@ body {
   right: 0;
   top: 0;
 }
-#site-content #location-container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-}
 #site-content #member-benefit-promo {
-  width: 100%;
-  height: 100vh;
+  width: 50vh;
+  height: fit-content;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  background: rgb(11.9, 11.9, 11.9);
+  border-radius: 1em;
+  padding: 1em;
+  gap: 5vh;
+  margin-top: 15vh;
 }
 #site-content #approaches-container {
   width: 100%;
@@ -546,14 +546,118 @@ body {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  margin-top: 20vh;
 }
-#site-content #collaborate-container {
-  width: 100%;
-  height: 100vh;
+#site-content #approaches-container #approaches-grid {
+  display: grid;
+  grid-template-columns: 20vw 20vw 20vw;
+  grid-template-rows: 20vw 20vw;
+  grid-gap: 3vw;
+  margin-top: 5vh;
+}
+#site-content #approaches-container .approaches-tile {
+  background: rgba(0, 184, 55, 0);
+  border: 1px solid #00B837;
+  transition: background 0.5s;
+  border-radius: 1em;
+  aspect-ratio: 1/1;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  text-align: center;
+  word-wrap: break-word;
+}
+#site-content #approaches-container .approaches-tile .approaches-tile-heading {
+  font-size: 2em;
+}
+#site-content #approaches-container .approaches-tile .approaches-tile-content {
+  padding: 1em;
+}
+#site-content #collaborate-container {
+  min-width: 80vw;
+  height: auto;
+  margin-top: 20vh;
+  margin-bottom: 10vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+#site-content #collaborate-container #collaborate-info-container {
+  flex: 1;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+  width: 90%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+#site-content #collaborate-container #collaborate-info-container #collaborate-info-text {
+  position: relative;
+  text-align: left;
+  display: flex;
+  height: 40vh;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
+  padding: 1em;
+  border-top: 1px solid #00B837;
+  border-bottom: 1px solid #00B837;
+  border-image: linear-gradient(to right, #00B837 50%, transparent 50%) 100% 1;
+}
+#site-content #collaborate-container #collaborate-info-container #collaborate-info-image {
+  flex: 1;
+  aspect-ratio: 1/1;
+  position: relative;
+  padding: 1em;
+  border-top: 1px solid #00B837;
+  border-bottom: 1px solid #00B837;
+  border-image: linear-gradient(to left, #00B837 50%, transparent 50%) 100% 1;
+  height: 40vh;
+  display: flex;
+  flex-flow: column;
+  align-items: end;
+}
+#site-content #collaborate-container #collaborate-info-container #collaborate-info-image #collaborate-image {
+  height: 100%;
+  object-fit: contain;
+}
+#site-content #collaborate-container #collaborate-info-container #collaborate-info-image::after {
+  width: 1px;
+  height: 100%;
+  background: #00B837;
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#site-content #collaborate-container #collaborate-info-container #collaborate-info-text::after {
+  width: 1px;
+  height: 100%;
+  background: #00B837;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#footer {
+  width: 100%;
+  min-height: 5vh;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(11.9, 11.9, 11.9);
 }
 
 /*# sourceMappingURL=home.css.map */
