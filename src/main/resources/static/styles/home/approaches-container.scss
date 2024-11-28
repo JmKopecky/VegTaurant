@@ -5,7 +5,7 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin-top: 15vh;
+  margin-top: 20vh;
 
   #approaches-grid {
     display: grid;
@@ -31,6 +31,10 @@
 
     .approaches-tile-heading {
       font-size: 2em;
+    }
+
+    .approaches-tile-content {
+      padding: 1em;
     }
   }
 

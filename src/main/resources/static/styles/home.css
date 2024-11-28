@@ -546,7 +546,7 @@ body {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  margin-top: 15vh;
+  margin-top: 20vh;
 }
 #site-content #approaches-container #approaches-grid {
   display: grid;
@@ -572,10 +572,13 @@ body {
 #site-content #approaches-container .approaches-tile .approaches-tile-heading {
   font-size: 2em;
 }
+#site-content #approaches-container .approaches-tile .approaches-tile-content {
+  padding: 1em;
+}
 #site-content #collaborate-container {
   min-width: 80vw;
   height: auto;
-  margin-top: 15vh;
+  margin-top: 20vh;
   margin-bottom: 10vh;
   display: flex;
   flex-flow: column;
@@ -643,6 +646,18 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+}
+
+#footer {
+  width: 100%;
+  min-height: 5vh;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(11.9, 11.9, 11.9);
 }
 
 /*# sourceMappingURL=home.css.map */
