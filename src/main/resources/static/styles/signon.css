@@ -59,6 +59,7 @@ a {
   text-decoration: none;
   margin: 0;
   color: #00B837;
+  cursor: pointer;
 }
 
 a.link-hover {
@@ -98,6 +99,7 @@ button {
   border-radius: 0.5em;
   will-change: background, color;
   transition: background 0.5s, color 0.5s;
+  cursor: pointer;
 }
 
 button:hover, button:focus {
@@ -288,8 +290,8 @@ body {
 
 #signon-content {
   width: 100%;
-  height: 100vh;
-  padding-top: 5vh;
+  min-height: 90vh;
+  padding-top: 10vh;
   z-index: 1;
   background: #111111;
   display: flex;
@@ -308,12 +310,14 @@ body {
   padding: 1em;
   background: rgb(42.5, 42.5, 42.5);
   border-radius: 1em;
+  text-align: center;
 }
 #signon-content #toggle-signon-mode #signon-switch-label {
   position: relative;
   display: inline-block;
   width: 4em;
   height: 2em;
+  flex-shrink: 0;
 }
 #signon-content #toggle-signon-mode #signon-switch-label input {
   opacity: 0;
@@ -355,16 +359,22 @@ body {
   -ms-transform: translateX(1.9em);
   transform: translateX(1.9em);
 }
+@media (width <= 750px) {
+  #signon-content #toggle-signon-mode {
+    width: 80%;
+  }
+}
 #signon-content #signon-container {
   display: flex;
   width: 50%;
-  height: 60%;
+  min-height: 60%;
   justify-content: space-evenly;
   flex-flow: column;
   align-items: center;
   padding: 1em;
   background: rgb(42.5, 42.5, 42.5);
   border-radius: 1em;
+  gap: 2vh;
 }
 #signon-content #signon-container p {
   text-align: center;
@@ -405,6 +415,11 @@ body {
   color: #EEEEEE;
   transition: color 1s ease-in-out;
 }
+@media (width <= 750px) {
+  #signon-content #signon-container {
+    width: 80%;
+  }
+}
 #signon-content #extra-info-container {
   display: none;
   width: 50%;
@@ -415,7 +430,7 @@ body {
   padding: 1em;
   background: rgb(42.5, 42.5, 42.5);
   border-radius: 1em;
-  overflow: scroll;
+  gap: 2vh;
 }
 #signon-content #extra-info-container p {
   text-align: center;
@@ -459,6 +474,15 @@ body {
   outline: none !important;
   color: #EEEEEE;
   transition: color 1s ease-in-out;
+}
+@media (width <= 750px) {
+  #signon-content #extra-info-container {
+    width: 80%;
+  }
+  #signon-content #extra-info-container .info-align-horizontal {
+    flex-flow: column;
+    gap: 2vh;
+  }
 }
 
 #signon-content.darkmode {

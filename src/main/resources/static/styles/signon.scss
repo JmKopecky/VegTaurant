@@ -4,8 +4,8 @@
 
 #signon-content {
   width: 100%;
-  height: 100vh;
-  padding-top: 5vh;
+  min-height: 90vh;
+  padding-top: 10vh;
   z-index: 1;
   background: $secondary;
   display: flex;

@@ -1,13 +1,14 @@
 #signon-container {
   display: flex;
   width: 50%;
-  height: 60%;
+  min-height: 60%;
   justify-content: space-evenly;
   flex-flow: column;
   align-items: center;
   padding: 1em;
   background: lighten($secondary, 10%);;
   border-radius: 1em;
+  gap: 2vh;
   p {
     text-align: center;
     width: 60%;
@@ -46,5 +47,9 @@
       color: $primary;
       transition: color 1s ease-in-out;
     }
+  }
+
+  @media (width <= 750px) {
+    width: 80%;
   }
 }

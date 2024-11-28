@@ -59,6 +59,7 @@ a {
   text-decoration: none;
   margin: 0;
   color: #00B837;
+  cursor: pointer;
 }
 
 a.link-hover {
@@ -98,6 +99,7 @@ button {
   border-radius: 0.5em;
   will-change: background, color;
   transition: background 0.5s, color 0.5s;
+  cursor: pointer;
 }
 
 button:hover, button:focus {

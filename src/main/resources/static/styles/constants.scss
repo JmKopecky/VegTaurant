@@ -62,6 +62,7 @@ a {
   text-decoration: none;
   margin: 0;
   color: $accent;
+  cursor: pointer;
 }
 a.link-hover {
   position: relative;
@@ -98,6 +99,7 @@ button {
   border-radius: 0.5em;
   will-change: background, color;
   transition: background 0.5s, color 0.5s;
+  cursor: pointer;
 }
 button:hover, button:focus {
   background: $accent;
