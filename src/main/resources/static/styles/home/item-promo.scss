@@ -104,4 +104,20 @@
     }
   }
 
+  @media (width <= 925px) {
+    .top-rated-item-tile {
+      width: 27.5vw !important;
+    }
+  }
+  @media (width <= 625px) {
+    .top-rated-item-tile {
+      width: 42.7vw !important;
+    }
+  }
+  @media (width <= 475px) {
+    .top-rated-item-tile {
+      width: 85vw !important;
+    }
+  }
+
 }

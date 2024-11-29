@@ -59,6 +59,7 @@ a {
   text-decoration: none;
   margin: 0;
   color: #00B837;
+  cursor: pointer;
 }
 
 a.link-hover {
@@ -98,6 +99,7 @@ button {
   border-radius: 0.5em;
   will-change: background, color;
   transition: background 0.5s, color 0.5s;
+  cursor: pointer;
 }
 
 button:hover, button:focus {
@@ -163,6 +165,24 @@ body {
 #branding-container h1 {
   color: #00B837;
   font-size: 1.75em;
+}
+#branding-container #branding-desktop {
+  display: block;
+}
+#branding-container #branding-mobile {
+  color: #00B837;
+  fill: #00B837;
+  font-size: 1.75em;
+  z-index: 9999;
+  display: none;
+}
+@media (width <= 375px) {
+  #branding-container #branding-mobile {
+    display: block;
+  }
+  #branding-container #branding-desktop {
+    display: none;
+  }
 }
 
 #header-container {
@@ -242,6 +262,31 @@ body {
   border-radius: 1em;
   z-index: 9999;
 }
+@media (width <= 500px) {
+  #header-container #header-link-container {
+    gap: 2vw;
+  }
+  #header-container #header-account-icon {
+    padding-left: 2vw;
+  }
+}
+
+#mobile-header-popup {
+  display: none;
+  flex-flow: column;
+  align-items: center;
+  gap: 5vh;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 15vh;
+  background: rgba(11.9, 11.9, 11.9, 0.99);
+}
 
 #site-content {
   display: flex;
@@ -278,6 +323,9 @@ body {
 #site-content #hero-content #hero-interactable #hero-button-container button {
   width: 60%;
 }
+#site-content #hero-content #hero-interactable h1 {
+  font-size: 5em;
+}
 #site-content #hero-content #hero-bgimg {
   width: 50%;
   height: 100%;
@@ -304,6 +352,42 @@ body {
   bottom: 0;
   z-index: 2;
   background: linear-gradient(to right, #111111, rgba(17, 17, 17, 0.6));
+}
+@media (width <= 900px) {
+  #site-content #hero-content #hero-interactable h1 {
+    font-size: 4em !important;
+  }
+}
+@media (width <= 700px) {
+  #site-content #hero-content {
+    position: relative;
+  }
+  #site-content #hero-content #hero-interactable {
+    width: 90%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    padding: 5%;
+    align-items: center;
+    text-align: center;
+  }
+  #site-content #hero-content #hero-interactable #hero-button-container {
+    padding-right: unset;
+  }
+  #site-content #hero-content #hero-bgimg {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  #site-content #hero-content #hero-bgimg #hero-bgimg-overlay {
+    background: rgba(17, 17, 17, 0.9);
+  }
 }
 #site-content #item-promo {
   width: 100%;
@@ -411,9 +495,25 @@ body {
 #site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .item-promo-button {
   transform: scale(0.75);
 }
+@media (width <= 925px) {
+  #site-content #item-promo .top-rated-item-tile {
+    width: 27.5vw !important;
+  }
+}
+@media (width <= 625px) {
+  #site-content #item-promo .top-rated-item-tile {
+    width: 42.7vw !important;
+  }
+}
+@media (width <= 475px) {
+  #site-content #item-promo .top-rated-item-tile {
+    width: 85vw !important;
+  }
+}
 #site-content #current-featured {
   width: fit-content;
   min-width: 40vw;
+  max-width: 80%;
   height: 60vh;
   display: flex;
   flex-flow: column;
@@ -425,6 +525,7 @@ body {
 }
 #site-content #current-featured #featured-overlay {
   height: 100%;
+  max-width: 100%;
   z-index: 2;
   background: rgb(11.9, 11.9, 11.9);
   display: flex;
@@ -475,6 +576,7 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 5vh;
+  gap: 1vh;
 }
 #site-content #top-ratings-display h1 {
   padding-top: 5vh;
@@ -525,6 +627,17 @@ body {
   right: 0;
   top: 0;
 }
+@media (width <= 1000px) {
+  #site-content #top-ratings-display h6, #site-content #top-ratings-display p {
+    width: 100% !important;
+  }
+  #site-content #top-ratings-display .rating-left {
+    padding-left: 1em;
+  }
+  #site-content #top-ratings-display .rating-right {
+    padding-right: 1em;
+  }
+}
 #site-content #member-benefit-promo {
   width: 50vh;
   height: fit-content;
@@ -535,25 +648,28 @@ body {
   text-align: center;
   background: rgb(11.9, 11.9, 11.9);
   border-radius: 1em;
-  padding: 1em;
+  padding: 5%;
   gap: 5vh;
   margin-top: 15vh;
+  max-width: 90%;
 }
 #site-content #approaches-container {
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
   margin-top: 20vh;
+  padding-bottom: 10vh;
+  text-align: center;
 }
 #site-content #approaches-container #approaches-grid {
-  display: grid;
-  grid-template-columns: 20vw 20vw 20vw;
-  grid-template-rows: 20vw 20vw;
-  grid-gap: 3vw;
+  display: flex;
+  gap: 3vw;
+  flex-wrap: wrap;
   margin-top: 5vh;
+  justify-content: center;
+  align-items: center;
 }
 #site-content #approaches-container .approaches-tile {
   background: rgba(0, 184, 55, 0);
@@ -565,9 +681,10 @@ body {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 30%;
   text-align: center;
   word-wrap: break-word;
+  cursor: pointer;
 }
 #site-content #approaches-container .approaches-tile .approaches-tile-heading {
   font-size: 2em;
@@ -575,12 +692,22 @@ body {
 #site-content #approaches-container .approaches-tile .approaches-tile-content {
   padding: 1em;
 }
+@media (width <= 800px) {
+  #site-content #approaches-container .approaches-tile {
+    width: 40% !important;
+  }
+}
+@media (width <= 575px) {
+  #site-content #approaches-container .approaches-tile {
+    width: 70% !important;
+  }
+}
 #site-content #collaborate-container {
+  display: flex;
   min-width: 80vw;
   height: auto;
   margin-top: 20vh;
   margin-bottom: 10vh;
-  display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
@@ -646,6 +773,21 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+}
+@media (width <= 950px) {
+  #site-content #collaborate-container #collaborate-info-text {
+    border: none !important;
+  }
+  #site-content #collaborate-container #collaborate-info-text::after {
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+}
+@media (width <= 800px) {
+  #site-content #collaborate-container #collaborate-info-image {
+    display: none !important;
+  }
 }
 
 #footer {

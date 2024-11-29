@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 15vh;
+  padding-top: 10vh;
   padding-bottom: 10vh;
   #cart-display {
     width: 80%;
@@ -66,6 +66,10 @@
           gap: 1vh;
           align-items: end;
         }
+      }
+      @media (width <= 475px) {
+        flex-flow: column;
+        gap: 5vh;
       }
     }
     #cart-order-container {

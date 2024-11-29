@@ -9,7 +9,7 @@
   padding: 1em;
   background: lighten($secondary, 10%);;
   border-radius: 1em;
-  overflow: scroll;
+  gap: 2vh;
   p {
     text-align: center;
     width: 60%;
@@ -51,6 +51,15 @@
       outline: none !important;
       color: $primary;
       transition: color 1s ease-in-out;
+    }
+  }
+
+  @media (width <= 750px) {
+    width: 80%;
+
+    .info-align-horizontal {
+      flex-flow: column;
+      gap: 2vh;
     }
   }
 }

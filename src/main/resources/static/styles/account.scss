@@ -27,17 +27,54 @@
 
 #site-content {
 
-  display: flex;
   height: 80vh;
+  display: flex;
   flex-flow: row;
   justify-content: center;
   align-items: center;
   gap: 5vw;
-  padding: 12vh 5vh 5vw;
+  padding: 12vh 5vw 5vw;
   min-height: unset !important;
+  max-width: 90vw;
+
+  #account-menu-nav-accordion {
+    display: none;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    background: lighten($secondary, 5%);
+    border-radius: 1em;
+    width: 100%;
+    #nav-accordion-header {
+      display: flex;
+      width: 90%;
+      flex-flow: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2vh 5%;
+
+      #nav-accordion-icon {
+        i {
+          width: 20%;
+          text-align: center;
+          font-size: 1.5em;
+          color: $accent;
+        }
+      }
+      #nav-accordion-header-label {
+        font-size: 1.5em;
+      }
+    }
+
+    #nav-accordion-panel {
+      display: none;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 
   #account-menu-nav {
-    flex-grow: 1;
     height: 100%;
     background: lighten($secondary, 5%);
     border-radius: 1em;
@@ -47,40 +84,42 @@
     justify-content: start;
     gap: 2vh;
     padding-top: 1vh;
-    .account-nav-listing {
-      width: 90%;
-      display: flex;
-      flex-flow: row;
-      justify-content: start;
-      align-items: center;
-      border-radius: 1em;
-      margin-left: 5%;
-      margin-right: 5%;
-      transition: background 0.5s;
-      padding-top: 0.5em;
-      padding-bottom: 0.5em;
-      i {
-        width: 20%;
-        text-align: center;
-        font-size: 1.5em;
-        color: $accent;
-        transition: color 0.5s;
-      }
-      p {
-        font-size: 1.5em;
-        padding-left: 10%;
-      }
+    flex-shrink: 0;
+  }
+  .account-nav-listing {
+    width: 90%;
+    display: flex;
+    flex-flow: row;
+    justify-content: start;
+    align-items: center;
+    border-radius: 1em;
+    margin-left: 5%;
+    margin-right: 5%;
+    transition: background 0.5s;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    i {
+      width: 20%;
+      text-align: center;
+      font-size: 1.5em;
+      color: $accent;
+      transition: color 0.5s;
     }
-    .account-nav-listing:hover {
-      background: transparentize($accent, 0.5);
-    }
-    .account-nav-listing.selected {
-      background: $accent;
-      i {
-        color: $secondary;
-      }
+    p {
+      font-size: 1.5em;
+      padding-left: 10%;
     }
   }
+  .account-nav-listing:hover {
+    background: transparentize($accent, 0.5);
+  }
+  .account-nav-listing.selected {
+    background: $accent;
+    i {
+      color: $secondary;
+    }
+  }
+
   #account-setting-panels {
 
     @import 'account/accountfields';
@@ -90,15 +129,50 @@
     height: 100%;
     background: lighten($secondary, 5%);
     border-radius: 1em;
-    margin-right: 6vw;
     position: relative;
     .setting-panel {
-      position: absolute;
       width: 100%;
       height: 100%;
       flex-flow: column;
       align-items: center;
       justify-content: space-evenly;
+      text-align: center;
+    }
+  }
+
+  @media (width <= 650px) {
+    flex-flow: column;
+    height: unset;
+
+    #account-menu-nav {
+      display: none;
+    }
+
+    #account-menu-nav-accordion {
+      display: flex;
+
+    }
+
+    #nav-accordion-panel {
+      width: 100%;
+      .account-nav-listing {
+        width: 90%;
+        padding-left: 5%;
+        padding-right: 5%;
+        justify-content: space-between;
+        i {
+          width: unset;
+        }
+      }
+    }
+
+    #account-setting-panels {
+      width: 100%;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      .setting-panel {
+        gap: 1vh;
+      }
     }
   }
 }

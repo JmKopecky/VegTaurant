@@ -59,6 +59,7 @@ a {
   text-decoration: none;
   margin: 0;
   color: #00B837;
+  cursor: pointer;
 }
 
 a.link-hover {
@@ -98,6 +99,7 @@ button {
   border-radius: 0.5em;
   will-change: background, color;
   transition: background 0.5s, color 0.5s;
+  cursor: pointer;
 }
 
 button:hover, button:focus {
@@ -163,6 +165,24 @@ body {
 #branding-container h1 {
   color: #00B837;
   font-size: 1.75em;
+}
+#branding-container #branding-desktop {
+  display: block;
+}
+#branding-container #branding-mobile {
+  color: #00B837;
+  fill: #00B837;
+  font-size: 1.75em;
+  z-index: 9999;
+  display: none;
+}
+@media (width <= 375px) {
+  #branding-container #branding-mobile {
+    display: block;
+  }
+  #branding-container #branding-desktop {
+    display: none;
+  }
 }
 
 #header-container {
@@ -242,12 +262,37 @@ body {
   border-radius: 1em;
   z-index: 9999;
 }
+@media (width <= 500px) {
+  #header-container #header-link-container {
+    gap: 2vw;
+  }
+  #header-container #header-account-icon {
+    padding-left: 2vw;
+  }
+}
+
+#mobile-header-popup {
+  display: none;
+  flex-flow: column;
+  align-items: center;
+  gap: 5vh;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 15vh;
+  background: rgba(11.9, 11.9, 11.9, 0.99);
+}
 
 #site-content {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 15vh;
+  padding-top: 10vh;
   padding-bottom: 10vh;
 }
 #site-content #cart-display {
@@ -308,6 +353,12 @@ body {
   justify-content: center;
   gap: 1vh;
   align-items: end;
+}
+@media (width <= 475px) {
+  #site-content #cart-display #cart-totals {
+    flex-flow: column;
+    gap: 5vh;
+  }
 }
 #site-content #cart-display #cart-order-container {
   width: 100%;

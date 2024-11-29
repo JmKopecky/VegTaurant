@@ -1,5 +1,7 @@
 #location-container {
-  width: 100%;
+  width: 96%;
+  padding-left: 2%;
+  padding-right: 2%;
   height: 100vh;
   display: flex;
   flex-flow: column;
@@ -21,6 +23,7 @@
       align-items: center;
       h2 {
         padding-top: 20vh;
+        text-align: center;
       }
       #location-options {
         flex-grow: 1;
@@ -81,7 +84,7 @@
           flex-flow: row;
           justify-content: space-evenly;
           align-items: start;
-          //gap: 2em;
+          gap: 1em;
           .location-address {
             width: 50%;
             transition: color 0.5s;
@@ -111,5 +114,23 @@
     align-items: center;
     justify-content: center;
     padding-bottom: 5vh;
+  }
+
+  @media (width <= 625px) {
+    #location-float-align {
+      flex-flow: column;
+      #location-type-selection {
+        gap: 5vh;
+        padding-bottom: 5vh;
+        #location-options {
+          gap: 2vh;
+        }
+      }
+    }
+
+    #location-address-selection {
+      width: 80% !important;
+      padding-bottom: 5vh;
+    }
   }
 }

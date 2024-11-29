@@ -59,4 +59,15 @@
       }
     }
   }
+  @media (width <= 400px) {
+    #billing-input {
+      gap: 2vh;
+      padding-top: 10vh;
+      padding-bottom: 5vh;
+    }
+    .side-by-side {
+      flex-flow: column !important;
+      gap: 2vh;
+    }
+  }
 }

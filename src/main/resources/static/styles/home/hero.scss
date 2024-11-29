@@ -26,6 +26,10 @@
         width: 60%;
       }
     }
+
+    h1 {
+      font-size: 5em;
+    }
   }
   #hero-bgimg {
     width: 50%;
@@ -53,5 +57,45 @@
     bottom: 0;
     z-index: 2;
     background: linear-gradient(to right, transparentize($secondary, 0), transparentize($secondary, 0.4));
+  }
+
+  @media (width <= 900px) {
+    #hero-interactable {
+      h1 {
+        font-size: 4em !important;
+      }
+    }
+  }
+
+  @media (width <= 700px) {
+    position: relative;
+
+    #hero-interactable {
+      width: 90%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 5;
+      padding: 5%;
+      align-items: center;
+      text-align: center;
+      #hero-button-container {
+        padding-right: unset;
+      }
+    }
+
+    #hero-bgimg {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      #hero-bgimg-overlay {
+        background: transparentize($secondary, 0.1);
+      }
+    }
   }
 }

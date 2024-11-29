@@ -1,50 +1,15 @@
-const lenis = new Lenis({
-    syncTouch: true,
-    duration: 1.5
-})
-function raf(time) {
-    lenis.raf(time)
-    requestAnimationFrame(raf)
-}
-requestAnimationFrame(raf)
 
-
-function headerButtonClick() {
-    let headerButton = document.getElementById("header-show-button");
-    if (headerButton.getAttribute("data-headeropen") === "true") {
-        headerButton.setAttribute("data-headeropen", "false");
-        for (const link of document.getElementById("header-link-container").getElementsByTagName("a")) {
-            if (!link.classList.contains("header-no-remove")) {
-                link.setAttribute("style", "display: none;");
-            }
-        }
-    } else {
-        headerButton.setAttribute("data-headeropen", "true");
-        for (const link of document.getElementById("header-link-container").getElementsByTagName("a")) {
-            if (!link.classList.contains("header-no-remove")) {
-                link.setAttribute("style", "display: block;");
-            }
-        }
-    }
-}
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
     populateCartData();
 
     registerAnimations()
-
-    let cartHeaderNumber = document.getElementById("cart-item-count");
-    if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
-        cartHeaderNumber.textContent = JSON.parse(localStorage.getItem("cart")).length;
-    } else {
-        cartHeaderNumber.textContent = "0";
-    }
 });
 
 
 function populateCartData() {
-    if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") { //note, if cookies are disabled, this will not work. Add a banenr or notif of some sort telling the user to disable cookies if so.
+    if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") { //note, if cookies are disabled, this will not work. Add a banner or notif of some sort telling the user to disable cookies if so.
         //redirect to menu. TODO: check if signed in, and if so, display a different page about starting an order from their favorite items or past orders.
         window.location.replace(window.location.origin + "/menu")
     } else {

@@ -2,9 +2,7 @@ package dev.prognitio.vegtaurant.page_controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.prognitio.vegtaurant.VegtaurantApplication;
 import dev.prognitio.vegtaurant.data_storage.*;
-import dev.prognitio.vegtaurant.data_storage.MenuItem;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.naming.AuthenticationException;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 

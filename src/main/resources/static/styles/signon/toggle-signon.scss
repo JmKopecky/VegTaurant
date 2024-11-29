@@ -7,11 +7,14 @@
   padding: 1em;
   background: lighten($secondary, 10%);
   border-radius: 1em;
+  text-align: center;
+
   #signon-switch-label {
     position: relative;
     display: inline-block;
     width: 4em;
     height: 2em;
+    flex-shrink: 0;
   }
   #signon-switch-label input {
     opacity: 0;
@@ -56,5 +59,9 @@
     -webkit-transform: translateX(1.9em);
     -ms-transform: translateX(1.9em);
     transform: translateX(1.9em);
+  }
+
+  @media (width <= 750px) {
+    width: 80%;
   }
 }
