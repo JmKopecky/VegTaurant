@@ -323,6 +323,9 @@ body {
 #site-content #hero-content #hero-interactable #hero-button-container button {
   width: 60%;
 }
+#site-content #hero-content #hero-interactable h1 {
+  font-size: 5em;
+}
 #site-content #hero-content #hero-bgimg {
   width: 50%;
   height: 100%;
@@ -350,6 +353,11 @@ body {
   z-index: 2;
   background: linear-gradient(to right, #111111, rgba(17, 17, 17, 0.6));
 }
+@media (width <= 900px) {
+  #site-content #hero-content #hero-interactable h1 {
+    font-size: 4em !important;
+  }
+}
 @media (width <= 700px) {
   #site-content #hero-content {
     position: relative;
@@ -365,9 +373,6 @@ body {
     padding: 5%;
     align-items: center;
     text-align: center;
-  }
-  #site-content #hero-content #hero-interactable h1 {
-    font-size: 4em;
   }
   #site-content #hero-content #hero-interactable #hero-button-container {
     padding-right: unset;

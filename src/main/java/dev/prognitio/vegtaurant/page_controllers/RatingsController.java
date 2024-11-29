@@ -1,6 +1,5 @@
 package dev.prognitio.vegtaurant.page_controllers;
 
-import aj.org.objectweb.asm.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.prognitio.vegtaurant.data_storage.*;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.naming.AuthenticationException;
-import java.util.List;
 
 @Controller
 public class RatingsController {

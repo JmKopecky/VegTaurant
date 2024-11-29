@@ -14,6 +14,11 @@ public class VegtaurantApplication {
 
 	public static void doDatabaseTestCase(MenuCategoryRepository menuCategoryRepository, MenuItemRepository menuItemRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, AccountRepository accountRepository, RestaurantLocationRepository restaurantLocationRepository, PlacedOrderRepository placedOrderRepository) { //TODO delete before completion
 
+		if (menuCategoryRepository.count() != 0) {
+			return;
+		}
+
+
 		MenuCategory breakfast = new MenuCategory();
 		breakfast.setTitle("Breakfast");
 		menuCategoryRepository.save(breakfast);
@@ -177,6 +182,8 @@ public class VegtaurantApplication {
 		location2.setState("Texas");
 		location2.setZipCode("77522");
 		restaurantLocationRepository.save(location2);
+
+
 
 
 	}

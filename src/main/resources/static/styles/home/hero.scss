@@ -26,6 +26,10 @@
         width: 60%;
       }
     }
+
+    h1 {
+      font-size: 5em;
+    }
   }
   #hero-bgimg {
     width: 50%;
@@ -55,6 +59,14 @@
     background: linear-gradient(to right, transparentize($secondary, 0), transparentize($secondary, 0.4));
   }
 
+  @media (width <= 900px) {
+    #hero-interactable {
+      h1 {
+        font-size: 4em !important;
+      }
+    }
+  }
+
   @media (width <= 700px) {
     position: relative;
 
@@ -69,9 +81,6 @@
       padding: 5%;
       align-items: center;
       text-align: center;
-      h1 {
-        font-size: 4em;
-      }
       #hero-button-container {
         padding-right: unset;
       }
