@@ -45,3 +45,4 @@ Broad Technical Ideas:
 * Joseph Kopecky - 11/7/24: 2 hrs
 * Joseph Kopecky - 11/13/24: 2 hrs
 * Joseph Kopecky - 11/26/24: 3 hrs
+* Joseph Kopecky - 11/28/24: 9 hrs + hrs after 5pm. (I locked in)

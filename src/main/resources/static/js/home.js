@@ -13,7 +13,7 @@ function shiftItemPromoCarousel(right) {
     }, 500);
 
     const carousel = document.getElementById("item-scroll-container");
-    let totalScrollAmount = 0.2325 * window.innerWidth;// gap = 3vw, tile = 20.25 vw
+    let totalScrollAmount = document.getElementsByClassName("top-rated-item-tile")[0].width * window.innerWidth;// gap = 3vw, tile = 20.25 vw
 
     if (right) {
         setTimeout(() => {

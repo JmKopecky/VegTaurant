@@ -1,9 +1,9 @@
 #collaborate-container {
+  display:flex;
   min-width: 80vw;
   height: auto;
   margin-top: 20vh;
   margin-bottom: 10vh;
-  display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
@@ -71,6 +71,24 @@
       position: absolute;
       left: 0;
       top: 0;
+    }
+  }
+
+  @media (width <= 950px) {
+    #collaborate-info-text {
+      border: none !important;
+    }
+
+    #collaborate-info-text::after {
+      width: 0 !important;
+      height: 0 !important;
+      background: transparent !important;
+    }
+  }
+
+  @media (width <= 800px) {
+    #collaborate-info-image {
+      display: none !important;
     }
   }
 }
