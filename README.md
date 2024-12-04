@@ -38,12 +38,13 @@ Broad Technical Ideas:
 
 # WORKLOG
 
-* Joseph Kopecky - 10/9/24: 3 hrs
-* Joseph Kopecky - 10/22/24: 2 hrs
-* Joseph Kopecky - 10/23/24: 4 hrs
-* Joseph Kopecky - 11/6/24: 3 hrs
-* Joseph Kopecky - 11/7/24: 2 hrs
-* Joseph Kopecky - 11/13/24: 2 hrs
-* Joseph Kopecky - 11/26/24: 3 hrs
-* Joseph Kopecky - 11/28/24: 11 hrs
-* Joseph Kopecky - 11/19/24: 9 hrs (Literally did nothing but ssl configuration and deployment, took 9 hrs lol)
+* Joseph Kopecky - 10/9/24: 3 hrs (Session Tokens)
+* Joseph Kopecky - 10/22/24: 2 hrs (Session Tokens)
+* Joseph Kopecky - 10/23/24: 4 hrs (Menu Tiles)
+* Joseph Kopecky - 11/6/24: 3 hrs (Order Location)
+* Joseph Kopecky - 11/7/24: 2 hrs (Order Billing)
+* Joseph Kopecky - 11/13/24: 2 hrs (Account Settings)
+* Joseph Kopecky - 11/26/24: 3 hrs (Home Page)
+* Joseph Kopecky - 11/28/24: 11 hrs (Mobile Responsive Layout)
+* Joseph Kopecky - 11/19/24: 9 hrs (SSL Configuration and Deployment)
+* Joseph Kopecky - 12/4/24: 3 hrs (Multiitem Support and Discounts)
