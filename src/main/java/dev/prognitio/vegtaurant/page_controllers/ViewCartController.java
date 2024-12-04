@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.naming.AuthenticationException;
+import java.time.Instant;
+import java.util.Calendar;
+import java.util.Date;
 
 @Controller
 public class ViewCartController {
@@ -30,6 +33,16 @@ public class ViewCartController {
             model.addAttribute("headerpicturelink", acc.getImageUrl());
         } catch (AuthenticationException e) {
             model.addAttribute("headerpicturelink", "/images/default-avatar-icon.jpg");
+        }
+
+        //if day is monday, have a site-wide discount
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(Date.from(Instant.now()));
+        boolean isMonday = cal.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY;
+        if (isMonday) {
+            model.addAttribute("defaultcode", "MONDAY");
+        } else {
+            model.addAttribute("defaultcode", "");
         }
 
         return "viewcart";

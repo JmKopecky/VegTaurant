@@ -44,6 +44,12 @@
       flex-flow: row;
       justify-content: space-between;
       align-items: center;
+      #totals-left {
+        display: flex;
+        flex-flow: column;
+        gap: 5vh;
+        text-align: center;
+      }
       #cart-price {
         display: flex;
         flex-flow: row;
@@ -70,6 +76,7 @@
       @media (width <= 475px) {
         flex-flow: column;
         gap: 5vh;
+        text-align: center;
       }
     }
     #cart-order-container {
@@ -79,5 +86,39 @@
       justify-content: center;
       align-items: center;
     }
+  }
+}
+
+
+.code-input-container {
+  border-radius: 1em;
+  padding: 0.5em;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  .label-code-input {
+    background: $secondary;
+    width: fit-content;
+    position: absolute;
+    top: -0.3em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    font-family: $headingFamily;
+    font-weight: 500;
+    font-size: 1.1em;
+    color: $primary;
+  }
+  input, input:focus, input:hover, input:-webkit-autofill, input:focus-visible {
+    border: 1px solid $accent !important;
+    border-radius: 1em;
+    padding: 0.5em;
+    background: none !important;
+    font-family: $paragraphFamily;
+    outline: none !important;
+    color: $primary;
+    transition: color 1s ease-in-out;
+    text-align: center;
   }
 }

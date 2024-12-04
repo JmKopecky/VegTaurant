@@ -64,17 +64,27 @@
 
         </div>
         <div id="cart-totals">
-            <h4 id="cart-total-count">Items: 0</h4>
+            <div id="totals-left">
+                <h4 id="cart-total-count">Items: 0</h4>
+                <div id="code-input-container" class="code-input-container">
+                    <label id="code-input-label" class="label-code-input">
+                        Gift Code
+                    </label>
+                    <input type="text" id="code-input" autocomplete="name" th:value="${defaultcode}">
+                </div>
+            </div>
             <div id="cart-price">
                 <div id="cart-price-labels">
                     <h4 id="cart-total-price-subtotal-label">Subtotal:</h4>
+                    <h4 id="cart-total-discount-label">Discount:</h4>
                     <h4 id="cart-total-tax-label">Tax:</h4>
                     <h4 id="cart-total-price-label">Total:</h4>
                 </div>
                 <div id="cart-price-values">
-                    <h4 id="cart-total-price-subtotal">0</h4>
-                    <h4 id="cart-total-tax">0</h4>
-                    <h4 id="cart-total-price">0</h4>
+                    <h4 id="cart-total-price-subtotal">0.00</h4>
+                    <h4 id="cart-total-discount">0.00</h4>
+                    <h4 id="cart-total-tax">0.00</h4>
+                    <h4 id="cart-total-price">0.00</h4>
                 </div>
             </div>
         </div>
