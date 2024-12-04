@@ -55,10 +55,16 @@ function setMenuCategory(targetCategory) {
 
 
 function hideOverlay(event, element) {
-    if (event.target !== element) {
+
+    if (event !== null && event.target !== element) {
         event.stopPropagation();
         return;
     }
+    const count = document.getElementById("item-count-input");
+    count.style.color = document.getElementById("item-count-label").style.color;
+    setTimeout(() => {
+        count.value = 1;
+    }, 0);
     document.getElementById("menu-item-overlay").setAttribute("style", "display: none;");
 }
 
@@ -90,9 +96,17 @@ function retrieveItemData(itemLabel) { //todo: add support for items to have cus
 function addItemToCart() {
     let label = document.getElementById("menu-item-overlay-name").textContent;
     let price = document.getElementById("menu-item-overlay-price").textContent.substring(1);
+    let count = document.getElementById("item-count-input").value;
+    if (count <= 0) {
+        document.getElementById("item-count-input").style.color = "red";
+        return;
+    } else {
+        document.getElementById("item-count-input").style.color = document.getElementById("item-count-label").style.color;
+    }
     let item = {
         "label": label,
-        "price": price
+        "price": price,
+        "count": count
     }
 
     if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") {
@@ -102,16 +116,34 @@ function addItemToCart() {
     } else {
         //add to cart.
         let cart = JSON.parse(localStorage.getItem("cart"));
-        cart.push(item);
-        localStorage.setItem("cart", JSON.stringify(cart));
+        let newCart = [];
+        let duplicates = false;
+        for (const target of cart) {
+            if (target["label"] === item["label"]) {
+                duplicates = true;
+                item["count"] = parseInt(target["count"]) + parseInt(item["count"]);
+                newCart.push(item);
+            } else {
+                newCart.push(target);
+            }
+        }
+        if (!duplicates) {
+            newCart.push(item);
+        }
+        localStorage.setItem("cart", JSON.stringify(newCart));
+        console.log(newCart);
     }
 
     //hide overlay
-    document.getElementById("menu-item-overlay").setAttribute("style", "display: none;");
+    hideOverlay(null, null);
 
     let cartHeaderNumber = document.getElementById("cart-item-count");
     if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
-        cartHeaderNumber.textContent = JSON.parse(localStorage.getItem("cart")).length;
+        let count = 0;
+        for (const item of JSON.parse(localStorage.getItem("cart"))) {
+            count += parseInt(item["count"]);
+        }
+        cartHeaderNumber.textContent = "" + count;
     } else {
         cartHeaderNumber.textContent = "0";
     }

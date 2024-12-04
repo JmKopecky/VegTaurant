@@ -51,9 +51,15 @@ function removeItem(tile) {
     if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
         let cart = JSON.parse(localStorage.getItem("cart"));
         let newCart = [];
+        let tileLabel = tile.getElementsByTagName("h3")[0].textContent.split(" X ")[0];
         for (const item of cart) {
-            if (item["label"] !== tile.getElementsByTagName("h3")[0].textContent) {
+            if (item["label"] !== tileLabel) {
                 newCart.push(item);
+                console.log(item);
+            } else if (item["count"] > 1) {
+                console.log("A: " + item);
+                item["count"] = parseInt(item["count"]) - 1;
+                newCart.push(item)
             }
         }
 
@@ -66,7 +72,11 @@ function removeItem(tile) {
 
         let cartHeaderNumber = document.getElementById("cart-item-count");
         if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
-            cartHeaderNumber.textContent = JSON.parse(localStorage.getItem("cart")).length;
+            let count = 0;
+            for (const item of JSON.parse(localStorage.getItem("cart"))) {
+                count += parseInt(item["count"]);
+            }
+            cartHeaderNumber.textContent = "" + count;
         } else {
             cartHeaderNumber.textContent = "0";
         }
@@ -86,7 +96,9 @@ function calculateCosts(cart) {
     for (const item of cart) {
         let label = item["label"];
         let price = item["price"];
-        subtotal += parseInt(price);
+        let count = parseInt(item["count"]);
+        let priceNum = parseFloat(price);
+        subtotal += parseFloat((priceNum * count).toFixed(2));
         itemCount++;
 
         //todo: create tile for item in cart display.
@@ -99,13 +111,16 @@ function calculateCosts(cart) {
         });
         let labelContainer = document.createElement("h3");
         labelContainer.textContent = label;
+        if (count > 1) {
+            labelContainer.textContent += " X " + count;
+        }
         tile.appendChild(labelContainer);
         let priceContainer = document.createElement("h4");
-        priceContainer.textContent = "$" + price;
+        priceContainer.textContent = "$" + (parseFloat(price) * count).toFixed(2);
         tile.appendChild(priceContainer);
         container.appendChild(tile);
     }
-    document.getElementById("cart-total-price-subtotal").textContent = "$" + subtotal.toFixed(2);
+    document.getElementById("cart-total-price-subtotal").textContent = "$" + (subtotal.toFixed(2));
     const discountElem = document.getElementById("cart-total-discount");
     let discount = parseFloat(discountElem.textContent.substring(1, discountElem.textContent.length));
     let tax = (subtotal - discount) * 0.0825;

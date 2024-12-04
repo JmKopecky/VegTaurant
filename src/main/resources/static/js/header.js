@@ -16,7 +16,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     let cartHeaderNumber = document.getElementById("cart-item-count");
     if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
-        cartHeaderNumber.textContent = JSON.parse(localStorage.getItem("cart")).length;
+        let count = 0;
+        for (const item of JSON.parse(localStorage.getItem("cart"))) {
+            count += parseInt(item["count"]);
+        }
+        cartHeaderNumber.textContent = "" + count;
     } else {
         cartHeaderNumber.textContent = "0";
     }
