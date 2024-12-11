@@ -408,4 +408,16 @@ body {
   text-align: center;
 }
 
+#footer {
+  width: 100%;
+  min-height: 5vh;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(11.9, 11.9, 11.9);
+}
+
 /*# sourceMappingURL=viewcart.css.map */

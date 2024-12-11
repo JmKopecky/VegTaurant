@@ -99,7 +99,7 @@ function calculateCosts(cart) {
         let count = parseInt(item["count"]);
         let priceNum = parseFloat(price);
         subtotal += parseFloat((priceNum * count).toFixed(2));
-        itemCount++;
+        itemCount += count;
 
         //todo: create tile for item in cart display.
 
@@ -143,7 +143,9 @@ function doCodeInputChange(val) {
         let subtotal = 0;
         for (const item of cart) {
             let price = item["price"];
-            subtotal += parseInt(price);
+            let count = parseInt(item["count"]);
+            let priceNum = parseFloat(price);
+            subtotal += parseFloat((priceNum * count).toFixed(2));
         }
 
         if (val === "MONDAY") {
