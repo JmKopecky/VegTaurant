@@ -387,6 +387,7 @@ body {
   width: 90%;
   padding-left: 5%;
   padding-right: 5%;
+  margin-bottom: 5vh;
 }
 #site-content #menu-items-container .menu-items {
   display: flex;
@@ -544,6 +545,18 @@ body {
   outline: none !important;
   color: #EEEEEE;
   transition: color 1s ease-in-out;
+}
+
+#footer {
+  width: 100%;
+  min-height: 5vh;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(11.9, 11.9, 11.9);
 }
 
 /*# sourceMappingURL=menu.css.map */
