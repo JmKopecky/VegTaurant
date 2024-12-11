@@ -12,7 +12,6 @@ if (window.matchMedia("(pointer:fine)").matches) {
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    registerAnimations()
 
     let cartHeaderNumber = document.getElementById("cart-item-count");
     if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
