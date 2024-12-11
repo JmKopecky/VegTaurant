@@ -13,14 +13,17 @@ function shiftItemPromoCarousel(right) {
     }, 500);
 
     const carousel = document.getElementById("item-scroll-container");
-    let totalScrollAmount = document.getElementsByClassName("top-rated-item-tile")[0].width * window.innerWidth;// gap = 3vw, tile = 20.25 vw
+    let totalScrollAmount = document.getElementsByClassName("top-rated-item-tile")[0].offsetWidth + window.innerWidth * 3.0/100;// gap = 3vw, tile = 20.25 vw
+    console.log(totalScrollAmount);
+    console.log(document.getElementsByClassName("top-rated-item-tile")[0].offsetWidth);
+    console.log(window.innerWidth);
 
     if (right) {
         setTimeout(() => {
             gsap.to(carousel, {
                 x: 0,
                 ease: "none",
-                duration: 0.000001
+                duration: 0.000000001
             });
             const firstChild = carousel.removeChild(carousel.firstElementChild);
             carousel.appendChild(firstChild);
@@ -31,7 +34,7 @@ function shiftItemPromoCarousel(right) {
         gsap.to(carousel, {
             x: -totalScrollAmount,
             ease: "linear",
-            duration: 0.000001
+            duration: 0.0000001
         });
     }
 
@@ -61,9 +64,11 @@ function registerAnimations() {
         elem.addEventListener("mouseover", () => {
             //show
             toggleApproachesTile(elem, "show");
+            elem.setAttribute("data-mouseover", "true");
         });
         elem.addEventListener("mouseout", () => {
             //hide
+            elem.setAttribute("data-mouseover", "false");
             if (elem.getAttribute("data-approaches-tile-selected") !== "true") {
                 toggleApproachesTile(elem, "hide");
             }
