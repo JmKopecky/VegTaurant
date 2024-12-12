@@ -60,6 +60,7 @@ a {
   margin: 0;
   color: #00B837;
   cursor: pointer;
+  transition: transform 0.5s linear;
 }
 
 a.link-hover {
@@ -288,20 +289,20 @@ body {
   background: rgba(11.9, 11.9, 11.9, 0.99);
 }
 
-#site-content {
+#site-content-cart {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 10vh;
   padding-bottom: 10vh;
 }
-#site-content #cart-display {
+#site-content-cart #cart-display {
   width: 80%;
   border-left: #00B837 1px solid;
   border-right: #00B837 1px solid;
   padding: 2vh 3vw;
 }
-#site-content #cart-display #cart-items-container {
+#site-content-cart #cart-display #cart-items-container {
   width: 100%;
   min-height: 30vh;
   display: flex;
@@ -312,7 +313,7 @@ body {
   padding-top: 5vh;
   padding-bottom: 5vh;
 }
-#site-content #cart-display #cart-items-container .cart-item-tile {
+#site-content-cart #cart-display #cart-items-container .cart-item-tile {
   width: 100%;
   display: flex;
   flex-flow: row;
@@ -321,30 +322,30 @@ body {
   border-top: rgba(0, 184, 55, 0.5) 1px solid;
   padding-top: 1vh;
 }
-#site-content #cart-display #cart-items-container .cart-item-tile:hover {
+#site-content-cart #cart-display #cart-items-container .cart-item-tile:hover {
   text-decoration: line-through #00B837;
 }
-#site-content #cart-display #cart-totals {
+#site-content-cart #cart-display #cart-totals {
   width: 100%;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
 }
-#site-content #cart-display #cart-totals #totals-left {
+#site-content-cart #cart-display #cart-totals #totals-left {
   display: flex;
   flex-flow: column;
   gap: 5vh;
   text-align: center;
 }
-#site-content #cart-display #cart-totals #cart-price {
+#site-content-cart #cart-display #cart-totals #cart-price {
   display: flex;
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
   gap: 5vw;
 }
-#site-content #cart-display #cart-totals #cart-price #cart-price-labels {
+#site-content-cart #cart-display #cart-totals #cart-price #cart-price-labels {
   display: flex;
   width: fit-content;
   flex-flow: column;
@@ -352,7 +353,7 @@ body {
   gap: 1vh;
   align-items: start;
 }
-#site-content #cart-display #cart-totals #cart-price #cart-price-values {
+#site-content-cart #cart-display #cart-totals #cart-price #cart-price-values {
   display: flex;
   width: fit-content;
   flex-flow: column;
@@ -361,13 +362,13 @@ body {
   align-items: end;
 }
 @media (width <= 475px) {
-  #site-content #cart-display #cart-totals {
+  #site-content-cart #cart-display #cart-totals {
     flex-flow: column;
     gap: 5vh;
     text-align: center;
   }
 }
-#site-content #cart-display #cart-order-container {
+#site-content-cart #cart-display #cart-order-container {
   width: 100%;
   padding-top: 5vh;
   display: flex;

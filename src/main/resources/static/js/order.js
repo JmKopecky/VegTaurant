@@ -110,7 +110,6 @@ function initBillingInfo() {
 function finalizeOrder() {
     document.getElementById("billing-info-container").style.display = "none";
     document.getElementById("finalize-order-container").style.display = "flex";
-    //todo: generate a random estimated time for delivery.
     let estimatedTime = Math.trunc(Math.random() * 10 + 5);
     document.getElementById("time-completion-estimate").textContent = estimatedTime + " Minutes";
     if (account !== "noaccount") {

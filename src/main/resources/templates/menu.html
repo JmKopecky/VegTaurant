@@ -2,21 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Menu</title>
+    <title>Condelu Meals</title>
     <!--<link rel="icon" type="image/x-icon" href="/images/condelulogo.ico">-->
     <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/styles/menu.css">
+    <link rel="stylesheet" href="/styles/home.css">
     <script src="https://kit.fontawesome.com/2b6129ab2e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
     <script src="/js/header.js"></script>
-    <script src="/js/menu.js"></script>
+    <script src="/js/home.js"></script>
     <script src="/js/item_cart_handling.js"></script>
+
+    <script src="/js/account.js"></script>
+    <link rel="stylesheet" href="/styles/account.css">
+
+    <script src="/js/menu.js"></script>
+    <link rel="stylesheet" href="/styles/menu.css">
+
+    <script src="/js/order.js"></script>
+    <link rel="stylesheet" href="/styles/order.css">
+
+    <script src="/js/signon.js"></script>
+    <link rel="stylesheet" href="/styles/signon.css">
+
+    <script src="/js/view_cart.js"></script>
+    <link rel="stylesheet" href="/styles/viewcart.css">
+
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@barba/core" type="text/javascript"></script>
 </head>
-<body class="light">
+<body class="light" data-barba="wrapper">
+
+<script src="/js/barba_config.js"></script>
 
 
 <div id="header-container">
@@ -26,6 +45,7 @@
         <a href="/cart" style="display: none;">Order</a>
         <a href="/account" style="display: none;">Account</a>
         <a href="/#collaborate-container" style="display: none;">Careers</a>
+        <a href="/reference_page" style="display:none;">Reference Page</a>
         <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
         <a class="header-no-remove" href="/cart">
             <i class="fa-solid fa-cart-shopping"></i>
@@ -50,68 +70,76 @@
     <a href="/cart"><h1>Order</h1></a>
     <a href="/account"><h1>Account</h1></a>
     <a href="/#collaborate-container"><h1>Careers</h1></a>
+    <a href="/reference_page"><h1>Reference Page</h1></a>
 </div>
 
 
-<div id="menu-item-overlay" onclick="hideOverlay(event, this);">
-    <div id="menu-item-details-container">
-        <div id="menu-item-top">
-            <div id="menu-item-main-info">
-                <div id="menu-item-label"><h2 id="menu-item-overlay-name">Test1</h2></div>
-                <div id="menu-item-price"><h4 id="menu-item-overlay-price">Test2</h4></div>
-                <div id="menu-item-rating"><h5 id="menu-item-overlay-rating"></h5></div>
-            </div>
-            <div id="menu-item-image">
-                <img id="menu-item-overlay-image" src="" alt="menu item overlay extra info image." style="width: 100%;height: 30vh;object-fit: contain;">
-            </div>
-        </div>
-        <div id="menu-item-desc-container">
-            <p id="menu-item-overlay-desc"></p>
-            <div id="item-count-container" class="item-count-container">
-                <label id="item-count-label" class="label-item-count">
-                    Item Count
-                </label>
-                <input type="number" id="item-count-input" autocomplete="name" value=1>
-            </div>
-            <button id="add-to-cart-button" onclick="addItemToCart();">Add to Cart</button>
-        </div>
-    </div>
-</div>
 
 
-<div id="site-content">
-    <div id="menu-banner">
-        <h1>Menu</h1>
-    </div>
 
-    <div id="menu-categories-container">
-        <div id="menu-categories-accordion-header">
-            <h2 id="nav-accordion-header-label">All</h2>
-            <div id="nav-accordion-icon">
-                <i id="show-accordion-panel" class="fa-solid fa-plus" style="display:block" onclick="mobileNavAccordionClick('show');"></i>
-                <i id="hide-accordion-panel" class="fa-solid fa-minus" style="display:none" onclick="mobileNavAccordionClick('hide');"></i>
+<div id="barba-container" data-barba="container" data-barba-namespace="menu">
+
+
+    <div id="menu-item-overlay" onclick="hideOverlay(event, this);">
+        <div id="menu-item-details-container">
+            <div id="menu-item-top">
+                <div id="menu-item-main-info">
+                    <div id="menu-item-label"><h2 id="menu-item-overlay-name">Test1</h2></div>
+                    <div id="menu-item-price"><h4 id="menu-item-overlay-price">Test2</h4></div>
+                    <div id="menu-item-rating"><h5 id="menu-item-overlay-rating"></h5></div>
+                </div>
+                <div id="menu-item-image">
+                    <img id="menu-item-overlay-image" src="" alt="menu item overlay extra info image." style="width: 100%;height: 30vh;object-fit: contain;">
+                </div>
             </div>
-        </div>
-        <div id="menu-accordion-panel">
-            <!-- Categories of all, breakfast, dinner, sides, drinks, desserts-->
-            <div class="menu-topic-tile" th:each="topicTile:${itemsByMenuTags.entrySet()}" th:category="${topicTile.getKey()}" onclick="setMenuCategory(this.getAttribute('category'));" th:id="|cattile_${topicTile.getKey()}|">
-                <h3 th:text="${topicTile.getKey()}"></h3>
+            <div id="menu-item-desc-container">
+                <p id="menu-item-overlay-desc"></p>
+                <div id="item-count-container" class="item-count-container">
+                    <label id="item-count-label" class="label-item-count">
+                        Item Count
+                    </label>
+                    <input type="number" id="item-count-input" autocomplete="name" value=1>
+                </div>
+                <button id="add-to-cart-button" onclick="addItemToCart();">Add to Cart</button>
             </div>
         </div>
     </div>
 
-    <div id="menu-items-container">
-        <div class="menu-items" style="display: none;" th:each="category:${itemsByMenuTags.entrySet()}" th:id="|menucontainer_${category.getKey()}|">
-            <div class="menu-item-tag" th:each="tag:${itemsByMenuTags.get(category.getKey())}">
-                <h4 class="menu-tag-name" th:text="${tag.getTagName()}"></h4>
-                <div class="tag-items">
-                    <div class="menu-item" th:each="item:${tag.getMenuItems()}">
-                        <div class="item-image-container">
-                            <img th:src="${item.getIconUrl()}" th:alt="${item.getLabel()}">
-                        </div>
-                        <div class="item-content-container">
-                            <h3 class="item-title" th:text="${item.getLabel()}"></h3>
-                            <button th:item="${item.getLabel()}" onclick="retrieveItemData(this.getAttribute('item'));">More Info</button>
+
+    <div id="site-content-menu">
+        <div id="menu-banner">
+            <h1>Menu</h1>
+        </div>
+
+        <div id="menu-categories-container">
+            <div id="menu-categories-accordion-header">
+                <h2 id="nav-accordion-header-label">All</h2>
+                <div id="nav-accordion-icon">
+                    <i id="show-accordion-panel" class="fa-solid fa-plus" style="display:block" onclick="mobileNavAccordionClick('show');"></i>
+                    <i id="hide-accordion-panel" class="fa-solid fa-minus" style="display:none" onclick="mobileNavAccordionClick('hide');"></i>
+                </div>
+            </div>
+            <div id="menu-accordion-panel">
+                <!-- Categories of all, breakfast, dinner, sides, drinks, desserts-->
+                <div class="menu-topic-tile" th:each="topicTile:${itemsByMenuTags.entrySet()}" th:category="${topicTile.getKey()}" onclick="setMenuCategory(this.getAttribute('category'));" th:id="|cattile_${topicTile.getKey()}|">
+                    <h3 th:text="${topicTile.getKey()}"></h3>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-items-container">
+            <div class="menu-items" style="display: none;" th:each="category:${itemsByMenuTags.entrySet()}" th:id="|menucontainer_${category.getKey()}|">
+                <div class="menu-item-tag" th:each="tag:${itemsByMenuTags.get(category.getKey())}">
+                    <h4 class="menu-tag-name" th:text="${tag.getTagName()}"></h4>
+                    <div class="tag-items">
+                        <div class="menu-item" th:each="item:${tag.getMenuItems()}">
+                            <div class="item-image-container">
+                                <img th:src="${item.getIconUrl()}" th:alt="${item.getLabel()}">
+                            </div>
+                            <div class="item-content-container">
+                                <h3 class="item-title" th:text="${item.getLabel()}"></h3>
+                                <button th:item="${item.getLabel()}" onclick="retrieveItemData(this.getAttribute('item'));">More Info</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -119,6 +147,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 <div id="footer">

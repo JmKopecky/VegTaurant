@@ -60,6 +60,7 @@ a {
   margin: 0;
   color: #00B837;
   cursor: pointer;
+  transition: transform 0.5s linear;
 }
 
 a.link-hover {

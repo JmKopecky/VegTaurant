@@ -68,7 +68,7 @@ public class SignOnController {
                 account = new Account();
                 account.setEmail(node.get("email").asText());
                 account.setPhone(node.get("phone").asText());
-                account.setPassword(node.get("password").asText()); //TODO hash passwords
+                account.setPassword(node.get("password").asText()); //feature hash passwords
                 account.setRewardPoints(0);
                 account.setName(node.get("name").asText());
                 account.setAddress(node.get("address").asText());

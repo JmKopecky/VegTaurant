@@ -60,6 +60,7 @@ a {
   margin: 0;
   color: #00B837;
   cursor: pointer;
+  transition: transform 0.5s linear;
 }
 
 a.link-hover {
@@ -288,7 +289,7 @@ body {
   background: rgba(11.9, 11.9, 11.9, 0.99);
 }
 
-#site-content #location-container {
+#site-content-order #location-container {
   width: 96%;
   padding-left: 2%;
   padding-right: 2%;
@@ -298,7 +299,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-#site-content #location-container #location-float-align {
+#site-content-order #location-container #location-float-align {
   width: 100%;
   flex-grow: 1;
   display: flex;
@@ -306,7 +307,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-#site-content #location-container #location-float-align #location-type-selection {
+#site-content-order #location-container #location-float-align #location-type-selection {
   width: 50%;
   height: 100%;
   display: flex;
@@ -314,11 +315,11 @@ body {
   justify-content: center;
   align-items: center;
 }
-#site-content #location-container #location-float-align #location-type-selection h2 {
+#site-content-order #location-container #location-float-align #location-type-selection h2 {
   padding-top: 20vh;
   text-align: center;
 }
-#site-content #location-container #location-float-align #location-type-selection #location-options {
+#site-content-order #location-container #location-float-align #location-type-selection #location-options {
   flex-grow: 1;
   width: 100%;
   display: flex;
@@ -326,20 +327,20 @@ body {
   justify-content: space-around;
   align-items: center;
 }
-#site-content #location-container #location-float-align #location-type-selection #location-options .loc-type-selectable {
+#site-content-order #location-container #location-float-align #location-type-selection #location-options .loc-type-selectable {
   transition: background-color 0.5s, font-size 0.5s;
   padding: 0.5em 1em;
   border-radius: 1em;
   border: 1px solid #00B837;
 }
-#site-content #location-container #location-float-align #location-type-selection #location-options .loc-type-selectable.picked {
+#site-content-order #location-container #location-float-align #location-type-selection #location-options .loc-type-selectable.picked {
   font-size: 2.25em;
   background-color: #00B837;
 }
-#site-content #location-container #location-float-align #location-type-selection #location-options .loc-type-selectable:hover {
+#site-content-order #location-container #location-float-align #location-type-selection #location-options .loc-type-selectable:hover {
   background-color: #00B837;
 }
-#site-content #location-container #location-float-align #location-address-selection {
+#site-content-order #location-container #location-float-align #location-address-selection {
   width: 50%;
   height: 100%;
   display: flex;
@@ -347,7 +348,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-#site-content #location-container #location-float-align #location-address-selection #enter-address {
+#site-content-order #location-container #location-float-align #location-address-selection #enter-address {
   width: 100%;
   display: flex;
   flex-flow: row;
@@ -355,14 +356,14 @@ body {
   justify-content: center;
   gap: 2em;
 }
-#site-content #location-container #location-float-align #location-address-selection #enter-address input {
+#site-content-order #location-container #location-float-align #location-address-selection #enter-address input {
   background: none;
   border: 1px solid #00B837;
   border-radius: 1em;
   padding: 0.25em;
   text-align: center;
 }
-#site-content #location-container #location-float-align #location-address-selection #select-address-from-list {
+#site-content-order #location-container #location-float-align #location-address-selection #select-address-from-list {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -371,7 +372,7 @@ body {
   width: 100%;
   overflow-y: scroll;
 }
-#site-content #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile {
+#site-content-order #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile {
   display: flex;
   width: 100%;
   flex-flow: row;
@@ -379,26 +380,26 @@ body {
   align-items: start;
   gap: 1em;
 }
-#site-content #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile .location-address {
+#site-content-order #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile .location-address {
   width: 50%;
   transition: color 0.5s;
 }
-#site-content #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile .location-city {
+#site-content-order #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile .location-city {
   width: 50%/3;
   transition: color 0.5s;
 }
-#site-content #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile .location-state {
+#site-content-order #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile .location-state {
   width: 50%/3;
   transition: color 0.5s;
 }
-#site-content #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile .location-zip {
+#site-content-order #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile .location-zip {
   width: 50%/3;
   transition: color 0.5s;
 }
-#site-content #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile.selected > * {
+#site-content-order #location-container #location-float-align #location-address-selection #select-address-from-list .location-tile.selected > * {
   color: #00B837;
 }
-#site-content #location-container #location-proceed-button {
+#site-content-order #location-container #location-proceed-button {
   width: 100%;
   display: flex;
   align-items: center;
@@ -406,22 +407,22 @@ body {
   padding-bottom: 5vh;
 }
 @media (width <= 625px) {
-  #site-content #location-container #location-float-align {
+  #site-content-order #location-container #location-float-align {
     flex-flow: column;
   }
-  #site-content #location-container #location-float-align #location-type-selection {
+  #site-content-order #location-container #location-float-align #location-type-selection {
     gap: 5vh;
     padding-bottom: 5vh;
   }
-  #site-content #location-container #location-float-align #location-type-selection #location-options {
+  #site-content-order #location-container #location-float-align #location-type-selection #location-options {
     gap: 2vh;
   }
-  #site-content #location-container #location-address-selection {
+  #site-content-order #location-container #location-address-selection {
     width: 80% !important;
     padding-bottom: 5vh;
   }
 }
-#site-content #billing-info-container {
+#site-content-order #billing-info-container {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -429,14 +430,14 @@ body {
   justify-content: center;
   align-items: center;
 }
-#site-content #billing-info-container h2 {
+#site-content-order #billing-info-container h2 {
   padding-top: 10vh;
   padding-bottom: 5vh;
 }
-#site-content #billing-info-container button {
+#site-content-order #billing-info-container button {
   margin-bottom: 5vh;
 }
-#site-content #billing-info-container #billing-input {
+#site-content-order #billing-info-container #billing-input {
   flex-grow: 1;
   width: 50%;
   display: flex;
@@ -444,14 +445,14 @@ body {
   align-items: center;
   justify-content: space-evenly;
 }
-#site-content #billing-info-container #billing-input .side-by-side {
+#site-content-order #billing-info-container #billing-input .side-by-side {
   display: flex;
   flex-flow: row;
   width: 100%;
   align-items: center;
   justify-content: center;
 }
-#site-content #billing-info-container #billing-input .billing-data {
+#site-content-order #billing-info-container #billing-input .billing-data {
   border-radius: 1em;
   padding: 0.5em;
   display: flex;
@@ -460,7 +461,7 @@ body {
   align-items: center;
   position: relative;
 }
-#site-content #billing-info-container #billing-input .billing-data .label-billing {
+#site-content-order #billing-info-container #billing-input .billing-data .label-billing {
   background: #111111;
   width: fit-content;
   position: absolute;
@@ -472,7 +473,7 @@ body {
   font-size: 1.1em;
   color: #EEEEEE;
 }
-#site-content #billing-info-container #billing-input .billing-data input, #site-content #billing-info-container #billing-input .billing-data input:focus, #site-content #billing-info-container #billing-input .billing-data input:hover, #site-content #billing-info-container #billing-input .billing-data input:-webkit-autofill, #site-content #billing-info-container #billing-input .billing-data input:focus-visible {
+#site-content-order #billing-info-container #billing-input .billing-data input, #site-content-order #billing-info-container #billing-input .billing-data input:focus, #site-content-order #billing-info-container #billing-input .billing-data input:hover, #site-content-order #billing-info-container #billing-input .billing-data input:-webkit-autofill, #site-content-order #billing-info-container #billing-input .billing-data input:focus-visible {
   border: 1px solid #00B837 !important;
   border-radius: 1em;
   padding: 0.5em;
@@ -484,17 +485,17 @@ body {
   text-align: center;
 }
 @media (width <= 400px) {
-  #site-content #billing-info-container #billing-input {
+  #site-content-order #billing-info-container #billing-input {
     gap: 2vh;
     padding-top: 10vh;
     padding-bottom: 5vh;
   }
-  #site-content #billing-info-container .side-by-side {
+  #site-content-order #billing-info-container .side-by-side {
     flex-flow: column !important;
     gap: 2vh;
   }
 }
-#site-content #finalize-order-container {
+#site-content-order #finalize-order-container {
   min-height: 100vh;
   display: flex;
   flex-flow: column;
@@ -505,7 +506,7 @@ body {
   padding-right: 5%;
   padding-top: 10vh;
 }
-#site-content #final-order-info-display {
+#site-content-order #final-order-info-display {
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -513,7 +514,7 @@ body {
   align-items: center;
   height: 60vh;
 }
-#site-content #final-order-info-display div {
+#site-content-order #final-order-info-display div {
   display: flex;
   flex-flow: row;
   gap: 5vw;
@@ -521,31 +522,31 @@ body {
   align-items: center;
 }
 @media (width <= 600px) {
-  #site-content #final-order-info-display div {
+  #site-content-order #final-order-info-display div {
     flex-flow: column;
     gap: 0;
     text-align: center;
   }
 }
-#site-content #final-order-info-display h1, #site-content #final-order-info-display h3 {
+#site-content-order #final-order-info-display h1, #site-content-order #final-order-info-display h3 {
   text-align: center;
 }
-#site-content .rating-container {
+#site-content-order .rating-container {
   display: flex;
   flex-flow: row;
   align-items: center;
   justify-content: center;
   gap: 1em;
 }
-#site-content .rating-container .rate-star-icon {
+#site-content-order .rating-container .rate-star-icon {
   font-size: 1em;
   color: rgb(0, 107.5, 32.1331521739);
   transition: color 0.5s;
 }
-#site-content .rating-container .rate-star-icon.rate-selected {
+#site-content-order .rating-container .rate-star-icon.rate-selected {
   color: #00B837;
 }
-#site-content #general-rating-panel {
+#site-content-order #general-rating-panel {
   min-height: 20vh;
   display: flex;
   flex-flow: column;
@@ -554,7 +555,7 @@ body {
   gap: 2em;
   text-align: center;
 }
-#site-content #order-review-panel {
+#site-content-order #order-review-panel {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -563,16 +564,16 @@ body {
   padding-bottom: 5vh;
   width: 100%;
 }
-#site-content #order-review-panel .fa-arrow-down {
+#site-content-order #order-review-panel .fa-arrow-down {
   color: #00B837;
   font-size: 2em;
   margin-bottom: 5vh;
 }
-#site-content #order-review-panel #order-items-review-container {
+#site-content-order #order-review-panel #order-items-review-container {
   width: 100%;
   padding-bottom: 5vh;
 }
-#site-content #order-review-panel #order-items-review-container .order-review-tile {
+#site-content-order #order-review-panel #order-items-review-container .order-review-tile {
   display: flex;
   flex-flow: row;
   justify-content: space-evenly;
@@ -581,26 +582,26 @@ body {
   padding: 2vh 5%;
   position: relative;
 }
-#site-content #order-review-panel #order-items-review-container .order-review-tile .order-review-label, #site-content #order-review-panel #order-items-review-container .order-review-tile .rating-container, #site-content #order-review-panel #order-items-review-container .order-review-tile .order-item-rating-input {
+#site-content-order #order-review-panel #order-items-review-container .order-review-tile .order-review-label, #site-content-order #order-review-panel #order-items-review-container .order-review-tile .rating-container, #site-content-order #order-review-panel #order-items-review-container .order-review-tile .order-item-rating-input {
   flex: 1 1 0px;
   text-align: center;
 }
-#site-content #order-review-panel #order-items-review-container .order-review-tile .order-item-rating-input {
+#site-content-order #order-review-panel #order-items-review-container .order-review-tile .order-item-rating-input {
   background: #111111;
   border: 1px solid #00B837;
   border-radius: 1em;
   padding: 0.25em;
 }
-#site-content #order-review-panel #order-items-review-container .order-review-tile .order-item-rating-input::placeholder {
+#site-content-order #order-review-panel #order-items-review-container .order-review-tile .order-item-rating-input::placeholder {
   color: #EEEEEE;
 }
 @media (width <= 800px) {
-  #site-content #order-review-panel #order-items-review-container .order-review-tile {
+  #site-content-order #order-review-panel #order-items-review-container .order-review-tile {
     flex-flow: column !important;
     gap: 2vh;
   }
 }
-#site-content #order-review-panel #order-items-review-container .order-review-tile::after {
+#site-content-order #order-review-panel #order-items-review-container .order-review-tile::after {
   width: 70%;
   height: 0.1px;
   background: #bbbbbb;

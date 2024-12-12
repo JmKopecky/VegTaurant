@@ -63,9 +63,11 @@ a {
   margin: 0;
   color: $accent;
   cursor: pointer;
+  transition: transform 0.5s linear;
 }
 a.link-hover {
   position: relative;
+  //transform: scale(1.1);
 }
 a.link-hover::after {
   width: 0%;

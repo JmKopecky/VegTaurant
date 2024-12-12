@@ -48,3 +48,4 @@ Broad Technical Ideas:
 * Joseph Kopecky - 11/28/24: 11 hrs (Mobile Responsive Layout)
 * Joseph Kopecky - 11/19/24: 9 hrs (SSL Configuration and Deployment)
 * Joseph Kopecky - 12/4/24: 3 hrs (Multiitem Support and Discounts)
+* Joseph Kopecky - 12/11/24: 1 hr + after meeting + home (bug fixes, footer, default icon, planning todo)

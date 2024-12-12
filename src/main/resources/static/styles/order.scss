@@ -1,7 +1,7 @@
 @import 'constants';
 @import 'header';
 
-#site-content {
+#site-content-order {
   @import 'order/location';
   @import 'order/billing';
   @import 'order/finalizedorder';

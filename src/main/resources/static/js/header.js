@@ -33,7 +33,7 @@ function headerButtonClick() {
     let shouldShow = true;
     let desktopDisplayAttr = "block";
 
-    if (window.matchMedia("(width <= 675px)").matches) {
+    if (window.matchMedia("(width <= 775px)").matches) {
         isDesktopHeader = false;
     }
 

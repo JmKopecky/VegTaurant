@@ -46,8 +46,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     });
     document.getElementById("signon-button").addEventListener("click", () => {
-        console.log("ran");
-        //todo test if fields are empty before sending!
         let namePresent = document.getElementById("signon-name-input").value !== "";
         let emailPresent = document.getElementById("signon-email-input").value !== "";
         let pwPresent = document.getElementById("signon-password-input").value !== "";

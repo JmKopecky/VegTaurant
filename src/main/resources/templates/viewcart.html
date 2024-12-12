@@ -2,20 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>View Cart</title>
+    <title>Condelu Meals</title>
     <!--<link rel="icon" type="image/x-icon" href="/images/condelulogo.ico">-->
     <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/styles/viewcart.css">
+    <link rel="stylesheet" href="/styles/home.css">
     <script src="https://kit.fontawesome.com/2b6129ab2e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
     <script src="/js/header.js"></script>
+    <script src="/js/home.js"></script>
+    <script src="/js/item_cart_handling.js"></script>
+
+    <script src="/js/account.js"></script>
+    <link rel="stylesheet" href="/styles/account.css">
+
+    <script src="/js/menu.js"></script>
+    <link rel="stylesheet" href="/styles/menu.css">
+
+    <script src="/js/order.js"></script>
+    <link rel="stylesheet" href="/styles/order.css">
+
+    <script src="/js/signon.js"></script>
+    <link rel="stylesheet" href="/styles/signon.css">
+
     <script src="/js/view_cart.js"></script>
+    <link rel="stylesheet" href="/styles/viewcart.css">
+
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@barba/core" type="text/javascript"></script>
 </head>
-<body>
+<body data-barba="wrapper">
+
+<script src="/js/barba_config.js"></script>
+
+
 
 <div id="header-container">
     <div id="header-link-container">
@@ -24,6 +46,7 @@
         <a href="/cart" style="display: none;">Order</a>
         <a href="/account" style="display: none;">Account</a>
         <a href="/#collaborate-container" style="display: none;">Careers</a>
+        <a href="/reference_page" style="display:none;">Reference Page</a>
         <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
         <a class="header-no-remove" href="/cart">
             <i class="fa-solid fa-cart-shopping"></i>
@@ -48,51 +71,57 @@
     <a href="/cart"><h1>Order</h1></a>
     <a href="/account"><h1>Account</h1></a>
     <a href="/#collaborate-container"><h1>Careers</h1></a>
+    <a href="/reference_page"><h1>Reference Page</h1></a>
 </div>
 
 
-<div id="site-content">
+<div id="barba-container" data-barba="container" data-barba-namespace="cart">
+    <div id="site-content-cart">
 
-    <!--
-    if no cart is specified in local storage and user is not signed in, redirect to menu.
-    If user is signed in but no cart in local storage, check if they have a favorite or past order they would like to do again.
-    Otherwise, there is an order, so display that order. Have the option prominent to go and see the menu to add something else.
-    -->
+        <!--
+        if no cart is specified in local storage and user is not signed in, redirect to menu.
+        If user is signed in but no cart in local storage, check if they have a favorite or past order they would like to do again.
+        Otherwise, there is an order, so display that order. Have the option prominent to go and see the menu to add something else.
+        -->
 
-    <div id="cart-display">
-        <div id="cart-items-container">
+        <div id="cart-display">
+            <div id="cart-items-container">
 
-        </div>
-        <div id="cart-totals">
-            <div id="totals-left">
-                <h4 id="cart-total-count">Items: 0</h4>
-                <div id="code-input-container" class="code-input-container">
-                    <label id="code-input-label" class="label-code-input">
-                        Gift Code
-                    </label>
-                    <input type="text" id="code-input" autocomplete="name" th:value="${defaultcode}">
+            </div>
+            <div id="cart-totals">
+                <div id="totals-left">
+                    <h4 id="cart-total-count">Items: 0</h4>
+                    <div id="code-input-container" class="code-input-container">
+                        <label id="code-input-label" class="label-code-input">
+                            Gift Code
+                        </label>
+                        <input type="text" id="code-input" autocomplete="name" th:value="${defaultcode}">
+                    </div>
+                </div>
+                <div id="cart-price">
+                    <div id="cart-price-labels">
+                        <h4 id="cart-total-price-subtotal-label">Subtotal:</h4>
+                        <h4 id="cart-total-discount-label">Discount:</h4>
+                        <h4 id="cart-total-tax-label">Tax:</h4>
+                        <h4 id="cart-total-price-label">Total:</h4>
+                    </div>
+                    <div id="cart-price-values">
+                        <h4 id="cart-total-price-subtotal">0.00</h4>
+                        <h4 id="cart-total-discount">0.00</h4>
+                        <h4 id="cart-total-tax">0.00</h4>
+                        <h4 id="cart-total-price">0.00</h4>
+                    </div>
                 </div>
             </div>
-            <div id="cart-price">
-                <div id="cart-price-labels">
-                    <h4 id="cart-total-price-subtotal-label">Subtotal:</h4>
-                    <h4 id="cart-total-discount-label">Discount:</h4>
-                    <h4 id="cart-total-tax-label">Tax:</h4>
-                    <h4 id="cart-total-price-label">Total:</h4>
-                </div>
-                <div id="cart-price-values">
-                    <h4 id="cart-total-price-subtotal">0.00</h4>
-                    <h4 id="cart-total-discount">0.00</h4>
-                    <h4 id="cart-total-tax">0.00</h4>
-                    <h4 id="cart-total-price">0.00</h4>
-                </div>
+            <div id="cart-order-container">
+                <button onclick="placeOrder()">Proceed to Checkout</button>
             </div>
-        </div>
-        <div id="cart-order-container">
-            <button onclick="placeOrder()">Proceed to Checkout</button>
         </div>
     </div>
 </div>
+
+
+
 
 
 <div id="footer">

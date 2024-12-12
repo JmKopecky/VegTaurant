@@ -60,6 +60,7 @@ a {
   margin: 0;
   color: #00B837;
   cursor: pointer;
+  transition: transform 0.5s linear;
 }
 
 a.link-hover {
@@ -288,12 +289,12 @@ body {
   background: rgba(11.9, 11.9, 11.9, 0.99);
 }
 
-#site-content {
+#site-content-home {
   display: flex;
   align-items: center;
   flex-flow: column;
 }
-#site-content #hero-content {
+#site-content-home #hero-content {
   width: 95%;
   height: 100vh;
   display: flex;
@@ -302,7 +303,7 @@ body {
   align-items: center;
   padding-left: 5%;
 }
-#site-content #hero-content #hero-interactable {
+#site-content-home #hero-content #hero-interactable {
   width: 50%;
   height: 100%;
   display: flex;
@@ -310,7 +311,7 @@ body {
   justify-content: center;
   align-items: start;
 }
-#site-content #hero-content #hero-interactable #hero-button-container {
+#site-content-home #hero-content #hero-interactable #hero-button-container {
   width: 80%;
   padding-top: 5vh;
   display: flex;
@@ -320,18 +321,18 @@ body {
   align-items: center;
   padding-right: 20%;
 }
-#site-content #hero-content #hero-interactable #hero-button-container button {
+#site-content-home #hero-content #hero-interactable #hero-button-container button {
   width: 60%;
 }
-#site-content #hero-content #hero-interactable h1 {
+#site-content-home #hero-content #hero-interactable h1 {
   font-size: 5em;
 }
-#site-content #hero-content #hero-bgimg {
+#site-content-home #hero-content #hero-bgimg {
   width: 50%;
   height: 100%;
   position: relative;
 }
-#site-content #hero-content #hero-bgimg-image {
+#site-content-home #hero-content #hero-bgimg-image {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
@@ -342,7 +343,7 @@ body {
   bottom: 0;
   z-index: 1;
 }
-#site-content #hero-content #hero-bgimg-overlay {
+#site-content-home #hero-content #hero-bgimg-overlay {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -354,15 +355,15 @@ body {
   background: linear-gradient(to right, #111111, rgba(17, 17, 17, 0.6));
 }
 @media (width <= 900px) {
-  #site-content #hero-content #hero-interactable h1 {
+  #site-content-home #hero-content #hero-interactable h1 {
     font-size: 4em !important;
   }
 }
 @media (width <= 700px) {
-  #site-content #hero-content {
+  #site-content-home #hero-content {
     position: relative;
   }
-  #site-content #hero-content #hero-interactable {
+  #site-content-home #hero-content #hero-interactable {
     width: 90%;
     position: absolute;
     top: 0;
@@ -374,10 +375,10 @@ body {
     align-items: center;
     text-align: center;
   }
-  #site-content #hero-content #hero-interactable #hero-button-container {
+  #site-content-home #hero-content #hero-interactable #hero-button-container {
     padding-right: unset;
   }
-  #site-content #hero-content #hero-bgimg {
+  #site-content-home #hero-content #hero-bgimg {
     width: 100%;
     position: absolute;
     top: 0;
@@ -385,11 +386,11 @@ body {
     right: 0;
     bottom: 0;
   }
-  #site-content #hero-content #hero-bgimg #hero-bgimg-overlay {
+  #site-content-home #hero-content #hero-bgimg #hero-bgimg-overlay {
     background: rgba(17, 17, 17, 0.9);
   }
 }
-#site-content #item-promo {
+#site-content-home #item-promo {
   width: 100%;
   overflow: hidden;
   min-height: 60vh;
@@ -398,13 +399,13 @@ body {
   justify-content: center;
   align-items: start;
 }
-#site-content #item-promo h1 {
+#site-content-home #item-promo h1 {
   padding-top: 5vh;
   padding-bottom: 5vh;
   text-align: center;
   width: 100%;
 }
-#site-content #item-promo #item-scroll-area {
+#site-content-home #item-promo #item-scroll-area {
   width: 100%;
   height: 100%;
   display: flex;
@@ -412,14 +413,14 @@ body {
   align-items: center;
   justify-content: center;
 }
-#site-content #item-promo #item-scroll-area .scroll-arrow-button {
+#site-content-home #item-promo #item-scroll-area .scroll-arrow-button {
   background: none;
   color: unset;
   width: 5%;
   border: none;
   position: relative;
 }
-#site-content #item-promo #item-scroll-area .scroll-arrow-button i {
+#site-content-home #item-promo #item-scroll-area .scroll-arrow-button i {
   width: 100%;
   color: #00B837;
   position: absolute;
@@ -429,16 +430,16 @@ body {
   bottom: 0;
   transition: transform ease-in-out 0.3s;
 }
-#site-content #item-promo #item-scroll-area .scroll-arrow-button i:hover {
+#site-content-home #item-promo #item-scroll-area .scroll-arrow-button i:hover {
   transform: scale(1.5);
   transform-origin: center;
 }
-#site-content #item-promo #item-scroll-area #item-scroll-overflow {
+#site-content-home #item-promo #item-scroll-area #item-scroll-overflow {
   width: 90%;
   height: 100%;
   overflow: hidden;
 }
-#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container {
+#site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container {
   flex: 1;
   width: fit-content;
   height: 100%;
@@ -447,14 +448,14 @@ body {
   gap: 3vw;
   will-change: transform;
 }
-#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile {
+#site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile {
   width: 20.25vw;
   height: 90%;
   background: rgb(11.9, 11.9, 11.9);
   border-radius: 1em;
   position: relative;
 }
-#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content {
+#site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content {
   z-index: 2;
   display: flex;
   flex-flow: column;
@@ -463,24 +464,24 @@ body {
   gap: 2%;
   padding: 5%;
 }
-#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content h5 {
+#site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content h5 {
   width: 100%;
   flex-grow: 1;
   overflow-wrap: anywhere;
   text-align: center;
 }
-#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .item-promo-image-container {
+#site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .item-promo-image-container {
   flex-grow: 2;
   flex-shrink: 1;
   aspect-ratio: 1/1;
   max-width: 100%;
 }
-#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .item-promo-image-container img {
+#site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .item-promo-image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .top-rated-item-tile-body {
+#site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .top-rated-item-tile-body {
   flex: 1;
   display: flex;
   flex-flow: column;
@@ -488,29 +489,29 @@ body {
   justify-content: center;
   gap: 5%;
 }
-#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .top-rated-item-tile-body p {
+#site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .top-rated-item-tile-body p {
   width: 100%;
   text-align: center;
 }
-#site-content #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .item-promo-button {
+#site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .item-promo-button {
   transform: scale(0.75);
 }
 @media (width <= 925px) {
-  #site-content #item-promo .top-rated-item-tile {
+  #site-content-home #item-promo .top-rated-item-tile {
     width: 27.5vw !important;
   }
 }
 @media (width <= 625px) {
-  #site-content #item-promo .top-rated-item-tile {
+  #site-content-home #item-promo .top-rated-item-tile {
     width: 42.7vw !important;
   }
 }
 @media (width <= 475px) {
-  #site-content #item-promo .top-rated-item-tile {
+  #site-content-home #item-promo .top-rated-item-tile {
     width: 85vw !important;
   }
 }
-#site-content #current-featured {
+#site-content-home #current-featured {
   width: fit-content;
   min-width: 40vw;
   max-width: 80%;
@@ -523,7 +524,7 @@ body {
   position: relative;
   margin: 15vh 10% 10vh;
 }
-#site-content #current-featured #featured-overlay {
+#site-content-home #current-featured #featured-overlay {
   height: 100%;
   max-width: 100%;
   z-index: 2;
@@ -538,7 +539,7 @@ body {
   gap: 1vh;
   text-align: center;
 }
-#site-content #current-featured #featured-overlay div {
+#site-content-home #current-featured #featured-overlay div {
   flex-grow: 1;
   flex-shrink: 1;
   display: flex;
@@ -547,7 +548,7 @@ body {
   justify-content: center;
   gap: 5%;
 }
-#site-content #current-featured #featured-overlay #featured-image {
+#site-content-home #current-featured #featured-overlay #featured-image {
   flex-grow: 2;
   flex-shrink: 1;
   min-height: 0;
@@ -556,7 +557,7 @@ body {
   object-fit: cover;
   z-index: 1;
 }
-#site-content #discount-promo {
+#site-content-home #discount-promo {
   width: 90%;
   min-height: 20vh;
   display: flex;
@@ -568,7 +569,7 @@ body {
   padding: 5vh 5%;
   margin-top: 5vh;
 }
-#site-content #top-ratings-display {
+#site-content-home #top-ratings-display {
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -578,11 +579,11 @@ body {
   margin-top: 5vh;
   gap: 1vh;
 }
-#site-content #top-ratings-display h1 {
+#site-content-home #top-ratings-display h1 {
   padding-top: 5vh;
   padding-bottom: 5vh;
 }
-#site-content #top-ratings-display .rating-tile {
+#site-content-home #top-ratings-display .rating-tile {
   width: 80%;
   height: fit-content;
   margin-left: 9%;
@@ -593,17 +594,17 @@ body {
   justify-content: center;
   position: relative;
 }
-#site-content #top-ratings-display .rating-tile h6 {
+#site-content-home #top-ratings-display .rating-tile h6 {
   width: 40%;
 }
-#site-content #top-ratings-display .rating-tile p {
+#site-content-home #top-ratings-display .rating-tile p {
   width: 30%;
 }
-#site-content #top-ratings-display .rating-tile.rating-left {
+#site-content-home #top-ratings-display .rating-tile.rating-left {
   text-align: left;
   align-items: start;
 }
-#site-content #top-ratings-display .rating-tile.rating-left::after {
+#site-content-home #top-ratings-display .rating-tile.rating-left::after {
   width: 2px;
   height: 100%;
   background: #EEEEEE;
@@ -613,11 +614,11 @@ body {
   left: 0;
   top: 0;
 }
-#site-content #top-ratings-display .rating-tile.rating-right {
+#site-content-home #top-ratings-display .rating-tile.rating-right {
   text-align: right;
   align-items: end;
 }
-#site-content #top-ratings-display .rating-tile.rating-right::after {
+#site-content-home #top-ratings-display .rating-tile.rating-right::after {
   width: 2px;
   height: 100%;
   background: #EEEEEE;
@@ -628,17 +629,17 @@ body {
   top: 0;
 }
 @media (width <= 1000px) {
-  #site-content #top-ratings-display h6, #site-content #top-ratings-display p {
+  #site-content-home #top-ratings-display h6, #site-content-home #top-ratings-display p {
     width: 100% !important;
   }
-  #site-content #top-ratings-display .rating-left {
+  #site-content-home #top-ratings-display .rating-left {
     padding-left: 1em;
   }
-  #site-content #top-ratings-display .rating-right {
+  #site-content-home #top-ratings-display .rating-right {
     padding-right: 1em;
   }
 }
-#site-content #member-benefit-promo {
+#site-content-home #member-benefit-promo {
   width: 50vh;
   height: fit-content;
   display: flex;
@@ -653,7 +654,7 @@ body {
   margin-top: 15vh;
   max-width: 90%;
 }
-#site-content #approaches-container {
+#site-content-home #approaches-container {
   width: 100%;
   display: flex;
   flex-flow: column;
@@ -663,7 +664,7 @@ body {
   padding-bottom: 10vh;
   text-align: center;
 }
-#site-content #approaches-container #approaches-grid {
+#site-content-home #approaches-container #approaches-grid {
   display: flex;
   gap: 3vw;
   flex-wrap: wrap;
@@ -671,7 +672,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-#site-content #approaches-container .approaches-tile {
+#site-content-home #approaches-container .approaches-tile {
   background: rgba(0, 184, 55, 0);
   border: 1px solid #00B837;
   transition: background 0.5s;
@@ -686,23 +687,23 @@ body {
   word-wrap: break-word;
   cursor: pointer;
 }
-#site-content #approaches-container .approaches-tile .approaches-tile-heading {
+#site-content-home #approaches-container .approaches-tile .approaches-tile-heading {
   font-size: 2em;
 }
-#site-content #approaches-container .approaches-tile .approaches-tile-content {
+#site-content-home #approaches-container .approaches-tile .approaches-tile-content {
   padding: 1em;
 }
 @media (width <= 800px) {
-  #site-content #approaches-container .approaches-tile {
+  #site-content-home #approaches-container .approaches-tile {
     width: 40% !important;
   }
 }
 @media (width <= 575px) {
-  #site-content #approaches-container .approaches-tile {
+  #site-content-home #approaches-container .approaches-tile {
     width: 70% !important;
   }
 }
-#site-content #collaborate-container {
+#site-content-home #collaborate-container {
   display: flex;
   min-width: 80vw;
   height: auto;
@@ -712,7 +713,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-#site-content #collaborate-container #collaborate-info-container {
+#site-content-home #collaborate-container #collaborate-info-container {
   flex: 1;
   display: flex;
   flex-flow: row;
@@ -723,7 +724,7 @@ body {
   padding-left: 5%;
   padding-right: 5%;
 }
-#site-content #collaborate-container #collaborate-info-container #collaborate-info-text {
+#site-content-home #collaborate-container #collaborate-info-container #collaborate-info-text {
   position: relative;
   text-align: left;
   display: flex;
@@ -737,7 +738,7 @@ body {
   border-bottom: 1px solid #00B837;
   border-image: linear-gradient(to right, #00B837 50%, transparent 50%) 100% 1;
 }
-#site-content #collaborate-container #collaborate-info-container #collaborate-info-image {
+#site-content-home #collaborate-container #collaborate-info-container #collaborate-info-image {
   flex: 1;
   aspect-ratio: 1/1;
   position: relative;
@@ -750,11 +751,11 @@ body {
   flex-flow: column;
   align-items: end;
 }
-#site-content #collaborate-container #collaborate-info-container #collaborate-info-image #collaborate-image {
+#site-content-home #collaborate-container #collaborate-info-container #collaborate-info-image #collaborate-image {
   height: 100%;
   object-fit: contain;
 }
-#site-content #collaborate-container #collaborate-info-container #collaborate-info-image::after {
+#site-content-home #collaborate-container #collaborate-info-container #collaborate-info-image::after {
   width: 1px;
   height: 100%;
   background: #00B837;
@@ -764,7 +765,7 @@ body {
   right: 0;
   top: 0;
 }
-#site-content #collaborate-container #collaborate-info-container #collaborate-info-text::after {
+#site-content-home #collaborate-container #collaborate-info-container #collaborate-info-text::after {
   width: 1px;
   height: 100%;
   background: #00B837;
@@ -775,17 +776,17 @@ body {
   top: 0;
 }
 @media (width <= 950px) {
-  #site-content #collaborate-container #collaborate-info-text {
+  #site-content-home #collaborate-container #collaborate-info-text {
     border: none !important;
   }
-  #site-content #collaborate-container #collaborate-info-text::after {
+  #site-content-home #collaborate-container #collaborate-info-text::after {
     width: 0 !important;
     height: 0 !important;
     background: transparent !important;
   }
 }
 @media (width <= 800px) {
-  #site-content #collaborate-container #collaborate-info-image {
+  #site-content-home #collaborate-container #collaborate-info-image {
     display: none !important;
   }
 }

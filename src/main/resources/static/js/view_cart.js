@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         doCodeInputChange(codeInput.value);
 
         if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") { //note, if cookies are disabled, this will not work. Add a banner or notif of some sort telling the user to disable cookies if so.
-            //redirect to menu. TODO: check if signed in, and if so, display a different page about starting an order from their favorite items or past orders.
+            //redirect to menu. feature: check if signed in, and if so, display a different page about starting an order from their favorite items or past orders.
             window.location.replace(window.location.origin + "/menu")
         } else {
             //cart is an array of objects, with each object being
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 function populateCartData() {
     if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") { //note, if cookies are disabled, this will not work. Add a banner or notif of some sort telling the user to disable cookies if so.
-        //redirect to menu. TODO: check if signed in, and if so, display a different page about starting an order from their favorite items or past orders.
+        //redirect to menu. feature: check if signed in, and if so, display a different page about starting an order from their favorite items or past orders.
         window.location.replace(window.location.origin + "/menu")
     } else {
         //load present cart for viewing.
@@ -101,8 +101,6 @@ function calculateCosts(cart) {
         subtotal += parseFloat((priceNum * count).toFixed(2));
         itemCount += count;
 
-        //todo: create tile for item in cart display.
-
 
         let tile = document.createElement("div");
         tile.classList.add("cart-item-tile");
@@ -135,7 +133,7 @@ function doCodeInputChange(val) {
     const discountElem = document.getElementById("cart-total-discount");
 
     if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") { //note, if cookies are disabled, this will not work. Add a banner or notif of some sort telling the user to disable cookies if so.
-        //redirect to menu. TODO: check if signed in, and if so, display a different page about starting an order from their favorite items or past orders.
+        //redirect to menu. feature: check if signed in, and if so, display a different page about starting an order from their favorite items or past orders.
         window.location.replace(window.location.origin + "/menu")
     } else {
         //cart is an array of objects, with each object being
