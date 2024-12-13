@@ -1,21 +1,15 @@
 
-
-
-
 let address = "unset";
 let delivery = false;
 
 
-
-document.addEventListener("DOMContentLoaded", (event) => {
-    registerAnimations();
-
+function initOrder() {
     populateItemsForReview();
 
     if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") {
         window.location.replace(window.location.origin + "/menu");
     }
-});
+}
 
 
 function onSelectLocationType(target) {
@@ -119,11 +113,6 @@ function finalizeOrder() {
             body: estimatedTime + "_" + cart,
         })
     }
-}
-
-
-function registerAnimations() {
-
 }
 
 

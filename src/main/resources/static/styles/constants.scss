@@ -61,27 +61,26 @@ a {
   font-family: $paragraphFamily;
   text-decoration: none;
   margin: 0;
-  color: $accent;
+  color: $primary;
   cursor: pointer;
-  transition: transform 0.5s linear;
 }
 a.link-hover {
   position: relative;
-  //transform: scale(1.1);
 }
-a.link-hover::after {
-  width: 0%;
-  height: 3px;
+a.link-hover::before {
+  width: 100%;
+  height: 0;
   background: $accent;
   content: "";
   display: block;
   position: absolute;
   left: 0;
   bottom: 0;
-  transition: width 1s;
+  transition: height 0.3s ease-out;
+  z-index: -1;
 }
-a.link-hover:hover::after {
-  width: 100%;
+a.link-hover:hover::before {
+  height: 100%;
 }
 
 li::marker {
@@ -135,20 +134,36 @@ body {
   background: $primary;
 }
 
+html {
+  *::-webkit-scrollbar {
+    width: 0.3em;
+    z-index: 10000;
+  }
+  *::-webkit-scrollbar-track {
+    background-color: transparent;
+    z-index: 10000;
+    transition: background-color 0.5s ease-in-out;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: $accent;
+    border-radius: 0.15em;
+    z-index: 10000;
+    transition: background-color 0.5s ease-in-out;
+  }
 
-*::-webkit-scrollbar {
-  width: 0.3em;
+  *::-webkit-resizer {
+    display: none;
+  }
+  *::-webkit-scrollbar-button {
+    display: none;
+  }
 }
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-*::-webkit-scrollbar-thumb {
-  background: $accent;
-  border-radius: 0.15em;
-}
-*::-webkit-resizer {
-  display: none;
-}
-*::-webkit-scrollbar-button {
-  display: none;
+
+html.scroll-hide {
+  *::-webkit-scrollbar-thumb {
+    background-color: darken($secondary, 5%);
+  }
+  *::-webkit-scrollbar-track {
+    background-color: darken($secondary, 5%);;
+  }
 }

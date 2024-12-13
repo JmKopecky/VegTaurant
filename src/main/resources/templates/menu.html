@@ -6,6 +6,7 @@
     <!--<link rel="icon" type="image/x-icon" href="/images/condelulogo.ico">-->
     <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/header.css">
     <link rel="stylesheet" href="/styles/home.css">
     <script src="https://kit.fontawesome.com/2b6129ab2e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
@@ -35,7 +36,7 @@
 </head>
 <body class="light" data-barba="wrapper">
 
-<script src="/js/barba_config.js"></script>
+<script src="/js/animations.js"></script>
 
 
 <div id="header-container">
@@ -74,10 +75,15 @@
 </div>
 
 
+<div id="page-transition-container" style="display: none;">
+    <div id="page-transition-left" class="page-transition-panel"></div>
+    <div id="page-transition-right" class="page-transition-panel"></div>
+    <h1 id="page-transition-title">Home</h1>
+</div>
 
 
 
-<div id="barba-container" data-barba="container" data-barba-namespace="menu">
+<div id="barba-container" data-barba="container" data-barba-namespace="page" data-page="menu">
 
 
     <div id="menu-item-overlay" onclick="hideOverlay(event, this);">
@@ -106,7 +112,7 @@
     </div>
 
 
-    <div id="site-content-menu">
+    <div id="site-content-menu" class="site-content" data-title="Menu">
         <div id="menu-banner">
             <h1>Menu</h1>
         </div>

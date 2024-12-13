@@ -1,8 +1,6 @@
+function initSignon() {
 
 
-
-document.addEventListener("DOMContentLoaded", (event) => {
-    registerAnimations();
 
     document.getElementById("signon-switch-label").addEventListener("change", () => {
         let state = document.getElementById("signon-switch-label").children[0].checked;
@@ -234,8 +232,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
             });
         }
     });
-});
-
-function registerAnimations() {
-
 }

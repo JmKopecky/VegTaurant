@@ -1,8 +1,5 @@
 
-
-
-
-document.addEventListener("DOMContentLoaded", (event) => {
+function initCart() {
     populateCartData();
 
     const codeInput = document.getElementById("code-input");
@@ -20,9 +17,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
 
     });
-
-    registerAnimations()
-});
+}
 
 
 function populateCartData() {
@@ -153,9 +148,4 @@ function doCodeInputChange(val) {
 
         discountElem.textContent = "$" + "0.00";
     }
-}
-
-
-function registerAnimations() {
-
 }

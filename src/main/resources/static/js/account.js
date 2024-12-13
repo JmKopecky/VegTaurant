@@ -1,14 +1,6 @@
 
-
-
-
-document.addEventListener("DOMContentLoaded", (event) => {
-    registerAnimations()
-});
-
-
-function registerAnimations() {
-
+function initAccount() {
+    console.log("replace me with code that should run on account page open.");
 }
 
 

@@ -54,9 +54,9 @@ function shiftItemPromoCarousel(right) {
 }
 
 
-document.addEventListener("DOMContentLoaded", (event) => {
-    registerAnimations()
-});
+function initHome() {
+    registerAnimations();
+}
 
 
 function registerAnimations() {

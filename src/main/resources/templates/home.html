@@ -6,6 +6,7 @@
     <!--<link rel="icon" type="image/x-icon" href="/images/condelulogo.ico">-->
     <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/header.css">
     <link rel="stylesheet" href="/styles/home.css">
     <script src="https://kit.fontawesome.com/2b6129ab2e.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
@@ -35,7 +36,7 @@
 </head>
 <body data-barba="wrapper">
 
-<script src="/js/barba_config.js"></script>
+<script src="/js/animations.js"></script>
 
 <!--
 Requisite content:
@@ -86,8 +87,15 @@ Requisite content:
 </div>
 
 
+<div id="page-transition-container" style="display: none;">
+    <div id="page-transition-left" class="page-transition-panel"></div>
+    <div id="page-transition-right" class="page-transition-panel"></div>
+    <h1 id="page-transition-title">Home</h1>
+</div>
 
-<div id="barba-container" data-barba="container" data-barba-namespace="home">
+
+
+<div id="barba-container" data-barba="container" data-barba-namespace="page" data-page="home">
 
 
     <div id="menu-item-overlay" onclick="hideOverlay(event, this);">
@@ -116,15 +124,15 @@ Requisite content:
     </div>
 
 
-    <div id="site-content-home">
+    <div id="site-content-home" class="site-content" data-title="Home">
 
         <div id="hero-content">
             <div id="hero-interactable">
                 <h1>Bringing Premium to Fast Food</h1>
                 <h6>So bring home a guilt-free delectable experience.</h6>
                 <div id="hero-button-container">
-                    <button onclick="location.href=window.location.href + 'menu';">Menu</button>
-                    <button onclick="location.href=window.location.href + 'cart';">Order</button>
+                    <button onclick="barba.go(window.location.href + 'menu');">Menu</button>
+                    <button onclick="barba.go(window.location.href + 'cart');">Order</button>
                 </div>
             </div>
             <div id="hero-bgimg">
