@@ -66,22 +66,13 @@ a {
 }
 a.link-hover {
   position: relative;
+  transition: color 0.25s ease-in-out;
 }
-a.link-hover::before {
-  width: 100%;
-  height: 0;
-  background: $accent;
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  transition: height 0.3s ease-out;
-  z-index: -1;
+
+a.link-hover:hover {
+  color: $accent;
 }
-a.link-hover:hover::before {
-  height: 100%;
-}
+
 
 li::marker {
   color: $primary;

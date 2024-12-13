@@ -5,9 +5,7 @@ Used libraries:
 * SCSS
 * GSAP
 * GSAP ScrollTrigger
-
-IDEA: 
-* Barba.js - animated transitions between pages
+* Barba.js
 
 
 Sitemap: 
@@ -48,4 +46,6 @@ Broad Technical Ideas:
 * Joseph Kopecky - 11/28/24: 11 hrs (Mobile Responsive Layout)
 * Joseph Kopecky - 11/19/24: 9 hrs (SSL Configuration and Deployment)
 * Joseph Kopecky - 12/4/24: 3 hrs (Multiitem Support and Discounts)
-* Joseph Kopecky - 12/11/24: 1 hr + after meeting + home (bug fixes, footer, default icon, planning todo)
+* Joseph Kopecky - 12/11/24: 2 hrs (bug fixes, footer, default icon, planning todo)
+* Joseph Kopecky - 12/13/24: 4 hrs (barba.js page transitions)
+* Joseph Kopecky - 12/14/24: 1 + 2 + after school (various animations)

@@ -1,5 +1,3 @@
-@import 'constants';
-
 #branding-container {
   position: fixed;
   top: 1vh;
@@ -61,9 +59,46 @@
       position: relative;
       #cart-item-count {
         position: absolute;
-        bottom: -35%;
-        right: -25%;
+        bottom: -40%;
+        right: -35%;
         color: $accent;
+      }
+      i {
+        transition: transform 0.5s ease-out;
+      }
+      svg {
+        position: absolute;
+        display: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        //animation: rotate 2s ease-in-out infinite;
+        circle {
+          transform-origin: center;
+          transform: scale(1.4);
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+          //animation: line 2s ease-in-out infinite;
+        }
+        @keyframes line {
+          100% {
+            stroke-dashoffset: 480;
+          }
+        }
+        @keyframes rotate {
+          to {
+            rotate: -360deg;
+          }
+        }
       }
     }
     a {
@@ -87,6 +122,11 @@
     #header-show-button:hover, #header-show-button:focus {
       background: unset !important;
       color: unset !important;
+    }
+    #header-cart-icon[data-activetime|="active"] {
+      .fa-cart-shopping {
+        transform: scale(0.75);
+      }
     }
   }
   #header-account-icon {

@@ -81,6 +81,8 @@ function addItemToCart() {
     //hide overlay
     hideOverlay(null, null);
 
+    animateCartChange();
+
     let cartHeaderNumber = document.getElementById("cart-item-count");
     if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
         let count = 0;

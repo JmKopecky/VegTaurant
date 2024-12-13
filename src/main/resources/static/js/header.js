@@ -26,6 +26,42 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 
+function animateCartChange() {
+    const target = document.getElementById("header-cart-icon").getElementsByTagName("svg")[0].getElementsByTagName("circle")[0];
+
+    if (document.getElementById("header-cart-icon").getAttribute("data-activetime") === "active") {
+        return;
+    }
+
+    document.getElementById("header-cart-icon").setAttribute("data-activetime", "active");
+    document.getElementById("header-cart-icon").getElementsByTagName("svg")[0].style.display = "block";
+    let pathLength = (target.r.baseVal.value + 1) * 2.0 * Math.PI;
+    console.log(pathLength);
+
+    //target strokedasharray of 80
+    target.style.strokeDasharray = "" + (pathLength * 2);
+    target.style.strokeDashoffset = "" + (pathLength * 2);
+    let timeline = gsap.timeline();
+    timeline.to(target, {duration: 0.25, strokeDashoffset: pathLength, ease: "power1.linear"});
+    timeline.to(target, {duration: 0.25, strokeDasharray: 80, strokeDashoffset: 0, ease: "power1.linear", delay: 0.25});
+    timeline.to(target, {duration: 2, strokeDashoffset: pathLength * 2, ease: "power1.linear"});
+    timeline.set(target, {strokeDashoffset: 0});
+    timeline.to(target, {duration: 0.5, strokeDashoffset: pathLength, strokeDasharray: pathLength * 2, ease: "power1.linear"});
+    timeline.to(target, {duration: 0.5, strokeDashoffset: pathLength * 2, ease: "power1.linear"});//timeline.set(target, {strokeDashoffset: 0})
+    let acceleration = 2;
+    timeline.timeScale(acceleration);
+    timeline.play();
+
+    setTimeout(() => {
+        document.getElementById("header-cart-icon").setAttribute("data-activetime", "stopped");
+    }, 3000 / acceleration);
+
+    setTimeout(() => {
+        document.getElementById("header-cart-icon").getElementsByTagName("svg")[0].style.display = "none";
+    }, 3500 / acceleration);
+}
+
+
 
 function headerButtonClick() {
     let headerButton = document.getElementById("header-show-button");
