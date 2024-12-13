@@ -39,7 +39,7 @@
         <a href="/#collaborate-container" style="display: none;" class="link-hover">Careers</a>
         <a href="/reference_page" style="display:none;" class="link-hover">Reference Page</a>
         <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
-        <a id="header-cart-icon" class="header-no-remove" href="/cart" data-activetime="inactive">
+        <a id="header-cart-icon" class="header-no-remove" href="/cart" data-activetime="inactive" data-hover="false">
             <i class="fa-solid fa-cart-shopping"></i>
             <p id="cart-item-count">0</p>
             <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100">
@@ -50,10 +50,16 @@
             </svg>
         </a>
     </div>
-    <div id="header-account-icon">
+    <div id="header-account-icon" data-hover="false">
         <a href="/account">
             <img id="header-account-icon-image" th:src="${headerpicturelink}" alt="account icon" onerror="this.src='/images/default-avatar-icon.jpg';">
         </a>
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100">
+            <circle cx="50" cy="50" r="50" stroke="#00B837"
+                    fill="none"
+                    stroke-width="8"
+                    style="stroke-dasharray: 80;"/>
+        </svg>
     </div>
 </div>
 

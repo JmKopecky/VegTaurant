@@ -48,4 +48,4 @@ Broad Technical Ideas:
 * Joseph Kopecky - 12/4/24: 3 hrs (Multiitem Support and Discounts)
 * Joseph Kopecky - 12/11/24: 2 hrs (bug fixes, footer, default icon, planning todo)
 * Joseph Kopecky - 12/13/24: 4 hrs (barba.js page transitions)
-* Joseph Kopecky - 12/14/24: 1 + 2 + after school (various animations)
+* Joseph Kopecky - 12/14/24: 1 + 2 + 2:50 to  (various animations)

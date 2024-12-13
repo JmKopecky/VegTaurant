@@ -243,16 +243,6 @@ html.scroll-hide *::-webkit-scrollbar-track {
   width: 100%;
   height: 100%;
 }
-@keyframes line {
-  100% {
-    stroke-dashoffset: 480;
-  }
-}
-@keyframes rotate {
-  to {
-    rotate: -360deg;
-  }
-}
 #header-container #header-link-container a {
   z-index: 9999;
 }
@@ -283,6 +273,7 @@ html.scroll-hide *::-webkit-scrollbar-track {
   height: 100%;
   border-radius: 1em;
   z-index: 9999;
+  position: relative;
 }
 #header-container #header-account-icon a {
   width: 100%;
@@ -296,6 +287,27 @@ html.scroll-hide *::-webkit-scrollbar-track {
   object-fit: cover;
   border-radius: 1em;
   z-index: 9999;
+}
+#header-container #header-account-icon svg {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+#header-container #header-account-icon svg circle {
+  transform-origin: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
 @media (width <= 500px) {
   #header-container #header-link-container {

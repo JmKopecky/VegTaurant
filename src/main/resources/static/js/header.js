@@ -23,7 +23,77 @@ document.addEventListener("DOMContentLoaded", (event) => {
     } else {
         cartHeaderNumber.textContent = "0";
     }
+
+
+    const cartIcon = document.getElementById("header-cart-icon");
+    cartIcon.addEventListener("mouseenter", () => {
+        iconHoverSvg("enter", cartIcon);
+    });
+    cartIcon.addEventListener("mouseleave", () => {
+        iconHoverSvg("leave", cartIcon);
+    });
+    const accountIcon = document.getElementById("header-account-icon");
+    accountIcon.addEventListener("mouseenter", () => {
+        iconHoverSvg("enter", accountIcon);
+    });
+    accountIcon.addEventListener("mouseleave", () => {
+        iconHoverSvg("leave", accountIcon);
+    });
 });
+
+
+
+function iconHoverSvg(mode, target) {
+    let targetElem = target.getElementsByTagName("svg")[0].getElementsByTagName("circle")[0];
+    let targetIcon;
+    if (target.id === "header-cart-icon") {
+        targetIcon = target.getElementsByTagName("i")[0];
+    } else {
+        targetIcon = target.getElementsByTagName("img")[0];
+    }
+    let pathLength = (targetElem.r.baseVal.value + 1) * 2.0 * Math.PI;
+    if (mode === "enter") {
+        if (target.getAttribute("data-hover") === "false") {
+            target.setAttribute("data-hover", "true");
+            target.getElementsByTagName("svg")[0].style.display = "block";
+
+            gsap.to(targetIcon, {scale: 0.75, duration: 0.5, ease: "power1.inout"});
+
+            targetElem.style.strokeDasharray = "" + (pathLength * 2);
+            targetElem.style.strokeDashoffset = "" + (pathLength * 2);
+
+            gsap.to(targetElem, {duration: 0.5, strokeDashoffset: pathLength, ease: "power1.inout"});
+
+            setTimeout(() => {
+                if (target.getAttribute("data-hide") === "true") {
+                    target.setAttribute("data-hide", "false");
+                    gsap.to(targetElem, {duration: 0.5, strokeDashoffset: pathLength * 2, ease: "power1.linear"});
+                    gsap.to(targetIcon, {scale: 1, duration: 0.5, ease: "power1.inout"});
+                    setTimeout(() => {
+                        target.getElementsByTagName("svg")[0].style.display = "none";
+                    }, 500);
+                } else {
+                    target.setAttribute("data-hide", "true");
+                }
+            }, 500);
+        }
+    } else {
+        if (target.getAttribute("data-hover") === "true") {
+            target.setAttribute("data-hover", "false");
+
+            if (target.getAttribute("data-hide") === "true") {
+                gsap.to(targetElem, {duration: 0.5, strokeDashoffset: pathLength * 2, ease: "power1.linear"});
+                gsap.to(targetIcon, {scale: 1, duration: 0.5, ease: "power1.inout"});
+                setTimeout(() => {
+                    target.getElementsByTagName("svg")[0].style.display = "false";
+                }, 500);
+                target.setAttribute("data-hide", "false");
+            } else {
+                target.setAttribute("data-hide", "true");
+            }
+        }
+    }
+}
 
 
 function animateCartChange() {
@@ -36,29 +106,24 @@ function animateCartChange() {
     document.getElementById("header-cart-icon").setAttribute("data-activetime", "active");
     document.getElementById("header-cart-icon").getElementsByTagName("svg")[0].style.display = "block";
     let pathLength = (target.r.baseVal.value + 1) * 2.0 * Math.PI;
-    console.log(pathLength);
 
     //target strokedasharray of 80
     target.style.strokeDasharray = "" + (pathLength * 2);
     target.style.strokeDashoffset = "" + (pathLength * 2);
     let timeline = gsap.timeline();
-    timeline.to(target, {duration: 0.25, strokeDashoffset: pathLength, ease: "power1.linear"});
-    timeline.to(target, {duration: 0.25, strokeDasharray: 80, strokeDashoffset: 0, ease: "power1.linear", delay: 0.25});
-    timeline.to(target, {duration: 2, strokeDashoffset: pathLength * 2, ease: "power1.linear"});
-    timeline.set(target, {strokeDashoffset: 0});
-    timeline.to(target, {duration: 0.5, strokeDashoffset: pathLength, strokeDasharray: pathLength * 2, ease: "power1.linear"});
-    timeline.to(target, {duration: 0.5, strokeDashoffset: pathLength * 2, ease: "power1.linear"});//timeline.set(target, {strokeDashoffset: 0})
-    let acceleration = 2;
+    timeline.to(target, {duration: 0.5, strokeDashoffset: pathLength, ease: "power1.linear"});
+    timeline.to(target, {duration: 0.5, strokeDashoffset: pathLength * 2, ease: "power1.linear", delay: 0.25});//timeline.set(target, {strokeDashoffset: 0})
+    let acceleration = 1;
     timeline.timeScale(acceleration);
     timeline.play();
 
     setTimeout(() => {
         document.getElementById("header-cart-icon").setAttribute("data-activetime", "stopped");
-    }, 3000 / acceleration);
+    }, 750 / acceleration);
 
     setTimeout(() => {
         document.getElementById("header-cart-icon").getElementsByTagName("svg")[0].style.display = "none";
-    }, 3500 / acceleration);
+    }, 1250 / acceleration);
 }
 
 
