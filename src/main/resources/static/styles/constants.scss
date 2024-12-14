@@ -149,12 +149,3 @@ html {
     display: none;
   }
 }
-
-html.scroll-hide {
-  *::-webkit-scrollbar-thumb {
-    background-color: darken($secondary, 5%);
-  }
-  *::-webkit-scrollbar-track {
-    background-color: darken($secondary, 5%);;
-  }
-}

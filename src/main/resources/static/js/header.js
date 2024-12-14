@@ -153,10 +153,45 @@ function headerButtonClick() {
     }
 
     if (isDesktopHeader) {
-        for (const link of document.getElementById("header-link-container").getElementsByTagName("a")) {
-            if (!link.classList.contains("header-no-remove")) {
-                link.setAttribute("style", "display:" + desktopDisplayAttr + ";");
+
+        let preAnimate = document.getElementById("header-link-container").getElementsByTagName("a");
+        let toAnimate = [];
+        for (const elem of preAnimate) {
+            if (!elem.classList.contains("header-no-remove")) {
+                toAnimate.push(elem);
             }
+        }
+        toAnimate.reverse();
+
+        if (desktopDisplayAttr === "block") {
+
+            gsap.set(toAnimate, {
+                display: desktopDisplayAttr,
+                stagger: 0.1
+            })
+
+            gsap.from(toAnimate, {
+                opacity: 0,
+                x: "100%",
+                duration: 0.5,
+                ease: "power1.inout",
+                stagger: 0.1
+            });
+        } else {
+
+            toAnimate.reverse();
+            gsap.to(toAnimate, {
+                opacity: 0,
+                x: "100%",
+                duration: 0.5,
+                ease: "power1.inout",
+                stagger:{
+                    each: 0.1,
+                    onComplete() {
+                        this.targets()[0].setAttribute("style", "display:" + desktopDisplayAttr + ";");
+                    }
+                }
+            });
         }
     } else {
         //mobile
