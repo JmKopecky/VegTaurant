@@ -13,7 +13,7 @@ function hideOverlay(event, element) {
 }
 
 
-function retrieveItemData(itemLabel) { //todo: add support for items to have customization if that fits with the food.
+function retrieveItemData(itemLabel) { //feature item customization? Not really important. Maybe notes instead?
     fetch("/menu", {
         "method": "POST",
         "body": JSON.stringify({
@@ -80,6 +80,8 @@ function addItemToCart() {
 
     //hide overlay
     hideOverlay(null, null);
+
+    animateCartChange();
 
     let cartHeaderNumber = document.getElementById("cart-item-count");
     if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {

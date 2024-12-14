@@ -2,36 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign On To Condelu</title>
-    <link rel="icon" type="image/x-icon" href="/images/condelulogo.ico">
+    <title>Condelu Meals</title>
+    <!--<link rel="icon" type="image/x-icon" href="/images/condelulogo.ico">-->
     <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://kit.fontawesome.com/2b6129ab2e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/styles/signon.css">
-    <script src="/js/header.js"></script>
-    <script src="/js/signon.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <style>
+        html.scroll-hide *::-webkit-scrollbar-thumb {
+            background-color: rgb(4.25, 4.25, 4.25);
+        }
+        html.scroll-hide *::-webkit-scrollbar-track {
+            background-color: rgb(4.25, 4.25, 4.25);
+        }
+    </style>
 </head>
-<body>
+
+
+<body data-barba="wrapper">
+
+<script type="text/javascript">
+    document.getElementsByTagName("html")[0].classList.add("scroll-hide");
+</script>
+
+<link rel="stylesheet" href="/styles/pagetransition.css">
+<div id="page-transition-container" style="display: flex;">
+    <div id="page-transition-left" class="page-transition-panel"></div>
+    <div id="page-transition-right" class="page-transition-panel"></div>
+    <h1 id="page-transition-title" style="visibility: hidden;">Condelu Meals</h1>
+</div>
+
+<link rel="stylesheet" href="/styles/constants.css">
+
+<script src="/js/preloader.js"></script>
+
+<script src="/js/animations.js"></script>
 
 
 <div id="header-container">
     <div id="header-link-container">
-        <a href="/" style="display: none;">Home</a>
-        <a href="/menu" style="display: none;">Menu</a>
-        <a href="/cart" style="display: none;">Order</a>
-        <a href="/account" style="display: none;">Account</a>
-        <a href="/#collaborate-container" style="display: none;">Careers</a>
+        <a href="/" style="display: none;" class="link-hover">Home</a>
+        <a href="/menu" style="display: none;" class="link-hover">Menu</a>
+        <a href="/cart" style="display: none;" class="link-hover">Order</a>
+        <a href="/account" style="display: none;" class="link-hover">Account</a>
+        <a href="/#collaborate-container" style="display: none;" class="link-hover">Careers</a>
+        <a href="/reference_page" style="display:none;" class="link-hover">Reference Page</a>
         <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
-        <a class="header-no-remove" href="/cart">
+        <a id="header-cart-icon" class="header-no-remove" href="/cart" data-activetime="inactive" data-hover="false">
             <i class="fa-solid fa-cart-shopping"></i>
             <p id="cart-item-count">0</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100">
+                <circle cx="50" cy="50" r="50" stroke="#00B837"
+                        fill="none"
+                        stroke-width="8"
+                        style="stroke-dasharray: 80;"/>
+            </svg>
         </a>
     </div>
-    <div id="header-account-icon">
+    <div id="header-account-icon" data-hover="false">
         <a href="/account">
             <img id="header-account-icon-image" th:src="${headerpicturelink}" alt="account icon" onerror="this.src='/images/default-avatar-icon.jpg';">
         </a>
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100">
+            <circle cx="50" cy="50" r="50" stroke="#00B837"
+                    fill="none"
+                    stroke-width="8"
+                    style="stroke-dasharray: 80;"/>
+        </svg>
     </div>
 </div>
 
@@ -46,130 +81,159 @@
     <a href="/cart"><h1>Order</h1></a>
     <a href="/account"><h1>Account</h1></a>
     <a href="/#collaborate-container"><h1>Careers</h1></a>
+    <a href="/reference_page"><h1>Reference Page</h1></a>
 </div>
 
 
-<div id="signon-content">
 
-    <div id="toggle-signon-mode">
-        <h3>Sign In</h3>
-        <label id="signon-switch-label">
-            <input type="checkbox" id="signon-switch-input">
-            <span id="signon-switch"></span>
-        </label>
-        <h3>Sign Up</h3>
+
+<div id="barba-container" data-barba="container" data-barba-namespace="page" data-page="signon">
+    <div id="signon-content" class="site-content" data-title="Signon">
+
+        <div id="toggle-signon-mode">
+            <h3>Sign In</h3>
+            <label id="signon-switch-label">
+                <input type="checkbox" id="signon-switch-input">
+                <span id="signon-switch"></span>
+            </label>
+            <h3>Sign Up</h3>
+        </div>
+
+
+        <div id="signon-container">
+            <h2 id="signon-header">Sign In</h2>
+            <p id="signon-text">Sign in to your account to dramatically improve your shopping experience with us!</p>
+            <div id="signon-name-container" class="signon-container">
+                <label id="signon-name-label" class="label-signon">
+                    Full Name
+                </label>
+                <input type="text" id="signon-name-input" autocomplete="name">
+            </div>
+            <div id="signon-email-container" class="signon-container">
+                <label id="signon-email-label" class="label-signon">
+                    Email
+                </label>
+                <input type="email" id="signon-email-input" autocomplete="email">
+            </div>
+            <div id="signon-password-container" class="signon-container">
+                <label id="signon-password-label" class="label-signon">
+                    Password
+                </label>
+                <input type="password" id="signon-password-input" autocomplete="current-password">
+            </div>
+            <button id="signon-button">Sign In</button>
+        </div>
+
+
+        <div id="extra-info-container">
+            <!-- Collect info on user: payment info-->
+            <div id="signon-address-container" class="signon-container">
+                <label id="signon-address-label" class="label-signon">
+                    Address
+                </label>
+                <input type="text" id="signon-address-input" autocomplete="street-address">
+            </div>
+
+            <div class="info-align-horizontal">
+                <div id="signon-city-container" class="signon-container">
+                    <label id="signon-city-label" class="label-signon">
+                        City
+                    </label>
+                    <input type="text" id="signon-city-input" autocomplete="address-level2">
+                </div>
+                <div id="signon-zip-container" class="signon-container">
+                    <label id="signon-zip-label" class="label-signon">
+                        Zip
+                    </label>
+                    <input type="text" id="signon-zip-input" autocomplete="postal-code">
+                </div>
+            </div>
+
+            <div class="info-align-horizontal">
+                <div id="signon-state-container" class="signon-container">
+                    <label id="signon-state-label" class="label-signon">
+                        State
+                    </label>
+                    <input type="text" id="signon-state-input" autocomplete="address-level1">
+                </div>
+                <div id="signon-country-container" class="signon-container">
+                    <label id="signon-country-label" class="label-signon">
+                        Country
+                    </label>
+                    <input type="text" id="signon-country-input" autocomplete="country-name">
+                </div>
+            </div>
+
+            <div id="signon-phone-container" class="signon-container">
+                <label id="signon-phone-label" class="label-signon">
+                    Phone
+                </label>
+                <input type="text" id="signon-phone-input" autocomplete="tel">
+            </div>
+
+            <div id="signon-cardnum-container" class="signon-container">
+                <label id="signon-cardnum-label" class="label-signon">
+                    Card #
+                </label>
+                <input type="text" id="signon-cardnum-input" autocomplete="cc-number">
+            </div>
+
+            <div id="signon-cardusername-container" class="signon-container">
+                <label id="signon-cardusername-label" class="label-signon">
+                    Card Username
+                </label>
+                <input type="text" id="signon-cardusername-input" autocomplete="cc-name">
+            </div>
+
+            <div class="info-align-horizontal">
+
+                <div id="signon-cardexpdate-container" class="signon-container">
+                    <label id="signon-cardexpdate-label" class="label-signon">
+                        Expiration Date
+                    </label>
+                    <input type="text" id="signon-cardexpdate-input" autocomplete="cc-exp">
+                </div>
+
+                <div id="signon-cardsecuritycode-container" class="signon-container">
+                    <label id="signon-cardsecuritycode-label" class="label-signon">
+                        Security Code
+                    </label>
+                    <input type="text" id="signon-cardsecuritycode-input" autocomplete="cc-csc">
+                </div>
+
+            </div>
+
+            <button id="signup-button">Create Account</button>
+
+        </div>
+
     </div>
-
-
-    <div id="signon-container">
-        <h2 id="signon-header">Sign In</h2>
-        <p id="signon-text">Sign in to your account to dramatically improve your shopping experience with us!</p>
-        <div id="signon-name-container" class="signon-container">
-            <label id="signon-name-label" class="label-signon">
-                Full Name
-            </label>
-            <input type="text" id="signon-name-input" autocomplete="name">
-        </div>
-        <div id="signon-email-container" class="signon-container">
-            <label id="signon-email-label" class="label-signon">
-                Email
-            </label>
-            <input type="email" id="signon-email-input" autocomplete="email">
-        </div>
-        <div id="signon-password-container" class="signon-container">
-            <label id="signon-password-label" class="label-signon">
-                Password
-            </label>
-            <input type="password" id="signon-password-input" autocomplete="current-password">
-        </div>
-        <button id="signon-button">Sign In</button>
-    </div>
-
-
-    <div id="extra-info-container">
-        <!-- Collect info on user: payment info-->
-        <div id="signon-address-container" class="signon-container">
-            <label id="signon-address-label" class="label-signon">
-                Address
-            </label>
-            <input type="text" id="signon-address-input" autocomplete="street-address">
-        </div>
-
-        <div class="info-align-horizontal">
-            <div id="signon-city-container" class="signon-container">
-                <label id="signon-city-label" class="label-signon">
-                    City
-                </label>
-                <input type="text" id="signon-city-input" autocomplete="address-level2">
-            </div>
-            <div id="signon-zip-container" class="signon-container">
-                <label id="signon-zip-label" class="label-signon">
-                    Zip
-                </label>
-                <input type="text" id="signon-zip-input" autocomplete="postal-code">
-            </div>
-        </div>
-
-        <div class="info-align-horizontal">
-            <div id="signon-state-container" class="signon-container">
-                <label id="signon-state-label" class="label-signon">
-                    State
-                </label>
-                <input type="text" id="signon-state-input" autocomplete="address-level1">
-            </div>
-            <div id="signon-country-container" class="signon-container">
-                <label id="signon-country-label" class="label-signon">
-                    Country
-                </label>
-                <input type="text" id="signon-country-input" autocomplete="country-name">
-            </div>
-        </div>
-
-        <div id="signon-phone-container" class="signon-container">
-            <label id="signon-phone-label" class="label-signon">
-                Phone
-            </label>
-            <input type="text" id="signon-phone-input" autocomplete="tel">
-        </div>
-
-        <div id="signon-cardnum-container" class="signon-container">
-            <label id="signon-cardnum-label" class="label-signon">
-                Card #
-            </label>
-            <input type="text" id="signon-cardnum-input" autocomplete="cc-number">
-        </div>
-
-        <div id="signon-cardusername-container" class="signon-container">
-            <label id="signon-cardusername-label" class="label-signon">
-                Card Username
-            </label>
-            <input type="text" id="signon-cardusername-input" autocomplete="cc-name">
-        </div>
-
-        <div class="info-align-horizontal">
-
-            <div id="signon-cardexpdate-container" class="signon-container">
-                <label id="signon-cardexpdate-label" class="label-signon">
-                    Expiration Date
-                </label>
-                <input type="text" id="signon-cardexpdate-input" autocomplete="cc-exp">
-            </div>
-
-            <div id="signon-cardsecuritycode-container" class="signon-container">
-                <label id="signon-cardsecuritycode-label" class="label-signon">
-                    Security Code
-                </label>
-                <input type="text" id="signon-cardsecuritycode-input" autocomplete="cc-csc">
-            </div>
-
-        </div>
-
-        <button id="signup-button">Create Account</button>
-
-    </div>
-
 </div>
+
+
 
 
 </body>
+
+<!-- scripts and files loaded last -->
+<script src="https://kit.fontawesome.com/2b6129ab2e.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.1.13/dist/lenis.css">
+
+<link rel="stylesheet" href="/styles/core.css">
+
+<script src="/js/header.js"></script>
+<script src="/js/home.js"></script>
+<script src="/js/item_cart_handling.js"></script>
+<script src="/js/account.js"></script>
+<script src="/js/menu.js"></script>
+<script src="/js/order.js"></script>
+<script src="/js/signon.js"></script>
+<script src="/js/view_cart.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@barba/core" type="text/javascript"></script>
+
+
 </html>

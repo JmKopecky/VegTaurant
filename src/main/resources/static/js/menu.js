@@ -1,18 +1,8 @@
-
-
-
-
-document.addEventListener("DOMContentLoaded", (event) => {
-    registerAnimations()
+function initMenu() {
+    registerAnimations();
 
     setMenuCategory("All");
-});
-
-
-function registerAnimations() {
-
 }
-
 
 
 function mobileNavAccordionClick(mode) {

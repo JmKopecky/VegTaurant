@@ -1,5 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=SUSE:wght@100..800&display=swap");
+h1 {
+  font-family: "SUSE", sans;
+  font-weight: 700;
+  margin: 0;
+  font-size: 2.75em;
+  color: #EEEEEE;
+}
+
+h2 {
+  font-family: "SUSE", sans;
+  font-weight: 700;
+  margin: 0;
+  font-size: 2.5em;
+  color: #EEEEEE;
+}
+
+h3 {
+  font-family: "SUSE", sans;
+  font-weight: 600;
+  margin: 0;
+  font-size: 2.25em;
+  color: #EEEEEE;
+}
+
+h4 {
+  font-family: "SUSE", sans;
+  font-weight: 600;
+  margin: 0;
+  font-size: 2em;
+  color: #EEEEEE;
+}
+
+h5 {
+  font-family: "SUSE", sans;
+  font-weight: 500;
+  margin: 0;
+  font-size: 1.75em;
+  color: #EEEEEE;
+}
+
+h6 {
+  font-family: "SUSE", sans;
+  font-weight: 500;
+  margin: 0;
+  font-size: 1.65em;
+  color: #EEEEEE;
+}
+
+p, input, label {
+  font-family: "Open Sans", sans;
+  margin: 0;
+  color: #EEEEEE;
+}
+
+a {
+  position: relative;
+  font-family: "Open Sans", sans;
+  text-decoration: none;
+  margin: 0;
+  color: #EEEEEE;
+  cursor: pointer;
+}
+
+a.link-hover {
+  position: relative;
+  transition: color 0.25s ease-in-out;
+}
+
+a.link-hover:hover {
+  color: #00B837;
+}
+
+li::marker {
+  color: #EEEEEE;
+}
+
+button {
+  width: fit-content;
+  text-align: center;
+  font-family: "SUSE", sans;
+  font-weight: 600;
+  font-size: 1.25em;
+  background: none;
+  color: #00B837;
+  border: 2px solid #00B837;
+  padding: 0.5em 0.75em;
+  border-radius: 0.5em;
+  will-change: background, color;
+  transition: background 0.5s, color 0.5s;
+  cursor: pointer;
+}
+
+button:hover, button:focus {
+  background: #00B837;
+  color: #111111;
+}
+
 body {
   position: relative;
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: #111111;
+  overflow-x: hidden;
+}
+
+#site-content {
+  background: #111111;
+  width: 100%;
+  min-height: 100vh;
+}
+
+::-moz-selection {
+  color: #111111;
+  background: #EEEEEE;
+}
+
+::selection {
+  color: #111111;
+  background: #EEEEEE;
+}
+
+html *::-webkit-scrollbar {
+  width: 0.3em;
+  z-index: 10000;
+}
+html *::-webkit-scrollbar-track {
+  background-color: transparent;
+  z-index: 10000;
+  transition: background-color 0.5s ease-in-out;
+}
+html *::-webkit-scrollbar-thumb {
+  background-color: #00B837;
+  border-radius: 0.15em;
+  z-index: 10000;
+  transition: background-color 0.5s ease-in-out;
+}
+html *::-webkit-resizer {
+  display: none;
+}
+html *::-webkit-scrollbar-button {
+  display: none;
+}
+
+html.scroll-hide *::-webkit-scrollbar-thumb {
+  background-color: rgb(4.25, 4.25, 4.25);
+}
+html.scroll-hide *::-webkit-scrollbar-track {
+  background-color: rgb(4.25, 4.25, 4.25);
 }
 
 /*# sourceMappingURL=constants.css.map */

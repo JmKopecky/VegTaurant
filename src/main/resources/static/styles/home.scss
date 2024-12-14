@@ -1,8 +1,4 @@
-@import 'constants';
-@import 'header';
-
-
-#site-content {
+#site-content-home {
   display: flex;
   align-items: center;
   flex-flow: column;
@@ -17,5 +13,3 @@
 }
 
 @import 'additemoverlay';
-
-@import 'footer';

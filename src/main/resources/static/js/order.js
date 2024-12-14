@@ -1,21 +1,15 @@
 
-
-
-
 let address = "unset";
 let delivery = false;
 
 
-
-document.addEventListener("DOMContentLoaded", (event) => {
-    registerAnimations();
-
+function initOrder() {
     populateItemsForReview();
 
     if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") {
         window.location.replace(window.location.origin + "/menu");
     }
-});
+}
 
 
 function onSelectLocationType(target) {
@@ -110,7 +104,6 @@ function initBillingInfo() {
 function finalizeOrder() {
     document.getElementById("billing-info-container").style.display = "none";
     document.getElementById("finalize-order-container").style.display = "flex";
-    //todo: generate a random estimated time for delivery.
     let estimatedTime = Math.trunc(Math.random() * 10 + 5);
     document.getElementById("time-completion-estimate").textContent = estimatedTime + " Minutes";
     if (account !== "noaccount") {
@@ -120,11 +113,6 @@ function finalizeOrder() {
             body: estimatedTime + "_" + cart,
         })
     }
-}
-
-
-function registerAnimations() {
-
 }
 
 

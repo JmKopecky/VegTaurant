@@ -1,7 +1,3 @@
-@import 'constants';
-@import 'header';
-
-
 #indicator-overlay {
   position: fixed;
   bottom: 0;
@@ -25,7 +21,7 @@
 }
 
 
-#site-content {
+#site-content-account {
 
   height: 80vh;
   display: flex;

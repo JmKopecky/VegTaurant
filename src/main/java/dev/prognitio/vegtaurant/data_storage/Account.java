@@ -12,7 +12,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String email;
-    private String password; //TODO safe storage
+    private String password; //feature safe storage
     private Integer rewardPoints;
     private String name;
     private String address;
@@ -22,10 +22,10 @@ public class Account {
     private String zip;
     private String phone;
     private String imageUrl;
-    private String cardNumber; //TODO safe storage
-    private String expirationDate; //TODO safe storage
-    private String securityCode; //TODO safe storage
-    private String cardUserName; //TODO safe storage
+    private String cardNumber; //feature safe storage
+    private String expirationDate; //feature safe storage
+    private String securityCode; //feature safe storage
+    private String cardUserName; //feature safe storage
 
 
     public static Account authenticate(AccountRepository repository, String email, String password) throws Exception {
@@ -34,7 +34,7 @@ public class Account {
         for (Account acc : repository.findAll()) {
             try {
                 if (acc.getEmail().equals(email)) {
-                    if (acc.getPassword().equals(password)) { //TODO safe storage
+                    if (acc.getPassword().equals(password)) { //feature safe storage
                         output = acc;
                         break;
                     } else {

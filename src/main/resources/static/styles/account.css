@@ -58,28 +58,17 @@ a {
   font-family: "Open Sans", sans;
   text-decoration: none;
   margin: 0;
-  color: #00B837;
+  color: #EEEEEE;
   cursor: pointer;
 }
 
 a.link-hover {
   position: relative;
+  transition: color 0.25s ease-in-out;
 }
 
-a.link-hover::after {
-  width: 0%;
-  height: 3px;
-  background: #00B837;
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  transition: width 1s;
-}
-
-a.link-hover:hover::after {
-  width: 100%;
+a.link-hover:hover {
+  color: #00B837;
 }
 
 li::marker {
@@ -132,160 +121,33 @@ body {
   background: #EEEEEE;
 }
 
-*::-webkit-scrollbar {
+html *::-webkit-scrollbar {
   width: 0.3em;
+  z-index: 10000;
 }
-
-*::-webkit-scrollbar-track {
-  background: transparent;
+html *::-webkit-scrollbar-track {
+  background-color: transparent;
+  z-index: 10000;
+  transition: background-color 0.5s ease-in-out;
 }
-
-*::-webkit-scrollbar-thumb {
-  background: #00B837;
+html *::-webkit-scrollbar-thumb {
+  background-color: #00B837;
   border-radius: 0.15em;
+  z-index: 10000;
+  transition: background-color 0.5s ease-in-out;
 }
-
-*::-webkit-resizer {
+html *::-webkit-resizer {
+  display: none;
+}
+html *::-webkit-scrollbar-button {
   display: none;
 }
 
-*::-webkit-scrollbar-button {
-  display: none;
+html.scroll-hide *::-webkit-scrollbar-thumb {
+  background-color: rgb(4.25, 4.25, 4.25);
 }
-
-#branding-container {
-  position: fixed;
-  top: 1vh;
-  left: 1vh;
-  z-index: 9999;
-  background: rgba(17, 17, 17, 0.8);
-  padding: 0.5em 1em;
-  border-radius: 1em;
-}
-#branding-container h1 {
-  color: #00B837;
-  font-size: 1.75em;
-}
-#branding-container #branding-desktop {
-  display: block;
-}
-#branding-container #branding-mobile {
-  color: #00B837;
-  fill: #00B837;
-  font-size: 1.75em;
-  z-index: 9999;
-  display: none;
-}
-@media (width <= 375px) {
-  #branding-container #branding-mobile {
-    display: block;
-  }
-  #branding-container #branding-desktop {
-    display: none;
-  }
-}
-
-#header-container {
-  position: fixed;
-  top: 1vh;
-  right: 1vh;
-  display: flex;
-  flex-flow: row;
-  align-items: center;
-  gap: 1vw;
-  z-index: 9999;
-  height: 5vh;
-  background: rgba(17, 17, 17, 0.8);
-  padding: 0.5em 1em;
-  border-radius: 1em;
-}
-#header-container #header-link-container {
-  display: flex;
-  flex-flow: row;
-  gap: 1vw;
-  align-items: center;
-  z-index: 9999;
-}
-#header-container #header-link-container i {
-  color: #00B837;
-  fill: #00B837;
-  font-size: 1.75em;
-  z-index: 9999;
-}
-#header-container #header-link-container .header-no-remove {
-  position: relative;
-}
-#header-container #header-link-container .header-no-remove #cart-item-count {
-  position: absolute;
-  bottom: -35%;
-  right: -25%;
-  color: #00B837;
-}
-#header-container #header-link-container a {
-  z-index: 9999;
-}
-#header-container #header-link-container #header-show-button {
-  border: unset !important;
-  padding: unset !important;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-#header-container #header-link-container #header-show-button i {
-  color: #00B837;
-  fill: #00B837;
-  font-size: 1.5em;
-  z-index: 9999;
-}
-#header-container #header-link-container #header-show-button:hover, #header-container #header-link-container #header-show-button:focus {
-  background: unset !important;
-  color: unset !important;
-}
-#header-container #header-account-icon {
-  aspect-ratio: 1/1;
-  height: 100%;
-  border-radius: 1em;
-  z-index: 9999;
-}
-#header-container #header-account-icon a {
-  width: 100%;
-  height: 100%;
-  border-radius: 1em;
-  z-index: 9999;
-}
-#header-container #header-account-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 1em;
-  z-index: 9999;
-}
-@media (width <= 500px) {
-  #header-container #header-link-container {
-    gap: 2vw;
-  }
-  #header-container #header-account-icon {
-    padding-left: 2vw;
-  }
-}
-
-#mobile-header-popup {
-  display: none;
-  flex-flow: column;
-  align-items: center;
-  gap: 5vh;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  padding-top: 15vh;
-  background: rgba(11.9, 11.9, 11.9, 0.99);
+html.scroll-hide *::-webkit-scrollbar-track {
+  background-color: rgb(4.25, 4.25, 4.25);
 }
 
 #indicator-overlay {
@@ -310,7 +172,7 @@ body {
   padding-left: 10vh;
 }
 
-#site-content {
+#site-content-account {
   height: 80vh;
   display: flex;
   flex-flow: row;
@@ -321,7 +183,7 @@ body {
   min-height: unset !important;
   max-width: 90vw;
 }
-#site-content #account-menu-nav-accordion {
+#site-content-account #account-menu-nav-accordion {
   display: none;
   flex-flow: column;
   align-items: center;
@@ -330,7 +192,7 @@ body {
   border-radius: 1em;
   width: 100%;
 }
-#site-content #account-menu-nav-accordion #nav-accordion-header {
+#site-content-account #account-menu-nav-accordion #nav-accordion-header {
   display: flex;
   width: 90%;
   flex-flow: row;
@@ -338,22 +200,22 @@ body {
   align-items: center;
   padding: 2vh 5%;
 }
-#site-content #account-menu-nav-accordion #nav-accordion-header #nav-accordion-icon i {
+#site-content-account #account-menu-nav-accordion #nav-accordion-header #nav-accordion-icon i {
   width: 20%;
   text-align: center;
   font-size: 1.5em;
   color: #00B837;
 }
-#site-content #account-menu-nav-accordion #nav-accordion-header #nav-accordion-header-label {
+#site-content-account #account-menu-nav-accordion #nav-accordion-header #nav-accordion-header-label {
   font-size: 1.5em;
 }
-#site-content #account-menu-nav-accordion #nav-accordion-panel {
+#site-content-account #account-menu-nav-accordion #nav-accordion-panel {
   display: none;
   flex-flow: column;
   align-items: center;
   justify-content: center;
 }
-#site-content #account-menu-nav {
+#site-content-account #account-menu-nav {
   height: 100%;
   background: rgb(29.75, 29.75, 29.75);
   border-radius: 1em;
@@ -365,7 +227,7 @@ body {
   padding-top: 1vh;
   flex-shrink: 0;
 }
-#site-content .account-nav-listing {
+#site-content-account .account-nav-listing {
   width: 90%;
   display: flex;
   flex-flow: row;
@@ -378,50 +240,50 @@ body {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 }
-#site-content .account-nav-listing i {
+#site-content-account .account-nav-listing i {
   width: 20%;
   text-align: center;
   font-size: 1.5em;
   color: #00B837;
   transition: color 0.5s;
 }
-#site-content .account-nav-listing p {
+#site-content-account .account-nav-listing p {
   font-size: 1.5em;
   padding-left: 10%;
 }
-#site-content .account-nav-listing:hover {
+#site-content-account .account-nav-listing:hover {
   background: rgba(0, 184, 55, 0.5);
 }
-#site-content .account-nav-listing.selected {
+#site-content-account .account-nav-listing.selected {
   background: #00B837;
 }
-#site-content .account-nav-listing.selected i {
+#site-content-account .account-nav-listing.selected i {
   color: #111111;
 }
-#site-content #account-setting-panels {
+#site-content-account #account-setting-panels {
   flex-grow: 6;
   height: 100%;
   background: rgb(29.75, 29.75, 29.75);
   border-radius: 1em;
   position: relative;
 }
-#site-content #account-setting-panels p {
+#site-content-account #account-setting-panels p {
   text-align: center;
   width: 60%;
 }
-#site-content #account-setting-panels h2 {
+#site-content-account #account-setting-panels h2 {
   text-align: center;
   width: 80%;
 }
-#site-content #account-setting-panels .info-align-horizontal {
+#site-content-account #account-setting-panels .info-align-horizontal {
   display: flex;
   flex-flow: row;
   gap: 5vw;
 }
-#site-content #account-setting-panels .info-align-horizontal input, #site-content #account-setting-panels .info-align-horizontal input:focus, #site-content #account-setting-panels .info-align-horizontal input:hover, #site-content #account-setting-panels .info-align-horizontal input:-webkit-autofill, #site-content #account-setting-panels .info-align-horizontal input:focus-visible {
+#site-content-account #account-setting-panels .info-align-horizontal input, #site-content-account #account-setting-panels .info-align-horizontal input:focus, #site-content-account #account-setting-panels .info-align-horizontal input:hover, #site-content-account #account-setting-panels .info-align-horizontal input:-webkit-autofill, #site-content-account #account-setting-panels .info-align-horizontal input:focus-visible {
   width: 100% !important;
 }
-#site-content #account-setting-panels .setting-container {
+#site-content-account #account-setting-panels .setting-container {
   border-radius: 1em;
   padding: 0.5em;
   display: flex;
@@ -430,7 +292,7 @@ body {
   align-items: center;
   position: relative;
 }
-#site-content #account-setting-panels .setting-container .label-setting {
+#site-content-account #account-setting-panels .setting-container .label-setting {
   background: rgb(29.75, 29.75, 29.75);
   width: fit-content;
   position: absolute;
@@ -442,7 +304,7 @@ body {
   font-size: 1.1em;
   color: #EEEEEE;
 }
-#site-content #account-setting-panels .setting-container input, #site-content #account-setting-panels .setting-container input:focus, #site-content #account-setting-panels .setting-container input:hover, #site-content #account-setting-panels .setting-container input:-webkit-autofill, #site-content #account-setting-panels .setting-container input:focus-visible {
+#site-content-account #account-setting-panels .setting-container input, #site-content-account #account-setting-panels .setting-container input:focus, #site-content-account #account-setting-panels .setting-container input:hover, #site-content-account #account-setting-panels .setting-container input:-webkit-autofill, #site-content-account #account-setting-panels .setting-container input:focus-visible {
   border: 1px solid #00B837 !important;
   border-radius: 1em;
   padding: 0.5em;
@@ -453,7 +315,7 @@ body {
   transition: color 1s ease-in-out;
   width: 150%;
 }
-#site-content #account-setting-panels #rating-scrollable {
+#site-content-account #account-setting-panels #rating-scrollable {
   width: 100%;
   height: 80vh;
   overflow-y: scroll;
@@ -462,7 +324,7 @@ body {
   flex-flow: column;
   gap: 2vh;
 }
-#site-content #account-setting-panels #rating-scrollable .rating-tile {
+#site-content-account #account-setting-panels #rating-scrollable .rating-tile {
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -470,20 +332,20 @@ body {
   width: 100%;
   margin: auto;
 }
-#site-content #account-setting-panels #rating-scrollable .rating-tile .rating-info-left {
+#site-content-account #account-setting-panels #rating-scrollable .rating-tile .rating-info-left {
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
   align-items: center;
   flex: 1 1 0px;
 }
-#site-content #account-setting-panels #rating-scrollable .rating-tile .rating-message {
+#site-content-account #account-setting-panels #rating-scrollable .rating-tile .rating-message {
   flex: 1 1 0px;
   padding: 0.5em;
   overflow-wrap: break-word;
   text-align: center;
 }
-#site-content #account-setting-panels .setting-panel {
+#site-content-account #account-setting-panels .setting-panel {
   width: 100%;
   height: 100%;
   flex-flow: column;
@@ -492,34 +354,34 @@ body {
   text-align: center;
 }
 @media (width <= 650px) {
-  #site-content {
+  #site-content-account {
     flex-flow: column;
     height: unset;
   }
-  #site-content #account-menu-nav {
+  #site-content-account #account-menu-nav {
     display: none;
   }
-  #site-content #account-menu-nav-accordion {
+  #site-content-account #account-menu-nav-accordion {
     display: flex;
   }
-  #site-content #nav-accordion-panel {
+  #site-content-account #nav-accordion-panel {
     width: 100%;
   }
-  #site-content #nav-accordion-panel .account-nav-listing {
+  #site-content-account #nav-accordion-panel .account-nav-listing {
     width: 90%;
     padding-left: 5%;
     padding-right: 5%;
     justify-content: space-between;
   }
-  #site-content #nav-accordion-panel .account-nav-listing i {
+  #site-content-account #nav-accordion-panel .account-nav-listing i {
     width: unset;
   }
-  #site-content #account-setting-panels {
+  #site-content-account #account-setting-panels {
     width: 100%;
     padding-top: 1em;
     padding-bottom: 1em;
   }
-  #site-content #account-setting-panels .setting-panel {
+  #site-content-account #account-setting-panels .setting-panel {
     gap: 1vh;
   }
 }
