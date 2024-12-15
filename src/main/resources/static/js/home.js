@@ -14,9 +14,6 @@ function shiftItemPromoCarousel(right) {
 
     const carousel = document.getElementById("item-scroll-container");
     let totalScrollAmount = document.getElementsByClassName("top-rated-item-tile")[0].offsetWidth + window.innerWidth * 3.0/100;// gap = 3vw, tile = 20.25 vw
-    console.log(totalScrollAmount);
-    console.log(document.getElementsByClassName("top-rated-item-tile")[0].offsetWidth);
-    console.log(window.innerWidth);
 
     if (right) {
         setTimeout(() => {
@@ -41,13 +38,13 @@ function shiftItemPromoCarousel(right) {
     if (right) {
         gsap.to(carousel, {
             x: -totalScrollAmount,
-            ease: "linear",
+            ease: "power1.inout",
             duration: 0.5
         });
     } else {
         gsap.to(carousel, {
             x: 0,
-            ease: "linear",
+            ease: "power1.inout",
             duration: 0.5
         });
     }
@@ -60,6 +57,7 @@ function initHome() {
 
 
 function registerAnimations() {
+
     for (const elem of document.getElementsByClassName("approaches-tile")) {
         elem.addEventListener("mouseover", () => {
             //show
@@ -83,6 +81,42 @@ function registerAnimations() {
             }
         });
     }
+
+    let targets = [];
+    targets.push(document.getElementById("item-promo-header"));
+    targets.push(document.getElementById("item-scroll-area"));
+    targets.push(document.getElementById("featured-overlay"));
+    targets.push(document.getElementById("discount-header"));
+    targets.push(document.getElementById("discount-body"));
+    targets.push(document.getElementById("discount-button"));
+    targets.push(document.getElementById("top-ratings-header"));
+    for (const e of document.getElementsByClassName("rating-tile")) {targets.push(e)}
+    targets.push(document.getElementById("member-benefit-promo"));
+    targets.push(document.getElementById("approaches-header"));
+
+    for (const elem of targets) {
+        gsap.set(elem, {opacity:0, y:window.innerHeight / 5});
+        gsap.to(elem, {opacity: 1, y: 0, duration: 0.5, ease: "power1.inout", scrollTrigger:{trigger: elem, start: "top 90%", scrub:1, end: "top 70%"}});
+    }
+
+    gsap.set(document.getElementById("collaborate-info-text"), {opacity: 0, x: -1 * document.getElementById("collaborate-info-text").getBoundingClientRect().left - document.getElementById("collaborate-info-text").getBoundingClientRect().width});
+    gsap.set(document.getElementById("collaborate-info-image"), {opacity: 0, x: document.getElementById("collaborate-info-image").getBoundingClientRect().width})
+    gsap.set(document.getElementById("collaborate-header"), {opacity:0, y:window.innerHeight / 5});
+    gsap.to(document.getElementById("collaborate-header"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.inout", delay: 0.5, scrollTrigger:{trigger: document.getElementById("collaborate-header"), start: "top 90%", scrub:1, end: "top 70%"}});
+    gsap.to(document.getElementById("collaborate-info-text"), {
+        x: 0, opacity: 1, duration: 0.5, ease: "power1.inout", scrollTrigger:{
+            trigger: document.getElementById("collaborate-header"),start:"top 90%", scrub:1, end: "top 70%"}
+    });
+    gsap.to(document.getElementById("collaborate-info-image"), {
+        x: 0, opacity: 1, duration: 0.5, ease: "power1.inout", scrollTrigger:{
+            trigger: document.getElementById("collaborate-header"),start:"top 90%", scrub:1, end: "top 70%"}
+    });
+
+    gsap.set(document.getElementsByClassName("approaches-tile"), {y:window.innerHeight / 5, opacity:0});
+    gsap.to(document.getElementsByClassName("approaches-tile"), {
+        y: 0, opacity: 1, duration: 0.5, ease: "power1.inout", delay: 0.5, stagger:0.1, scrollTrigger:{
+            trigger: document.getElementById("approaches-header"), start:"top 90%", scrub:1, end: "top 70%"}});
+
 }
 
 function toggleApproachesTile(tile, mode) {

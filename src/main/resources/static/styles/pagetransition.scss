@@ -13,6 +13,7 @@ $primary: #EEEEEE;
   align-items: center;
   justify-content: center;
   z-index: 99999;
+  will-change: transform;
 
   .page-transition-panel {
     position: fixed;
@@ -22,6 +23,7 @@ $primary: #EEEEEE;
     height: 100%;
     z-index: 99999;
     background: darken($secondary, 5%);
+    will-change: transform;
   }
 
   #page-transition-left {
@@ -34,6 +36,7 @@ $primary: #EEEEEE;
     z-index: 100000;
     position: relative;
     width: fit-content;
+    will-change: transform, opacity;
   }
   #page-transition-title.preloader {
     font-size: 3.5em;

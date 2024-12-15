@@ -5,6 +5,7 @@
   height: fit-content;
   align-items: center;
   justify-content: space-evenly;
+  will-change: transform, opacity;
 
   #menu-categories-accordion-header {
     display: none;
@@ -41,7 +42,7 @@
     padding-left: 1em;
     padding-right: 1em;
     height: 10vh;
-    background: lighten($secondary, 3%);
+    background: $secondary;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,6 +51,9 @@
     h3 {
       transition: color 0.25s ease-in-out;
     }
+  }
+  .menu-topic-tile:hover {
+    background: mix($secondary, $accent, 50%);
   }
   .menu-topic-tile.category-selected {
     background: $accent;
@@ -80,7 +84,7 @@
     }
 
     .menu-topic-tile {
-      background: unset !important;
+      background: $secondary !important;
       border: unset !important;
       width: 100% !important;
     }

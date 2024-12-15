@@ -9,4 +9,8 @@
   text-align: center;
   padding: 5vh 5%;
   margin-top: 5vh;
+
+  #discount-button, #discount-header, #discount-body {
+    will-change: transform, opacity;
+  }
 }
