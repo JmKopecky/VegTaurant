@@ -151,6 +151,7 @@ html *::-webkit-scrollbar-button {
   background: rgba(17, 17, 17, 0.8);
   padding: 0.5em 1em;
   border-radius: 1em;
+  will-change: transform, opacity;
 }
 #branding-container h1 {
   color: #00B837;
@@ -188,6 +189,7 @@ html *::-webkit-scrollbar-button {
   background: rgba(17, 17, 17, 0.8);
   padding: 0.5em 1em;
   border-radius: 1em;
+  will-change: transform, opacity;
 }
 #header-container #header-link-container {
   display: flex;
@@ -201,6 +203,7 @@ html *::-webkit-scrollbar-button {
   fill: #00B837;
   font-size: 1.75em;
   z-index: 9999;
+  will-change: scale;
 }
 #header-container #header-link-container .header-no-remove {
   position: relative;
@@ -235,9 +238,11 @@ html *::-webkit-scrollbar-button {
   right: 0;
   width: 100%;
   height: 100%;
+  will-change: stroke-dashoffset;
 }
 #header-container #header-link-container a {
   z-index: 9999;
+  will-change: color, transform, opacity;
 }
 #header-container #header-link-container #header-show-button {
   border: unset !important;
@@ -280,6 +285,7 @@ html *::-webkit-scrollbar-button {
   object-fit: cover;
   border-radius: 1em;
   z-index: 9999;
+  will-change: scale;
 }
 #header-container #header-account-icon svg {
   position: absolute;
@@ -374,9 +380,14 @@ html *::-webkit-scrollbar-button {
 }
 #site-content-home #hero-content #hero-interactable #hero-button-container button {
   width: 60%;
+  will-change: transform, opacity;
 }
 #site-content-home #hero-content #hero-interactable h1 {
   font-size: 5em;
+  will-change: transform, opacity;
+}
+#site-content-home #hero-content #hero-interactable h6 {
+  will-change: transform, opacity;
 }
 #site-content-home #hero-content #hero-bgimg {
   width: 50%;
@@ -404,6 +415,7 @@ html *::-webkit-scrollbar-button {
   bottom: 0;
   z-index: 2;
   background: linear-gradient(to right, #111111, rgba(17, 17, 17, 0.6));
+  will-change: background;
 }
 @media (width <= 900px) {
   #site-content-home #hero-content #hero-interactable h1 {
@@ -456,6 +468,9 @@ html *::-webkit-scrollbar-button {
   text-align: center;
   width: 100%;
 }
+#site-content-home #item-promo #item-promo-header {
+  will-change: transform, opacity;
+}
 #site-content-home #item-promo #item-scroll-area {
   width: 100%;
   height: 100%;
@@ -463,6 +478,7 @@ html *::-webkit-scrollbar-button {
   flex-flow: row;
   align-items: center;
   justify-content: center;
+  will-change: transform, opacity;
 }
 #site-content-home #item-promo #item-scroll-area .scroll-arrow-button {
   background: none;
@@ -501,10 +517,13 @@ html *::-webkit-scrollbar-button {
 }
 #site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile {
   width: 20.25vw;
-  height: 90%;
   background: rgb(11.9, 11.9, 11.9);
   border-radius: 1em;
   position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  will-change: transform;
 }
 #site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content {
   z-index: 2;
@@ -514,6 +533,14 @@ html *::-webkit-scrollbar-button {
   justify-content: space-evenly;
   gap: 2%;
   padding: 5%;
+  height: 100%;
+}
+#site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .rated-item-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 1;
 }
 #site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content h5 {
   width: 100%;
@@ -526,11 +553,13 @@ html *::-webkit-scrollbar-button {
   flex-shrink: 1;
   aspect-ratio: 1/1;
   max-width: 100%;
+  padding-top: 1em;
 }
 #site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .item-promo-image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 2em;
 }
 #site-content-home #item-promo #item-scroll-area #item-scroll-overflow #item-scroll-container .top-rated-item-tile .top-rated-item-tile-content .top-rated-item-tile-body {
   flex: 1;
@@ -577,7 +606,7 @@ html *::-webkit-scrollbar-button {
 }
 #site-content-home #current-featured #featured-overlay {
   height: 100%;
-  max-width: 100%;
+  max-width: 60%;
   z-index: 2;
   background: rgb(11.9, 11.9, 11.9);
   display: flex;
@@ -589,6 +618,7 @@ html *::-webkit-scrollbar-button {
   border-radius: 1em;
   gap: 1vh;
   text-align: center;
+  will-change: transform, opacity;
 }
 #site-content-home #current-featured #featured-overlay div {
   flex-grow: 1;
@@ -607,6 +637,17 @@ html *::-webkit-scrollbar-button {
   aspect-ratio: 1/1;
   object-fit: cover;
   z-index: 1;
+  border-radius: 2em;
+}
+@media (width <= 950px) {
+  #site-content-home #current-featured #featured-overlay {
+    max-width: 80%;
+  }
+}
+@media (width <= 600px) {
+  #site-content-home #current-featured #featured-overlay {
+    max-width: 100%;
+  }
 }
 #site-content-home #discount-promo {
   width: 90%;
@@ -619,6 +660,9 @@ html *::-webkit-scrollbar-button {
   text-align: center;
   padding: 5vh 5%;
   margin-top: 5vh;
+}
+#site-content-home #discount-promo #discount-button, #site-content-home #discount-promo #discount-header, #site-content-home #discount-promo #discount-body {
+  will-change: transform, opacity;
 }
 #site-content-home #top-ratings-display {
   width: 100%;
@@ -634,6 +678,9 @@ html *::-webkit-scrollbar-button {
   padding-top: 5vh;
   padding-bottom: 5vh;
 }
+#site-content-home #top-ratings-display #top-ratings-header {
+  will-change: transform, opacity;
+}
 #site-content-home #top-ratings-display .rating-tile {
   width: 80%;
   height: fit-content;
@@ -644,6 +691,7 @@ html *::-webkit-scrollbar-button {
   flex-flow: column;
   justify-content: center;
   position: relative;
+  will-change: transform, opacity;
 }
 #site-content-home #top-ratings-display .rating-tile h6 {
   width: 40%;
@@ -704,6 +752,7 @@ html *::-webkit-scrollbar-button {
   gap: 5vh;
   margin-top: 15vh;
   max-width: 90%;
+  will-change: transform, opacity;
 }
 #site-content-home #approaches-container {
   width: 100%;
@@ -723,6 +772,9 @@ html *::-webkit-scrollbar-button {
   justify-content: center;
   align-items: center;
 }
+#site-content-home #approaches-container #approaches-header {
+  will-change: transform, opacity;
+}
 #site-content-home #approaches-container .approaches-tile {
   background: rgba(0, 184, 55, 0);
   border: 1px solid #00B837;
@@ -737,6 +789,7 @@ html *::-webkit-scrollbar-button {
   text-align: center;
   word-wrap: break-word;
   cursor: pointer;
+  will-change: transform, opacity;
 }
 #site-content-home #approaches-container .approaches-tile .approaches-tile-heading {
   font-size: 2em;
@@ -764,6 +817,9 @@ html *::-webkit-scrollbar-button {
   justify-content: center;
   align-items: center;
 }
+#site-content-home #collaborate-container #collaborate-header {
+  will-change: transform, opacity;
+}
 #site-content-home #collaborate-container #collaborate-info-container {
   flex: 1;
   display: flex;
@@ -788,6 +844,7 @@ html *::-webkit-scrollbar-button {
   border-top: 1px solid #00B837;
   border-bottom: 1px solid #00B837;
   border-image: linear-gradient(to right, #00B837 50%, transparent 50%) 100% 1;
+  will-change: transform, opacity;
 }
 #site-content-home #collaborate-container #collaborate-info-container #collaborate-info-image {
   flex: 1;
@@ -801,6 +858,7 @@ html *::-webkit-scrollbar-button {
   display: flex;
   flex-flow: column;
   align-items: end;
+  will-change: transform, opacity;
 }
 #site-content-home #collaborate-container #collaborate-info-container #collaborate-info-image #collaborate-image {
   height: 100%;
@@ -884,13 +942,19 @@ html *::-webkit-scrollbar-button {
   gap: 1vh;
   align-items: center;
 }
+#menu-item-overlay #menu-item-details-container #menu-item-top #menu-item-overlay-image {
+  border-radius: 2em;
+}
 #menu-item-overlay #menu-item-details-container #menu-item-desc-container {
-  width: 50vw;
+  width: 48vw;
   height: 35vh;
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
   align-items: center;
+  text-align: center;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
 @media (width <= 950px) {
   #menu-item-overlay #menu-item-details-container {
@@ -1387,6 +1451,7 @@ html *::-webkit-scrollbar-button {
   width: 100%;
   padding-bottom: 5vh;
   padding-top: 10vh;
+  will-change: transform, opacity;
 }
 #site-content-menu #menu-banner h1 {
   width: 100%;
@@ -1399,6 +1464,7 @@ html *::-webkit-scrollbar-button {
   height: fit-content;
   align-items: center;
   justify-content: space-evenly;
+  will-change: transform, opacity;
 }
 #site-content-menu #menu-categories-container #menu-categories-accordion-header {
   display: none;
@@ -1502,7 +1568,8 @@ html *::-webkit-scrollbar-button {
   width: 100%;
   text-align: center;
   padding-bottom: 1em;
-  padding-top: 1em;
+  padding-top: 2em;
+  will-change: transform, opacity;
 }
 #site-content-menu #menu-items-container .menu-items .menu-item-tag .tag-items {
   display: flex;
@@ -1511,6 +1578,7 @@ html *::-webkit-scrollbar-button {
   justify-content: space-evenly;
   gap: 4vw;
   flex-wrap: wrap;
+  height: 40vh;
 }
 #site-content-menu #menu-items-container .menu-items .menu-item-tag .tag-items .menu-item {
   aspect-ratio: 2/3;
@@ -1522,14 +1590,16 @@ html *::-webkit-scrollbar-button {
   align-items: center;
   padding-left: 1em;
   padding-right: 1em;
+  gap: 0.5em;
+  flex: 1;
+  height: 100%;
+  will-change: transform, opacity;
 }
 #site-content-menu #menu-items-container .menu-items .menu-item-tag .tag-items .menu-item .item-image-container {
-  height: 45%;
-  width: 90%;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-top: 5%;
+  height: 50%;
+  width: 100%;
   position: relative;
+  margin-top: 0.5em;
 }
 #site-content-menu #menu-items-container .menu-items .menu-item-tag .tag-items .menu-item .item-image-container img {
   position: absolute;
@@ -1537,14 +1607,16 @@ html *::-webkit-scrollbar-button {
   height: 100%;
   object-fit: cover;
   z-index: 2;
+  border-radius: 1em;
 }
 #site-content-menu #menu-items-container .menu-items .menu-item-tag .tag-items .menu-item .item-content-container {
-  height: 50%;
   width: 100%;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: space-evenly;
+  padding-bottom: 0.5em;
+  gap: 1vh;
 }
 #site-content-menu #menu-items-container .menu-items .menu-item-tag .tag-items .menu-item .item-content-container .item-title {
   font-size: 1.75em;
@@ -1592,13 +1664,19 @@ html *::-webkit-scrollbar-button {
   gap: 1vh;
   align-items: center;
 }
+#menu-item-overlay #menu-item-details-container #menu-item-top #menu-item-overlay-image {
+  border-radius: 2em;
+}
 #menu-item-overlay #menu-item-details-container #menu-item-desc-container {
-  width: 50vw;
+  width: 48vw;
   height: 35vh;
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
   align-items: center;
+  text-align: center;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
 @media (width <= 950px) {
   #menu-item-overlay #menu-item-details-container {

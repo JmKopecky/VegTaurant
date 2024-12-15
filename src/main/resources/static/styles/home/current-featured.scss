@@ -13,7 +13,7 @@
 
   #featured-overlay {
     height: 100%;
-    max-width: 100%;
+    max-width: 60%;
     z-index: 2;
     background: darken($secondary, 2%);
     display: flex;
@@ -25,6 +25,7 @@
     border-radius: 1em;
     gap: 1vh;
     text-align: center;
+    will-change: transform, opacity;
     div {
       flex-grow: 1;
       flex-shrink: 1;
@@ -42,6 +43,18 @@
       aspect-ratio: 1/1;
       object-fit: cover;
       z-index: 1;
+      border-radius: 2em;
+    }
+  }
+
+  @media (width <= 950px) {
+    #featured-overlay {
+      max-width: 80%;
+    }
+  }
+  @media (width <= 600px) {
+    #featured-overlay {
+      max-width: 100%;
     }
   }
 }

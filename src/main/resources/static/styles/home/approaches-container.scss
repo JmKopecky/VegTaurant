@@ -17,6 +17,10 @@
     align-items: center;
   }
 
+  #approaches-header {
+    will-change: transform, opacity;
+  }
+
 
   .approaches-tile {
     background: transparentize($accent, 1);
@@ -32,6 +36,7 @@
     text-align: center;
     word-wrap: break-word;
     cursor: pointer;
+    will-change: transform, opacity;
 
     .approaches-tile-heading {
       font-size: 2em;

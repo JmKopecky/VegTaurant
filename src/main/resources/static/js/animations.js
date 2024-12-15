@@ -157,10 +157,10 @@ function prepareStartupAnims(page) {
             y:window.innerHeight / 5});
         gsap.set(document.getElementsByClassName("menu-tag-name"), {
             opacity: 0,
-            y:window.innerHeight / 5})
+            y:window.innerHeight / 10})
         gsap.set(document.getElementsByClassName("menu-item"), {
             opacity: 0,
-            y:window.innerHeight / 5})
+            y:window.innerHeight / 8})
     }
 
 
@@ -194,7 +194,7 @@ function runStartupAnims(page) {
             opacity: 1, y:0, duration: 0.5, ease: "power1.inout", delay: 0.75});
         setTimeout(() => {
             for (const target of document.getElementsByClassName("menu-tag-name")) {
-                gsap.to(target, {opacity: 1, y:window.innerHeight / 7, duration: 0.5, ease: "power1.in", scrollTrigger:{
+                gsap.to(target, {opacity: 1, y:window.innerHeight / 12, duration: 0.5, ease: "power1.in", scrollTrigger:{
                         trigger: target,
                         start: "top 90%",
                     }});
@@ -208,7 +208,7 @@ function runStartupAnims(page) {
         }, 1000);
         setTimeout(() => {
             for (const target of document.getElementsByClassName("menu-item")) {
-                gsap.to(target, {opacity: 1, y:window.innerHeight / 7, duration: 0.5, ease: "power1.in", scrollTrigger:{
+                gsap.to(target, {opacity: 1, y:window.innerHeight / 10, duration: 0.5, ease: "power1.in", scrollTrigger:{
                         trigger: target,
                         start: "top 90%",
                     }});

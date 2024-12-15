@@ -39,4 +39,12 @@ function setMenuCategory(targetCategory) {
             container.setAttribute("style", "display: none;");
         }
     }
+
+    gsap.set(document.getElementsByClassName("menu-tag-name"), {
+        opacity: 0})
+    gsap.set(document.getElementsByClassName("menu-item"), {
+        opacity: 0})
+
+    gsap.to(document.getElementsByClassName("menu-tag-name"), {opacity: 1, duration: 0.5, ease: "power1.in"});
+    gsap.to(document.getElementsByClassName("menu-item"), {opacity: 1, duration: 0.5, ease: "power1.in"});
 }

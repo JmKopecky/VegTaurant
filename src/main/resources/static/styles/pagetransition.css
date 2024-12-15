@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   z-index: 99999;
+  will-change: transform;
 }
 #page-transition-container .page-transition-panel {
   position: fixed;
@@ -18,6 +19,7 @@
   height: 100%;
   z-index: 99999;
   background: rgb(4.25, 4.25, 4.25);
+  will-change: transform;
 }
 #page-transition-container #page-transition-left {
   left: 0;
@@ -29,6 +31,7 @@
   z-index: 100000;
   position: relative;
   width: fit-content;
+  will-change: transform, opacity;
 }
 #page-transition-container #page-transition-title.preloader {
   font-size: 3.5em;

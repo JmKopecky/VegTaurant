@@ -12,6 +12,9 @@
     text-align: center;
     width: 100%;
   }
+  #item-promo-header {
+    will-change: transform, opacity;
+  }
   #item-scroll-area {
     width: 100%;
     height: 100%;
@@ -19,6 +22,7 @@
     flex-flow: row;
     align-items: center;
     justify-content: center;
+    will-change: transform, opacity;
     .scroll-arrow-button {
       background: none;
       color: unset;
@@ -54,10 +58,14 @@
         will-change: transform;
         .top-rated-item-tile {
           width: 20.25vw;
-          height: 90%;
+          //height: 90%;
           background: darken($secondary, 2%);
           border-radius: 1em;
           position: relative;
+          display:flex;
+          flex-flow: column;
+          align-items: center;
+          will-change: transform;
           .top-rated-item-tile-content {
             z-index: 2;
             display: flex;
@@ -66,6 +74,14 @@
             justify-content: space-evenly;
             gap: 2%;
             padding: 5%;
+            height: 100%;
+            .rated-item-container {
+              display: flex;
+              flex-flow: column;
+              align-items: center;
+              justify-content: space-evenly;
+              flex: 1;
+            }
             h5 {
               width: 100%;
               flex-grow: 1;
@@ -77,10 +93,12 @@
               flex-shrink: 1;
               aspect-ratio: 1/1;
               max-width: 100%;
+              padding-top: 1em;
               img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                border-radius: 2em;
               }
             }
             .top-rated-item-tile-body {

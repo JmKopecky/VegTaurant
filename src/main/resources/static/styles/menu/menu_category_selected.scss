@@ -5,6 +5,7 @@
   height: fit-content;
   align-items: center;
   justify-content: space-evenly;
+  will-change: transform, opacity;
 
   #menu-categories-accordion-header {
     display: none;

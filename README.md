@@ -50,3 +50,4 @@ Broad Technical Ideas:
 * Joseph Kopecky - 12/12/24: 4 hrs (barba.js page transitions)
 * Joseph Kopecky - 12/13/24: 4 hrs (header animations)
 * Joseph Kopecky - 12/14/24: 4 hrs (header anims and preloader)
+* Joseph Kopecky - 12/15/24: 5 hrs (home and menu animations, integrate some new menu items)

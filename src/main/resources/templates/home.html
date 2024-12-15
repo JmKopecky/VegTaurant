@@ -148,22 +148,26 @@ Requisite content:
 
         <div id="item-promo">
             <!-- Scroll through a set of popular menu items -->
-            <h1>Your Favorite Items</h1>
+            <h1 id="item-promo-header">Your Favorite Items</h1>
             <div id="item-scroll-area">
                 <button class="scroll-arrow-button" onclick="shiftItemPromoCarousel(false)"><i class="fa-solid fa-arrow-left"></i></button>
                 <div id="item-scroll-overflow">
                     <div id="item-scroll-container">
                         <div class="top-rated-item-tile" th:each="itemTile:${tophalfmenuitems}">
                             <div class="top-rated-item-tile-content">
-                                <h5 th:text="${itemTile.getLabel()}"></h5>
-                                <div class="item-promo-image-container">
-                                    <img th:src="${itemTile.getIconUrl()}" alt="image of food item">
+                                <div class="rated-item-container">
+                                    <h5 th:text="${itemTile.getLabel()}"></h5>
+                                    <div class="item-promo-image-container">
+                                        <img th:src="${itemTile.getIconUrl()}" alt="image of food item">
+                                    </div>
                                 </div>
-                                <div class="top-rated-item-tile-body">
-                                    <p class="top-rated-item-tile-desc" th:text="${itemTile.description}"></p>
-                                    <p class="top-rated-item-tile-rating" th:text="|Rating: ${itemTile.getAveragerating()}/5 (${itemTile.getTotalratings()})|"></p>
+                                <div class="rated-item-container">
+                                    <div class="top-rated-item-tile-body">
+                                        <p class="top-rated-item-tile-desc" th:text="${itemTile.description}"></p>
+                                        <p class="top-rated-item-tile-rating" th:text="|Rating: ${itemTile.getAveragerating()}/5 (${itemTile.getTotalratings()})|"></p>
+                                    </div>
+                                    <button class="item-promo-button" th:item="${itemTile.getLabel()}" onclick="retrieveItemData(this.getAttribute('item'));">Add to Cart</button>
                                 </div>
-                                <button class="item-promo-button" th:item="${itemTile.getLabel()}" onclick="retrieveItemData(this.getAttribute('item'));">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -189,15 +193,15 @@ Requisite content:
 
         <div id="discount-promo">
             <!-- Start your week off with a site-wide discount. -->
-            <h1 th:text="${sitewidedaydiscount ? 'Start Your Week Strong With A Discount' : 'Come Back Monday For A Discount'}"></h1>
-            <p>We understand that mondays are hard, and we want to make yours better. So every monday, a site-wide discount of 10% is applied to every order!</p>
-            <button th:if="${sitewidedaydiscount}">Redeem Your Discount</button>
+            <h1 id="discount-header" th:text="${sitewidedaydiscount ? 'Start Your Week Strong With A Discount' : 'Come Back Monday For A Discount'}"></h1>
+            <p id="discount-body">We understand that mondays are hard, and we want to make yours better. So every monday, a site-wide discount of 10% is applied to every order!</p>
+            <button id="discount-button" th:if="${sitewidedaydiscount}">Redeem Your Discount</button>
         </div>
 
 
         <div id="top-ratings-display">
             <!-- Future: add a system to retrieve recent 5-star reviews and display them. -->
-            <h1>Top Ratings</h1>
+            <h1 id="top-ratings-header">Top Ratings</h1>
             <div class="rating-tile" th:each="ratingTile,iterStat:${topratings}" th:classappend="${iterStat.even} ? 'rating-right' : 'rating-left'">
                 <h6 th:text="|${ratingTile.getReviewer().getName()} rated ${ratingTile.getProduct().getLabel()} ${ratingTile.getRating()}/5, saying:|"></h6>
                 <p th:text="${ratingTile.getMessage()}"></p>
@@ -218,7 +222,7 @@ Requisite content:
             Note: this is critical for the tsa rubric.
             Design in a matrix of tiles, with an initial state only showing the title of that tile. On hover or click, shows the text description.
             -->
-            <h1>How Are We Different?</h1>
+            <h1 id="approaches-header">How Are We Different?</h1>
 
             <div id="approaches-grid">
 
@@ -258,7 +262,7 @@ Requisite content:
 
         <div id="collaborate-container">
             <!-- promote for people to join the team, either as a driver or otherwise -->
-            <h1>Work With Us</h1>
+            <h1 id="collaborate-header">Work With Us</h1>
             <div id="collaborate-info-container">
                 <div id="collaborate-info-text">
                     <p>
