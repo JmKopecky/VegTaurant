@@ -1430,7 +1430,7 @@ html *::-webkit-scrollbar-button {
   padding-left: 1em;
   padding-right: 1em;
   height: 10vh;
-  background: rgb(24.65, 24.65, 24.65);
+  background: #111111;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1439,6 +1439,9 @@ html *::-webkit-scrollbar-button {
 }
 #site-content-menu #menu-categories-container .menu-topic-tile h3 {
   transition: color 0.25s ease-in-out;
+}
+#site-content-menu #menu-categories-container .menu-topic-tile:hover {
+  background: rgb(8.5, 100.5, 36);
 }
 #site-content-menu #menu-categories-container .menu-topic-tile.category-selected {
   background: #00B837;
@@ -1467,7 +1470,7 @@ html *::-webkit-scrollbar-button {
     display: flex;
   }
   #site-content-menu #menu-categories-container .menu-topic-tile {
-    background: unset !important;
+    background: #111111 !important;
     border: unset !important;
     width: 100% !important;
   }
@@ -1482,7 +1485,7 @@ html *::-webkit-scrollbar-button {
   width: 90%;
   padding-left: 5%;
   padding-right: 5%;
-  margin-bottom: 5vh;
+  margin-bottom: 20vh;
 }
 #site-content-menu #menu-items-container .menu-items {
   display: flex;

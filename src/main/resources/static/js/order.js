@@ -7,7 +7,7 @@ function initOrder() {
     populateItemsForReview();
 
     if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") {
-        window.location.replace(window.location.origin + "/menu");
+        barba.go(window.location.origin + "/menu");
     }
 }
 

@@ -1,6 +1,6 @@
 
 function initAccount() {
-    console.log("replace me with code that should run on account page open.");
+
 }
 
 
@@ -228,7 +228,7 @@ function deleteAccount() {
                 if (data === "password") {
                     document.getElementById("setting-password-delete-input").value = "Incorrect Password";
                 } else if (data.includes("redirect")) {
-                    window.location.href = window.location.origin + "/" + data.split("_")[1];
+                    barba.go(window.location.origin + "/" + data.split("_")[1]);
                 }
             })
         });

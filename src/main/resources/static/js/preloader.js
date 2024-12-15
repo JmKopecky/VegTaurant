@@ -21,6 +21,7 @@ function endPreloader() {
         duration: 0.25
     });
 
+    prepareStartupAnims(document.getElementById("barba-container").getAttribute("data-page"));
     setTimeout(() => {
         document.getElementById("page-transition-container").style.display = "none";
         gsap.set(document.getElementById("page-transition-left"), {
@@ -35,6 +36,7 @@ function endPreloader() {
         });
         document.getElementsByTagName("html")[0].classList.remove("scroll-hide");
         document.getElementById("page-transition-title").classList.remove("preloader");
+        runStartupAnims(document.getElementById("barba-container").getAttribute("data-page"));
     }, 500);
 }
 

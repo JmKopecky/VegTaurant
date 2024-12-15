@@ -9,7 +9,7 @@ function initCart() {
 
         if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") { //note, if cookies are disabled, this will not work. Add a banner or notif of some sort telling the user to disable cookies if so.
             //redirect to menu. feature: check if signed in, and if so, display a different page about starting an order from their favorite items or past orders.
-            window.location.replace(window.location.origin + "/menu")
+            barba.go(window.location.origin + "/menu")
         } else {
             //cart is an array of objects, with each object being
             let cart = JSON.parse(localStorage.getItem("cart"));
@@ -23,7 +23,7 @@ function initCart() {
 function populateCartData() {
     if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") { //note, if cookies are disabled, this will not work. Add a banner or notif of some sort telling the user to disable cookies if so.
         //redirect to menu. feature: check if signed in, and if so, display a different page about starting an order from their favorite items or past orders.
-        window.location.replace(window.location.origin + "/menu")
+        barba.go(window.location.origin + "/menu");
     } else {
         //load present cart for viewing.
         //cart is an array of objects, with each object being
@@ -35,9 +35,9 @@ function populateCartData() {
 
 function placeOrder() {
     if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
-        window.location.replace(window.location.origin + "/order");
+        barba.go(window.location.origin + "/order");
     } else {
-        window.location.replace(window.location.origin + "/menu");
+        barba.go(window.location.origin + "/menu");
     }
 }
 
@@ -50,9 +50,7 @@ function removeItem(tile) {
         for (const item of cart) {
             if (item["label"] !== tileLabel) {
                 newCart.push(item);
-                console.log(item);
             } else if (item["count"] > 1) {
-                console.log("A: " + item);
                 item["count"] = parseInt(item["count"]) - 1;
                 newCart.push(item)
             }
@@ -132,7 +130,7 @@ function doCodeInputChange(val) {
 
     if (localStorage.getItem("cart") === null || localStorage.getItem("cart") === "unset") { //note, if cookies are disabled, this will not work. Add a banner or notif of some sort telling the user to disable cookies if so.
         //redirect to menu. feature: check if signed in, and if so, display a different page about starting an order from their favorite items or past orders.
-        window.location.replace(window.location.origin + "/menu")
+        barba.go(window.location.origin + "/menu");
     } else {
         //cart is an array of objects, with each object being
         let cart = JSON.parse(localStorage.getItem("cart"));

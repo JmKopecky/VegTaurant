@@ -1,6 +1,4 @@
 function initMenu() {
-    registerAnimations();
-
     setMenuCategory("All");
 }
 

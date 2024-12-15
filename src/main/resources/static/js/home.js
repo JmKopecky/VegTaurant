@@ -60,6 +60,7 @@ function initHome() {
 
 
 function registerAnimations() {
+
     for (const elem of document.getElementsByClassName("approaches-tile")) {
         elem.addEventListener("mouseover", () => {
             //show

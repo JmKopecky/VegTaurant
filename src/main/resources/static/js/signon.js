@@ -70,7 +70,7 @@ function initSignon() {
                                 break;
                             }
                         }
-                        window.location.replace(window.location.origin + "/account")
+                        barba.go(window.location.origin + "/account");
                     });
                 });
             } else { //sign up, show extra info area.
@@ -227,7 +227,7 @@ function initSignon() {
                             break;
                         }
                     }
-                    window.location.replace(window.location.origin + "/account")
+                    barba.go(window.location.origin + "/account");
                 });
             });
         }
