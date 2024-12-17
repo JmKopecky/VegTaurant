@@ -88,16 +88,20 @@ function registerAnimations() {
     targets.push(document.getElementById("featured-overlay"));
     targets.push(document.getElementById("discount-header"));
     targets.push(document.getElementById("discount-body"));
-    targets.push(document.getElementById("discount-button"));
+    if (document.getElementById("discount-button") !== null) {
+        targets.push(document.getElementById("discount-button"));
+    }
     targets.push(document.getElementById("top-ratings-header"));
     for (const e of document.getElementsByClassName("rating-tile")) {targets.push(e)}
     targets.push(document.getElementById("member-benefit-promo"));
     targets.push(document.getElementById("approaches-header"));
 
+
     for (const elem of targets) {
         gsap.set(elem, {opacity:0, y:window.innerHeight / 5});
         gsap.to(elem, {opacity: 1, y: 0, duration: 0.5, ease: "power1.inout", scrollTrigger:{trigger: elem, start: "top 90%", scrub:1, end: "top 70%"}});
     }
+
 
     gsap.set(document.getElementById("collaborate-info-text"), {opacity: 0, x: -1 * document.getElementById("collaborate-info-text").getBoundingClientRect().left - document.getElementById("collaborate-info-text").getBoundingClientRect().width});
     gsap.set(document.getElementById("collaborate-info-image"), {opacity: 0, x: document.getElementById("collaborate-info-image").getBoundingClientRect().width})
@@ -107,6 +111,7 @@ function registerAnimations() {
         x: 0, opacity: 1, duration: 0.5, ease: "power1.inout", scrollTrigger:{
             trigger: document.getElementById("collaborate-header"),start:"top 90%", scrub:1, end: "top 70%"}
     });
+
     gsap.to(document.getElementById("collaborate-info-image"), {
         x: 0, opacity: 1, duration: 0.5, ease: "power1.inout", scrollTrigger:{
             trigger: document.getElementById("collaborate-header"),start:"top 90%", scrub:1, end: "top 70%"}
@@ -116,7 +121,6 @@ function registerAnimations() {
     gsap.to(document.getElementsByClassName("approaches-tile"), {
         y: 0, opacity: 1, duration: 0.5, ease: "power1.inout", delay: 0.5, stagger:0.1, scrollTrigger:{
             trigger: document.getElementById("approaches-header"), start:"top 90%", scrub:1, end: "top 70%"}});
-
 }
 
 function toggleApproachesTile(tile, mode) {

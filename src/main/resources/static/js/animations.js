@@ -96,13 +96,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
     //run necessary js file inits
     updateJS(document.getElementById("barba-container").getAttribute("data-page"));
 
-    barba.hooks.enter((data) => {
-        let current = data.current.container;
-        let next = data.next.container;
 
-        let targetPage = next.getAttribute("data-page")
-        updateJS(targetPage);
+    barba.hooks.enter((data) => {
+        data.current.container.remove();
     });
+
+    barba.hooks.after((data) => {
+        let next = document.getElementById("barba-container");
+        console.log(document.getElementsByClassName("barba-container"));
+        let targetPage = next.getAttribute("data-page").toLowerCase();
+        console.log(targetPage);
+        ScrollTrigger.killAll();
+        setTimeout(() => {
+            updateJS(targetPage);
+            prepareStartupAnims(targetPage);
+        }, 100);
+
+    })
 });
 
 

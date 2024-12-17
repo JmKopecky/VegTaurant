@@ -9,7 +9,11 @@ function hideOverlay(event, element) {
     setTimeout(() => {
         count.value = 1;
     }, 0);
-    document.getElementById("menu-item-overlay").setAttribute("style", "display: none;");
+
+    let target = document.getElementById("menu-item-overlay");
+    gsap.to(target, {
+        opacity: 0,duration: 0.5, ease: "power1.inout", onComplete: () => {
+        target.style.opacity = 1;target.style.display="none";}});
 }
 
 
@@ -27,11 +31,20 @@ function retrieveItemData(itemLabel) { //feature item customization? Not really 
         r.json().then(data => {
             let overlay = document.getElementById("menu-item-overlay");
             overlay.setAttribute("style", "display: flex;");
+            overlay.style.opacity = "0";
             document.getElementById("menu-item-overlay-name").textContent = data["label"];
             document.getElementById("menu-item-overlay-price").textContent = "$" + data["price"];
             document.getElementById("menu-item-overlay-rating").textContent = data["rating"] + "/5 (" + data["totalratings"] + ")";
             document.getElementById("menu-item-overlay-image").setAttribute("src", data["image"]);
             document.getElementById("menu-item-overlay-desc").textContent = data["desc"];
+
+            document.getElementById("menu-item-overlay-image").addEventListener("load", () => {
+                gsap.to(overlay, {
+                    opacity: 1,
+                    duration: 0.5,
+                    ease: "power1.inout"
+                })
+            })
         });
     });
 }

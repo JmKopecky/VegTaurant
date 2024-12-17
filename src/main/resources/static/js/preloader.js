@@ -62,7 +62,7 @@ function showTitle(thenEnd) {
         duration: titleTime/2.0,
         ease: "power1.inout",
         onComplete() {
-            if (animationblocking && (thenEnd || pendingTitle)) {
+            if (!animationblocking && (thenEnd || pendingTitle)) {
                 //timeline.kill();
                 //killTweensOf(document.getElementById("page-transition-title"));
                 endPreloader();
