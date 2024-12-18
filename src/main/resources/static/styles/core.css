@@ -1381,6 +1381,7 @@ html *::-webkit-scrollbar-button {
   background: rgb(42.5, 42.5, 42.5);
   border-radius: 1em;
   gap: 2vh;
+  z-index: 5;
 }
 #signon-content #extra-info-container p {
   text-align: center;

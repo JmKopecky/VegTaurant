@@ -37,6 +37,10 @@
 
 <script src="/js/animations.js"></script>
 
+<script type="text/javascript">
+    let account;
+</script>
+
 <!--
 Requisite content:
 * Hero
@@ -56,7 +60,6 @@ Requisite content:
         <a href="/menu" style="display: none;" class="link-hover">Menu</a>
         <a href="/cart" style="display: none;" class="link-hover">Order</a>
         <a href="/account" style="display: none;" class="link-hover">Account</a>
-        <a href="/#collaborate-container" style="display: none;" class="link-hover">Careers</a>
         <a href="/reference_page" style="display:none;" class="link-hover">Reference Page</a>
         <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
         <a id="header-cart-icon" class="header-no-remove" href="/cart" data-activetime="inactive" data-hover="false">
@@ -100,6 +103,12 @@ Requisite content:
 
 
 <div class="barba-container" id="barba-container" data-barba="container" data-barba-namespace="page" data-page="home">
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        account = /*[[${account}]]*/ 'noaccount';
+        /*]]>*/
+    </script>
 
 
     <div id="menu-item-overlay" onclick="hideOverlay(event, this);">

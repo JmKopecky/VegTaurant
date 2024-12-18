@@ -5,36 +5,16 @@ function initSignon() {
     document.getElementById("signon-switch-label").addEventListener("change", () => {
         let state = document.getElementById("signon-switch-label").children[0].checked;
         if (state) { //sign up mode
-
-            setTimeout(() => {
-                document.getElementById("signon-header").textContent = "Sign Up With Us!";
-                document.getElementById("signon-text").textContent = "Creating an account with us allows you to earn rewards, create meal plans, and streamline future orders!";
-                document.getElementById("signon-button").textContent = "Sign Up";
-                document.getElementById("signon-password-input").setAttribute("autocomplete", "new-password");
-            }, 250);
-
+            document.getElementById("signon-header").textContent = "Sign Up With Us!";
+            document.getElementById("signon-text").textContent = "Creating an account with us allows you to earn rewards, create meal plans, and streamline future orders!";
+            document.getElementById("signon-button").textContent = "Sign Up";
+            document.getElementById("signon-password-input").setAttribute("autocomplete", "new-password");
         } else { //sign in mode
-
-            setTimeout(() => {
-                document.getElementById("signon-header").textContent = "Sign In";
-                document.getElementById("signon-text").textContent = "Sign in to your account to dramatically improve your shopping experience with us!";
-                document.getElementById("signon-button").textContent = "Sign In";
-                document.getElementById("signon-password-input").setAttribute("autocomplete", "current-password");
-            }, 250);
+            document.getElementById("signon-header").textContent = "Sign In";
+            document.getElementById("signon-text").textContent = "Sign in to your account to dramatically improve your shopping experience with us!";
+            document.getElementById("signon-button").textContent = "Sign In";
+            document.getElementById("signon-password-input").setAttribute("autocomplete", "current-password");
         }
-        /*
-        gsap.to(["#signon-header", "#signon-text", "#signon-button"], {
-            duration: 0.5,
-            opacity: 0,
-            ease: "power1.inout"
-        })
-        gsap.to(["#signon-header", "#signon-text", "#signon-button"], {
-            duration: 0.5,
-            opacity: 100,
-            ease: "power1.inout",
-            delay: 0.5
-        })
-         */
     });
 
     document.getElementById("signon-button").addEventListener("keypress", function(event) {
@@ -64,13 +44,19 @@ function initSignon() {
                 }).then(r => {
                     //store cookie from response
                     r.text().then((data) => {
-                        for (const val of document.cookie.split(";")) {
-                            if (val.includes("sessiontoken")) {
-                                sessionStorage.setItem("sessiontoken", val.split("=")[1]);
-                                break;
+                        if (data === "authenticated") {
+                            console.log("success");
+                            for (const val of document.cookie.split(";")) {
+                                if (val.includes("sessiontoken")) {
+                                    sessionStorage.setItem("sessiontoken", val.split("=")[1]);
+                                    break;
+                                }
                             }
+                            barba.go(window.location.origin + "/account");
+                        } else {
+                            console.log("incorrect credentials");
+                            document.cookie = "";
                         }
-                        barba.go(window.location.origin + "/account");
                     });
                 });
             } else { //sign up, show extra info area.
