@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
             beforeEnter: (data) => {
                 //console.log(data.next.container);
                 let title = data.next.container.getElementsByClassName("site-content")[0].getAttribute("data-title");
-                console.log(title);
                 document.getElementById("page-transition-title").textContent = title;
                 document.getElementById("page-transition-title").style.visibility = "visible";
                 gsap.from(document.getElementById("page-transition-title"), {
@@ -96,13 +95,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
     //run necessary js file inits
     updateJS(document.getElementById("barba-container").getAttribute("data-page"));
 
-    barba.hooks.enter((data) => {
-        let current = data.current.container;
-        let next = data.next.container;
 
-        let targetPage = next.getAttribute("data-page")
-        updateJS(targetPage);
+    barba.hooks.enter((data) => {
+        data.current.container.remove();
     });
+
+    barba.hooks.after((data) => {
+        let next = document.getElementById("barba-container");
+        let targetPage = next.getAttribute("data-page").toLowerCase();
+        ScrollTrigger.killAll();
+        setTimeout(() => {
+            updateJS(targetPage);
+            prepareStartupAnims(targetPage);
+        }, 100);
+
+        if (document.getElementById("mobile-header-popup").style.display !== "none") {
+            document.getElementById("mobile-header-popup").style.display = "none";
+        }
+    })
 });
 
 
@@ -122,7 +132,7 @@ function updateJS(target) {
     if (target === "signon") {
         initSignon();
     }
-    if (target === "viewcart") {
+    if (target === "cart") {
         initCart();
     }
 }
@@ -134,8 +144,14 @@ function prepareStartupAnims(page) {
     prepareHeaderAnim();
 
     if (page === "home") {
-        let startBG = "linear-gradient(to right, #111111 100%, rgba(17, 17, 17, 0.6))";
-        gsap.set(document.getElementById("hero-bgimg-overlay"), {background: startBG});
+
+        if (window.matchMedia("(width <= 775px)").matches) {
+            let startBG = "linear-gradient(to bottom, #111111 100%, rgba(17, 17, 17, 0.6))";
+            gsap.set(document.getElementById("hero-bgimg-overlay"), {background: startBG});
+        } else {
+            let startBG = "linear-gradient(to right, #111111 100%, rgba(17, 17, 17, 0.6))";
+            gsap.set(document.getElementById("hero-bgimg-overlay"), {background: startBG});
+        }
         gsap.set(document.getElementById("hero-interactable").getElementsByTagName("h1")[0], {
             opacity:0,
             y:window.innerHeight / 5});
@@ -158,14 +174,47 @@ function prepareStartupAnims(page) {
         gsap.set(document.getElementsByClassName("menu-tag-name"), {
             opacity: 0,
             y:window.innerHeight / 10})
+        /*
         gsap.set(document.getElementsByClassName("menu-item"), {
             opacity: 0,
             y:window.innerHeight / 8})
+
+         */
     }
 
 
     if (page === "cart") {
+        gsap.set(document.getElementsByClassName("cart-item-tile"), {opacity: 0, y: window.innerHeight / 5});
+        gsap.set(document.getElementById("cart-totals"), {opacity: 0, y: window.innerHeight / 5});
+        gsap.set(document.getElementById("cart-order-container"), {opacity: 0, y: window.innerHeight / 5});
+    }
 
+
+    if (page === "signon") {
+        gsap.set(document.getElementById("toggle-signon-mode"), {
+            opacity: 0, y: window.innerHeight / 5});
+        gsap.set(document.getElementById("signon-container"), {
+            opacity: 0, y: window.innerHeight / 5});
+    }
+
+
+    if (page === "account") {
+        gsap.set(document.getElementById("account-menu-nav"), {
+            opacity: 0, x:
+                -1 * window.innerWidth / 5});
+        gsap.set(document.getElementById("account-setting-panels"), {
+            opacity: 0, x:
+                window.innerWidth / 5});
+    }
+
+
+    if (page === "order") {
+        gsap.set(document.getElementById("location-type-header"), {
+            opacity: 0, y: window.innerHeight / 5});
+        gsap.set(document.getElementById("location-address-selection"), {
+            opacity: 0, y: window.innerHeight / 5});
+        gsap.set(document.getElementsByClassName("loc-type-selectable"), {
+            opacity: 0, y: window.innerHeight / 5});
     }
 }
 
@@ -176,14 +225,19 @@ function runStartupAnims(page) {
 
     if (page === "home") {
         //home page gradient
-        let targetBG = "linear-gradient(to right, #111111 0%, rgba(17, 17, 17, 0.6))";
-        gsap.to(document.getElementById("hero-bgimg-overlay"), {background: targetBG, duration: 0.5, ease: "power1.inout", delay:3});
+        if (window.matchMedia("(width <= 775px)").matches) {
+            let targetBG = "linear-gradient(to bottom, #111111 0%, rgba(17, 17, 17, 0.6))";
+            gsap.to(document.getElementById("hero-bgimg-overlay"), {background: targetBG, duration: 0.5, ease: "power1.inout", delay:2});
+        } else {
+            let targetBG = "linear-gradient(to right, #111111 0%, rgba(17, 17, 17, 0.6))";
+            gsap.to(document.getElementById("hero-bgimg-overlay"), {background: targetBG, duration: 0.5, ease: "power1.inout", delay:2});
+        }
         gsap.to(document.getElementById("hero-interactable").getElementsByTagName("h1")[0], {
             opacity: 1, y: 0, duration: 0.5, ease: "power1.inout", delay: 1});
         gsap.to(document.getElementById("hero-interactable").getElementsByTagName("h6")[0], {
-            opacity: 1, y:0, duration: 0.5, ease: "power1.inout", delay: 1.5});
+            opacity: 1, y:0, duration: 0.5, ease: "power1.inout", delay: 1.25});
         gsap.to(document.getElementById("hero-button-container").getElementsByTagName("button"), {
-            opacity: 1, y:0, duration: 0.5, ease: "power1.inout", delay: 2, stagger: 0.35});
+            opacity: 1, y:0, duration: 0.5, ease: "power1.inout", delay: 1.5, stagger: 0.15});
     }
 
 
@@ -224,7 +278,30 @@ function runStartupAnims(page) {
 
 
     if (page === "cart") {
+        gsap.to(document.getElementsByClassName("cart-item-tile"), {
+            opacity: 1, y: 0, duration: 0.5, ease: "power1.inout", stagger: 0.1, delay: 0.75});
+        gsap.to(document.getElementById("cart-totals"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 1});
+        gsap.to(document.getElementById("cart-order-container"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 1.25});
+    }
 
+
+    if (page === "signon") {
+        gsap.to(document.getElementById("toggle-signon-mode"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 0.75});
+        gsap.to(document.getElementById("signon-container"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 1});
+    }
+
+
+    if (page === "account") {
+        gsap.to(document.getElementById("account-menu-nav"), {opacity: 1, x: 0, duration: 0.5, ease: "power1.in", delay: 0.75});
+        gsap.to(document.getElementById("account-setting-panels"), {opacity: 1, x: 0, duration: 0.5, ease: "power1.in", delay: 0.75});
+    }
+
+
+    if (page === "order") {
+        gsap.to(document.getElementById("location-type-header"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 0.75});
+        gsap.to(document.getElementById("location-address-selection"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 1.5});
+        gsap.to(document.getElementsByClassName("loc-type-selectable"), {
+            opacity: 1, y: 0, duration: 0.5, ease: "power1.inout", stagger: 0.1, delay: 1});
     }
 }
 

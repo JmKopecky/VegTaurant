@@ -913,6 +913,7 @@ html *::-webkit-scrollbar-button {
   right: 0;
   bottom: 0;
   z-index: 4;
+  will-change: opacity;
 }
 #menu-item-overlay #menu-item-details-container {
   width: 50vw;
@@ -1380,6 +1381,7 @@ html *::-webkit-scrollbar-button {
   background: rgb(42.5, 42.5, 42.5);
   border-radius: 1em;
   gap: 2vh;
+  z-index: 5;
 }
 #signon-content #extra-info-container p {
   text-align: center;
@@ -1635,6 +1637,7 @@ html *::-webkit-scrollbar-button {
   right: 0;
   bottom: 0;
   z-index: 4;
+  will-change: opacity;
 }
 #menu-item-overlay #menu-item-details-container {
   width: 50vw;

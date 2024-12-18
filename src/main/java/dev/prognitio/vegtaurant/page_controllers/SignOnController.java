@@ -9,6 +9,8 @@ import dev.prognitio.vegtaurant.data_storage.AuthTokensRepository;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -48,7 +50,7 @@ public class SignOnController {
 
 
     @PostMapping("/signon")
-    public String accountSignOn(Model model, @RequestBody String data, HttpServletResponse response, HttpServletRequest request) throws TimeLimitExceededException {
+    public ResponseEntity<String> accountSignOn(Model model, @RequestBody String data, HttpServletResponse response, HttpServletRequest request) throws TimeLimitExceededException {
         System.out.println("SIGNONPOST");
         System.out.println(data);
 
@@ -63,7 +65,7 @@ public class SignOnController {
             System.out.println(shouldSave);
             if (!shouldSave) {
                 //authenticate sign on.
-                account = Account.authenticate(accountRepository, node.get("email").asText(), node.get("password").asText());
+                account = Account.authenticate(accountRepository, node.get("email").asText(), node.get("name").asText(), node.get("password").asText());
             } else {
                 account = new Account();
                 account.setEmail(node.get("email").asText());
@@ -81,10 +83,11 @@ public class SignOnController {
                 account.setSecurityCode(node.get("cardsecuritycode").asText());
                 account.setCardUserName(node.get("cardusername").asText());
                 account.setImageUrl("/images/default-avatar-icon.jpg");
+                System.out.println("1");
             }
         } catch (Exception e) {
             System.out.println(e);
-            return "redirect:/error";
+            return new ResponseEntity<>("auth_failure", HttpStatus.OK);
         }
 
         if (shouldSave) {
@@ -116,7 +119,7 @@ public class SignOnController {
         response.addCookie(cookie);
 
         model.addAttribute("account", account);
-        return "account";
+        return new ResponseEntity<>("authenticated", HttpStatus.OK);
     }
 
 

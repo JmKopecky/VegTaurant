@@ -25,10 +25,14 @@ function onSelectLocationType(target) {
         //show address enter
         document.getElementById("enter-address").style.display = "flex";
         document.getElementById("select-address-from-list").style.display = "none";
+        gsap.set(document.getElementById("enter-address"), {opacity: 0});
+        gsap.to(document.getElementById("enter-address"), {opacity: 1,duration: 0.5, ease: "power1.inout"});
     } else {
         //show list of locations
         document.getElementById("enter-address").style.display = "none";
         document.getElementById("select-address-from-list").style.display = "flex";
+        gsap.set(document.getElementById("select-address-from-list"), {opacity: 0});
+        gsap.to(document.getElementById("select-address-from-list"), {opacity: 1,duration: 0.5, ease: "power1.inout"});
     }
 }
 
@@ -83,27 +87,34 @@ function submitLocation() {
 
 
 function initBillingInfo() {
-    document.getElementById("location-container").style.display = "none";
-    document.getElementById("billing-info-container").style.display = "flex";
+    gsap.to(document.getElementById("location-container"), {opacity: 0,ease:"power1.inout",duration:0.5});
+    setTimeout(() => {
+        document.getElementById("location-container").style.display = "none";
+        document.getElementById("billing-info-container").style.display = "flex";
 
-    if (account !== "noaccount") {
-        document.getElementById("billing-name-input").value = account["cardUserName"];
-        document.getElementById("billing-address-input").value = account["address"];
-        document.getElementById("billing-city-input").value = account["city"];
-        document.getElementById("billing-state-input").value = account["state"];
-        document.getElementById("billing-country-input").value = account["country"];
-        document.getElementById("billing-zip-input").value = account["zip"];
-        document.getElementById("billing-phone-input").value = account["phone"];
-        document.getElementById("billing-cardnum-input").value = account["cardNumber"];
-        document.getElementById("billing-expdate-input").value = account["expirationDate"];
-        document.getElementById("billing-seccode-input").value = account["securityCode"];
-    }
+        if (account !== "noaccount") {
+            document.getElementById("billing-name-input").value = account["cardUserName"];
+            document.getElementById("billing-address-input").value = account["address"];
+            document.getElementById("billing-city-input").value = account["city"];
+            document.getElementById("billing-state-input").value = account["state"];
+            document.getElementById("billing-country-input").value = account["country"];
+            document.getElementById("billing-zip-input").value = account["zip"];
+            document.getElementById("billing-phone-input").value = account["phone"];
+            document.getElementById("billing-cardnum-input").value = account["cardNumber"];
+            document.getElementById("billing-expdate-input").value = account["expirationDate"];
+            document.getElementById("billing-seccode-input").value = account["securityCode"];
+        }
+
+        gsap.set(document.getElementById("order-billing-header"), {opacity: 0,y: window.innerHeight / 5});
+        gsap.to(document.getElementById("order-billing-header"), {opacity: 1, y:0,duration:0.5,ease:"power1.inout",delay:0.25});
+        gsap.set(document.getElementsByClassName("billing-data"), {opacity:0,y:window.innerHeight/5});
+        gsap.to(document.getElementsByClassName("billing-data"), {opacity:1,y:0,duration:0.5,ease:"power1.inout",delay:0.5,stagger:0.1});
+
+    }, 500);
 }
 
 
 function finalizeOrder() {
-    document.getElementById("billing-info-container").style.display = "none";
-    document.getElementById("finalize-order-container").style.display = "flex";
     let estimatedTime = Math.trunc(Math.random() * 10 + 5);
     document.getElementById("time-completion-estimate").textContent = estimatedTime + " Minutes";
     if (account !== "noaccount") {
@@ -113,6 +124,26 @@ function finalizeOrder() {
             body: estimatedTime + "_" + cart,
         })
     }
+
+    gsap.to(document.getElementById("billing-info-container"), {opacity: 0,ease:"power1.inout",duration:0.5});
+    setTimeout(() => {
+        document.getElementById("billing-info-container").style.display = "none";
+        document.getElementById("finalize-order-container").style.display = "flex";
+
+        gsap.set(document.getElementById("order-final-header-1"), {opacity: 0,y: window.innerHeight / 5});
+        gsap.to(document.getElementById("order-final-header-1"), {opacity: 1, y:0,duration:0.5,ease:"power1.inout",delay:0.25});
+        gsap.set(document.getElementById("order-final-header-2"), {opacity: 0,y: window.innerHeight / 5});
+        gsap.to(document.getElementById("order-final-header-2"), {opacity: 1, y:0,duration:0.5,ease:"power1.inout",delay:0.5});
+        gsap.set(document.getElementById("order-final-time"), {opacity: 0,y: window.innerHeight / 5});
+        gsap.to(document.getElementById("order-final-time"), {opacity: 1, y:0,duration:0.5,ease:"power1.inout",delay:0.75});
+        gsap.set(document.getElementById("general-rating-panel"), {opacity: 0,y: window.innerHeight / 5});
+        gsap.to(document.getElementById("general-rating-panel"), {opacity: 1, y:0,duration:0.5,ease:"power1.inout",delay:1});
+        gsap.set(document.getElementsByClassName("order-review-tile"), {opacity:0,y:window.innerHeight/5});
+        gsap.to(document.getElementsByClassName("order-review-tile"), {opacity:1,y:0,duration:0.5,ease:"power1.inout",delay:1.25,stagger:0.1});
+    }, 500);
+
+
+
 }
 
 

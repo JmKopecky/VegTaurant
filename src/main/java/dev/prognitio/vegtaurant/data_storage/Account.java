@@ -28,12 +28,12 @@ public class Account {
     private String cardUserName; //feature safe storage
 
 
-    public static Account authenticate(AccountRepository repository, String email, String password) throws Exception {
+    public static Account authenticate(AccountRepository repository, String email, String username, String password) throws Exception {
         Account output = null;
 
         for (Account acc : repository.findAll()) {
             try {
-                if (acc.getEmail().equals(email)) {
+                if (acc.getEmail().equals(email) && acc.getName().equals(username)) {
                     if (acc.getPassword().equals(password)) { //feature safe storage
                         output = acc;
                         break;
@@ -46,7 +46,7 @@ public class Account {
         }
 
         if (output == null) {
-            throw new Exception("invalid_email");
+            throw new Exception("invalid_unrecognized");
         }
 
         return output;
