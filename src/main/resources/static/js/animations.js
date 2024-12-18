@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     barba.init({
         preventRunning: true,
+        cacheIgnore: ['/account/', '/signon/'],
+        prefetchIgnore: ["/signon/", '/account/'],
         transitions: [{
             name: 'page-transition',
             leave: (data) => {

@@ -32,10 +32,10 @@ public class AccountController {
     public String auth(Model model, HttpServletRequest request, @CookieValue(value = "sessiontoken", defaultValue = "null") String sessionToken) {
         Account acc;
 
+
         try {
             acc = retrieveAccountFromToken(sessionToken, request.getRemoteAddr(), authTokensRepository);
         } catch (AuthenticationException e) {
-            System.out.println("redirect Get");
             return "redirect:/signon";
         }
         model.addAttribute("headerpicturelink", acc.getImageUrl());
@@ -51,8 +51,6 @@ public class AccountController {
             }
         }
         model.addAttribute("ratings", ratings);
-
-        System.out.println(acc);
 
         return "account";
     }
@@ -164,13 +162,13 @@ public class AccountController {
             if (ipAddress.equals(token.getIpAddress())) {
                 acc = AuthTokens.retrieveWithSessionToken(authTokensRepository, sessionToken);
             } else { //connected with different ip address, force to sign in again
-                System.out.println(ipAddress + " " + token.getIpAddress());
                 AuthTokens.deleteSessionToken(authTokensRepository, token.getToken()); //remove token
                 throw new AuthenticationException("Session token invalid");
             }
 
         } catch (Exception e) {
             System.out.println(sessionToken);
+            System.out.println(e);
             throw new AuthenticationException("Error retrieving account from token");
         }
 

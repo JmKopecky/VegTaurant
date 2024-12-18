@@ -52,10 +52,33 @@ function initSignon() {
                                     break;
                                 }
                             }
-                            barba.go(window.location.origin + "/account");
+                            //barba.go(window.location.origin + "/account");
+                            window.location.href = window.location.origin + "/account";
                         } else {
-                            console.log("incorrect credentials");
+                            console.log("incorrect credentials"); //todo add visual feedback for login failed.
                             document.cookie = "";
+
+                            gsap.set(document.getElementById("signon-feedback"), {
+                                visibility: "visible",
+                                opacity: 0
+                            });
+                            gsap.to(document.getElementById("signon-feedback"), {
+                                opacity: 1,
+                                duration: 0.5,
+                                ease: "power1.inout",
+                                onComplete() {
+                                    setTimeout(() => {
+                                        gsap.to(document.getElementById("signon-feedback"), {
+                                            opacity: 0,
+                                            duration: 0.5,
+                                            ease: "power1.inout",
+                                            onComplete() {
+                                                document.getElementById("signon-feedback").style.visibility = "hidden";
+                                            }
+                                        })
+                                    }, 5000);
+                                }
+                            })
                         }
                     });
                 });
@@ -207,13 +230,16 @@ function initSignon() {
             }).then(r => {
                 //store cookie from response
                 r.text().then((data) => {
+                    console.log("signupreceived");
+                    console.log(data);
                     for (const val of document.cookie.split(";")) {
                         if (val.includes("sessiontoken")) {
                             sessionStorage.setItem("sessiontoken", val.split("=")[1]);
                             break;
                         }
                     }
-                    barba.go(window.location.origin + "/account");
+                    //barba.go(window.location.origin + "/account");
+                    window.location.href = window.location.origin + "/account";
                 });
             });
         }

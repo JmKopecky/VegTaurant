@@ -46,30 +46,34 @@ function showTitle(thenEnd) {
     document.getElementById("page-transition-title").classList.add("preloader");
     let titleTime = 1;
     document.getElementById("page-transition-title").style.visibility = "visible";
+
     gsap.from(document.getElementById("page-transition-title"), {
         y: -1 * document.getElementById("page-transition-title").getBoundingClientRect().top,
         ease: "power1.out",
-        duration: titleTime
-    });
-    let timeline = gsap.timeline();
-    timeline.to(document.getElementById("page-transition-title"), {
-        scale: 1.15,
-        duration: titleTime/2.0,
-        ease: "power1.inout"
-    });
-    timeline.to(document.getElementById("page-transition-title"), {
-        scale: 1,
-        duration: titleTime/2.0,
-        ease: "power1.inout",
+        duration: titleTime,
         onComplete() {
-            if (!animationblocking && (thenEnd || pendingTitle)) {
-                //timeline.kill();
-                //killTweensOf(document.getElementById("page-transition-title"));
-                endPreloader();
-            }
+            let timeline = gsap.timeline();
+            timeline.to(document.getElementById("page-transition-title"), {
+                scale: 1.15,
+                duration: titleTime/2.0,
+                ease: "power1.inout"
+            });
+            timeline.to(document.getElementById("page-transition-title"), {
+                scale: 1,
+                duration: titleTime/2.0,
+                ease: "power1.inout",
+                onComplete() {
+                    if (!animationblocking && (thenEnd || pendingTitle)) {
+                        //timeline.kill();
+                        //killTweensOf(document.getElementById("page-transition-title"));
+                        endPreloader();
+                    }
+                }
+            });
+
+            timeline.repeat(preloaderTime / titleTime);
         }
     });
-    timeline.repeat(preloaderTime / titleTime);
 
     setTimeout(() => {
         animationblocking = false;

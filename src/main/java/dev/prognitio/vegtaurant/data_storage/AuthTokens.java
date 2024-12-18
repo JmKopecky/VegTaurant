@@ -35,14 +35,12 @@ public class AuthTokens {
 
             boolean duplicate = false;
             for (AuthTokens pToken : repository.findAll()) {
-                System.out.println(pToken.getToken() + " " + token);
                 if (pToken.getToken().equals(token)) {
                     duplicate = true;
                     break;
                 }
             }
             if (!duplicate) {
-                System.out.println(token);
                 return token;
             }
             runs++;

@@ -52,8 +52,6 @@ public class PlaceOrderController {
     @PostMapping("/order")
     public ResponseEntity<String> placeOrderToAccount(Model model, @RequestBody String data, HttpServletRequest request, @CookieValue(value = "sessiontoken", defaultValue = "null") String sessionToken) {
 
-        //todo fix this so that orders and ratings are added to an account;
-
         Account acc;
 
         try {
