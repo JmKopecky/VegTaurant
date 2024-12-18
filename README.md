@@ -51,3 +51,4 @@ Broad Technical Ideas:
 * Joseph Kopecky - 12/13/24: 4 hrs (header animations)
 * Joseph Kopecky - 12/14/24: 4 hrs (header anims and preloader)
 * Joseph Kopecky - 12/15/24: 5 hrs (home and menu animations, integrate some new menu items)
+* Joseph Kopecky = 12/18/24: 7:20 am to 9:09 and 11:10 to 12:50 (order and signon animations, bug fixes)

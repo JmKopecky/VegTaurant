@@ -52,7 +52,8 @@ function initSignon() {
                                     break;
                                 }
                             }
-                            barba.go(window.location.origin + "/account");
+                            //barba.go(window.location.origin + "/account");
+                            window.location.href = window.location.origin + "/account";
                         } else {
                             console.log("incorrect credentials");
                             document.cookie = "";
@@ -207,13 +208,16 @@ function initSignon() {
             }).then(r => {
                 //store cookie from response
                 r.text().then((data) => {
+                    console.log("signupreceived");
+                    console.log(data);
                     for (const val of document.cookie.split(";")) {
                         if (val.includes("sessiontoken")) {
                             sessionStorage.setItem("sessiontoken", val.split("=")[1]);
                             break;
                         }
                     }
-                    barba.go(window.location.origin + "/account");
+                    //barba.go(window.location.origin + "/account");
+                    window.location.href = window.location.origin + "/account";
                 });
             });
         }

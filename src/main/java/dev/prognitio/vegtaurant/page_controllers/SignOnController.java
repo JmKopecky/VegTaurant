@@ -9,6 +9,7 @@ import dev.prognitio.vegtaurant.data_storage.AuthTokensRepository;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -35,7 +36,7 @@ public class SignOnController {
     @GetMapping("/signon")
     public String signOn(Model model, HttpServletRequest request, @CookieValue(value = "sessiontoken", defaultValue = "null") String sessionToken) {
 
-        Account acc;
+        Account acc = null;
 
         try {
             acc = AccountController.retrieveAccountFromToken(sessionToken, request.getRemoteAddr(), authTokensRepository);
@@ -44,16 +45,12 @@ public class SignOnController {
             model.addAttribute("headerpicturelink", "/images/default-avatar-icon.jpg");
         }
 
-        System.out.println("returning signon");
         return "signon";
     }
 
 
     @PostMapping("/signon")
     public ResponseEntity<String> accountSignOn(Model model, @RequestBody String data, HttpServletResponse response, HttpServletRequest request) throws TimeLimitExceededException {
-        System.out.println("SIGNONPOST");
-        System.out.println(data);
-
         Account account;
         boolean shouldSave;
         String ipAddress = request.getRemoteAddr();
@@ -62,7 +59,6 @@ public class SignOnController {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode node = mapper.readTree(data);
             shouldSave = node.get("newaccount").asBoolean();
-            System.out.println(shouldSave);
             if (!shouldSave) {
                 //authenticate sign on.
                 account = Account.authenticate(accountRepository, node.get("email").asText(), node.get("name").asText(), node.get("password").asText());
@@ -83,7 +79,6 @@ public class SignOnController {
                 account.setSecurityCode(node.get("cardsecuritycode").asText());
                 account.setCardUserName(node.get("cardusername").asText());
                 account.setImageUrl("/images/default-avatar-icon.jpg");
-                System.out.println("1");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -110,7 +105,6 @@ public class SignOnController {
         sessionToken.setIpAddress(ipAddress);
         authTokensRepository.save(sessionToken);
 
-
         Timer timer = new Timer();
         timer.schedule(new ScheduleAuthTokenRemoval(sessionToken.getToken(), authTokensRepository), 60 * 60 * 1000);
 
@@ -118,8 +112,12 @@ public class SignOnController {
         cookie.setMaxAge(60*60);
         response.addCookie(cookie);
 
+        String toAdd = "sessiontoken=" + sessionToken.getToken() + "; Max-Age=3600;";
+
         model.addAttribute("account", account);
-        return new ResponseEntity<>("authenticated", HttpStatus.OK);
+        HttpHeaders cookieHeaders = new HttpHeaders();
+        cookieHeaders.add("Set-Cookie", toAdd);
+        return new ResponseEntity<>("authenticated", cookieHeaders, HttpStatus.OK);
     }
 
 
