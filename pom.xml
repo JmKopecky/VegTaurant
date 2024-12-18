@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>dev.prognitio</groupId>
 	<artifactId>vegtaurant</artifactId>
-	<version>1.3.0-beta</version>
+	<version>1.4.0-beta</version>
 	<name>vegtaurant</name>
 	<description>Vegetarian resturaunt site.</description>
 	<url/>
