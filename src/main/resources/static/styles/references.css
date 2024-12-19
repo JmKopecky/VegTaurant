@@ -1,0 +1,9 @@
+#site-content-references {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5vh;
+}
+
+/*# sourceMappingURL=references.css.map */

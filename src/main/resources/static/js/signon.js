@@ -24,69 +24,7 @@ function initSignon() {
         }
     });
     document.getElementById("signon-button").addEventListener("click", () => {
-        let namePresent = document.getElementById("signon-name-input").value !== "";
-        let emailPresent = document.getElementById("signon-email-input").value !== "";
-        let pwPresent = document.getElementById("signon-password-input").value !== "";
-
-        if (namePresent && emailPresent && pwPresent) {
-            if (!document.getElementById("signon-switch-label").children[0].checked) { //sign in
-                fetch("/signon", {
-                    method: "POST",
-                    body: JSON.stringify({
-                        "newaccount": false,
-                        "email": document.getElementById("signon-email-input").value,
-                        "password": document.getElementById("signon-password-input").value,
-                        "name": document.getElementById("signon-name-input").value
-                    }),
-                    headers: {
-                        "Content-type": "application/json; charset=UTF-8"
-                    }
-                }).then(r => {
-                    //store cookie from response
-                    r.text().then((data) => {
-                        if (data === "authenticated") {
-                            console.log("success");
-                            for (const val of document.cookie.split(";")) {
-                                if (val.includes("sessiontoken")) {
-                                    sessionStorage.setItem("sessiontoken", val.split("=")[1]);
-                                    break;
-                                }
-                            }
-                            //barba.go(window.location.origin + "/account");
-                            window.location.href = window.location.origin + "/account";
-                        } else {
-                            console.log("incorrect credentials"); //todo add visual feedback for login failed.
-                            document.cookie = "";
-
-                            gsap.set(document.getElementById("signon-feedback"), {
-                                visibility: "visible",
-                                opacity: 0
-                            });
-                            gsap.to(document.getElementById("signon-feedback"), {
-                                opacity: 1,
-                                duration: 0.5,
-                                ease: "power1.inout",
-                                onComplete() {
-                                    setTimeout(() => {
-                                        gsap.to(document.getElementById("signon-feedback"), {
-                                            opacity: 0,
-                                            duration: 0.5,
-                                            ease: "power1.inout",
-                                            onComplete() {
-                                                document.getElementById("signon-feedback").style.visibility = "hidden";
-                                            }
-                                        })
-                                    }, 5000);
-                                }
-                            })
-                        }
-                    });
-                });
-            } else { //sign up, show extra info area.
-                document.getElementById("signon-container").style.display = "none";
-                document.getElementById("extra-info-container").style.display = "flex";
-            }
-        }
+        signIn();
     });
 
     document.getElementById("signup-button").addEventListener("keypress", function(event) {
@@ -96,133 +34,25 @@ function initSignon() {
         }
     });
     document.getElementById("signup-button").addEventListener("click", () => {
-        let name = document.getElementById("signon-name-input");
-        let email = document.getElementById("signon-email-input");
-        let password = document.getElementById("signon-password-input");
+        signUp();
+    });
+}
 
-        let address = document.getElementById("signon-address-input");
-        let city = document.getElementById("signon-city-input");
-        let zip = document.getElementById("signon-zip-input");
-        let state = document.getElementById("signon-state-input");
-        let country = document.getElementById("signon-country-input");
-        let phone = document.getElementById("signon-phone-input");
 
-        let cardnum = document.getElementById("signon-cardnum-input");
-        let cardusername = document.getElementById("signon-cardusername-input");
-        let cardexpdate = document.getElementById("signon-cardexpdate-input");
-        let cardsecuritycode = document.getElementById("signon-cardsecuritycode-input");
+function signIn() {
+    let namePresent = document.getElementById("signon-name-input").value !== "";
+    let emailPresent = document.getElementById("signon-email-input").value !== "";
+    let pwPresent = document.getElementById("signon-password-input").value !== "";
 
-        let shouldSignUp = true;
-
-        if (name.value === "") {
-            shouldSignUp = false;
-            name.style.color = "#ff0000";
-        } else {
-            name.style.color = "#EEEEEE";
-        }
-
-        if (email.value === "") {
-            shouldSignUp = false;
-            email.style.color = "#ff0000";
-        } else {
-            email.style.color = "#EEEEEE";
-        }
-
-        if (password.value === "") {
-            shouldSignUp = false;
-            password.style.color = "#ff0000";
-        } else {
-            password.style.color = "#EEEEEE";
-        }
-
-        if (address.value === "") {
-            shouldSignUp = false;
-            address.style.color = "#ff0000";
-        } else {
-            address.style.color = "#EEEEEE";
-        }
-
-        if (city.value === "") {
-            shouldSignUp = false;
-            city.style.color = "#ff0000";
-        } else {
-            city.style.color = "#EEEEEE";
-        }
-
-        if (zip.value === "") {
-            shouldSignUp = false;
-            zip.style.color = "#ff0000";
-        } else {
-            zip.style.color = "#EEEEEE";
-        }
-
-        if (state.value === "") {
-            shouldSignUp = false;
-            state.style.color = "#ff0000";
-        } else {
-            state.style.color = "#EEEEEE";
-        }
-
-        if (country.value === "") {
-            shouldSignUp = false;
-            country.style.color = "#ff0000";
-        } else {
-            country.style.color = "#EEEEEE";
-        }
-
-        if (phone.value === "") {
-            shouldSignUp = false;
-            phone.style.color = "#ff0000";
-        } else {
-            phone.style.color = "#EEEEEE";
-        }
-
-        if (cardnum.value === "") {
-            shouldSignUp = false;
-            cardnum.style.color = "#ff0000";
-        } else {
-            cardnum.style.color = "#EEEEEE";
-        }
-
-        if (cardusername.value === "") {
-            shouldSignUp = false;
-            cardusername.style.color = "#ff0000";
-        } else {
-            cardusername.style.color = "#EEEEEE";
-        }
-
-        if (cardexpdate.value === "") {
-            shouldSignUp = false;
-            cardexpdate.style.color = "#ff0000";
-        } else {
-            cardexpdate.style.color = "#EEEEEE";
-        }
-
-        if (cardsecuritycode.value === "") {
-            shouldSignUp = false;
-            cardsecuritycode.style.color = "#ff0000";
-        } else {
-            cardsecuritycode.style.color = "#EEEEEE";
-        }
-
-        if (shouldSignUp) {
+    if (namePresent && emailPresent && pwPresent) {
+        if (!document.getElementById("signon-switch-label").children[0].checked) { //sign in
             fetch("/signon", {
                 method: "POST",
                 body: JSON.stringify({
-                    "newaccount": true,
-                    "email": email.value,
-                    "password": password.value,
-                    "name": name.value,
-                    "phone": phone.value,
-                    "address": address.value,
-                    "city": city.value,
-                    "state": state.value,
-                    "zip": zip.value,
-                    "country": country.value,
-                    "cardnumber": cardnum.value,
-                    "cardexpirationdate": cardexpdate.value,
-                    "cardsecuritycode": cardsecuritycode.value,
-                    "cardusername": cardusername.value
+                    "newaccount": false,
+                    "email": document.getElementById("signon-email-input").value,
+                    "password": document.getElementById("signon-password-input").value,
+                    "name": document.getElementById("signon-name-input").value
                 }),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
@@ -230,18 +60,177 @@ function initSignon() {
             }).then(r => {
                 //store cookie from response
                 r.text().then((data) => {
-                    console.log("signupreceived");
-                    console.log(data);
-                    for (const val of document.cookie.split(";")) {
-                        if (val.includes("sessiontoken")) {
-                            sessionStorage.setItem("sessiontoken", val.split("=")[1]);
-                            break;
+                    if (data === "authenticated") {
+                        console.log("success");
+                        for (const val of document.cookie.split(";")) {
+                            if (val.includes("sessiontoken")) {
+                                sessionStorage.setItem("sessiontoken", val.split("=")[1]);
+                                break;
+                            }
                         }
+                        //barba.go(window.location.origin + "/account");
+                        window.location.href = window.location.origin + "/account";
+                    } else {
+                        console.log("incorrect credentials");
+                        document.cookie = "";
+
+                        gsap.set(document.getElementById("signon-feedback"), {
+                            visibility: "visible",
+                            opacity: 0
+                        });
+                        gsap.to(document.getElementById("signon-feedback"), {
+                            opacity: 1,
+                            duration: 0.5,
+                            ease: "power1.inout",
+                            onComplete() {
+                                setTimeout(() => {
+                                    gsap.to(document.getElementById("signon-feedback"), {
+                                        opacity: 0,
+                                        duration: 0.5,
+                                        ease: "power1.inout",
+                                        onComplete() {
+                                            document.getElementById("signon-feedback").style.visibility = "hidden";
+                                        }
+                                    })
+                                }, 5000);
+                            }
+                        })
                     }
-                    //barba.go(window.location.origin + "/account");
-                    window.location.href = window.location.origin + "/account";
                 });
             });
+        } else { //sign up, show extra info area.
+            document.getElementById("signon-container").style.display = "none";
+            document.getElementById("extra-info-container").style.display = "flex";
+            document.getElementById("signon-address-input").focus();
         }
+    } else {
+        if (!namePresent) {
+            document.getElementById("signon-name-input").focus();
+        } else if (!emailPresent) {
+            document.getElementById("signon-email-input").focus();
+        } else if (!pwPresent) {
+            document.getElementById("signon-password-input").focus();
+        }
+    }
+}
+
+
+function signUp() {
+    let name = document.getElementById("signon-name-input");
+    let email = document.getElementById("signon-email-input");
+    let password = document.getElementById("signon-password-input");
+
+    let address = document.getElementById("signon-address-input");
+    let city = document.getElementById("signon-city-input");
+    let zip = document.getElementById("signon-zip-input");
+    let state = document.getElementById("signon-state-input");
+    let country = document.getElementById("signon-country-input");
+    let phone = document.getElementById("signon-phone-input");
+
+    let cardnum = document.getElementById("signon-cardnum-input");
+    let cardusername = document.getElementById("signon-cardusername-input");
+    let cardexpdate = document.getElementById("signon-cardexpdate-input");
+    let cardsecuritycode = document.getElementById("signon-cardsecuritycode-input");
+
+    if (name.value === "") {
+        name.focus();
+        return;
+    }
+
+    if (email.value === "") {
+        email.focus();
+        return;
+    }
+
+    if (password.value === "") {
+        password.focus();
+        return;
+    }
+
+    if (address.value === "") {
+        address.focus();
+        return;
+    }
+
+    if (city.value === "") {
+        city.focus();
+        return;
+    }
+
+    if (zip.value === "") {
+        zip.focus();
+        return;
+    }
+
+    if (state.value === "") {
+        state.focus();
+        return;
+    }
+
+    if (country.value === "") {
+        country.focus();
+        return;
+    }
+
+    if (phone.value === "") {
+        phone.focus();
+        return;
+    }
+
+    if (cardnum.value === "") {
+        cardnum.focus();
+        return;
+    }
+
+    if (cardusername.value === "") {
+        cardusername.focus();
+        return;
+    }
+
+    if (cardexpdate.value === "") {
+        cardexpdate.focus();
+        return;
+    }
+
+    if (cardsecuritycode.value === "") {
+        cardsecuritycode.focus();
+        return;
+    }
+
+    fetch("/signon", {
+        method: "POST",
+        body: JSON.stringify({
+            "newaccount": true,
+            "email": email.value,
+            "password": password.value,
+            "name": name.value,
+            "phone": phone.value,
+            "address": address.value,
+            "city": city.value,
+            "state": state.value,
+            "zip": zip.value,
+            "country": country.value,
+            "cardnumber": cardnum.value,
+            "cardexpirationdate": cardexpdate.value,
+            "cardsecuritycode": cardsecuritycode.value,
+            "cardusername": cardusername.value
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then(r => {
+        //store cookie from response
+        r.text().then((data) => {
+            console.log("signupreceived");
+            console.log(data);
+            for (const val of document.cookie.split(";")) {
+                if (val.includes("sessiontoken")) {
+                    sessionStorage.setItem("sessiontoken", val.split("=")[1]);
+                    break;
+                }
+            }
+            //barba.go(window.location.origin + "/account");
+            window.location.href = window.location.origin + "/account";
+        });
     });
 }

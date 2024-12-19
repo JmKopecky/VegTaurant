@@ -4,7 +4,7 @@ function initAccount() {
 }
 
 
-function mobileNavAccordionClick(mode) {
+function mobileNavAccordionAccount(mode) {
     if (mode === 'show') {
         document.getElementById("nav-accordion-panel").style.display = "flex";
         document.getElementById("show-accordion-panel").style.display = "none";
@@ -25,6 +25,9 @@ function setAccountPage(target) {
         let type = elem.getElementsByTagName("p")[0].textContent;
         if (type === target) {
             elem.classList.add("selected");
+            if (elem.getElementsByClassName("first-input").length !== 0) {
+                elem.getElementsByClassName("first-input")[0].focus();
+            }
         } else {
             elem.classList.remove("selected");
         }
@@ -60,43 +63,35 @@ function updateAccountSettings() {
     let email = document.getElementById("setting-email-input");
     let imageurl = document.getElementById("setting-picture-input");
 
-    let shouldSignUp = true;
 
     if (name.value === "") {
-        shouldSignUp = false;
-        name.style.color = "#ff0000";
-    } else {
-        name.style.color = "#EEEEEE";
+        name.focus();
+        return;
     }
+
     if (email.value === "") {
-        shouldSignUp = false;
-        email.style.color = "#ff0000";
-    } else {
-        email.style.color = "#EEEEEE";
+        email.focus();
+        return;
     }
     if (imageurl.value === "") {
-        shouldSignUp = false;
-        imageurl.style.color = "#ff0000";
-    } else {
-        imageurl.style.color = "#EEEEEE";
+        imageurl.focus();
+        return;
     }
 
 
-    if (shouldSignUp) {
-        fetch("/account", {
-            method: "POST",
-            body: JSON.stringify({
-                "email": email.value,
-                "name": name.value,
-                "imageurl": imageurl.value
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        }).then(() => {
-            showMessage('Success!');
-        });
-    }
+    fetch("/account", {
+        method: "POST",
+        body: JSON.stringify({
+            "email": email.value,
+            "name": name.value,
+            "imageurl": imageurl.value
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then(() => {
+        showMessage('Success!');
+    });
 }
 
 
@@ -113,132 +108,111 @@ function updateBillingSettings() {
     let cardexpdate = document.getElementById("setting-cardexpdate-input");
     let cardsecuritycode = document.getElementById("setting-cardsecuritycode-input");
 
-    let shouldModify = true;
-
     if (address.value === "") {
-        shouldModify = false;
-        address.style.color = "#ff0000";
-    } else {
-        address.style.color = "#EEEEEE";
+        address.focus();
+        return;
     }
     if (city.value === "") {
-        shouldModify = false;
-        city.style.color = "#ff0000";
-    } else {
-        city.style.color = "#EEEEEE";
+        city.focus();
+        return;
     }
     if (zip.value === "") {
-        shouldModify = false;
-        zip.style.color = "#ff0000";
-    } else {
-        zip.style.color = "#EEEEEE";
+        zip.focus();
+        return;
     }
     if (state.value === "") {
-        shouldModify = false;
-        state.style.color = "#ff0000";
-    } else {
-        state.style.color = "#EEEEEE";
+        state.focus();
+        return;
     }
     if (country.value === "") {
-        shouldModify = false;
-        country.style.color = "#ff0000";
-    } else {
-        country.style.color = "#EEEEEE";
+        country.focus();
+        return;
     }
     if (phone.value === "") {
-        shouldModify = false;
-        phone.style.color = "#ff0000";
-    } else {
-        phone.style.color = "#EEEEEE";
+        phone.focus();
+        return;
     }
     if (cardnum.value === "") {
-        shouldModify = false;
-        cardnum.style.color = "#ff0000";
-    } else {
-        cardnum.style.color = "#EEEEEE";
+        cardnum.focus();
+        return;
     }
     if (cardusername.value === "") {
-        shouldModify = false;
-        cardusername.style.color = "#ff0000";
-    } else {
-        cardusername.style.color = "#EEEEEE";
+        cardusername.focus();
+        return;
     }
     if (cardexpdate.value === "") {
-        shouldModify = false;
-        cardexpdate.style.color = "#ff0000";
-    } else {
-        cardexpdate.style.color = "#EEEEEE";
+        cardexpdate.focus();
+        return;
     }
     if (cardsecuritycode.value === "") {
-        shouldModify = false;
-        cardsecuritycode.style.color = "#ff0000";
-    } else {
-        cardsecuritycode.style.color = "#EEEEEE";
+        cardsecuritycode.focus();
+        return;
     }
 
-
-    if (shouldModify) {
-        fetch("/account", {
-            method: "POST",
-            body: JSON.stringify({
-                "phone": phone.value,
-                "address": address.value,
-                "city": city.value,
-                "state": state.value,
-                "zip": zip.value,
-                "country": country.value,
-                "cardnumber": cardnum.value,
-                "cardexpirationdate": cardexpdate.value,
-                "cardsecuritycode": cardsecuritycode.value,
-                "cardusername": cardusername.value
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        }).then(() => {
-            showMessage("Success!");
-        });
-    }
+    fetch("/account", {
+        method: "POST",
+        body: JSON.stringify({
+            "phone": phone.value,
+            "address": address.value,
+            "city": city.value,
+            "state": state.value,
+            "zip": zip.value,
+            "country": country.value,
+            "cardnumber": cardnum.value,
+            "cardexpirationdate": cardexpdate.value,
+            "cardsecuritycode": cardsecuritycode.value,
+            "cardusername": cardusername.value
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then(() => {
+        showMessage("Success!");
+    });
 }
 
 
 function deleteAccount() {
     let password = document.getElementById("setting-password-delete-input");
 
-    let shouldSignUp = true;
     if (password.value === "") {
-        shouldSignUp = false;
-        password.style.color = "#ff0000";
-    } else {
-        password.style.color = "#EEEEEE";
+        password.focus();
+        return;
     }
 
-    if (shouldSignUp) {
-        fetch("/account", {
-            method: "POST",
-            body: JSON.stringify({
-                "delete": true,
-                "password": password.value
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
+    fetch("/account", {
+        method: "POST",
+        body: JSON.stringify({
+            "delete": true,
+            "password": password.value
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then((r) => {
+        r.text().then(data => {
+            if (data === "password") {
+                document.getElementById("setting-password-delete-input").value = "Incorrect Password";
+            } else if (data.includes("redirect")) {
+                barba.go(window.location.origin + "/" + data.split("_")[1]);
             }
-        }).then((r) => {
-            r.text().then(data => {
-                if (data === "password") {
-                    document.getElementById("setting-password-delete-input").value = "Incorrect Password";
-                } else if (data.includes("redirect")) {
-                    barba.go(window.location.origin + "/" + data.split("_")[1]);
-                }
-            })
-        });
-    }
+        })
+    });
 }
 
 
 function newPassword() {
     let pw1 = document.getElementById("setting-password-new-input");
     let pw2 = document.getElementById("setting-password-confirm-input");
+
+    if (pw1.value === "") {
+        pw1.focus();
+        return;
+    }
+    if (pw2.value === "") {
+        pw2.focus();
+        return;
+    }
 
     if (pw1.value === pw2.value) {
         fetch("/account", {

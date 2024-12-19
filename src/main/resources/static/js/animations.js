@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 });
             },
             afterEnter: (data) => {
+
                 setTimeout(() => {
                     data.next.container.getElementsByClassName("site-content")[0].style.opacity = "1";
                     gsap.to(document.getElementById("page-transition-left"), {
@@ -89,6 +90,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                         runStartupAnims(document.getElementById("barba-container").getAttribute("data-page"));
                     }, 500);
                 }, 1000);
+
             }
         }]
     });
@@ -176,12 +178,10 @@ function prepareStartupAnims(page) {
         gsap.set(document.getElementsByClassName("menu-tag-name"), {
             opacity: 0,
             y:window.innerHeight / 10})
-        /*
+
         gsap.set(document.getElementsByClassName("menu-item"), {
             opacity: 0,
             y:window.innerHeight / 8})
-
-         */
     }
 
 
@@ -201,12 +201,15 @@ function prepareStartupAnims(page) {
 
 
     if (page === "account") {
+
         gsap.set(document.getElementById("account-menu-nav"), {
-            opacity: 0, x:
-                -1 * window.innerWidth / 5});
+            opacity: 0, y:
+                window.innerHeight / 5});
         gsap.set(document.getElementById("account-setting-panels"), {
-            opacity: 0, x:
-                window.innerWidth / 5});
+            opacity: 0, y:
+                window.innerHeight / 5});
+
+
     }
 
 
@@ -217,6 +220,19 @@ function prepareStartupAnims(page) {
             opacity: 0, y: window.innerHeight / 5});
         gsap.set(document.getElementsByClassName("loc-type-selectable"), {
             opacity: 0, y: window.innerHeight / 5});
+    }
+
+
+    if (page === "references") {
+        /*
+        let toAnim = [];
+        for (const elem of document.getElementsByClassName("reference-header")) {toAnim.push(elem)}
+
+        for (const target of toAnim) {
+            gsap.set(target, {opacity: 0, y: window.innerHeight / 5});
+        }
+         */
+
     }
 }
 
@@ -294,8 +310,9 @@ function runStartupAnims(page) {
 
 
     if (page === "account") {
-        gsap.to(document.getElementById("account-menu-nav"), {opacity: 1, x: 0, duration: 0.5, ease: "power1.in", delay: 0.75});
-        gsap.to(document.getElementById("account-setting-panels"), {opacity: 1, x: 0, duration: 0.5, ease: "power1.in", delay: 0.75});
+        gsap.to(document.getElementById("account-menu-nav"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 0.75});
+        gsap.to(document.getElementById("account-setting-panels"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 0.75});
+
     }
 
 
@@ -304,6 +321,20 @@ function runStartupAnims(page) {
         gsap.to(document.getElementById("location-address-selection"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 1.5});
         gsap.to(document.getElementsByClassName("loc-type-selectable"), {
             opacity: 1, y: 0, duration: 0.5, ease: "power1.inout", stagger: 0.1, delay: 1});
+    }
+
+
+    if (page === "references") {
+        /*
+        let toAnim = [];
+        for (const elem of document.getElementsByClassName("reference-header")) {toAnim.push(elem)}
+
+        let index = 0;
+        for (const target of toAnim) {
+            gsap.to(target, {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 0.75 + (index / 4.0)});
+            index++;
+        }
+         */
     }
 }
 

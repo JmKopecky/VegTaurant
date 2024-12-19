@@ -45,7 +45,7 @@
         <a href="/menu" style="display: none;" class="link-hover">Menu</a>
         <a href="/cart" style="display: none;" class="link-hover">Order</a>
         <a href="/account" style="display: none;" class="link-hover">Account</a>
-        <a href="/reference_page" style="display:none;" class="link-hover">Reference Page</a>
+        <a href="/references" style="display:none;" class="link-hover">Reference Page</a>
         <button id="header-show-button" data-headeropen="false" onclick="headerButtonClick()"><i class="fa-solid fa-bars"></i></button>
         <a id="header-cart-icon" class="header-no-remove" href="/cart" data-activetime="inactive" data-hover="false">
             <i class="fa-solid fa-cart-shopping"></i>
@@ -82,7 +82,7 @@
     <a href="/cart"><h1>Order</h1></a>
     <a href="/account"><h1>Account</h1></a>
     <a href="/#collaborate-container"><h1>Careers</h1></a>
-    <a href="/reference_page"><h1>Reference Page</h1></a>
+    <a href="/references"><h1>Reference Page</h1></a>
 </div>
 
 
@@ -137,8 +137,8 @@
             <div id="nav-accordion-header">
                 <h2 id="nav-accordion-header-label">Account</h2>
                 <div id="nav-accordion-icon">
-                    <i id="show-accordion-panel" class="fa-solid fa-plus" style="display:block" onclick="mobileNavAccordionClick('show');"></i>
-                    <i id="hide-accordion-panel" class="fa-solid fa-minus" style="display:none" onclick="mobileNavAccordionClick('hide');"></i>
+                    <i id="show-accordion-panel" class="fa-solid fa-plus" style="display:block" onclick="mobileNavAccordionAccount('show');"></i>
+                    <i id="hide-accordion-panel" class="fa-solid fa-minus" style="display:none" onclick="mobileNavAccordionAccount('hide');"></i>
                 </div>
             </div>
             <div id="nav-accordion-panel">
@@ -171,12 +171,12 @@
 
         <div id="account-setting-panels">
 
-            <div class="setting-panel" style="display: flex;" id="panel-account">
+            <form class="setting-panel" style="display: flex;" id="panel-account" onsubmit="return false;">
                 <div id="setting-name-container" class="setting-container">
                     <label id="setting-name-label" class="label-setting">
                         Full Name
                     </label>
-                    <input type="text" id="setting-name-input" autocomplete="name" th:value="${account.getName()}">
+                    <input class="first-input" type="text" id="setting-name-input" autocomplete="name" th:value="${account.getName()}">
                 </div>
                 <div id="setting-email-container" class="setting-container">
                     <label id="setting-email-label" class="label-setting">
@@ -191,14 +191,14 @@
                     <input type="url" id="setting-picture-input" th:value="${account.getImageUrl()}">
                 </div>
                 <button onclick="updateAccountSettings()">Edit</button>
-            </div>
+            </form>
 
-            <div class="setting-panel" style="display: none;" id="panel-billing">
+            <form class="setting-panel" style="display: none;" id="panel-billing" onsubmit="return false;">
                 <div id="setting-address-container" class="setting-container">
                     <label id="setting-address-label" class="label-setting">
                         Address
                     </label>
-                    <input type="text" id="setting-address-input" autocomplete="street-address" th:value="${account.getAddress()}">
+                    <input class="first-input" type="text" id="setting-address-input" autocomplete="street-address" th:value="${account.getAddress()}">
                 </div>
 
                 <div class="info-align-horizontal">
@@ -270,7 +270,7 @@
 
                 </div>
                 <button onclick="updateBillingSettings()">Edit</button>
-            </div>
+            </form>
 
             <!--
             <div class="setting-panel" style="display: none;" id="panel-rewards">
@@ -290,12 +290,12 @@
                 </div>
             </div>
 
-            <div class="setting-panel" style="display: none;" id="panel-new">
+            <form class="setting-panel" style="display: none;" id="panel-new" onsubmit="return false;">
                 <div id="setting-password-new-container" class="setting-container">
                     <label id="setting-password-new-label" class="label-setting">
                         New Password
                     </label>
-                    <input type="password" id="setting-password-new-input" autocomplete="password">
+                    <input class="first-input" type="password" id="setting-password-new-input" autocomplete="password">
                 </div>
                 <div id="setting-password-confirm-container" class="setting-container">
                     <label id="setting-password-confirm-label" class="label-setting">
@@ -305,18 +305,18 @@
                 </div>
                 <!-- feature 2FA Verification -->
                 <button onclick="newPassword();">Change Password</button>
-            </div>
+            </form>
 
-            <div class="setting-panel" style="display: none;" id="panel-delete">
+            <form class="setting-panel" style="display: none;" id="panel-delete" onsubmit="return false;">
                 <div id="setting-password-delete-container" class="setting-container">
                     <label id="setting-password-delete-label" class="label-setting">
                         Password
                     </label>
-                    <input type="password" id="setting-password-delete-input" autocomplete="password">
+                    <input class="first-input" type="password" id="setting-password-delete-input" autocomplete="password">
                 </div>
                 <h3 style="color: red;font-style:oblique;" id="password-delete-header">THIS ACTION CANNOT BE REVERSED</h3>
                 <button onclick="deleteAccount();">Delete Account</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>

@@ -106,7 +106,7 @@ public class VegtaurantApplication {
 		menuItemRepository.save(applejuice);
 
 		MenuItem orangejuice = new MenuItem();
-		orangejuice.setLabel("Orance Juice");
+		orangejuice.setLabel("Orange Juice");
 		orangejuice.setTag("Juices");
 		orangejuice.setDescription("Freshly grown oranges sourced locally, juiced including pulp for maximum nutrition.");
 		orangejuice.setIconUrl("images/products/drinks/orangejuice.jpg");

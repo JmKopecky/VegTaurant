@@ -15,9 +15,7 @@
         }
     </style>
 </head>
-
-
-<body class="light" data-barba="wrapper">
+<body data-barba="wrapper">
 
 <script type="text/javascript">
     document.getElementsByTagName("html")[0].classList.add("scroll-hide");
@@ -89,9 +87,7 @@
 
 
 
-
-<div class="barba-container" id="barba-container" data-barba="container" data-barba-namespace="page" data-page="menu">
-
+<div class="barba-container" id="barba-container" data-barba="container" data-barba-namespace="page" data-page="references">
 
 
     <script th:inline="javascript">
@@ -102,83 +98,41 @@
 
 
 
-    <div id="menu-item-overlay" onclick="hideOverlay(event, this);">
-        <div id="menu-item-details-container">
-            <div id="menu-item-top">
-                <div id="menu-item-main-info">
-                    <div id="menu-item-label"><h2 id="menu-item-overlay-name">Test1</h2></div>
-                    <div id="menu-item-price"><h4 id="menu-item-overlay-price">Test2</h4></div>
-                    <div id="menu-item-rating"><h5 id="menu-item-overlay-rating"></h5></div>
-                </div>
-                <div id="menu-item-image">
-                    <img id="menu-item-overlay-image" src="" alt="menu item overlay extra info image." style="width: 100%;height: 30vh;object-fit: contain;">
-                </div>
-            </div>
-            <div id="menu-item-desc-container">
-                <p id="menu-item-overlay-desc"></p>
-                <div id="item-count-container" class="item-count-container">
-                    <label id="item-count-label" class="label-item-count">
-                        Item Count
-                    </label>
-                    <input type="number" id="item-count-input" autocomplete="name" value=1>
-                </div>
-                <button id="add-to-cart-button" onclick="addItemToCart();">Add to Cart</button>
-            </div>
-        </div>
-    </div>
+    <div id="site-content-references" class="site-content" data-title="References">
 
-
-    <div id="site-content-menu" class="site-content" data-title="Menu">
-        <div id="menu-banner">
-            <h1>Menu</h1>
+        <div id="copyright-checklist-container">
+            <h1 id="copyright-checklist-header" class="reference-header">Student Copyright Checklist</h1>
         </div>
 
-        <div id="menu-categories-container">
-            <div id="menu-categories-accordion-header">
-                <h2 id="nav-accordion-header-label">All</h2>
-                <div id="nav-accordion-icon">
-                    <i id="show-accordion-panel" class="fa-solid fa-plus" style="display:block" onclick="mobileNavAccordionClick('show');"></i>
-                    <i id="hide-accordion-panel" class="fa-solid fa-minus" style="display:none" onclick="mobileNavAccordionClick('hide');"></i>
-                </div>
-            </div>
-            <div id="menu-accordion-panel">
-                <!-- Categories of all, breakfast, dinner, sides, drinks, desserts-->
-                <div class="menu-topic-tile" th:each="topicTile:${itemsByMenuTags.entrySet()}" th:category="${topicTile.getKey()}" onclick="setMenuCategory(this.getAttribute('category'));" th:id="|cattile_${topicTile.getKey()}|">
-                    <h3 th:text="${topicTile.getKey()}"></h3>
+        <div id="work-log-container">
+            <h1 id="work-log-header" class="reference-header">Work Log</h1>
+        </div>
+
+        <div id="info-citations-container">
+            <h1 id="info-citations-header" class="reference-header">Citations: Information</h1>
+        </div>
+
+        <div id="libraries-citations-container">
+            <h1 id="libraries-citations-header" class="reference-header">Citations: Libraries/Frameworks</h1>
+            <div id="libraries-content" class="references-flex">
+                <div class="library">
+                    <h4>Spring Boot</h4>
+                    <a class="link-hover" href="https://spring.io/projects/spring-boot">https://spring.io/projects/spring-boot</a>
                 </div>
             </div>
         </div>
 
-        <div id="menu-items-container">
-            <div class="menu-items" style="display: none;" th:each="category:${itemsByMenuTags.entrySet()}" th:id="|menucontainer_${category.getKey()}|">
-                <div class="menu-item-tag" th:each="tag:${itemsByMenuTags.get(category.getKey())}">
-                    <h4 class="menu-tag-name" th:text="${tag.getTagName()}"></h4>
-                    <div class="tag-items">
-                        <div class="menu-item" th:each="item:${tag.getMenuItems()}">
-                            <div class="item-image-container">
-                                <img th:src="${item.getIconUrl()}" th:alt="${item.getLabel()}">
-                            </div>
-                            <div class="item-content-container">
-                                <h3 class="item-title" th:text="${item.getLabel()}"></h3>
-                                <button th:item="${item.getLabel()}" onclick="retrieveItemData(this.getAttribute('item'));">More Info</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="images-citations-container">
+            <h1 id="images-citations-header" class="reference-header">Citations: Images</h1>
         </div>
+
     </div>
 </div>
 
-
-
-
-<div id="footer">
-    <p>&copy; 2025 ConDelu Meals</p>
-</div>
 
 
 </body>
+
 
 <!-- scripts and files loaded last -->
 <script src="https://kit.fontawesome.com/2b6129ab2e.js" crossorigin="anonymous"></script>

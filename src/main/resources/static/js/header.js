@@ -1,4 +1,7 @@
+let isMobile = true;
+
 if (window.matchMedia("(pointer:fine)").matches) {
+    isMobile = false;
     const lenis = new Lenis({
         syncTouch: true,
         duration: 1.5
@@ -37,20 +40,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
 
-    const cartIcon = document.getElementById("header-cart-icon");
-    cartIcon.addEventListener("mouseenter", () => {
-        iconHoverSvg("enter", cartIcon);
-    });
-    cartIcon.addEventListener("mouseleave", () => {
-        iconHoverSvg("leave", cartIcon);
-    });
-    const accountIcon = document.getElementById("header-account-icon");
-    accountIcon.addEventListener("mouseenter", () => {
-        iconHoverSvg("enter", accountIcon);
-    });
-    accountIcon.addEventListener("mouseleave", () => {
-        iconHoverSvg("leave", accountIcon);
-    });
+    if (!isMobile) {
+        const cartIcon = document.getElementById("header-cart-icon");
+        cartIcon.addEventListener("mouseenter", () => {
+            iconHoverSvg("enter", cartIcon);
+        });
+        cartIcon.addEventListener("mouseleave", () => {
+            iconHoverSvg("leave", cartIcon);
+        });
+        const accountIcon = document.getElementById("header-account-icon");
+        accountIcon.addEventListener("mouseenter", () => {
+            iconHoverSvg("enter", accountIcon);
+        });
+        accountIcon.addEventListener("mouseleave", () => {
+            iconHoverSvg("leave", accountIcon);
+        });
+    }
 });
 
 
