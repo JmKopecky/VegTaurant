@@ -26,7 +26,7 @@
         justify-content: space-evenly;
         gap: 4vw;
         flex-wrap: wrap;
-        height: 40vh;
+        min-height: 40vh;
         .menu-item {
           aspect-ratio: 2/3;
           border-radius: 1em;
@@ -38,9 +38,30 @@
           padding-left: 1em;
           padding-right: 1em;
           gap: 0.5em;
-          flex: 1;
-          height: 100%;
+          //flex: 1;
+          max-height: 100%;
+          width: 15vw;
           will-change: transform, opacity;
+
+          @media (width <= 1075px) {
+            width: 20vw;
+          }
+          @media (width <= 825px) {
+            width: 25vw;
+          }
+          @media (width <= 675px) {
+            width: 30vw;
+          }
+          @media (width <= 550px) {
+            width: 35vw;
+          }
+          @media (width <= 475px) {
+            width: 50vw;
+          }
+          @media (width <= 350px) {
+            width: 75vw;
+          }
+
           .item-image-container {
             height: 50%;
             width: 100%;

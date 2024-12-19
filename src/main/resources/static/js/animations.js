@@ -176,12 +176,10 @@ function prepareStartupAnims(page) {
         gsap.set(document.getElementsByClassName("menu-tag-name"), {
             opacity: 0,
             y:window.innerHeight / 10})
-        /*
+
         gsap.set(document.getElementsByClassName("menu-item"), {
             opacity: 0,
             y:window.innerHeight / 8})
-
-         */
     }
 
 
@@ -217,6 +215,19 @@ function prepareStartupAnims(page) {
             opacity: 0, y: window.innerHeight / 5});
         gsap.set(document.getElementsByClassName("loc-type-selectable"), {
             opacity: 0, y: window.innerHeight / 5});
+    }
+
+
+    if (page === "references") {
+        /*
+        let toAnim = [];
+        for (const elem of document.getElementsByClassName("reference-header")) {toAnim.push(elem)}
+
+        for (const target of toAnim) {
+            gsap.set(target, {opacity: 0, y: window.innerHeight / 5});
+        }
+         */
+
     }
 }
 
@@ -304,6 +315,20 @@ function runStartupAnims(page) {
         gsap.to(document.getElementById("location-address-selection"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 1.5});
         gsap.to(document.getElementsByClassName("loc-type-selectable"), {
             opacity: 1, y: 0, duration: 0.5, ease: "power1.inout", stagger: 0.1, delay: 1});
+    }
+
+
+    if (page === "references") {
+        /*
+        let toAnim = [];
+        for (const elem of document.getElementsByClassName("reference-header")) {toAnim.push(elem)}
+
+        let index = 0;
+        for (const target of toAnim) {
+            gsap.to(target, {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 0.75 + (index / 4.0)});
+            index++;
+        }
+         */
     }
 }
 
