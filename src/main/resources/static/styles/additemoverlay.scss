@@ -31,6 +31,7 @@
       flex-flow: row;
       justify-content: space-evenly;
       align-items: center;
+      text-align: center;
       #menu-item-main-info {
         height: 100%;
         display: flex;
@@ -44,20 +45,22 @@
       }
     }
     #menu-item-desc-container {
-      width: 48vw;
+      width:96%;
       height: 35vh;
       display: flex;
       flex-flow: column;
       justify-content: space-evenly;
       align-items: center;
       text-align: center;
-      padding-left: 1vw;
-      padding-right: 1vw;
+      padding-left: 3%;
+      padding-right: 3%;
     }
+
   }
   @media (width <= 950px) {
     #menu-item-details-container {
-      width: unset;
+      width: 80vw;
+      height: 75vh;
       padding: 1em;
     }
   }

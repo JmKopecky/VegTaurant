@@ -104,16 +104,16 @@
     <div id="signon-content" class="site-content" data-title="Signon">
 
         <div id="toggle-signon-mode">
-            <h3>Sign In</h3>
+            <h3 class="toggle-label">Sign In</h3>
             <label id="signon-switch-label">
                 <input type="checkbox" id="signon-switch-input">
                 <span id="signon-switch"></span>
             </label>
-            <h3>Sign Up</h3>
+            <h3 class="toggle-label">Sign Up</h3>
         </div>
 
 
-        <div id="signon-container">
+        <form id="signon-container" onsubmit="return false;">
             <h2 id="signon-header">Sign In</h2>
             <p id="signon-text">Sign in to your account to dramatically improve your shopping experience with us!</p>
             <div id="signon-name-container" class="signon-container">
@@ -136,10 +136,10 @@
             </div>
             <button id="signon-button">Sign In</button>
             <p id="signon-feedback" style="visibility: hidden; color: red;">Incorrect Credentials</p>
-        </div>
+        </form>
 
 
-        <div id="extra-info-container">
+        <form id="extra-info-container" onsubmit="return false;">
             <!-- Collect info on user: payment info-->
             <div id="signon-address-container" class="signon-container">
                 <label id="signon-address-label" class="label-signon">
@@ -219,7 +219,7 @@
 
             <button id="signup-button">Create Account</button>
 
-        </div>
+        </form>
 
     </div>
 </div>

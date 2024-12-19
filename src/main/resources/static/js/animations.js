@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 });
             },
             afterEnter: (data) => {
+
                 setTimeout(() => {
                     data.next.container.getElementsByClassName("site-content")[0].style.opacity = "1";
                     gsap.to(document.getElementById("page-transition-left"), {
@@ -89,6 +90,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                         runStartupAnims(document.getElementById("barba-container").getAttribute("data-page"));
                     }, 500);
                 }, 1000);
+
             }
         }]
     });
@@ -199,12 +201,15 @@ function prepareStartupAnims(page) {
 
 
     if (page === "account") {
+
         gsap.set(document.getElementById("account-menu-nav"), {
-            opacity: 0, x:
-                -1 * window.innerWidth / 5});
+            opacity: 0, y:
+                window.innerHeight / 5});
         gsap.set(document.getElementById("account-setting-panels"), {
-            opacity: 0, x:
-                window.innerWidth / 5});
+            opacity: 0, y:
+                window.innerHeight / 5});
+
+
     }
 
 
@@ -305,8 +310,9 @@ function runStartupAnims(page) {
 
 
     if (page === "account") {
-        gsap.to(document.getElementById("account-menu-nav"), {opacity: 1, x: 0, duration: 0.5, ease: "power1.in", delay: 0.75});
-        gsap.to(document.getElementById("account-setting-panels"), {opacity: 1, x: 0, duration: 0.5, ease: "power1.in", delay: 0.75});
+        gsap.to(document.getElementById("account-menu-nav"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 0.75});
+        gsap.to(document.getElementById("account-setting-panels"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.in", delay: 0.75});
+
     }
 
 

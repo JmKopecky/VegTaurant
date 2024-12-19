@@ -934,6 +934,7 @@ html *::-webkit-scrollbar-button {
   flex-flow: row;
   justify-content: space-evenly;
   align-items: center;
+  text-align: center;
 }
 #menu-item-overlay #menu-item-details-container #menu-item-top #menu-item-main-info {
   height: 100%;
@@ -947,19 +948,20 @@ html *::-webkit-scrollbar-button {
   border-radius: 2em;
 }
 #menu-item-overlay #menu-item-details-container #menu-item-desc-container {
-  width: 48vw;
+  width: 96%;
   height: 35vh;
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  padding-left: 1vw;
-  padding-right: 1vw;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 @media (width <= 950px) {
   #menu-item-overlay #menu-item-details-container {
-    width: unset;
+    width: 80vw;
+    height: 75vh;
     padding: 1em;
   }
 }
@@ -1246,7 +1248,7 @@ html *::-webkit-scrollbar-button {
   background: #111111;
   display: flex;
   justify-content: flex-start;
-  gap: 10vh;
+  gap: 5vh;
   align-items: center;
   flex-flow: column;
   transition: background 1s ease-in-out;
@@ -1688,6 +1690,7 @@ html *::-webkit-scrollbar-button {
   flex-flow: row;
   justify-content: space-evenly;
   align-items: center;
+  text-align: center;
 }
 #menu-item-overlay #menu-item-details-container #menu-item-top #menu-item-main-info {
   height: 100%;
@@ -1701,19 +1704,20 @@ html *::-webkit-scrollbar-button {
   border-radius: 2em;
 }
 #menu-item-overlay #menu-item-details-container #menu-item-desc-container {
-  width: 48vw;
+  width: 96%;
   height: 35vh;
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  padding-left: 1vw;
-  padding-right: 1vw;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 @media (width <= 950px) {
   #menu-item-overlay #menu-item-details-container {
-    width: unset;
+    width: 80vw;
+    height: 75vh;
     padding: 1em;
   }
 }

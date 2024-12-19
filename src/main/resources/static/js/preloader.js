@@ -1,4 +1,6 @@
 function endPreloader() {
+
+
     gsap.set(document.getElementById("page-transition-left"), {
         x: 0
     });
@@ -23,7 +25,6 @@ function endPreloader() {
 
     prepareStartupAnims(document.getElementById("barba-container").getAttribute("data-page"));
     setTimeout(() => {
-        document.getElementById("page-transition-container").style.display = "none";
         gsap.set(document.getElementById("page-transition-left"), {
             x: 0
         });
@@ -34,6 +35,7 @@ function endPreloader() {
             y: 0,
             opacity: 0
         });
+        document.getElementById("page-transition-container").style.display = "none";
         document.getElementsByTagName("html")[0].classList.remove("scroll-hide");
         document.getElementById("page-transition-title").classList.remove("preloader");
         runStartupAnims(document.getElementById("barba-container").getAttribute("data-page"));
@@ -79,7 +81,6 @@ function showTitle(thenEnd) {
         animationblocking = false;
     }, titleTime * 1000);
 }
-
 
 let preloaderTime = 2;
 let documentReady = false;
