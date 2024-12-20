@@ -33,10 +33,15 @@ function retrieveItemData(itemLabel) { //feature item customization? Not really 
             overlay.setAttribute("style", "display: flex;");
             overlay.style.opacity = "0";
             document.getElementById("menu-item-overlay-name").textContent = data["label"];
-            document.getElementById("menu-item-overlay-price").textContent = "$" + data["price"];
             document.getElementById("menu-item-overlay-rating").textContent = data["rating"] + "/5 (" + data["totalratings"] + ")";
             document.getElementById("menu-item-overlay-image").setAttribute("src", data["image"]);
             document.getElementById("menu-item-overlay-desc").textContent = data["desc"];
+
+            if (data["price"] === data["oldprice"]) {
+                document.getElementById("menu-item-overlay-price").textContent = "$" + data["price"];
+            } else {
+                document.getElementById("menu-item-overlay-price").textContent = "$" + data["price"] + " (Discounted from $" + data["oldprice"] + ")";
+            }
 
             document.getElementById("menu-item-overlay-image").addEventListener("load", () => {
                 gsap.to(overlay, {
@@ -52,7 +57,7 @@ function retrieveItemData(itemLabel) { //feature item customization? Not really 
 
 function addItemToCart() {
     let label = document.getElementById("menu-item-overlay-name").textContent;
-    let price = document.getElementById("menu-item-overlay-price").textContent.substring(1);
+    let price = document.getElementById("menu-item-overlay-price").textContent.substring(1).split(" ")[0];
     let count = document.getElementById("item-count-input").value;
     if (count <= 0) {
         document.getElementById("item-count-input").style.color = "red";

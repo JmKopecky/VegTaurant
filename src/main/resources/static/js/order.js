@@ -91,6 +91,7 @@ function initBillingInfo() {
     setTimeout(() => {
         document.getElementById("location-container").style.display = "none";
         document.getElementById("billing-info-container").style.display = "flex";
+        window.scrollTo(0,0);
 
         if (account !== "noaccount") {
             document.getElementById("billing-name-input").value = account["cardUserName"];
@@ -129,6 +130,7 @@ function finalizeOrder() {
     setTimeout(() => {
         document.getElementById("billing-info-container").style.display = "none";
         document.getElementById("finalize-order-container").style.display = "flex";
+        window.scrollTo(0,0);
 
         gsap.set(document.getElementById("order-final-header-1"), {opacity: 0,y: window.innerHeight / 5});
         gsap.to(document.getElementById("order-final-header-1"), {opacity: 1, y:0,duration:0.5,ease:"power1.inout",delay:0.25});

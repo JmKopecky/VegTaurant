@@ -55,6 +55,19 @@ public class MenuItem {
     }
 
 
+    public double getActualPrice() {
+        double output = getPrice();
+
+        if (getDeal() != null) {
+            if (getDeal().isIsPercentageBased()) {
+                output *= (1 - getDeal().getDiscount()/100.0);
+            }
+        }
+
+        return output;
+    }
+
+
 
     public String getLabel() {
         return label;

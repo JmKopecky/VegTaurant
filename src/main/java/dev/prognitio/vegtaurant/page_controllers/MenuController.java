@@ -82,6 +82,8 @@ public class MenuController {
         allTagContainers.put("All", allMenuTags);
 
 
+
+
         model.addAttribute("itemsByMenuTags", allTagContainers);
 
         //I like the look of the texas roadhouse navigation for the menu, that and the dennys
@@ -134,7 +136,8 @@ public class MenuController {
             if (target != null) {
                 toReturn.put("label", target.getLabel());
                 toReturn.put("desc", target.getDescription());
-                toReturn.put("price", target.getPrice());
+                toReturn.put("price", target.getActualPrice());
+                toReturn.put("oldprice", target.getPrice());
                 toReturn.put("rating", target.getAveragerating());
                 toReturn.put("totalratings", target.getTotalratings());
                 toReturn.put("image", target.getIconUrl());

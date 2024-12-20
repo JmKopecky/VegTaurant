@@ -69,7 +69,7 @@
           align-items: end;
         }
       }
-      @media (width <= 475px) {
+      @media (width <= 625px) {
         flex-flow: column;
         gap: 5vh;
         text-align: center;

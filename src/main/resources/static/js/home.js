@@ -95,27 +95,14 @@ function registerAnimations() {
     for (const e of document.getElementsByClassName("rating-tile")) {targets.push(e)}
     targets.push(document.getElementById("member-benefit-promo"));
     targets.push(document.getElementById("approaches-header"));
-
+    targets.push(document.getElementById("collaborate-info-text"));
+    targets.push(document.getElementById("collaborate-info-image"));
+    targets.push(document.getElementById("collaborate-header"));
 
     for (const elem of targets) {
         gsap.set(elem, {opacity:0, y:window.innerHeight / 5});
         gsap.to(elem, {opacity: 1, y: 0, duration: 0.5, ease: "power1.inout", scrollTrigger:{trigger: elem, start: "top 90%", scrub:1, end: "top 70%"}});
     }
-
-
-    gsap.set(document.getElementById("collaborate-info-text"), {opacity: 0, x: -1 * document.getElementById("collaborate-info-text").getBoundingClientRect().left - document.getElementById("collaborate-info-text").getBoundingClientRect().width});
-    gsap.set(document.getElementById("collaborate-info-image"), {opacity: 0, x: document.getElementById("collaborate-info-image").getBoundingClientRect().width})
-    gsap.set(document.getElementById("collaborate-header"), {opacity:0, y:window.innerHeight / 5});
-    gsap.to(document.getElementById("collaborate-header"), {opacity: 1, y: 0, duration: 0.5, ease: "power1.inout", delay: 0.5, scrollTrigger:{trigger: document.getElementById("collaborate-header"), start: "top 90%", scrub:1, end: "top 70%"}});
-    gsap.to(document.getElementById("collaborate-info-text"), {
-        x: 0, opacity: 1, duration: 0.5, ease: "power1.inout", scrollTrigger:{
-            trigger: document.getElementById("collaborate-header"),start:"top 90%", scrub:1, end: "top 70%"}
-    });
-
-    gsap.to(document.getElementById("collaborate-info-image"), {
-        x: 0, opacity: 1, duration: 0.5, ease: "power1.inout", scrollTrigger:{
-            trigger: document.getElementById("collaborate-header"),start:"top 90%", scrub:1, end: "top 70%"}
-    });
 
     gsap.set(document.getElementsByClassName("approaches-tile"), {y:window.innerHeight / 5, opacity:0});
     gsap.to(document.getElementsByClassName("approaches-tile"), {
