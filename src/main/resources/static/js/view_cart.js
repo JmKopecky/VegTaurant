@@ -46,7 +46,7 @@ function removeItem(tile) {
     if (localStorage.getItem("cart") !== null && localStorage.getItem("cart") !== "unset") {
         let cart = JSON.parse(localStorage.getItem("cart"));
         let newCart = [];
-        let tileLabel = tile.getElementsByTagName("h3")[0].textContent.split(" X ")[0];
+        let tileLabel = tile.getElementsByClassName("item-label")[0].textContent.split(" X ")[0];
         for (const item of cart) {
             if (item["label"] !== tileLabel) {
                 newCart.push(item);
@@ -103,13 +103,24 @@ function calculateCosts(cart) {
         tile.addEventListener("click", () => {
             removeItem(tile);
         });
-        let labelContainer = document.createElement("h3");
+        let labelContainer;
+        let priceContainer;
+        if (window.innerWidth < 500) {
+            console.log("ran");
+            labelContainer = document.createElement("h6");
+            priceContainer = document.createElement("p");
+        } else {
+            console.log("alsoran");
+            labelContainer = document.createElement("h3");
+            priceContainer = document.createElement("h4");
+        }
+        labelContainer.classList.add("item-label");
+        priceContainer.classList.add("item-price");
         labelContainer.textContent = label;
         if (count > 1) {
             labelContainer.textContent += " X " + count;
         }
         tile.appendChild(labelContainer);
-        let priceContainer = document.createElement("h4");
         priceContainer.textContent = "$" + (parseFloat(price) * count).toFixed(2);
         tile.appendChild(priceContainer);
         container.appendChild(tile);

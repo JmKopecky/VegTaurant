@@ -7,6 +7,9 @@ Used libraries:
 * GSAP ScrollTrigger
 * Barba.js
 
+Banner Image Citation:
+https://unsplash.com/photos/caesar-salad-Juvw-a-RvvI
+
 
 Sitemap: 
 * home page

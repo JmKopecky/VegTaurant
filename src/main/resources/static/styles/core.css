@@ -1014,7 +1014,7 @@ html *::-webkit-scrollbar-button {
     gap: 3vh;
   }
   #menu-item-overlay #menu-item-top #menu-item-image {
-    width: 100%;
+    width: 100% !important;
   }
 }
 
@@ -1794,7 +1794,7 @@ html *::-webkit-scrollbar-button {
     gap: 3vh;
   }
   #menu-item-overlay #menu-item-top #menu-item-image {
-    width: 100%;
+    width: 100% !important;
   }
 }
 
@@ -2225,7 +2225,7 @@ html *::-webkit-scrollbar-button {
   gap: 1vh;
   align-items: end;
 }
-@media (width <= 475px) {
+@media (width <= 625px) {
   #site-content-cart #cart-display #cart-totals {
     flex-flow: column;
     gap: 5vh;
