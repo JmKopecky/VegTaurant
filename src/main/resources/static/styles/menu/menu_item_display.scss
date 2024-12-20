@@ -43,6 +43,10 @@
           width: 15vw;
           will-change: transform, opacity;
 
+          .item-title {
+            text-align: center;
+          }
+
           @media (width <= 1075px) {
             width: 20vw;
           }

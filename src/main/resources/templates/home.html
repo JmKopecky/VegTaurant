@@ -120,7 +120,7 @@ Requisite content:
                     <div id="menu-item-rating"><h5 id="menu-item-overlay-rating"></h5></div>
                 </div>
                 <div id="menu-item-image">
-                    <img id="menu-item-overlay-image" src="" alt="menu item overlay extra info image." style="width: 100%;height: 30vh;object-fit: contain;">
+                    <img id="menu-item-overlay-image" src="" alt="menu item overlay extra info image." style="width: 100%;height: 30vh;">
                 </div>
             </div>
             <div id="menu-item-desc-container">
@@ -165,10 +165,10 @@ Requisite content:
                         <div class="top-rated-item-tile" th:each="itemTile:${tophalfmenuitems}">
                             <div class="top-rated-item-tile-content">
                                 <div class="rated-item-container">
-                                    <h5 th:text="${itemTile.getLabel()}"></h5>
                                     <div class="item-promo-image-container">
                                         <img th:src="${itemTile.getIconUrl()}" alt="image of food item">
                                     </div>
+                                    <h6 th:text="${itemTile.getLabel()}"></h6>
                                 </div>
                                 <div class="rated-item-container">
                                     <div class="top-rated-item-tile-body">
