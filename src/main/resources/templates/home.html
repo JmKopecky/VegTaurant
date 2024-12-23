@@ -204,7 +204,7 @@ Requisite content:
             <!-- Start your week off with a site-wide discount. -->
             <h1 id="discount-header" th:text="${sitewidedaydiscount ? 'Start Your Week Strong With A Discount' : 'Come Back Monday For A Discount'}"></h1>
             <p id="discount-body">We understand that mondays are hard, and we want to make yours better. So every monday, a site-wide discount of 10% is applied to every order!</p>
-            <button id="discount-button" th:if="${sitewidedaydiscount}">Redeem Your Discount</button>
+            <button id="discount-button" th:if="${sitewidedaydiscount}" onclick="barba.go(window.location.href + 'cart');">Redeem Your Discount</button>
         </div>
 
 

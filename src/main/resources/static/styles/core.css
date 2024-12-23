@@ -1242,7 +1242,7 @@ html *::-webkit-scrollbar-button {
 #site-content-account #account-setting-panels #rating-scrollable .rating-tile .rating-message {
   flex: 1 1 0px;
   padding: 0.5em;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   text-align: center;
 }
 #site-content-account #account-setting-panels .setting-panel {
