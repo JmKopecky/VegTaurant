@@ -50,6 +50,7 @@ public class AccountController {
                 ratings.add(rating);
             }
         }
+
         model.addAttribute("ratings", ratings);
 
         return "account";

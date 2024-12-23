@@ -282,8 +282,8 @@
                 <div id="rating-scrollable">
                     <div class="rating-tile" th:each="rating:${ratings}">
                         <div class="rating-info-left">
-                            <h3 class="rating-item-title" th:text="${rating.getProduct().getLabel()}"></h3>
-                            <h2 class="rating-score" th:text="${rating.getRating()} + '/5'"></h2>
+                            <h6 class="rating-item-title" th:text="${rating.getProduct().getLabel()}"></h6>
+                            <h5 class="rating-score" th:text="${rating.getRating()} + '/5'"></h5>
                         </div>
                         <p class="rating-message" th:text="${rating.getMessage()}"></p>
                     </div>

@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     barba.init({
         preventRunning: true,
-        cacheIgnore: ['/account/', '/signon/'],
-        prefetchIgnore: ["/signon/", '/account/'],
+        cacheIgnore: true,
+        prefetchIgnore: true,
         transitions: [{
             name: 'page-transition',
             leave: (data) => {
@@ -121,6 +121,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 
 function updateJS(target) {
+    prepareHeaderAnim();
+
     if (target === "home") {
         initHome();
     }
@@ -145,7 +147,7 @@ function updateJS(target) {
 
 function prepareStartupAnims(page) {
 
-    prepareHeaderAnim();
+    //headerIntroAnim();
 
     if (page === "home") {
 

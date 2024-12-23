@@ -14,11 +14,6 @@ public class VegtaurantApplication {
 
 	public static void doDatabaseTestCase(MenuCategoryRepository menuCategoryRepository, MenuItemRepository menuItemRepository, FeaturedItemRepository featuredItemRepository, ProductRatingRepository productRatingRepository, AccountRepository accountRepository, RestaurantLocationRepository restaurantLocationRepository, PlacedOrderRepository placedOrderRepository) { //TODO delete before completion
 
-		if (menuCategoryRepository.count() != 0) {
-			return;
-		}
-
-
 		MenuCategory breakfast = new MenuCategory();
 		breakfast.setTitle("Breakfast");
 		menuCategoryRepository.save(breakfast);
@@ -481,40 +476,38 @@ public class VegtaurantApplication {
 
 
 
-		/*
+
 		Account acc = new Account();
 		acc.setName("John Doe");
 		accountRepository.save(acc);
 
 		ProductRating rating = new ProductRating();
 		rating.setRating(5);
-		rating.setMessage("Best product I've ever seen! I want this at my birthday next year, and I will not hear otherwise.");
+		rating.setMessage("This pizza was absolutely delectable, and I was able to enjoy it guilt free as well!");
 		rating.setReviewer(acc);
-		rating.setProduct(menuOption1);
+		rating.setProduct(crispyMediterraneanPizza);
 		productRatingRepository.save(rating);
 
 		ProductRating rating2 = new ProductRating();
-		rating2.setRating(1);
-		rating2.setMessage("Literal trash. Take this product and toss it into a volcano. No, that's too good for it.");
+		rating2.setRating(5);
+		rating2.setMessage("I've never normally seen this type of thing at vegetarian restaurants, but it was delicious!");
 		rating2.setReviewer(acc);
-		rating2.setProduct(menuOption1);
+		rating2.setProduct(eggBreakfastSandwich);
 		productRatingRepository.save(rating2);
 
 		ProductRating rating3 = new ProductRating();
 		rating3.setRating(3);
-		rating3.setMessage("Meh. It's tolerable at best. This place was the only one in delivery range, so I guess their delivery service is good.");
+		rating3.setMessage("The recyclable packaging didn't fare well when I spilled my drink. Still, it was an overall solid experience.");
 		rating3.setReviewer(acc);
-		rating3.setProduct(menuOption1);
+		rating3.setProduct(bananaPudding);
 		productRatingRepository.save(rating3);
 
 		ProductRating rating4 = new ProductRating();
-		rating4.setRating(4);
-		rating4.setMessage("I normally like this, but once I found a tooth in my meal. Gross. Never happened again though!");
+		rating4.setRating(5);
+		rating4.setMessage("These cherries are divine, and I would die for them.");
 		rating4.setReviewer(acc);
-		rating4.setProduct(menuOption1);
+		rating4.setProduct(cherryBowl);
 		productRatingRepository.save(rating4);
-
-		 */
 
 		RestaurantLocation location1 = new RestaurantLocation();
 		location1.setAddressLine("1234 Lorem Ipsum Lane");

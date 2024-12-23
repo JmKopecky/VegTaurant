@@ -14,7 +14,7 @@ public class PlacedOrder {
     private String cartString;
     private LocalDateTime orderDate;
     private Integer estimatedDeliveryTime;
-    @OneToOne
+    @ManyToOne
     private Account account;
 
     public Integer getId() {
